@@ -1,0 +1,180 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 07-11-2014, 10:53:06 AM
+    Author     : Rodrigo
+*/
+html,body{
+    height: 100%;
+    background: #fff;
+}
+
+#container{
+    min-height: 100%;
+}
+
+#container h1{
+    margin-top: 0px;
+}
+
+header{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #fff;
+    z-index: 99;
+
+    background-color: #4390df;  //rgb(0, 180, 212);
+    //background-color: rgba(0, 180, 212, 0.95);
+}
+
+header .container .row .col-xs-2 img{
+    margin: 14px;
+}
+
+header .container .row .col-xs-10 h2{
+    color: #ffffff;
+    margin-top: 15px;
+}
+
+header .container .row .col-xs-10 .nav li a{
+    color: #fff;   
+}
+
+header .container .row .col-xs-10 .nav li a:hover{
+    color: #428bca;   
+}
+
+header .container .row .col-xs-10 .nav .dropdown .dropdown-menu a{
+    color: #000;   
+}
+
+header .container .row .col-xs-10 .nav .dropdown .dropdown-menu a:hover{
+    color: #428bca;    
+}
+
+#main-menu {
+    float:right;
+    margin: 10px;
+}
+
+#container .container .row .col-xs-6 #error .alert h5{
+    text-align: center;
+}
+
+body{
+    padding-top: 70px;
+    padding-bottom: 0px;
+}
+
+footer{
+    background-color: #4390df;  //rgb(0, 180, 212);
+    color: #ffffff;
+
+    width: 100%;
+    height: 60px;
+    position:relative;
+    margin-top:-70px;
+}
+
+footer h4{
+    padding: 17px;
+    margin-bottom: 0px;
+    text-align: center;
+}
+
+#genero{
+    text-align: center;
+}
+
+#consultaFiltros{
+    /*    background-color: #31B1FF;*/
+    background-color: #F2F2F4;
+}
+
+/*            */
+/*Cuestiones de menú anidado*/
+/*                 */
+.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-submenu>.dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -6px;
+    margin-left: -1px;
+    //-webkit-border-radius: 0 6px 6px 6px;
+    //-moz-border-radius: 0 6px 6px;
+    //border-radius: 0 6px 6px 6px;
+}
+
+.dropdown-submenu:hover>.dropdown-menu {
+    display: block;
+}
+
+.dropdown-submenu>a:after {
+    display: block;
+    content: " ";
+    float: right;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 5px 0 5px 5px;
+    border-left-color: #ccc;
+    margin-top: 5px;
+    margin-right: -10px;
+}
+
+.dropdown-submenu:hover>a:after {
+    border-left-color: #fff;
+}
+
+.dropdown-submenu.pull-left {
+    float: none;
+}
+
+.dropdown-submenu.pull-left>.dropdown-menu {
+    left: -100%;
+    margin-left: 10px;
+    -webkit-border-radius: 6px 0 6px 6px;
+    -moz-border-radius: 6px 0 6px 6px;
+    border-radius: 6px 0 6px 6px;
+} 
+/*            */
+/* Hasta aquí las cuestiones de menú anidado*/
+/*                 */
+
+#camara{
+    //width: 400px;
+    height: 250px;
+   // -webkit-box-shadow: 5px 44px 28px #333; /* Saf3.0+, Chrome */
+}
+
+th{
+    text-align: center;
+}
+
+td .glyphicon{
+    text-align: center;
+}
+
+td{
+    text-align: center;
+}
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+    background-color: rgba(28, 183, 236, 0.1);
+}
+
+#logo{
+    margin-top: 8px;
+}
+
+.navbar-inverse{
+    background-color: #4390df;
+}
