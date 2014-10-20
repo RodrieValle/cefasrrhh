@@ -4,6 +4,6 @@
 <script src="bootstrap/js/bootstrap.js"></script>
 <!-- Este es el Bootstrap Cosmo -->
 <link rel="stylesheet" href="bootstrap/css/bootstrap.min_1.css">
-<link rel="stylesheet" href="css/menu.css">
+<link rel="stylesheet" href="css/estilo.css">
 
 
