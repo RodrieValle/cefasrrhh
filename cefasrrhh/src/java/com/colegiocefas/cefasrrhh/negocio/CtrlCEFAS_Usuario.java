@@ -6,10 +6,18 @@
 
 package com.colegiocefas.cefasrrhh.negocio;
 
+import com.colegiocefas.cefasrrhh.datos.CEFAS_UsuarioDAO;
+import com.colegiocefas.cefasrrhh.dominio.CEFAS_Usuario;
+
 /**
  *
  * @author Portillo
  */
 public class CtrlCEFAS_Usuario {
     
+    private CEFAS_UsuarioDAO daoUsuario = new CEFAS_UsuarioDAO();
+    
+    public CEFAS_Usuario verificarUsuario(String usuario, String password){
+        return daoUsuario.verificarUsuario(usuario, password);
+    }
 }
