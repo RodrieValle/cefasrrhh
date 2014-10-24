@@ -11,8 +11,8 @@ package com.colegiocefas.cefasrrhh.dominio;
  * @author Portillo
  */
 public class CEFAS_Usuario {
-    private String empCodigo;
-    private String usrCodigo;
+    private int empCodigo;
+    private int usrCodigo;
     private String usrNombre;
     private String usrPassword;
     private String usrTipo;
@@ -20,7 +20,7 @@ public class CEFAS_Usuario {
     public CEFAS_Usuario() {
     }
 
-    public CEFAS_Usuario(String empCodigo, String usrCodigo, String usrNombre, String usrPassword, String usrTipo) {
+    public CEFAS_Usuario(int empCodigo, int usrCodigo, String usrNombre, String usrPassword, String usrTipo) {
         this.empCodigo = empCodigo;
         this.usrCodigo = usrCodigo;
         this.usrNombre = usrNombre;
@@ -28,19 +28,19 @@ public class CEFAS_Usuario {
         this.usrTipo = usrTipo;
     }
 
-    public String getEmpCodigo() {
+    public int getEmpCodigo() {
         return empCodigo;
     }
 
-    public void setEmpCodigo(String empCodigo) {
+    public void setEmpCodigo(int empCodigo) {
         this.empCodigo = empCodigo;
     }
 
-    public String getUsrCodigo() {
+    public int getUsrCodigo() {
         return usrCodigo;
     }
 
-    public void setUsrCodigo(String usrCodigo) {
+    public void setUsrCodigo(int usrCodigo) {
         this.usrCodigo = usrCodigo;
     }
 

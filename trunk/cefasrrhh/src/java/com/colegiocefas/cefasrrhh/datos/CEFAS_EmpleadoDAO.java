@@ -11,5 +11,5 @@ package com.colegiocefas.cefasrrhh.datos;
  * @author Portillo
  */
 public class CEFAS_EmpleadoDAO {
-    
+      
 }

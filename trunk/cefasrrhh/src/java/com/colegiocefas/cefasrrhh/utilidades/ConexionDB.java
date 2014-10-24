@@ -11,6 +11,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -39,7 +40,12 @@ public class ConexionDB {
     }
     
     public static synchronized void cerrarConexion(){
-        conexion = null;
+        try {
+            conexion.close();
+            conexion = null;
+        } catch (SQLException ex) {
+            Logger.getLogger(ConexionDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
     } 
     
 }
