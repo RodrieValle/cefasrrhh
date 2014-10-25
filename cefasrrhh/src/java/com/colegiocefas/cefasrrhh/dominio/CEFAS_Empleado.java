@@ -33,7 +33,10 @@ private String empCelular;
 private String empCorreo;
 private String empFoto;
 
-    
+    public CEFAS_Empleado()
+    {
+        
+    }
 
     public CEFAS_Empleado(String empCodigo, String usrCodigo, String empNombre, Date empFechaNacimiento, String empDireccion, String empAnioContratacion, String empPlazaActual, String empPlazaAnterior, float empSalario, String empTipoDeContrato, String empNUP, String empDUI, String empNIT, String empNIP, String empTelefono, String empCelular, String empCorreo, String empFoto) {
         this.empCodigo = empCodigo;
