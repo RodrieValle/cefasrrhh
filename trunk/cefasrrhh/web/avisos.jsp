@@ -11,7 +11,6 @@
     HttpSession sesionOk = request.getSession();
     String tipo = (String) sesionOk.getAttribute("tipo");
     if (tipo == null) {
-        //request.setAttribute("error", "<div class=\"alert alert-danger\"><h5>Es obligatorio identificarse</h5></div>");
         request.getRequestDispatcher("index.jsp").forward(request, response);
         return;
     }
@@ -25,14 +24,52 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Inicio - CEFAS RRHH</title>
-         <jsp:include page='inc/head_common.jsp' /> 
+        <jsp:include page='inc/head_common.jsp' /> 
     </head>
     <body>
         <div id="container">
-            <jsp:include page='inc/menu_directora.jsp' />
+        <%  if(tipo.equals("director"))
+            {
+        %>
+                <jsp:include page='inc/menu_directora.jsp' />
+         <% }
+            else if(tipo.equals("empleado"))
+            {
+         %>
+                <jsp:include page='inc/menu_empleado.jsp' />
+         <% }
+            else if(tipo.equals("subdirector"))
+            {
+         %>
+                <jsp:include page='inc/menu_subdirector.jsp' />
+         <% }
+            else if(tipo.equals("asistente"))
+            {
+         %>
+                <jsp:include page='inc/menu_asistente.jsp' />
+         <% }
+            else if(tipo.equals("administrador"))
+            {
+         %>
+                <jsp:include page='inc/menu_administradora.jsp' />
+         <% } %>
+            
             
             <div class="container">
                 <h1>Inicio - Avisos </h1>
+                <%
+                    for(CEFAS_Aviso avs: lista)
+                    {
+                %>
+                      <div class="panel panel-primary">
+                            <div class="panel-heading">Fecha: <%= avs.getAvsFecha() %></div>
+                        <div class="panel-body">
+                            <%= avs.getAvsDescripcion() %>
+                        </div>
+                      </div>
+                <%        
+                    }
+                %>
             </div>
         </div> <%-- fin del div id=container --%>
     </body>

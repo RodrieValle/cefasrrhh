@@ -53,8 +53,8 @@ public class CEFAS_UsuarioDAO {
                 usr.setUsrNombre(rs.getString(3));
                 usr.setUsrPassword(rs.getString(4));
                 usr.setUsrTipo(rs.getString(5));
-                conexiondb.close();
             }
+            ConexionDB.cerrarConexion();
         } catch (SQLException ex) {
             Logger.getLogger(CEFAS_UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
         }

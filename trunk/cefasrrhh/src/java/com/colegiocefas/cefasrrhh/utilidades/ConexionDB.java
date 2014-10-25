@@ -40,12 +40,7 @@ public class ConexionDB {
     }
     
     public static synchronized void cerrarConexion(){
-        try {
-            conexion.close();
-            conexion = null;
-        } catch (SQLException ex) {
-            Logger.getLogger(ConexionDB.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        conexion = null;
     } 
     
 }

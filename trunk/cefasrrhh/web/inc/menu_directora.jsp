@@ -48,9 +48,9 @@
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="download"><span class="glyphicon glyphicon-user"></span> Perfil <span class="caret"></span></a>
                     <ul class="dropdown-menu" aria-labelledby="download">
-                        <li><a href="#">Ver perfil</a></li>
+                        <li><a href="perfilempleado.jsp">Ver perfil</a></li>
                         <li><a href="#">Modificar perfil</a></li>
-                        <li><a href="#">Cerrar sesión</a></li>
+                        <li><a href="logout.jsp">Cerrar sesión</a></li>
                     </ul>
                 </li>
             </ul>
