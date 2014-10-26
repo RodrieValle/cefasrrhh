@@ -43,6 +43,7 @@ public class CEFAS_EmpleadoDAO {
             while(rs.next())
             {
                 empleado = new CEFAS_Empleado();
+                empleado.setEmpCodigo(rs.getString("empCodigo"));
                 empleado.setEmpNombre(rs.getString("empNombre"));
                 empleado.setEmpFechaNacimiento(rs.getDate("empFechaNacimiento"));
                 empleado.setEmpDireccion(rs.getString("empDireccion"));
