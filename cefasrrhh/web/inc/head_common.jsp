@@ -5,5 +5,6 @@
 <%-- Este es el Bootstrap Cosmo --%>
 <link rel="stylesheet" href="bootstrap/css/bootstrap.min_1.css">
 <link rel="stylesheet" href="css/estilo.css">
+<script type="text/javascript" src="js/funciones.js"></script>
 
 

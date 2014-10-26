@@ -3,6 +3,8 @@
     Created on : 10-19-2014, 06:58:34 PM
     Author     : Rodrigo
 --%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.text.DateFormat"%>
 <%@page import="java.util.List"%>
 <%@page import="com.colegiocefas.cefasrrhh.dominio.CEFAS_Aviso"%>
 <%@page import="com.colegiocefas.cefasrrhh.negocio.CtrlCEFAS_Aviso"%>
@@ -62,7 +64,7 @@
                     {
                 %>
                       <div class="panel panel-primary">
-                            <div class="panel-heading">Fecha: <%= avs.getAvsFecha() %></div>
+                          <div class="panel-heading">Fecha: <%= new SimpleDateFormat("dd/MM/yyyy").format(avs.getAvsFecha()) %></div>
                         <div class="panel-body">
                             <%= avs.getAvsDescripcion() %>
                         </div>

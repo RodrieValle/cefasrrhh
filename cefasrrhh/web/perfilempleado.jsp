@@ -3,6 +3,10 @@
     Created on : 10-24-2014, 11:23:43 PM
     Author     : Rodrigo
 --%>
+<%@page import="java.util.List"%>
+<%@page import="com.colegiocefas.cefasrrhh.dominio.CEFAS_Titulo"%>
+<%@page import="com.colegiocefas.cefasrrhh.negocio.CtrlCEFAS_Titulo"%>
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="com.colegiocefas.cefasrrhh.dominio.CEFAS_Empleado"%>
 <%@page import="com.colegiocefas.cefasrrhh.negocio.CtrlCEFAS_Empleado"%>
 <%
@@ -16,6 +20,8 @@
     int usuario = Integer.parseInt(sesionOk.getAttribute("codigo").toString());
     CtrlCEFAS_Empleado ctrlEmpleado = new CtrlCEFAS_Empleado();
     CEFAS_Empleado empleado = ctrlEmpleado.getEmpleadoPorUsuario(usuario);
+    CtrlCEFAS_Titulo ctrlTitulo = new CtrlCEFAS_Titulo();
+    List<CEFAS_Titulo> titulos = ctrlTitulo.getTitulos(Integer.parseInt(empleado.getEmpCodigo()));
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -61,7 +67,7 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-xs-4">
-                                    <img src="<%= empleado.getEmpFoto() %>" alt="fotoempleado" width="150" height="150"/>
+                                    <img src="<%= empleado.getEmpFoto() %>" class="center-block" alt="fotoempleado" width="150" height="150"/>
                                 </div>
                                 <div class="col-xs-4">
                                     Nombre: <%= empleado.getEmpNombre() %><br>
@@ -92,20 +98,35 @@
                                 </div>
                                 <div class="col-xs-6">
                                     Jefe inmediato: <% %><br>
-                                    Salario: <%= empleado.getEmpSalario() %><br>
+                                    Salario: <%= new DecimalFormat("$ #,###.00").format(empleado.getEmpSalario()) %><br>
                                     Tipo de contrato: <%= empleado.getEmpTipoDeContrato() %><br>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="panel panel-primary">
-                            <div class="panel-heading">Títulos y diplomas</div>
+                        <div class="panel-heading">Títulos y diplomas</div>
                         <div class="panel-body">
-                            
+                            <div class="row">
+                                <% for(CEFAS_Titulo titulo: titulos)
+                                {
+                                %>
+                                    <div class="col-xs-5">
+                                        Título: <%= titulo.getTtltitulo() %>
+                                    </div>
+                                    <div class="col-xs-5">
+                                        Lugar: <%= titulo.getTtllugar()%>
+                                    </div>
+                                    <div class="col-xs-2">
+                                        Fecha: <%= titulo.getTtlfecha()%>
+                                    </div>
+                                <%
+                                } %>
+                            </div>
                         </div>
                     </div>
                     <div class="panel panel-primary">
-                            <div class="panel-heading">Evaluaciones</div>
+                        <div class="panel-heading">Evaluaciones</div>
                         <div class="panel-body">
                             
                         </div>
