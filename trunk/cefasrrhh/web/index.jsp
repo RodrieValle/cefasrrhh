@@ -20,6 +20,7 @@
             sesionhttp.setAttribute("usuario", objUsuario.getUsrNombre());
             sesionhttp.setAttribute("tipo", objUsuario.getUsrTipo());
             sesionhttp.setAttribute("codigo", objUsuario.getUsrCodigo());
+            sesionhttp.setAttribute("empleado", objUsuario.getEmpCodigo());
             response.sendRedirect("avisos.jsp");
         }
         else{

@@ -9,10 +9,13 @@ package com.colegiocefas.cefasrrhh.datos;
 import com.colegiocefas.cefasrrhh.dominio.CEFAS_Empleado;
 import com.colegiocefas.cefasrrhh.utilidades.ConexionDB;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -25,7 +28,10 @@ public class CEFAS_EmpleadoDAO {
     private final String SQL_INSERT = "";
     private final String SQL_SELECT = "SELECT * FROM CEFAS_USUARIO INNER JOIN CEFAS_EMPLEADO ON "
             + "CEFAS_USUARIO.EMPCODIGO = CEFAS_EMPLEADO.EMPCODIGO AND CEFAS_USUARIO.EMPCODIGO = ?";
-    private final String SQL_UPDATE = " ";
+    private final String SQL_SELECT_ALL = "SELECT EMPCODIGO, EMPNOMBRE, EMPFOTO FROM CEFAS_EMPLEADO";
+    private final String SQL_UPDATE = "UPDATE CEFAS_EMPLEADO SET EMPNOMBRE = ?, EMPFECHANACIMIENTO = ?,"
+            + " EMPDIRECCION = ?, EMPDUI = ?, EMPNIT = ?, EMPNUP = ?, EMPNIP = ?, EMPTELEFONO = ?, "
+            + "EMPCELULAR = ?, EMPCORREO = ?, EMPFOTO = ? WHERE EMPCODIGO = ?";
     private final String SQL_DELETE = "";
     private Connection conexiondb;
     private Statement st;
@@ -66,5 +72,52 @@ public class CEFAS_EmpleadoDAO {
             Logger.getLogger(CEFAS_UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return empleado;
+    }
+
+    public void guardarEmpleado(CEFAS_Empleado empleado) {
+        try {
+            conexiondb = ConexionDB.getConexion();
+            ps = conexiondb.prepareStatement(SQL_UPDATE);
+            ps.setString(1, empleado.getEmpNombre());
+            ps.setDate(2, new Date(empleado.getEmpFechaNacimiento().getTime()));
+            ps.setString(3, empleado.getEmpDireccion());
+            ps.setString(4, empleado.getEmpDUI());
+            ps.setString(5, empleado.getEmpNIT());
+            ps.setString(6, empleado.getEmpNUP());
+            ps.setString(7, empleado.getEmpNIP());
+            ps.setString(8, empleado.getEmpTelefono());
+            ps.setString(9, empleado.getEmpCelular());
+            ps.setString(10, empleado.getEmpCorreo());
+            ps.setString(11, empleado.getEmpFoto());
+            ps.setString(12, empleado.getEmpCodigo());
+            ps.executeUpdate();
+            ConexionDB.cerrarConexion();
+        } catch (SQLException ex) {
+            Logger.getLogger(CEFAS_UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public List<CEFAS_Empleado> obtenerEmpleados()
+    {
+        List<CEFAS_Empleado> listaEmpleados = new ArrayList<CEFAS_Empleado>();
+        CEFAS_Empleado emp;
+        try {
+            conexiondb = ConexionDB.getConexion();
+            st = conexiondb.createStatement();
+            rs = st.executeQuery(SQL_SELECT_ALL);
+            while(rs.next())
+            {
+                emp = new CEFAS_Empleado();
+                emp.setEmpCodigo(rs.getString("empCodigo"));
+                emp.setEmpNombre(rs.getString("empNombre"));
+                emp.setEmpFoto(rs.getString("empFoto"));
+                listaEmpleados.add(emp);
+            }
+            ConexionDB.cerrarConexion();
+        } catch (SQLException ex) {
+            Logger.getLogger(CEFAS_EmpleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return listaEmpleados;
     }
 }

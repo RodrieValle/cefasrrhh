@@ -3,9 +3,14 @@
     Created on : 10-25-2014, 06:36:53 PM
     Author     : Rodrigo
 --%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="com.colegiocefas.cefasrrhh.dominio.CEFAS_Titulo"%>
+<%@page import="java.util.List"%>
+<%@page import="com.colegiocefas.cefasrrhh.negocio.CtrlCEFAS_Titulo"%>
 <%@page import="com.colegiocefas.cefasrrhh.dominio.CEFAS_Empleado"%>
 <%@page import="com.colegiocefas.cefasrrhh.negocio.CtrlCEFAS_Empleado"%>
-<%
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<% 
     //Verificación de sesión abierta
     HttpSession sesionOk = request.getSession();
     String tipo = (String) sesionOk.getAttribute("tipo");
@@ -16,8 +21,11 @@
     int usuario = Integer.parseInt(sesionOk.getAttribute("codigo").toString());
     CtrlCEFAS_Empleado ctrlEmpleado = new CtrlCEFAS_Empleado();
     CEFAS_Empleado empleado = ctrlEmpleado.getEmpleadoPorUsuario(usuario);
+    CtrlCEFAS_Titulo ctrlTitulo = new CtrlCEFAS_Titulo();
+    List<CEFAS_Titulo> titulos = ctrlTitulo.getTitulos(Integer.parseInt(empleado.getEmpCodigo()));
+    response.setContentType("text/html;charset=UTF-8");
 %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -54,7 +62,7 @@
              <% } %>
              <div class="container">
                  <h1>Modificar perfil de empleado</h1>
-                 <form action="modificarperfil.jsp">
+                 <form action="perfilempleado.jsp" method="post" onsubmit="cantidadDeTitulos()">
                  <div class="panel panel-primary">
                             <div class="panel-heading">Datos personales</div>
                         <div class="panel-body">
@@ -64,11 +72,11 @@
                                     <input type="button" value="Cambiar foto" class="center-block" onclick="$('#filefoto').click();" />
                                     <input type="file" name="filefoto" style="display:none;" id="filefoto"  accept="image/*" onchange="cargarImagen()">
                                     <!-- Este input es para enviar el parametro de la url de la foto y asi guardarla en la base de datos -->
-                                    <input type="text" style="display: none" value="" id="urlFoto" name="urlFoto">
+                                    <input type="text" style="display: none" value="<%= empleado.getEmpFoto() %>" id="urlFoto" name="urlFoto">
                                 </div>
                                 <div class="col-xs-4">
                                     Nombre: <input type="text" name="nombre" value="<%= empleado.getEmpNombre() %>" class="form-control input-sm"  required><br>
-                                    Fecha de nacimiento: <input type="text" name="fechaNacimiento" value="<%= empleado.getEmpFechaNacimiento() %>" class="form-control input-sm" required><br>
+                                    Fecha de nacimiento: <input type="text" name="fechaNacimiento" value="<%= new SimpleDateFormat("dd/MM/yyyy").format(empleado.getEmpFechaNacimiento()) %>" class="form-control input-sm" required><br>
                                     Dirección: <input type="text" name="direccion" value="<%= empleado.getEmpDireccion() %>" class="form-control input-sm" required><br>
                                     DUI: <input type="text" name="dui" value="<%= empleado.getEmpDUI() %>" class="form-control input-sm" required><br>
                                     NIT: <input type="text" name="nit" value="<%= empleado.getEmpNIT() %>" class="form-control input-sm" required><br>
@@ -86,10 +94,39 @@
                     <div class="panel panel-primary">
                             <div class="panel-heading">Títulos y diplomas</div>
                         <div class="panel-body">
-                            
+                            <input type="button" value="Agregar" onclick="agregarTitulo()"/>
+                            <div class="row" id="titulos">
+                                <% 
+                                int x = 0;
+                                for(CEFAS_Titulo titulo: titulos)
+                                {
+                                %>
+                                <div id="tit<%= x%>">
+                                    <div class="col-xs-5">
+                                        Título: <input type="text" name="titulo<%= x%>" value="<%= titulo.getTtltitulo() %>" class="form-control input-sm" required/> 
+                                    </div>
+                                    <div class="col-xs-4">
+                                        Lugar: <input type="text" name="lugar<%= x%>" value="<%= titulo.getTtllugar()%>" class="form-control input-sm" required/> 
+                                    </div>
+                                    <div class="col-xs-2">
+                                        Fecha: <input type="text" name="fecha<%= x%>" value="<%= new SimpleDateFormat("dd/MM/yyyy").format(titulo.getTtlfecha())%>" class="form-control input-sm" required/> 
+                                    </div>
+                                    <div class="col-xs-1">
+                                        <br>
+                                        <button type="button" class="btn btn-danger btn-sm center-block" onclick="eliminarTitulo(<%= x%>)">
+                                            <span class="glyphicon glyphicon-remove"></span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <%
+                                x++;
+                                } %>
+                                <script> noDeTitulos = <%= titulos.size() %> </script>
+                            </div>
                         </div>
                     </div>
-                                <input type="submit" value="Guardar" class="btn btn-success center-block"/><br><br>
+                     <input type="text" style="display:none" value="" id="noDeTitulos" name="noDeTitulos">
+                    <input type="submit" value="Guardar" class="btn btn-success center-block"/><br><br>
              </form>
              </div>
         </div><%-- fin del div id=container --%>

@@ -22,4 +22,9 @@ public class CtrlCEFAS_Titulo {
     {
         return daoTitulo.getTitulos(codigoEmpleado);
     }
+    
+    public void actualizarTitulos(List<CEFAS_Titulo> titulos)
+    {
+        daoTitulo.actualizarTitulos(titulos);
+    }
 }

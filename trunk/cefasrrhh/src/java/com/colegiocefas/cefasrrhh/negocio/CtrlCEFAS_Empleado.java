@@ -8,6 +8,7 @@ package com.colegiocefas.cefasrrhh.negocio;
 
 import com.colegiocefas.cefasrrhh.datos.CEFAS_EmpleadoDAO;
 import com.colegiocefas.cefasrrhh.dominio.CEFAS_Empleado;
+import java.util.List;
 
 /**
  *
@@ -19,5 +20,15 @@ public class CtrlCEFAS_Empleado {
     public CEFAS_Empleado getEmpleadoPorUsuario(int codigo)
     {
         return daoEmpleado.getEmpleadoPorUsuario(codigo);
+    }
+    
+    public void guardarEmpleado(CEFAS_Empleado empleado)
+    {
+        daoEmpleado.guardarEmpleado(empleado);
+    }
+    
+    public List<CEFAS_Empleado> obtenerEmpleados()
+    {
+        return daoEmpleado.obtenerEmpleados();
     }
 }
