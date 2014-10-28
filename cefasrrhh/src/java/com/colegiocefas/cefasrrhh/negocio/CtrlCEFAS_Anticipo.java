@@ -6,10 +6,31 @@
 
 package com.colegiocefas.cefasrrhh.negocio;
 
+import com.colegiocefas.cefasrrhh.datos.CEFAS_AnticipoDAO;
+import com.colegiocefas.cefasrrhh.dominio.CEFAS_Anticipo;
+import java.util.List;
+
 /**
  *
- * @author Portillo
+ * @author 
  */
 public class CtrlCEFAS_Anticipo {
+    
+    private CEFAS_AnticipoDAO daoAnticipo = new CEFAS_AnticipoDAO();
+    
+    public List<CEFAS_Anticipo> getAnticiposEmpleado(int codigo, String fecha)
+    {
+        return daoAnticipo.getAnticiposEmpleado(codigo, fecha);
+    }
+    
+    public void guardarAnticipo(CEFAS_Anticipo anticipo)
+    {
+        daoAnticipo.almacenarAnticipo(anticipo);
+    }
+    
+    public void guardarAnticipoQuincena()
+    {
+        daoAnticipo.almacenarAnticipoQuincena();
+    }
     
 }

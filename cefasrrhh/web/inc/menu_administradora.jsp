@@ -27,12 +27,12 @@
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="download"><span class="glyphicon glyphicon-book"></span> Planilla <span class="caret"></span></a>
                     <ul class="dropdown-menu" aria-labelledby="download">
                         <li><a href="#">Ingresar horas extras</a></li>
-                        <li><a href="#">reportar llegadas</a></li>
+                        <li><a href="#">Reportar llegadas</a></li>
                         <li><a href="#">Asignar valor de horas extras</a></li>
-                        <li><a href="#">Ingresar anticipos</a></li>
+                        <li><a href="anticipo.jsp">Ingresar anticipos</a></li>
                         <li><a href="#">Gestionar préstamos</a></li>
                         <li><a href="#">Ingresar órdenes de descuentos</a></li>
-                        <li><a href="#">Ingresar viáticos</a></li>
+                        <li><a href="viatico.jsp">Ingresar viáticos</a></li>
                         <li><a href="#">Calcular indemnización</a></li>
                         <li><a href="#">Elaborar planilla</a></li>
                         <li><a href="#">Generar recibos</a></li>
