@@ -36,4 +36,9 @@ public class CtrlCEFAS_Empleado {
     {
         return daoEmpleado.obtenerEmpleados();
     }
+    
+    public List<CEFAS_Empleado> obtenerEmpleados(int criterio, String dato)
+    {
+        return daoEmpleado.obtenerEmpleados(criterio, dato);
+    }
 }
