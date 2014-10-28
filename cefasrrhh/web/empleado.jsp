@@ -22,11 +22,14 @@
         request.getRequestDispatcher("index.jsp").forward(request, response);
         return;
     }
-    //Procesamiento de datos de modificarperfil si es que hay
+    if (!tipo.equals("director")) {
+        response.sendRedirect("avisos.jsp");
+    }
+    //Procesamiento de datos de modificarempleado si es que hay
     if(request.getParameter("nombre") != null)
     { 
-        
-        String codigo = sesionOk.getAttribute("empleado").toString();
+        //Datos personales
+        String codigo = request.getParameter("codigo");
         String nombre = request.getParameter("nombre");
         Date fechaNacimiento = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("fechaNacimiento").toString());
         String direccion = request.getParameter("direccion");
@@ -38,6 +41,14 @@
         String celular = request.getParameter("celular");
         String email = request.getParameter("email");
         String urlFoto = request.getParameter("urlFoto");
+        //Datos de trabajo
+        String anioContratacion = request.getParameter("anioContratacion");
+        String plazaActual = request.getParameter("plazaActual");
+        String plazaAnterior = request.getParameter("plazaAnterior");
+        String jefeInmediato = request.getParameter("jefeInmediato");
+        float salario = Float.parseFloat(request.getParameter("salario"));
+        String tipoContrato = request.getParameter("tipoContrato");
+        //Objeto empleado
         CEFAS_Empleado emp = new CEFAS_Empleado();
         emp.setEmpCodigo(codigo);
         emp.setEmpNombre(nombre);
@@ -51,8 +62,14 @@
         emp.setEmpCelular(celular);
         emp.setEmpCorreo(email);
         emp.setEmpFoto(urlFoto);
+        emp.setEmpAnioContratacion(anioContratacion);
+        emp.setEmpPlazaActual(plazaActual);
+        emp.setEmpPlazaAnterior(plazaAnterior);
+        emp.setEmpJefeInmediato(Integer.parseInt(jefeInmediato));
+        emp.setEmpSalario(salario);
+        emp.setEmpTipoDeContrato(tipoContrato);
         CtrlCEFAS_Empleado ctrlEmpleado = new CtrlCEFAS_Empleado();
-        ctrlEmpleado.guardarEmpleado(emp);
+        ctrlEmpleado.guardarEmpleadoCompleto(emp);
         int noDeTitulos = Integer.parseInt(request.getParameter("noDeTitulos").toString());
         List<CEFAS_Titulo> titulos = new ArrayList();
         CEFAS_Titulo t;
@@ -74,7 +91,7 @@
         CtrlCEFAS_Titulo ctrlTitulo = new CtrlCEFAS_Titulo();
         ctrlTitulo.actualizarTitulos(titulos);
     }
-    int usuario = Integer.parseInt(sesionOk.getAttribute("codigo").toString());
+    int usuario = Integer.parseInt(request.getParameter("codigo"));
     CtrlCEFAS_Empleado ctrlEmpleado = new CtrlCEFAS_Empleado();
     CEFAS_Empleado empleado = ctrlEmpleado.getEmpleadoPorUsuario(usuario);
     CtrlCEFAS_Titulo ctrlTitulo = new CtrlCEFAS_Titulo();
@@ -90,35 +107,9 @@
     </head>
     <body>
         <div id="container">
-        <%  if(tipo.equals("director"))
-            {
-        %>
-                <jsp:include page='inc/menu_directora.jsp' />
-         <% }
-            else if(tipo.equals("empleado"))
-            {
-         %>
-                <jsp:include page='inc/menu_empleado.jsp' />
-         <% }
-            else if(tipo.equals("subdirector"))
-            {
-         %>
-                <jsp:include page='inc/menu_subdirector.jsp' />
-         <% }
-            else if(tipo.equals("asistente"))
-            {
-         %>
-                <jsp:include page='inc/menu_asistente.jsp' />
-         <% }
-            else if(tipo.equals("administrador"))
-            {
-         %>
-                <jsp:include page='inc/menu_administradora.jsp' />
-         <% } %>
-            
-            
+            <jsp:include page='inc/menu_directora.jsp' />
             <div class="container">
-                <h1>Mi perfil</h1>
+                <h1>Perfil de empleado</h1>
                 <div class="panel panel-primary">
                             <div class="panel-heading">Datos personales</div>
                         <div class="panel-body">
@@ -140,7 +131,6 @@
                                     Celular: <%= empleado.getEmpCelular()%><br>
                                     E-mail: <%= empleado.getEmpCorreo() %><br>
                                 </div>
-                                
                             </div>
                         </div>
                       </div>

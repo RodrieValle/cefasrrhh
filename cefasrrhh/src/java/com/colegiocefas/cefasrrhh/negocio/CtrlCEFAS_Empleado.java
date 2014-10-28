@@ -27,6 +27,11 @@ public class CtrlCEFAS_Empleado {
         daoEmpleado.guardarEmpleado(empleado);
     }
     
+    public void guardarEmpleadoCompleto(CEFAS_Empleado empleado)
+    {
+        daoEmpleado.guardarEmpleadoCompleto(empleado);
+    }
+    
     public List<CEFAS_Empleado> obtenerEmpleados()
     {
         return daoEmpleado.obtenerEmpleados();
