@@ -19,6 +19,7 @@ private String usrCodigo;
 private String empNombre;
 private Date   empFechaNacimiento;
 private String empDireccion;
+private int empJefeInmediato;
 private String empAnioContratacion;
 private String empPlazaActual;
 private String empPlazaAnterior;
@@ -205,6 +206,12 @@ private String empFoto;
         this.empFoto = empFoto;
     }
 
+    public int getEmpJefeInmediato() {
+        return empJefeInmediato;
+    }
 
+    public void setEmpJefeInmediato(int empJefeInmediato) {
+        this.empJefeInmediato = empJefeInmediato;
+    }
     
 }

@@ -32,6 +32,10 @@ public class CEFAS_EmpleadoDAO {
     private final String SQL_UPDATE = "UPDATE CEFAS_EMPLEADO SET EMPNOMBRE = ?, EMPFECHANACIMIENTO = ?,"
             + " EMPDIRECCION = ?, EMPDUI = ?, EMPNIT = ?, EMPNUP = ?, EMPNIP = ?, EMPTELEFONO = ?, "
             + "EMPCELULAR = ?, EMPCORREO = ?, EMPFOTO = ? WHERE EMPCODIGO = ?";
+    private final String SQL_UPDATE_COMPLETO = "UPDATE CEFAS_EMPLEADO SET EMPNOMBRE = ?, EMPFECHANACIMIENTO = ?,"
+            + " EMPDIRECCION = ?, EMPDUI = ?, EMPNIT = ?, EMPNUP = ?, EMPNIP = ?, EMPTELEFONO = ?, "
+            + "EMPCELULAR = ?, EMPCORREO = ?, EMPFOTO = ?, EMPANIOCONTRATACION = ?, EMPPLAZAACTUAL = ?, "
+            + "EMPPLAZAANTERIOR = ?, EMPJEFEINMEDIATO = ?, EMPSALARIO = ?, EMPTIPODECONTRATO = ? WHERE EMPCODIGO = ?";
     private final String SQL_DELETE = "";
     private Connection conexiondb;
     private Statement st;
@@ -90,6 +94,35 @@ public class CEFAS_EmpleadoDAO {
             ps.setString(10, empleado.getEmpCorreo());
             ps.setString(11, empleado.getEmpFoto());
             ps.setString(12, empleado.getEmpCodigo());
+            ps.executeUpdate();
+            ConexionDB.cerrarConexion();
+        } catch (SQLException ex) {
+            Logger.getLogger(CEFAS_UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void guardarEmpleadoCompleto(CEFAS_Empleado empleado) {
+        try {
+            conexiondb = ConexionDB.getConexion();
+            ps = conexiondb.prepareStatement(SQL_UPDATE_COMPLETO);
+            ps.setString(1, empleado.getEmpNombre());
+            ps.setDate(2, new Date(empleado.getEmpFechaNacimiento().getTime()));
+            ps.setString(3, empleado.getEmpDireccion());
+            ps.setString(4, empleado.getEmpDUI());
+            ps.setString(5, empleado.getEmpNIT());
+            ps.setString(6, empleado.getEmpNUP());
+            ps.setString(7, empleado.getEmpNIP());
+            ps.setString(8, empleado.getEmpTelefono());
+            ps.setString(9, empleado.getEmpCelular());
+            ps.setString(10, empleado.getEmpCorreo());
+            ps.setString(11, empleado.getEmpFoto());
+            ps.setString(12, empleado.getEmpAnioContratacion());
+            ps.setString(13, empleado.getEmpPlazaActual());
+            ps.setString(14, empleado.getEmpPlazaAnterior());
+            ps.setInt(15, empleado.getEmpJefeInmediato());
+            ps.setFloat(16, empleado.getEmpSalario());
+            ps.setString(17, empleado.getEmpTipoDeContrato());
+            ps.setString(18, empleado.getEmpCodigo());
             ps.executeUpdate();
             ConexionDB.cerrarConexion();
         } catch (SQLException ex) {

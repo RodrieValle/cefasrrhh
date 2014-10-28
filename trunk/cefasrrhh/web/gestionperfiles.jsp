@@ -62,10 +62,10 @@
                                     {
                                     %>   
                                         <tr>
-                                            <td><img src="<%= empleado.getEmpFoto() %>" class="center-block" alt="fotoempleado" width="150" height="150"/></td>
+                                            <td><img src="<%= empleado.getEmpFoto() %>" class="center-block" alt="fotoempleado" width="150" height="100"/></td>
                                             <td><%= empleado.getEmpNombre() %></td>
-                                            <td><input type="button" value="Ver perfil" class="btn btn-primary"/></td>
-                                            <td><input type="button" value="Modificar perfil" class="btn btn-primary"/></td>
+                                            <td><a href="empleado.jsp?codigo=<%= empleado.getEmpCodigo() %>" class="btn btn-primary btn-md" role="button">Ver perfil</a></td>
+                                            <td><a href="modificarempleado.jsp?codigo=<%= empleado.getEmpCodigo() %>" class="btn btn-primary btn-md" role="button">Modificar perfil</a></td>
                                         </tr>
                                       <%
                                     } %>  
