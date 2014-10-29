@@ -12,4 +12,10 @@ package com.colegiocefas.cefasrrhh.datos;
  */
 public class CEFAS_CandidatoDAO {
     
+    private final String SQL_INSERT = "insert into cefas_candidato (cdtdui, )";
+    
+    public void guardarCurriculum(String dui, String nombre, String especialidad)
+    {
+        
+    }
 }
