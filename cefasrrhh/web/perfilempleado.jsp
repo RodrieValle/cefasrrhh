@@ -128,7 +128,7 @@
                                 </div>
                                 <div class="col-xs-4">
                                     Nombre: <%= empleado.getEmpNombre() %><br>
-                                    Fecha de nacimiento: <%= empleado.getEmpFechaNacimiento() %><br>
+                                    Fecha de nacimiento: <%= new SimpleDateFormat("dd/MM/yyyy").format(empleado.getEmpFechaNacimiento()) %><br>
                                     Dirección: <%= empleado.getEmpDireccion() %><br>
                                     DUI: <%= empleado.getEmpDUI() %><br>
                                     NIT: <%= empleado.getEmpNIT() %><br>
