@@ -14,34 +14,34 @@ import java.util.Date;
  */
 public class CEFAS_Anticipo {
   
-    private String empCodigo;
-    private String atpCodigo;
+    private int empCodigo;
+    private int atpCodigo;
     private Date atpFecha;
     private float atpCantidad;
 
     public CEFAS_Anticipo() {
     }
 
-    public CEFAS_Anticipo(String empCodigo, String atpCodigo, Date atpFecha, float atpCantidad) {
+    public CEFAS_Anticipo(int empCodigo, int atpCodigo, Date atpFecha, float atpCantidad) {
         this.empCodigo = empCodigo;
         this.atpCodigo = atpCodigo;
         this.atpFecha = atpFecha;
         this.atpCantidad = atpCantidad;
     }
 
-    public String getEmpCodigo() {
+    public int getEmpCodigo() {
         return empCodigo;
     }
 
-    public void setEmpCodigo(String empCodigo) {
+    public void setEmpCodigo(int empCodigo) {
         this.empCodigo = empCodigo;
     }
 
-    public String getAtpCodigo() {
+    public int getAtpCodigo() {
         return atpCodigo;
     }
 
-    public void setAtpCodigo(String atpCodigo) {
+    public void setAtpCodigo(int atpCodigo) {
         this.atpCodigo = atpCodigo;
     }
 

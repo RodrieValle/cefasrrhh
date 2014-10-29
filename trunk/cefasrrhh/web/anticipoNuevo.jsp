@@ -4,6 +4,9 @@
     Author     : MARIA JUAREZ
 --%>
 
+<%@page import="com.colegiocefas.cefasrrhh.negocio.CtrlCEFAS_Anticipo"%>
+<%@page import="com.colegiocefas.cefasrrhh.dominio.CEFAS_Anticipo"%>
+<%@page import="java.util.Date"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="java.text.SimpleDateFormat"%>
@@ -25,7 +28,8 @@
     if (!tipo.equals("administradora")) {
         response.sendRedirect("avisos.jsp");
     }
-    */
+ 
+*/
     int codigoEmp = Integer.parseInt(request.getParameter("codigo"));
     CtrlCEFAS_Empleado ctrlEmpleado = new CtrlCEFAS_Empleado();
     CEFAS_Empleado empleado = ctrlEmpleado.getEmpleadoPorUsuario(codigoEmp);
@@ -51,7 +55,7 @@
             <div class="container">
                 
                 <h2 class="form-signin-heading">Nuevo Anticipo</h2>
-                 <form class="form-signin" role="form" method="post" action="anticipoNuevo.jsp">
+                 <form class="form-signin" role="form" method="post" action="anticipo.jsp">
                 <div class="panel panel-primary">
                         <div class="panel-heading">Ingrese Datos del Anticipo Nuevo</div>
                         <div class="panel-body">
@@ -64,12 +68,15 @@
                            
                      <div class="col-xs-4">  
                                   
-                         Nombre:<br> <%= empleado.getEmpNombre() %><br>          
+                         Codigo Empleado:<input  type="text" name="empcodigo" value="<%= empleado.getEmpCodigo() %>" class="form-control input-sm"  required />
+                         
+                                  
                         
-                         Fecha: <input id="fecha" type="text" name="fecha"  class="form-control input-sm" required />
+                         Fecha: <input id="fecha" type="text" name="fecha"  class="form-control input-sm" placeholder="Formato: dd/MM/yyyy"required />
                          
                            </div>
                     <div class="col-xs-4">  
+                        Nombre:<input  type="text" name="nombre" value="<%= empleado.getEmpNombre() %>" class="form-control input-sm"  required />
                         Cantidad: <br>
                                     <div class="input-group">
                                         <span class="input-group-addon input-sm">$</span>
