@@ -27,7 +27,10 @@
         String dato = request.getParameter("dato");
         listaEmpleados = ctrlEmpleado.obtenerEmpleados(criterio, dato);
     }
-    listaEmpleados = ctrlEmpleado.obtenerEmpleados();
+    else
+    {
+        listaEmpleados = ctrlEmpleado.obtenerEmpleados();
+    }
 %>
 <!DOCTYPE html>
 <html>
