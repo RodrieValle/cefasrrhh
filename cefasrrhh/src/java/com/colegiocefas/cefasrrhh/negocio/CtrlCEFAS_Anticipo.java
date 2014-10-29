@@ -18,9 +18,16 @@ public class CtrlCEFAS_Anticipo {
     
     private CEFAS_AnticipoDAO daoAnticipo = new CEFAS_AnticipoDAO();
     
+   /*   LLAMADA A METODO DE RETORNO DE ANTICIPOS A UNA FECHA DADA
     public List<CEFAS_Anticipo> getAnticiposEmpleado(int codigo, String fecha)
     {
         return daoAnticipo.getAnticiposEmpleado(codigo, fecha);
+    }*/
+    
+    //   LLAMADA A METODO DONDE RECUPERA TODOS LOS ANTICIPOS HISTORICOS DE UN EMPLEADO 
+      public List<CEFAS_Anticipo> getAnticiposEmpleado(int codigo)
+    {
+        return daoAnticipo.getAnticiposEmpleado(codigo);
     }
     
     public void guardarAnticipo(CEFAS_Anticipo anticipo)

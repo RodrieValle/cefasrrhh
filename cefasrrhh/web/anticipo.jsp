@@ -6,6 +6,10 @@
 
 
     
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
+<%@page import="com.colegiocefas.cefasrrhh.negocio.CtrlCEFAS_Anticipo"%>
+<%@page import="com.colegiocefas.cefasrrhh.dominio.CEFAS_Anticipo"%>
 <%@page import="java.util.List"%>
 <%@page import="com.colegiocefas.cefasrrhh.dominio.CEFAS_Empleado"%>
 <%@page import="com.colegiocefas.cefasrrhh.negocio.CtrlCEFAS_Empleado"%>
@@ -24,12 +28,31 @@
     if (!tipo.equals("administradora")) {
         response.sendRedirect("avisos.jsp");
     }*/
-    CtrlCEFAS_Empleado ctrlEmpleado = new CtrlCEFAS_Empleado();
+
+
+
+ //Datos  
+    if(request.getParameter("fecha") != null)
+    { 
+        
+        int codigo = Integer.parseInt(request.getParameter("empcodigo"));
+       //String nombre = request.getParameter("nombre");
+        Date fecha = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("fecha").toString());
+        float cantidad = Float.parseFloat(request.getParameter("cantidad"));
+       
+       
+        
+        CEFAS_Anticipo anticipo = new CEFAS_Anticipo();
+        anticipo.setEmpCodigo(codigo);
+        anticipo.setAtpFecha(fecha);
+        anticipo.setAtpCantidad(cantidad);
+           
+        CtrlCEFAS_Anticipo ctrlAnticipo = new CtrlCEFAS_Anticipo();
+        ctrlAnticipo.guardarAnticipo(anticipo);
+}
+    
+        CtrlCEFAS_Empleado ctrlEmpleado = new CtrlCEFAS_Empleado();
     List<CEFAS_Empleado> listaEmpleados = ctrlEmpleado.obtenerEmpleados();
-
-
-
-
 %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -45,7 +68,7 @@
         <div id="container">
             <jsp:include page='inc/menu_administradora.jsp' />
             <div class="container">
-                <h1>Ingreso Anticipo a empleados.</h1>
+                <h1>Ingreso Anticipo a Empleados.</h1>
                 <div class="panel panel-primary">
                     <div class="panel-heading">Zona de búsqueda</div>
                     <div class="panel-body">
@@ -79,7 +102,7 @@
                                             <td><img src="<%= empleado.getEmpFoto() %>" class="center-block" alt="fotoempleado" width="150" height="100"/></td>
                                             <td><%= empleado.getEmpNombre() %></td>
                                             <td><a href="anticipoNuevo.jsp?codigo=<%= empleado.getEmpCodigo() %>" class="btn btn-primary btn-md" role="button">Generar Anticipo</a></td>
-                                            <td><a href="anticipoEmpleado.jsp" class="btn btn-primary btn-md" role="button">Ver Anticipo</a></td>
+                                            <td><a href="anticipoEmpleado.jsp?codigo=<%= empleado.getEmpCodigo() %>" class="btn btn-primary btn-md" role="button">Ver Anticipos</a></td>
                                         </tr>
                                       <%
                                     } %>  
