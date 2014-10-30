@@ -54,14 +54,21 @@ int codigoEmp = Integer.parseInt(request.getParameter("codigo"));
                             
                              <table class="table table-striped table-hover">
                                     <tbody>
+                                                  <tr>
+                                            <td>Codigo Anticipo</td>
+                                            <td>Fecha</td> 
+                                            <td>Cantidad</td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr> 
                                      <%
                     for(CEFAS_Anticipo anticipo: listaAnticipo)
                     {
                 %>  
                                         <tr>
-                                            <td>Codigo Anticipo:<%= anticipo.getAtpCodigo() %></td>
-                                            <td>Fecha:<%= new SimpleDateFormat("dd/MM/yyyy").format(anticipo.getAtpFecha())%></td>
-                                            <td>Cantidad: <%= anticipo.getAtpCantidad() %></td>
+                                            <td><%= anticipo.getAtpCodigo() %></td>
+                                            <td><%= new SimpleDateFormat("dd/MM/yyyy").format(anticipo.getAtpFecha())%></td>
+                                            <td>$ <%= anticipo.getAtpCantidad() %></td>
                                             <td><a href="" class="btn btn-primary btn-md" role="button">Modificar Anticipo</a></td>
                                             <td><a href="" class="btn btn-primary btn-md" role="button">Eliminar Anticipo</a></td>
                                         </tr>

@@ -116,7 +116,7 @@ public class CEFAS_AnticipoDAO {
             }
 ConexionDB.cerrarConexion();
         } catch (SQLException ex) {
-            Logger.getLogger(CEFAS_ActividadDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CEFAS_AnticipoDAO.class.getName()).log(Level.SEVERE, null, ex);
              
         }
      
