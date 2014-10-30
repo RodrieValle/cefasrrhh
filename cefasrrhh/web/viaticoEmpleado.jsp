@@ -46,7 +46,7 @@ int codigoEmp = Integer.parseInt(request.getParameter("codigo"));
         
       
                       <div class="panel panel-primary">
-                          <div class="panel-heading">Anticipos del empleado: <%= empleado.getEmpNombre() %></div>
+                          <div class="panel-heading">Viaticos del empleado: <%= empleado.getEmpNombre() %></div>
                           
                   
                         <div class="panel-body">
