@@ -14,34 +14,48 @@ import java.util.Date;
  */
 public class CEFAS_Viatico {
     
-    private String empCodigo;
-    private String viaCodigo;
+    private int empCodigo;
+    private int viaCodigo;
     private Date   viaFecha;
     private Float  viaCantidad;
+    private String viaDescripcion;
 
-    public CEFAS_Viatico() {
-    }
-
-    public CEFAS_Viatico(String empCodigo, String viaCodigo, Date viaFecha, Float viaCantidad) {
+    
+    
+     public CEFAS_Viatico(int empCodigo, int viaCodigo, Date viaFecha, Float viaCantidad, String viaDescripcion) {
         this.empCodigo = empCodigo;
         this.viaCodigo = viaCodigo;
         this.viaFecha = viaFecha;
         this.viaCantidad = viaCantidad;
+        this.viaDescripcion = viaDescripcion;
+    }
+     
+    public CEFAS_Viatico() {
     }
 
-    public String getEmpCodigo() {
+    public String getViaDescripcion() {
+        return viaDescripcion;
+    }
+
+    public void setViaDescripcion(String viaDescripcion) {
+        this.viaDescripcion = viaDescripcion;
+    }
+
+    
+
+    public int getEmpCodigo() {
         return empCodigo;
     }
 
-    public void setEmpCodigo(String empCodigo) {
+    public void setEmpCodigo(int empCodigo) {
         this.empCodigo = empCodigo;
     }
 
-    public String getViaCodigo() {
+    public int getViaCodigo() {
         return viaCodigo;
     }
 
-    public void setViaCodigo(String viaCodigo) {
+    public void setViaCodigo(int viaCodigo) {
         this.viaCodigo = viaCodigo;
     }
 

@@ -4,6 +4,10 @@
     Author     : MARIA JUAREZ
 --%>
 
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
+<%@page import="com.colegiocefas.cefasrrhh.dominio.CEFAS_Viatico"%>
+<%@page import="com.colegiocefas.cefasrrhh.negocio.CtrlCEFAS_Viatico"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.util.List"%>
 <%@page import="com.colegiocefas.cefasrrhh.dominio.CEFAS_Empleado"%>
@@ -23,10 +27,32 @@
     if (!tipo.equals("administradora")) {
         response.sendRedirect("avisos.jsp");
     }*/
-    CtrlCEFAS_Empleado ctrlEmpleado = new CtrlCEFAS_Empleado();
+ 
+
+
+ //Datos  
+    if(request.getParameter("fecha") != null)
+    { 
+        
+        int codigo = Integer.parseInt(request.getParameter("empcodigo"));
+       //String nombre = request.getParameter("nombre");
+        Date fecha = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("fecha").toString());
+        float cantidad = Float.parseFloat(request.getParameter("cantidad"));
+       String descripcion = request.getParameter("descripcion");
+       
+        
+        CEFAS_Viatico viatico = new CEFAS_Viatico();
+        viatico.setEmpCodigo(codigo);
+        viatico.setViaFecha(fecha);
+        viatico.setViaCantidad(cantidad);
+        viatico.setViaDescripcion(descripcion);
+           
+        CtrlCEFAS_Viatico ctrlViatico = new CtrlCEFAS_Viatico();
+      ctrlViatico.guardarViatico(viatico);
+}
+    
+        CtrlCEFAS_Empleado ctrlEmpleado = new CtrlCEFAS_Empleado();
     List<CEFAS_Empleado> listaEmpleados = ctrlEmpleado.obtenerEmpleados();
-
-
 
 
 %>
@@ -77,8 +103,8 @@
                                         <tr>
                                             <td><img src="<%= empleado.getEmpFoto() %>" class="center-block" alt="fotoempleado" width="150" height="100"/></td>
                                             <td><%= empleado.getEmpNombre() %></td>
-                                            <td><a href="viaticoNuevo.jsp" class="btn btn-primary btn-md" role="button">Generar Viatico</a></td>
-                                            <td><a href="viaticoEmpleado.jsp" class="btn btn-primary btn-md" role="button">Ver Viaticos Otorgados</a></td>
+                                            <td><a href="viaticoNuevo.jsp?codigo=<%= empleado.getEmpCodigo() %>" class="btn btn-primary btn-md" role="button">Generar Viatico</a></td>
+                                            <td><a href="viaticoEmpleado.jsp?codigo=<%= empleado.getEmpCodigo() %>" class="btn btn-primary btn-md" role="button">Ver Viaticos Otorgados</a></td>
                                         </tr>
                                       <%
                                     } %>  
