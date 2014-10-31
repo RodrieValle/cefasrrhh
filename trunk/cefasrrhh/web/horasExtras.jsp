@@ -34,11 +34,18 @@
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
 <html>
+    
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Reporte horas extras</title>
         <jsp:include page='inc/head_common.jsp' /> 
+        <jsp:include page='inc/head_common.jsp' /> 
+        <link rel="stylesheet" type="text/css" href="css/bootstrap-formhelpers.css">
+        <script type="text/javascript" src="js/bootstrap-formhelpers.js"></script>
+         <link rel="stylesheet" type="text/css" href="css/jquery-clockpicker.min.css">
+        <script type="text/javascript" src="js/jquery-clockpicker.min.js"></script>
     </head>
     <body>
         <div id="container">
@@ -55,21 +62,37 @@
                 <div class="row">
                     <div class="col-xs-4 col-xs-offset-4">
                         <form action="horasExtras.jsp" method="post">
-                        Empleado:
-                        <select name="empleado" id="empleado" class="form-control input-sm">
+                       
+                      Empleado: <select name="empleado" id="empleado" class="form-control">
                             <% for (CEFAS_Empleado emp : listaEmpleados) {%>
                             <option value="<%= emp.getEmpCodigo()%>"><%= emp.getEmpNombre()%></option>
                             <% }%>
-                        </select>
+                        </select> <br>
                         Fecha:
-                        <input type="text" name="fecha" value="" class="form-control input-sm"/>
+                    <div class="bfh-datepicker" data-min="01/15/2013" data-max="today" 
+                         data-close="true" data-align="right" data-language="en_US" data-available="es_MX">
+                    </div>
                         Hora de inicio:
-                        <input type="text" name="horaInicio" value="" class="form-control input-sm"/>
-                        Hora de fin:
-                        <input type="text" name="horaFin" value="" class="form-control input-sm"/>
-                        ¿A quién cubrió?
-                        <input type="text" name="nombre" value="" class="form-control input-sm"/>
-                        <br> <br><br>
+           <div class="input-group clockpicker">
+                        <input type="text" class="form-control" value="09:30" disabled="">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-time"></span>
+                        </span>
+                    </div>
+                                            Hora de fin:
+                       <div class="input-group clockpicker">
+                        <input type="text" class="form-control" value="09:30" disabled="">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-time"></span>
+                        </span>
+                    </div>
+                    <script type="text/javascript">
+                        $('.clockpicker').clockpicker();
+                    </script>
+                        
+                     ¿A quién cubrió?   <input type="text" name="nombre" value="" class="form-control"/>
+                        
+                            <br> 
                         <input type="submit" value="Guardar" class="btn btn-success center-block"/>
                         </form>
                     </div>
