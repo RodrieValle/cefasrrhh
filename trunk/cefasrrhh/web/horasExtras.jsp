@@ -3,9 +3,13 @@
     Created on : 10-28-2014, 10:25:09 PM
     Author     : ANIBAL
 --%>
+
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.*"%>
+<%@page import="com.colegiocefas.cefasrrhh.negocio.CtrlCEFAS_TiempoExtra"%>
 <%@page import="com.colegiocefas.cefasrrhh.dominio.CEFAS_Empleado"%>
-<%@page import="java.util.List"%>
 <%@page import="com.colegiocefas.cefasrrhh.negocio.CtrlCEFAS_Empleado"%>
+
 <%
     //Verificación de sesión abierta
     HttpSession sesionOk = request.getSession();
@@ -18,9 +22,18 @@
       if (!tipo.equals("subdirector") && !tipo.equals("administradora")) {
         response.sendRedirect("avisos.jsp");
     }
+    
     CtrlCEFAS_Empleado ctrlEmpleado = new CtrlCEFAS_Empleado();
     List<CEFAS_Empleado> listaEmpleados;
     listaEmpleados = ctrlEmpleado.obtenerEmpleados();
+      int codigoemp=Integer.parseInt(request.getParameter("codigo"));
+     /* Date fecha = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("fecha").toString());
+      Date hInicio = new SimpleDateFormat("HH:mm:ss").parse(request.getParameter("hinicio").toString());
+      Date hFinal = new SimpleDateFormat("HH:mm:ss").parse(request.getParameter("hfinal").toString());*/
+      String codigoemp2=request.getParameter("codigo2");
+      CtrlCEFAS_TiempoExtra textra= new CtrlCEFAS_TiempoExtra();
+     // textra.guardarHoras(codigoemp,fecha,hInicio,hFinal,codigoemp2);
+        
     /*if(request.getParameter("dato")!= null)
      {
      int criterio = Integer.parseInt(request.getParameter("criterio"));
@@ -41,6 +54,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Reporte horas extras</title>
         <jsp:include page='inc/head_common.jsp' /> 
+        <jsp:include page='inc/head_common.jsp'/> 
         <link rel="stylesheet" type="text/css" href="css/bootstrap-formhelpers.css">
         <script type="text/javascript" src="js/bootstrap-formhelpers.js"></script>
          <link rel="stylesheet" type="text/css" href="css/jquery-clockpicker.min.css">
@@ -61,9 +75,9 @@
                 <h1>Reporte de horas extras</h1>
                 <div class="row">
                     <div class="col-xs-4 col-xs-offset-4">
-                        <form action="horasExtras.jsp" method="post">
+                        <form action="horasExtras.jsp" method="get">
                        
-                      Empleado: <select name="empleado" id="empleado" class="form-control">
+                            Empleado: <select name="codigo" id="empleado" class="form-control">
                             <% for (CEFAS_Empleado emp : listaEmpleados) {%>
                             <option value="<%= emp.getEmpCodigo()%>"><%= emp.getEmpNombre()%></option>
                             <% }%>
@@ -71,30 +85,40 @@
                         Fecha:
                     <div class="bfh-datepicker" data-min="01/15/2013" data-max="today" 
                          data-close="true" data-align="right" data-language="en_US" data-available="es_MX">
-                    </div>
+                        <input type="text" name="fecha">
+                           </div>
                         Hora de inicio:
-           <div class="input-group clockpicker">
-                        <input type="text" class="form-control" value="09:30" disabled="">
-                        <span class="input-group-addon">
+                    <div class="input-group clockpicker">
+                          <input type="text" name="hinicio" class="form-control" value="09:30" disabled="">
+                          <span class="input-group-addon">
                             <span class="glyphicon glyphicon-time"></span>
-                        </span>
-                    </div>
-                                            Hora de fin:
-                       <div class="input-group clockpicker">
-                        <input type="text" class="form-control" value="09:30" disabled="">
-                        <span class="input-group-addon">
-                            <span class="glyphicon glyphicon-time"></span>
-                        </span>
+                          </span>
                     </div>
                     <script type="text/javascript">
                         $('.clockpicker').clockpicker();
                     </script>
+                         Hora de fin:
+                         <div class="input-group clockpicker">
+                           <input type="text" name="hfinal"class="form-control" value="09:30" disabled="">
+                           <span class="input-group-addon">
+                             <span class="glyphicon glyphicon-time"></span>
+                           </span>
+                         </div>
+                         <script type="text/javascript">
+                           $('.clockpicker').clockpicker();
+                         </script>
                         
-                     ¿A quién cubrió?   <input type="text" name="nombre" value="" class="form-control"/>
+                     ¿A quién cubrió?
+                       <select name="codigo2" id="empleado" class="form-control">
+                            <% for (CEFAS_Empleado emp : listaEmpleados) {%>
+                            <option value="<%= emp.getEmpCodigo()%>"><%= emp.getEmpNombre()%></option>
+                            <% }%>
+                        </select> <br
                         
                             <br> 
                         <input type="submit" value="Guardar" class="btn btn-success center-block"/>
                         </form>
+                          
                     </div>
                 </div>
 
