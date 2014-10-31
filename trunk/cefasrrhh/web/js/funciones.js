@@ -30,25 +30,33 @@ function cargarImagen()
 
 function agregarTitulo()
 {
-    var nuevoTitulo = "<div id='tit"+noDeTitulos+"'><div class='col-xs-5'> Título: <input type='text' name='titulo"+noDeTitulos+"' value=''"
-    +"class='form-control input-sm' required/> </div><div class='col-xs-4'>Lugar: <input type='text'"
-    +" name='lugar"+noDeTitulos+"' value='' class='form-control input-sm' required/></div><div class='col-xs-2'>"
-    +"Fecha: <input type='text' name='fecha"+noDeTitulos+"' value='' class='form-control "
-    +"input-sm' required/></div><div class='col-xs-1'><br><button type='button' class='btn btn-danger"
-    +" btn-sm center-block' onclick='eliminarTitulo("+noDeTitulos+")'><span class='glyphicon glyphicon-remove'></span></button></div></div>";
+    var nuevoTitulo = "<div id='tit" + noDeTitulos + "'><div class='col-xs-5'> Título: <input type='text' name='titulo" + noDeTitulos + "' value=''"
+            + "class='form-control input-sm' required/> </div><div class='col-xs-4'>Lugar: <input type='text'"
+            + " name='lugar" + noDeTitulos + "' value='' class='form-control input-sm' required/></div><div class='col-xs-2'>"
+            + "Fecha: <input type='text' name='fecha" + noDeTitulos + "' value='' class='form-control "
+            + "input-sm' required/></div><div class='col-xs-1'><br><button type='button' class='btn btn-danger"
+            + " btn-sm center-block' onclick='eliminarTitulo(" + noDeTitulos + ")'><span class='glyphicon glyphicon-remove'></span></button></div></div>";
     $('#titulos').append(nuevoTitulo);
     noDeTitulos++;
 }
 
 function eliminarTitulo(numero)
 {
-    var seccion = "#tit"+numero;
+    var seccion = "#tit" + numero;
     $(seccion.toString()).remove();
 }
 
 function cantidadDeTitulos()
 {
     document.getElementById('noDeTitulos').value = noDeTitulos;
+}
+
+//controldeavisos.jsp
+
+function checkTodos(id, pID) {
+
+    $("#" + pID + ":checkbox").attr('checked', $('#' + id).is(':checked'));
+
 }
 
 

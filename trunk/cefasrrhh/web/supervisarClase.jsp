@@ -21,7 +21,7 @@
       1. Docente: <input type="text" name="nombre"><br>
       2.Grado/Asignatura: <input type="text" name="materia"><br>
       3.Recomendaciones hechas enla ultima evaluacion: <input type="text" name="receva"><br>
-      4.Se superaron esas recoendaciones:   <input type="text" name="reco"><br
+      4.Se superaron esas recoendaciones:   <input type="text" name="reco"><br>
       5.Fecha:    <input type="text" name="fecha"><br>
     <br>
   </p>
