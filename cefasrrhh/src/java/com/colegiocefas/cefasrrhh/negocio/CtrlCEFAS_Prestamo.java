@@ -6,10 +6,38 @@
 
 package com.colegiocefas.cefasrrhh.negocio;
 
+import com.colegiocefas.cefasrrhh.datos.CEFAS_PrestamoDAO;
+
+import com.colegiocefas.cefasrrhh.dominio.CEFAS_Prestamo;
+import java.util.Date;
+import java.util.List;
 /**
  *
  * @author Portillo
  */
 public class CtrlCEFAS_Prestamo {
+    
+    private CEFAS_PrestamoDAO daoPrestamo = new CEFAS_PrestamoDAO();
+    
+    
+        public void guardarPrestamo(int empCodigo, Date prmFecha, float prmMonto, int prmPlazos, float prmCuota)
+    {
+        CEFAS_Prestamo prestamo= new CEFAS_Prestamo();
+         
+                
+               prestamo.setEmpCodigo(empCodigo);
+                prestamo.setPrmFecha(prmFecha);
+                prestamo.setPrmMonto(prmMonto);
+                prestamo.setPrmPlazo(prmPlazos);
+                prestamo.setPrmSaldo(prmMonto);
+                prestamo.setPrmCuota(prmCuota);
+                
+                daoPrestamo.almacenarPrestamos(prestamo);
+    }
+    
+              public List<CEFAS_Prestamo> getPrestamos()
+    {
+        return daoPrestamo.getPrestamos();
+    }
     
 }

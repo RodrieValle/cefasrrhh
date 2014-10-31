@@ -126,7 +126,7 @@ public class CEFAS_OrdenDeDescuentoDAO {
             ps.setDouble(4, orden.getOddPlazo());
             ps.setDouble(5, orden.getOddSaldo());
             ps.setDouble(6, orden.getOddCuota());
-            int n=ps.executeUpdate();
+            int n=ps.executeUpdate();            
 
             if(n>0){
                Logger.getLogger("Se guardo correctamente");
