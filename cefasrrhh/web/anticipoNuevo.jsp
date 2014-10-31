@@ -17,19 +17,16 @@
 <%@page import="com.colegiocefas.cefasrrhh.negocio.CtrlCEFAS_Empleado"%>
 
 <% 
-/*   
-//Verificación de sesión abierta
-    HttpSession sesionOk = request.getSession();
+
+ HttpSession sesionOk = request.getSession();
     String tipo = (String) sesionOk.getAttribute("tipo");
     if (tipo == null) {
         request.getRequestDispatcher("index.jsp").forward(request, response);
         return;
     }
-    if (!tipo.equals("administradora")) {
+    if (!tipo.equals("administrador")) {
         response.sendRedirect("avisos.jsp");
-    }
- 
-*/
+               }
     int codigoEmp = Integer.parseInt(request.getParameter("codigo"));
     CtrlCEFAS_Empleado ctrlEmpleado = new CtrlCEFAS_Empleado();
     CEFAS_Empleado empleado = ctrlEmpleado.getEmpleadoPorUsuario(codigoEmp);

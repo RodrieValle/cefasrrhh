@@ -13,14 +13,16 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%
-   /* //Verificación de sesión abierta
-    HttpSession sesionOk = request.getSession();
+   
+ HttpSession sesionOk = request.getSession();
     String tipo = (String) sesionOk.getAttribute("tipo");
     if (tipo == null) {
         request.getRequestDispatcher("index.jsp").forward(request, response);
         return;
     }
-    String usuario = (String) sesionOk.getAttribute("usuario");*/
+    if (!tipo.equals("administrador")) {
+        response.sendRedirect("avisos.jsp");}
+
 int codigoEmp = Integer.parseInt(request.getParameter("codigo"));
     CtrlCEFAS_Empleado ctrlEmpleado = new CtrlCEFAS_Empleado();
     CEFAS_Empleado empleado = ctrlEmpleado.getEmpleadoPorUsuario(codigoEmp);
@@ -73,8 +75,8 @@ int codigoEmp = Integer.parseInt(request.getParameter("codigo"));
                                             <td><%= new SimpleDateFormat("dd/MM/yyyy").format(viatico.getViaFecha())%></td>
                                             <td>$ <%= viatico.getViaCantidad()%></td>
                                             <td><%= viatico.getViaDescripcion()%></td>
-                                            <td><a href="" class="btn btn-primary btn-md" role="button">Modificar Anticipo</a></td>
-                                            <td><a href="" class="btn btn-primary btn-md" role="button">Eliminar Anticipo</a></td>
+                                            <td><a href="viaticoModificar.jsp?codigoViatico=<%= viatico.getViaCodigo() %>" class="btn btn-primary btn-md" role="button">Modificar Anticipo</a></td>
+                                            <td><a href="viaticoEliminar.jsp?codigoViatico=<%= viatico.getViaCodigo() %>" class="btn btn-primary btn-md" role="button">Eliminar Anticipo</a></td>
                                         </tr>
                                       <%
                                     } %>  
