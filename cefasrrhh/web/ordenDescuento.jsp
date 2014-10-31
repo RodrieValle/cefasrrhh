@@ -15,7 +15,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%
-    // Verificación de sesión abierta
+     // Verificación de sesión abierta
  
  HttpSession sesionOk = request.getSession();
     String tipo = (String) sesionOk.getAttribute("tipo");

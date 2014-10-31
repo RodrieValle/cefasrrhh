@@ -17,6 +17,9 @@
         request.getRequestDispatcher("index.jsp").forward(request, response);
         return;
     }
+    String usuario = (String) sesionOk.getAttribute("usuario");
+    //CtrlCEFAS_Aviso ctrlAviso = new CtrlCEFAS_Aviso();
+    //List<CEFAS_Aviso> lista = ctrlAviso.consultarAvisos(usuario);
     if (!tipo.equals("director")) {
         response.sendRedirect("avisos.jsp");
     }
@@ -36,7 +39,7 @@
   <jsp:include page='inc/head_common.jsp' /> 
 </head>
 <body>
-<h1>Evaluacion por Competencias</h1>
+<h1>Evaluacion por Competencias </h1>
  
 <form method="post">
   <p>

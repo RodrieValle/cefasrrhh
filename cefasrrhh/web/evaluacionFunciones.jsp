@@ -20,8 +20,8 @@
         return;
     }
     String usuario = (String) sesionOk.getAttribute("usuario");
-    CtrlCEFAS_Aviso ctrlAviso = new CtrlCEFAS_Aviso();
-    List<CEFAS_Aviso> lista = ctrlAviso.consultarAvisos(usuario);
+    //CtrlCEFAS_Aviso ctrlAviso = new CtrlCEFAS_Aviso();
+    //List<CEFAS_Aviso> lista = ctrlAviso.consultarAvisos(usuario);
 %>
 
 
