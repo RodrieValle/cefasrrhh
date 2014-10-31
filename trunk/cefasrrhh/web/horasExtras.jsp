@@ -41,11 +41,11 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Reporte horas extras</title>
         <jsp:include page='inc/head_common.jsp' /> 
-        <jsp:include page='inc/head_common.jsp' /> 
         <link rel="stylesheet" type="text/css" href="css/bootstrap-formhelpers.css">
         <script type="text/javascript" src="js/bootstrap-formhelpers.js"></script>
          <link rel="stylesheet" type="text/css" href="css/jquery-clockpicker.min.css">
         <script type="text/javascript" src="js/jquery-clockpicker.min.js"></script>
+        
     </head>
     <body>
         <div id="container">
