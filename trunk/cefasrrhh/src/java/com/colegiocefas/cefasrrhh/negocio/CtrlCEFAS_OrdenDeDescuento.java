@@ -9,6 +9,7 @@ package com.colegiocefas.cefasrrhh.negocio;
 import com.colegiocefas.cefasrrhh.datos.CEFAS_OrdenDeDescuentoDAO;
 import com.colegiocefas.cefasrrhh.dominio.CEFAS_OrdenDeDescuento;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -34,4 +35,9 @@ public class CtrlCEFAS_OrdenDeDescuento {
                 daoOrden.almacenarOrdenDeDescuento(orden);
     }
     
+        
+         public List<CEFAS_OrdenDeDescuento> getOrdenesDeDescuento()
+    {
+        return daoOrden.getOrdenDeDescuentos();
+    }
 }

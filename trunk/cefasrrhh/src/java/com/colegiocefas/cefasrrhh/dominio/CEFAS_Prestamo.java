@@ -14,8 +14,8 @@ import java.util.Date;
  */
 public class CEFAS_Prestamo {
     
-    private float empCodigo;
-    private float prmCodigo;
+    private int empCodigo;
+    private int prmCodigo;
     private Date prmFecha;
     private float prmMonto;
     private int prmPlazo;
@@ -25,7 +25,7 @@ public class CEFAS_Prestamo {
     public CEFAS_Prestamo() {
     }
 
-    public CEFAS_Prestamo(float empCodigo, float prmCodigo, Date prmFecha, float prmMonto, int prmPlazo, float prmSaldo, float prmCuota) {
+    public CEFAS_Prestamo(int empCodigo, int prmCodigo, Date prmFecha, float prmMonto, int prmPlazo, float prmSaldo, float prmCuota) {
         this.empCodigo = empCodigo;
         this.prmCodigo = prmCodigo;
         this.prmFecha = prmFecha;
@@ -35,19 +35,19 @@ public class CEFAS_Prestamo {
         this.prmCuota = prmCuota;
     }
 
-    public float getEmpCodigo() {
+    public int getEmpCodigo() {
         return empCodigo;
     }
 
-    public void setEmpCodigo(float empCodigo) {
+    public void setEmpCodigo(int empCodigo) {
         this.empCodigo = empCodigo;
     }
 
-    public float getPrmCodigo() {
+    public int getPrmCodigo() {
         return prmCodigo;
     }
 
-    public void setPrmCodigo(float prmCodigo) {
+    public void setPrmCodigo(int prmCodigo) {
         this.prmCodigo = prmCodigo;
     }
 

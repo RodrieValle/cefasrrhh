@@ -3,6 +3,7 @@
     Created on : 31-oct-2014, 9:38:43
     Author     : MARIA JUAREZ
 --%>
+<%@page import="com.colegiocefas.cefasrrhh.negocio.CtrlCEFAS_Prestamo"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Date"%>
 <%@page import="com.colegiocefas.cefasrrhh.negocio.CtrlCEFAS_Anticipo"%>
@@ -14,10 +15,9 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%
+ 
     // Verificación de sesión abierta
-    
-
-
+ 
  HttpSession sesionOk = request.getSession();
     String tipo = (String) sesionOk.getAttribute("tipo");
     if (tipo == null) {
@@ -26,7 +26,6 @@
     }
     if (!tipo.equals("administrador")) {
         response.sendRedirect("avisos.jsp");
-  
     }
 
 
@@ -37,15 +36,13 @@
         int codigo = Integer.parseInt(request.getParameter("empcodigo"));
        //String nombre = request.getParameter("nombre");
         Date fecha = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("fecha").toString());
-        float cantidad = Float.parseFloat(request.getParameter("cantidad"));
-   
-        CEFAS_Anticipo anticipo = new CEFAS_Anticipo();
-        anticipo.setEmpCodigo(codigo);
-        anticipo.setAtpFecha(fecha);
-        anticipo.setAtpCantidad(cantidad);
-           
-        CtrlCEFAS_Anticipo ctrlAnticipo = new CtrlCEFAS_Anticipo();
-        ctrlAnticipo.guardarAnticipo(anticipo);
+        float monto= Float.parseFloat(request.getParameter("monto"));
+        int plazo = Integer.parseInt(request.getParameter("numeroCuotas"));
+        float cuota = Float.parseFloat(request.getParameter("cuotaMensual"));
+        
+  
+        CtrlCEFAS_Prestamo ctrlPrestamo = new CtrlCEFAS_Prestamo();
+        ctrlPrestamo.guardarPrestamo(codigo, fecha, monto, plazo, cuota);
 }
     
         CtrlCEFAS_Empleado ctrlEmpleado = new CtrlCEFAS_Empleado();
