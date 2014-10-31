@@ -14,8 +14,8 @@ import java.util.Date;
  */
 public class CEFAS_OrdenDeDescuento {
     
-    private String empCodigo;
-    private String oddCodigo;
+    private int empCodigo;
+    private int oddCodigo;
     private Date   oddFecha;    
     private float  oddMonto;
     private int    oddPlazo;
@@ -25,9 +25,9 @@ public class CEFAS_OrdenDeDescuento {
     public CEFAS_OrdenDeDescuento() {
     }
 
-    public CEFAS_OrdenDeDescuento(String empCodigo, String oddCodigo, Date oddFecha, float oddMonto, int oddPlazo, float oddSaldo, float oddCuota) {
+    public CEFAS_OrdenDeDescuento(int empCodigo, Date oddFecha, float oddMonto, int oddPlazo, float oddSaldo, float oddCuota) {
         this.empCodigo = empCodigo;
-        this.oddCodigo = oddCodigo;
+       
         this.oddFecha = oddFecha;
         this.oddMonto = oddMonto;
         this.oddPlazo = oddPlazo;
@@ -35,19 +35,19 @@ public class CEFAS_OrdenDeDescuento {
         this.oddCuota = oddCuota;
     }
 
-    public String getEmpCodigo() {
+    public int getEmpCodigo() {
         return empCodigo;
     }
 
-    public void setEmpCodigo(String empCodigo) {
+    public void setEmpCodigo(int empCodigo) {
         this.empCodigo = empCodigo;
     }
 
-    public String getOddCodigo() {
+    public int getOddCodigo() {
         return oddCodigo;
     }
 
-    public void setOddCodigo(String oddCodigo) {
+    public void setOddCodigo(int oddCodigo) {
         this.oddCodigo = oddCodigo;
     }
 

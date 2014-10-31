@@ -15,7 +15,7 @@
         return;
     }
     //Accesible con usuario: emp03 y password: 12345
-    if (!tipo.equals("subdirector") && !tipo.equals("administradora")) {
+    if (!tipo.equals("subdirector") && !tipo.equals("administrador")) {
         response.sendRedirect("avisos.jsp");
     }
     CtrlCEFAS_Empleado ctrlEmpleado = new CtrlCEFAS_Empleado();
@@ -45,7 +45,7 @@
             <%  if (tipo.equals("subdirector")) {
             %>
             <jsp:include page='inc/menu_subdirector.jsp' />
-            <% } else if (tipo.equals("administradora")) {
+            <% } else if (tipo.equals("administrador")) {
             %>
             <jsp:include page='inc/menu_administradora.jsp' />
             <% }

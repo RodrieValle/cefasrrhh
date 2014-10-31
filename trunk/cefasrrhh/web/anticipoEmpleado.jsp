@@ -13,14 +13,16 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%
-   /* //Verificación de sesión abierta
-    HttpSession sesionOk = request.getSession();
+ 
+ HttpSession sesionOk = request.getSession();
     String tipo = (String) sesionOk.getAttribute("tipo");
     if (tipo == null) {
         request.getRequestDispatcher("index.jsp").forward(request, response);
         return;
     }
-    String usuario = (String) sesionOk.getAttribute("usuario");*/
+    if (!tipo.equals("administrador")) {
+        response.sendRedirect("avisos.jsp");
+               }
 int codigoEmp = Integer.parseInt(request.getParameter("codigo"));
     CtrlCEFAS_Empleado ctrlEmpleado = new CtrlCEFAS_Empleado();
     CEFAS_Empleado empleado = ctrlEmpleado.getEmpleadoPorUsuario(codigoEmp);

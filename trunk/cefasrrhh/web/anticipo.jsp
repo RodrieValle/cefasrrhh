@@ -15,21 +15,17 @@
 <%@page import="com.colegiocefas.cefasrrhh.negocio.CtrlCEFAS_Empleado"%>
 
 <%
-    /* Verificación de sesión abierta
-    */
 
-/*
  HttpSession sesionOk = request.getSession();
     String tipo = (String) sesionOk.getAttribute("tipo");
     if (tipo == null) {
         request.getRequestDispatcher("index.jsp").forward(request, response);
         return;
     }
-    if (!tipo.equals("administradora")) {
+    if (!tipo.equals("administrador")) {
         response.sendRedirect("avisos.jsp");
-    }*/
 
-
+    }
 
  //Datos  
     if(request.getParameter("fecha") != null)
@@ -39,9 +35,7 @@
        //String nombre = request.getParameter("nombre");
         Date fecha = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("fecha").toString());
         float cantidad = Float.parseFloat(request.getParameter("cantidad"));
-       
-       
-        
+   
         CEFAS_Anticipo anticipo = new CEFAS_Anticipo();
         anticipo.setEmpCodigo(codigo);
         anticipo.setAtpFecha(fecha);
@@ -113,6 +107,6 @@
             </div>
 
         </div>
-    </div>
+  
     </body>
 </html>
