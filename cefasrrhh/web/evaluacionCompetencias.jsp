@@ -10,16 +10,16 @@
 <%@page import="com.colegiocefas.cefasrrhh.dominio.CEFAS_EvaluacionPorCompetencias"%>
 <%@page import="com.colegiocefas.cefasrrhh.negocio.CtrlCEFAS_EvaluacionPorCompetencias"%>
 <%
-    //Verificación de sesión abierta
+   //Verificación de sesión abierta
     HttpSession sesionOk = request.getSession();
     String tipo = (String) sesionOk.getAttribute("tipo");
     if (tipo == null) {
         request.getRequestDispatcher("index.jsp").forward(request, response);
         return;
     }
-    String usuario = (String) sesionOk.getAttribute("usuario");
-    CtrlCEFAS_Aviso ctrlAviso = new CtrlCEFAS_Aviso();
-    List<CEFAS_Aviso> lista = ctrlAviso.consultarAvisos(usuario);
+    if (!tipo.equals("director")) {
+        response.sendRedirect("avisos.jsp");
+    }
 %>
 
 
