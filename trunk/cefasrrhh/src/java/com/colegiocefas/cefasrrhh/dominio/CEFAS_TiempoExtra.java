@@ -14,8 +14,8 @@ import java.util.Date;
  */
 public class CEFAS_TiempoExtra {
     
-    private String empCodigo;
-    private String texCodigo;   
+    private int empCodigo;
+    private int texCodigo;   
     private Date texFecha;
     private Date texHoraInicio;
     private Date texHoraFin;
@@ -25,7 +25,7 @@ public class CEFAS_TiempoExtra {
     public CEFAS_TiempoExtra() {
     }
 
-    public CEFAS_TiempoExtra(String empCodigo, String texCodigo, Date texFecha, Date texHoraInicio, Date texHoraFin, Date texDeltaTiempo, float texValorDinero) {
+    public CEFAS_TiempoExtra(int empCodigo, int texCodigo, Date texFecha, Date texHoraInicio, Date texHoraFin, Date texDeltaTiempo, float texValorDinero) {
         this.empCodigo = empCodigo;
         this.texCodigo = texCodigo;
         this.texFecha = texFecha;
@@ -35,19 +35,19 @@ public class CEFAS_TiempoExtra {
         this.texValorDinero = texValorDinero;
     }
 
-    public String getEmpCodigo() {
+    public int getEmpCodigo() {
         return empCodigo;
     }
 
-    public void setEmpCodigo(String empCodigo) {
+    public void setEmpCodigo(int empCodigo) {
         this.empCodigo = empCodigo;
     }
 
-    public String getTexCodigo() {
+    public int getTexCodigo() {
         return texCodigo;
     }
 
-    public void setTexCodigo(String texCodigo) {
+    public void setTexCodigo(int texCodigo) {
         this.texCodigo = texCodigo;
     }
 
@@ -90,7 +90,7 @@ public class CEFAS_TiempoExtra {
     public void setTexValorDinero(float texValorDinero) {
         this.texValorDinero = texValorDinero;
     }
-    
-    
+
+       
     
 }
