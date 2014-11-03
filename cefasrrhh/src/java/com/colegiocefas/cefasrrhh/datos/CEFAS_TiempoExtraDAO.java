@@ -35,8 +35,8 @@ public class CEFAS_TiempoExtraDAO {
             ps=conexiondb.prepareStatement(SQL_INSERT);
             ps.setInt(1, textra.getEmpCodigo());
             ps.setDate(2, new Date(textra.getTexFecha().getTime()));
-            ps.setDate(3, (Date) textra.getTexHoraInicio());
-            ps.setDate(4, (Date) textra.getTexHoraFin());
+            ps.setDate(3, new Date(textra.getTexHoraInicio().getTime()));
+            ps.setDate(4, new Date(textra.getTexHoraFin().getTime()));
             int n=ps.executeUpdate();
 
             if(n>0){
