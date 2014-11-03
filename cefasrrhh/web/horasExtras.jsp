@@ -37,7 +37,7 @@
         Date hFinal = new SimpleDateFormat("HH:mm").parse(request.getParameter("hfinal").toString());
         String codigoemp2 = request.getParameter("codigo2");
         CtrlCEFAS_TiempoExtra textra = new CtrlCEFAS_TiempoExtra();
-        textra.guardarHoras(codigoemp,fecha,hInicio,hFinal,codigoemp2);
+        textra.guardarHoras(codigoemp,fecha,hInicio,hFinal);
     }
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
