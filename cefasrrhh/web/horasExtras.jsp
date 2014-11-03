@@ -5,7 +5,7 @@
 --%>
 
 <%@page import="javax.swing.JOptionPane"%>
-<%@page import="java.sql.Time"%>
+<%@page import="java.util.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.*"%>
 <%@page import="com.colegiocefas.cefasrrhh.negocio.CtrlCEFAS_TiempoExtra"%>
@@ -30,11 +30,14 @@
     listaEmpleados = ctrlEmpleado.obtenerEmpleados();
     if (request.getParameter("codigo") != null) {
         int codigoemp = Integer.parseInt(request.getParameter("codigo"));
+               Date fecha = new SimpleDateFormat("DD/MM/YYYY").parse(request.getParameter("fecha").toString());
+      
+      
         Date hInicio = new SimpleDateFormat("HH:mm").parse(request.getParameter("hinicio").toString());
         Date hFinal = new SimpleDateFormat("HH:mm").parse(request.getParameter("hfinal").toString());
         String codigoemp2 = request.getParameter("codigo2");
         CtrlCEFAS_TiempoExtra textra = new CtrlCEFAS_TiempoExtra();
-        //textra.guardarHoras(codigoemp,fecha,hInicio,hFinal,codigoemp2);
+        textra.guardarHoras(codigoemp,fecha,hInicio,hFinal,codigoemp2);
     }
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
