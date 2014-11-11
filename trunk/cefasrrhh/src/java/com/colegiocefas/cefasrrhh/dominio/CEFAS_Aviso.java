@@ -17,14 +17,15 @@ public class CEFAS_Aviso {
     private String avsCodigo;
     private Date   avsFecha;
     private String avsDescripcion;
+    private String avsRemitente;
 
     public CEFAS_Aviso() {
     }
 
-    public CEFAS_Aviso(String avsCodigo, Date avsFecha, String avsDescripcion) {
-        this.avsCodigo = avsCodigo;
+    public CEFAS_Aviso(Date avsFecha, String avsDescripcion, String avsRemitente) {
         this.avsFecha = avsFecha;
         this.avsDescripcion = avsDescripcion;
+        this.avsRemitente = avsRemitente;
     }
 
     public String getAvsCodigo() {
@@ -50,7 +51,13 @@ public class CEFAS_Aviso {
     public void setAvsDescripcion(String avsDescripcion) {
         this.avsDescripcion = avsDescripcion;
     }
-    
-    
+
+    public String getAvsRemitente() {
+        return avsRemitente;
+    }
+
+    public void setAvsRemitente(String avsRemitente) {
+        this.avsRemitente = avsRemitente;
+    }
     
 }
