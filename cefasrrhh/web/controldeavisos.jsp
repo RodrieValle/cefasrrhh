@@ -3,6 +3,12 @@
     Created on : 10-31-2014, 12:04:26 AM
     Author     : Rodrigo
 --%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.colegiocefas.cefasrrhh.dominio.CEFAS_Empleado"%>
+<%@page import="com.colegiocefas.cefasrrhh.negocio.CtrlCEFAS_Empleado"%>
+<%@page import="com.colegiocefas.cefasrrhh.dominio.CEFAS_Aviso"%>
+<%@page import="java.util.List"%>
+<%@page import="com.colegiocefas.cefasrrhh.negocio.CtrlCEFAS_Aviso"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Date"%>
 <%
@@ -13,9 +19,30 @@
         request.getRequestDispatcher("index.jsp").forward(request, response);
         return;
     }
-    /*String usuario = (String) sesionOk.getAttribute("usuario");
+    if (!tipo.equals("director")) {
+        response.sendRedirect("avisos.jsp");
+    }
+    request.setCharacterEncoding("UTF-8");
+    CtrlCEFAS_Empleado ctrlEmpleado = new CtrlCEFAS_Empleado();
+    List<CEFAS_Empleado> empleados = ctrlEmpleado.obtenerEmpleados();
     CtrlCEFAS_Aviso ctrlAviso = new CtrlCEFAS_Aviso();
-    List<CEFAS_Aviso> lista = ctrlAviso.consultarAvisos(usuario);*/
+    if(request.getParameter("descripcion")!= null)
+    {
+        Date fecha = new Date();
+        String descripcion = request.getParameter("descripcion");
+        List<CEFAS_Empleado> destinatarios = new ArrayList<CEFAS_Empleado>();
+        for(CEFAS_Empleado empleado : empleados)
+        {
+            if(request.getParameter(empleado.getEmpCodigo())!= null)
+            {
+                destinatarios.add(empleado);
+            }
+        }
+        ctrlAviso.guardar(fecha, descripcion, destinatarios, sesionOk.getAttribute("empleado").toString());
+    }
+    List<CEFAS_Aviso> lista = ctrlAviso.consultarAvisos();
+    
+    
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -50,18 +77,19 @@
                             <div class="panel-body">
                             <form action="controldeavisos.jsp" method="post">
                             Fecha:      <%= new SimpleDateFormat("dd/MM/yyyy").format(new Date()) %><br><br>
-                            Descripción:<textarea name="descripcion" rows="3" cols="20" class="form-control input-sm"></textarea><br>
+                            Descripción:<textarea name="descripcion" rows="3" cols="20" class="form-control input-sm" required></textarea><br>
                             <div id="destinatarios">
-                            Destinatarios:<br>
-                            <input id="todos" type="checkbox" name="destinatarios" value="All" onclick="checkTodos(this.id,'destinatrios');"> Seleccionar todo<br>
-                            <input type="checkbox" name="dest" value="1"> Juan Perez<br>
-                            <input type="checkbox" name="dest" value="2"> Ricardo Sanchez<br>
-                            <input type="checkbox" name="dest" value="3"> Juan Perez<br>
-                            <input type="checkbox" name="dest" value="4"> Ricardo Sanchez<br>
-                            Grupos<br>
-                            Todo el personal Primaria Secundaria<br>
-                            Personas<br>
+                                <label>Destinatarios:</label><br>
+                                <input id="todos" type="checkbox" name="destinatarios" value="All" onclick="checkTodos(this.id,'destinatrios');"> Seleccionar todo<br><br>
+                            <%
+                                for(CEFAS_Empleado empleado : empleados)
+                                {%>
+                                <input type="checkbox" name="<%= empleado.getEmpCodigo()%>" value="<%= empleado.getEmpCodigo()%>">  <%= empleado.getEmpNombre() %><br>
+                            <%  }
+                            %>
+                            
                             </div>
+                            <br><br>
                             <input type="submit" value="Enviar" class="btn btn-success center-block"/>
                             </form>
                             </div>
@@ -71,12 +99,29 @@
                         <div class="panel panel-primary">
                             <div class="panel-heading">Últimos avisos creados</div>
                             <div class="panel-body">
-                            
-                            Fecha:      <%= new SimpleDateFormat("dd/MM/yyyy").format(new Date()) %><br><br>
-                            Descripción:<textarea name="descripcion" rows="3" cols="20" class="form-control input-sm"></textarea><br><br>
-                            <a href="#" class="btn btn-primary btn-md" role="button">Modificar</a>
-                            <a href="#" class="btn btn-primary btn-md" role="button">Eliminar</a>
-                            <input type="submit" value="Enviar" class="btn btn-success center-block"/>
+                            <table class="table table-striped table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th class="col-xs-2">Fecha</th>
+                                            <th class="col-xs-6">Descripción</th>
+                                            <th class="col-xs-2">Editar</th>
+                                            <th class="col-xs-2">Eliminar</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <% for(CEFAS_Aviso aviso : lista)
+                                        { %>
+                                        <tr>
+                                            <td><%= new SimpleDateFormat("dd/MM/yyyy").format(aviso.getAvsFecha()) %></td>
+                                            <td><%= aviso.getAvsDescripcion() %></td>
+                                            <td><a href="editaraviso.jsp?id=<%= aviso.getAvsCodigo() %>" class="btn btn-primary btn-md" role="button"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                                            <td><a href="eliminaraviso.jsp?id=<%= aviso.getAvsCodigo() %>" class="btn btn-primary btn-md" role="button"><span class="glyphicon glyphicon-remove"></span></a></td>
+                                        </tr>
+                                     <% } %>
+                                        
+                                        
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                 </div>

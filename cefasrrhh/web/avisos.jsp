@@ -18,9 +18,9 @@
         request.getRequestDispatcher("index.jsp").forward(request, response);
         return;
     }
-    String usuario = (String) sesionOk.getAttribute("usuario");
+    int codEmpleado = Integer.parseInt(sesionOk.getAttribute("empleado").toString());
     CtrlCEFAS_Aviso ctrlAviso = new CtrlCEFAS_Aviso();
-    List<CEFAS_Aviso> lista = ctrlAviso.consultarAvisos(usuario);
+    List<CEFAS_Aviso> lista = ctrlAviso.consultarAvisos(codEmpleado);
     
     CtrlCEFAS_Actividad ctrlActividad = new CtrlCEFAS_Actividad();
     List<CEFAS_Actividad> actividades = ctrlActividad.obtenerActividadesQuincena();
@@ -63,13 +63,13 @@
             
             
             <div class="container">
-                <h1>Inicio - Avisos </h1>
+                <h1>Avisos </h1>
                 <%
                     for(CEFAS_Aviso avs: lista)
                     {
                 %>
                       <div class="panel panel-primary">
-                          <div class="panel-heading">Fecha: <%= new SimpleDateFormat("dd/MM/yyyy").format(avs.getAvsFecha()) %></div>
+                          <div class="panel-heading">Fecha: <%= new SimpleDateFormat("dd/MM/yyyy").format(avs.getAvsFecha()) %>   Remitente: <%= avs.getAvsRemitente() %></div>
                         <div class="panel-body">
                             <%= avs.getAvsDescripcion() %>
                         </div>
