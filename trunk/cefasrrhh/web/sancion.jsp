@@ -12,27 +12,26 @@
 <%@page import="com.colegiocefas.cefasrrhh.negocio.CtrlCEFAS_Empleado"%>
 <%
 //Verificación de sesión abierta
-HttpSession sesionOk = request.getSession();
-String tipo = (String) sesionOk.getAttribute("tipo");
-if (tipo == null) {
-request.getRequestDispatcher("index.jsp").forward(request, response);
-return;
-}
-if (!tipo.equals("subdirector") && !tipo.equals("administradora")) {
+    HttpSession sesionOk = request.getSession();
+    String tipo = (String) sesionOk.getAttribute("tipo");
+    if (tipo == null) {
+        request.getRequestDispatcher("index.jsp").forward(request, response);
+        return;
+    }
+    if (!tipo.equals("subdirector") && !tipo.equals("administradora")) {
         response.sendRedirect("avisos.jsp");
     }
-if(request.getParameter("empcodigo") != null) {
-String empcodigo = request.getParameter("empcodigo");
-String scncodigo =request.getParameter("scncodigo");
-Date fecha = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("fecha").toString());
-String scn = request.getParameter("sancion");
-String motivo = request.getParameter("motivo");
-CtrlCEFAS_Sancion ctrlsancion = new CtrlCEFAS_Sancion();
-ctrlsancion.guardarSancion(empcodigo,scncodigo,fecha,scn,motivo);
-}
+    if (request.getParameter("empcodigo") != null) {
+        String empcodigo = request.getParameter("empcodigo");
+        String scncodigo = request.getParameter("scncodigo");
+        Date fecha = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("fecha").toString());
+        String scn = request.getParameter("sancion");
+        String motivo = request.getParameter("motivo");
+        CtrlCEFAS_Sancion ctrlsancion = new CtrlCEFAS_Sancion();
+        ctrlsancion.guardarSancion(empcodigo, scncodigo, fecha, scn, motivo);
+    }
 
-
-CtrlCEFAS_Empleado ctrlEmpleado = new CtrlCEFAS_Empleado();
+    CtrlCEFAS_Empleado ctrlEmpleado = new CtrlCEFAS_Empleado();
     List<CEFAS_Empleado> listaEmpleados;
     listaEmpleados = ctrlEmpleado.obtenerEmpleados();
 
