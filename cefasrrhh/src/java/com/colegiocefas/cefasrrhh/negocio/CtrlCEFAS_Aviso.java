@@ -39,4 +39,9 @@ public class CtrlCEFAS_Aviso {
         daoAviso.guardar(aviso, destinatarios);
     }
     
+    public CEFAS_Aviso obtenerAvisoById(String id)
+    {
+        return daoAviso.obtenerAvisoById(id);
+    }
+    
 }

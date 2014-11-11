@@ -34,8 +34,9 @@ public class CEFAS_AvisoDAO {
     private final String SQL_BUSCARAVISO = "SELECT CEFAS_AVISO.AVSFECHA, CEFAS_AVISO.AVSDESCRIPCION, CEFAS_EMPLEADO.EMPNOMBRE FROM "
             + "RECIBE INNER JOIN (CEFAS_AVISO INNER JOIN CEFAS_EMPLEADO ON CEFAS_AVISO.AVSREMITENTE = CEFAS_EMPLEADO.EMPCODIGO) " 
             + "ON RECIBE.AVSCODIGO = CEFAS_AVISO.AVSCODIGO WHERE RECIBE.EMPCODIGO = ? AND AVSFECHA > ?";
+    private final String SQL_SELECT_ID = "SELECT * FROM CEFAS_AVISO WHERE AVSCODIGO = ?";
     private final String SQL_UPDATE = " ";
-    private final String SQL_DELETE = "";
+    private final String SQL_DELETE = "DELETE FROM CEFAS_AVISO WHERE AVSCODIGO = ?";
     private Connection conexiondb;
     private Statement st;
     private PreparedStatement ps;
@@ -123,7 +124,37 @@ public class CEFAS_AvisoDAO {
     
     public void eliminarById(String id)
     {
-        
+        try {
+            conexiondb = ConexionDB.getConexion();
+            ps = conexiondb.prepareStatement(SQL_DELETE);
+            ps.setString(1, id);
+            ps.execute();
+            ConexionDB.cerrarConexion();
+        } catch (SQLException ex) {
+            Logger.getLogger(CEFAS_AvisoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public CEFAS_Aviso obtenerAvisoById(String id)
+    {
+        CEFAS_Aviso aviso = null;
+        try {
+            conexiondb = ConexionDB.getConexion();
+            ps = conexiondb.prepareStatement(SQL_SELECT_ID);
+            ps.setString(1, id);
+            rs = ps.executeQuery();
+            while(rs.next())
+            {
+                aviso = new CEFAS_Aviso();
+                aviso.setAvsCodigo(rs.getString("avsCodigo"));
+                aviso.setAvsFecha(rs.getDate("avsFecha"));
+                aviso.setAvsDescripcion(rs.getString("avsDescripcion"));
+            }
+            ConexionDB.cerrarConexion();
+        } catch (SQLException ex) {
+            Logger.getLogger(CEFAS_ActividadDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return aviso;
     }
     
 }
