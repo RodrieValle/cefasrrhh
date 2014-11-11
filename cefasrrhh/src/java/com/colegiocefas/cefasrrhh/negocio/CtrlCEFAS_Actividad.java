@@ -30,4 +30,25 @@ public class CtrlCEFAS_Actividad {
     {
         return actividadDao.obtenerActividades();
     }
+    
+    public CEFAS_Actividad obtenerActividadById(String id)
+    {
+        return actividadDao.obtenerActividadbyId(id);
+    }
+    
+    public void actualizar(String id, Date fecha, String descripcion)
+    {
+        CEFAS_Actividad actividad = new CEFAS_Actividad(id, fecha, descripcion);
+        actividadDao.actualizar(actividad);
+    }
+    
+    public void eliminarActividadById(String id)
+    {
+        actividadDao.eliminarById(id);
+    }
+    
+    public List<CEFAS_Actividad> obtenerActividadesQuincena()
+    {
+        return actividadDao.obtenerActividadesQuincena();
+    }
 }

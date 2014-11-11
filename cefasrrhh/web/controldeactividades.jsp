@@ -18,6 +18,9 @@
         request.getRequestDispatcher("index.jsp").forward(request, response);
         return;
     }
+    if (!tipo.equals("director")) {
+        response.sendRedirect("avisos.jsp");
+    }
     CtrlCEFAS_Actividad ctrlActividad = new CtrlCEFAS_Actividad();
     if(request.getParameter("descripcion") !=null)
     {
@@ -40,7 +43,7 @@
         <script type="text/javascript" src="js/jquery-clockpicker.min.js"></script>
     </head>
     <body>
-         <div id="container">
+        <div id="container">
             <%  if(tipo.equals("director"))
             {
         %>
@@ -88,8 +91,8 @@
                                         <tr>
                                             <td><%= new SimpleDateFormat("dd/MM/yyyy").format(actividad.getActFecha()) %></td>
                                             <td><%= actividad.getActDescripcion() %></td>
-                                            <td><a href="#<%= actividad.getActCodigo() %>" class="btn btn-primary btn-md" role="button"><span class="glyphicon glyphicon-pencil"></span></a></td>
-                                            <td><a href="#<%= actividad.getActCodigo() %>" class="btn btn-primary btn-md" role="button"><span class="glyphicon glyphicon-remove"></span></a></td>
+                                            <td><a href="editaractividad.jsp?id=<%= actividad.getActCodigo() %>" class="btn btn-primary btn-md" role="button"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                                            <td><a href="eliminaractividad.jsp?id=<%= actividad.getActCodigo() %>" class="btn btn-primary btn-md" role="button"><span class="glyphicon glyphicon-remove"></span></a></td>
                                         </tr>
                                      <% } %>
                                         
