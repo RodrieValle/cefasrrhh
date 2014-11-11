@@ -7,17 +7,24 @@
 package com.colegiocefas.cefasrrhh.negocio;
 
 import com.colegiocefas.cefasrrhh.datos.CEFAS_CandidatoDAO;
+import com.colegiocefas.cefasrrhh.dominio.CEFAS_Candidato;
 
 /**
  *
  * @author Portillo
  */
 public class CtrlCEFAS_Candidato {
-    
+
     CEFAS_CandidatoDAO daoCandidato = new CEFAS_CandidatoDAO();
-    
-    public void guardarCurriculum(String dui, String nombre, String especialidad)
-    {
-        daoCandidato.guardarCurriculum(dui, nombre,especialidad);
+
+    public void guardarCurriculum(String cdtDUI, String evcCodigo, String cdtNombre, String cdtEspecialidad) {
+        CEFAS_Candidato candidato = new CEFAS_Candidato();
+        candidato.setCdtDUI(cdtDUI);
+        candidato.setEvcCodigo(evcCodigo);
+        candidato.setCdtNombre(cdtNombre);
+        candidato.setCdtEspecialidad(cdtEspecialidad);
+       // candidato.setCdtCurriculum();
+
+        daoCandidato.guardarCurriculum(candidato);
     }
 }

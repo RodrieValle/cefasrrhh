@@ -19,7 +19,7 @@ import java.util.logging.Logger;
 
 public class CEFAS_EvaluacionCandidatoDAO {
 
-    private final String SQL_INSERT = "INSERT INTO CEFAS_EVALUACIONCANDIDATO (CDTDUI,EVCOBSERVACIONESREFERENCIAS,EVCFECHAENTREVISTA,EVCCOMENTARIOENTREVISTA,EVCFECHAEXAMENAPTITUD,EVCNOTAEXAMENAPTITUD,EVCCOMENTARIOEXAMENAPTITUD,EVCFECHAEXAMENPSICO,EVCNOTAEXAMENPSICO,EVCCOMENTARIOEXAMENPSICO) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    private final String SQL_INSERT = "INSERT INTO CEFAS_EVALUACIONCANDIDATO (CDTDUI,EVCCODIGO,EVCOBSERVACIONESREFERENCIAS,EVCFECHAENTREVISTA,EVCCOMENTARIOENTREVISTA,EVCFECHAEXAMENAPTITUD,EVCNOTAEXAMENAPTITUD,EVCCOMENTARIOEXAMENAPTITUD,EVCFECHAEXAMENPSICO,EVCNOTAEXAMENPSICO,EVCCOMENTARIOEXAMENPSICO) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     private Connection conexiondb;
     private Statement st;
@@ -31,15 +31,16 @@ public class CEFAS_EvaluacionCandidatoDAO {
             conexiondb = ConexionDB.getConexion();
             ps = conexiondb.prepareStatement(SQL_INSERT);
             ps.setString(1, evaluacioncan.getCdtDUI());
-            ps.setString(2, evaluacioncan.getEvcObservacionesReferencias());
-            ps.setDate(3, new Date(evaluacioncan.getEvcFechaEntrevista().getTime()));
-            ps.setString(4, evaluacioncan.getEvcComentarioEntrevista());
-            ps.setDate(5, new Date(evaluacioncan.getEvcFechaExamenAptitud().getTime()));
-            ps.setString(6, evaluacioncan.getEvcNotaExamenAptitud());
-            ps.setString(7, evaluacioncan.getEvcComentarioExamenAptitud());
-            ps.setDate(8, new Date(evaluacioncan.getEvcFechaExamenPsico().getTime()));
-            ps.setString(9, evaluacioncan.getEvcNotaExamenPsico());
-            ps.setString(10, evaluacioncan.getEvcCometarioExamenPsico());
+            ps.setString(2, evaluacioncan.getEvcCodigo());
+            ps.setString(3, evaluacioncan.getEvcObservacionesReferencias());
+            ps.setDate(4, new Date(evaluacioncan.getEvcFechaEntrevista().getTime()));
+            ps.setString(5, evaluacioncan.getEvcComentarioEntrevista());
+            ps.setDate(6, new Date(evaluacioncan.getEvcFechaExamenAptitud().getTime()));
+            ps.setString(7, evaluacioncan.getEvcNotaExamenAptitud());
+            ps.setString(8, evaluacioncan.getEvcComentarioExamenAptitud());
+            ps.setDate(9, new Date(evaluacioncan.getEvcFechaExamenPsico().getTime()));
+            ps.setString(10, evaluacioncan.getEvcNotaExamenPsico());
+            ps.setString(11, evaluacioncan.getEvcCometarioExamenPsico());
 
             int n = ps.executeUpdate();
 
