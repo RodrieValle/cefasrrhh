@@ -21,26 +21,21 @@ return;
 if (!tipo.equals("subdirector") && !tipo.equals("administradora")) {
         response.sendRedirect("avisos.jsp");
     }
+if(request.getParameter("empcodigo") != null) {
 String empcodigo = request.getParameter("empcodigo");
 String scncodigo =request.getParameter("scncodigo");
 Date fecha = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("fecha").toString());
 String scn = request.getParameter("sancion");
 String motivo = request.getParameter("motivo");
-
-CEFAS_Sancion sancion = new CEFAS_Sancion();
-
-sancion.setEmpCodigo(empcodigo);
-sancion.setScnCodigo(scncodigo);
-sancion.setScnFecha(fecha);
-sancion.setScnSancion(scn);
-sancion.setScnMotivo(motivo);
-
 CtrlCEFAS_Sancion ctrlsancion = new CtrlCEFAS_Sancion();
-ctrlsancion.guardarSancion(sancion);
+ctrlsancion.guardarSancion(empcodigo,scncodigo,fecha,scn,motivo);
+}
+
 
 CtrlCEFAS_Empleado ctrlEmpleado = new CtrlCEFAS_Empleado();
     List<CEFAS_Empleado> listaEmpleados;
     listaEmpleados = ctrlEmpleado.obtenerEmpleados();
+
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>

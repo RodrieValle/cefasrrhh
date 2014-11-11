@@ -11,17 +11,23 @@ package com.colegiocefas.cefasrrhh.negocio;
  * @author Portillo
  */
 import com.colegiocefas.cefasrrhh.datos.CEFAS_SancionDAO;
+import com.colegiocefas.cefasrrhh.dominio.CEFAS_Prestamo;
 import com.colegiocefas.cefasrrhh.dominio.CEFAS_Sancion;
+import java.util.Date;
 
-/**
- *
- * @author Portillo
- */
 public class CtrlCEFAS_Sancion {
     private CEFAS_SancionDAO daoSancion = new CEFAS_SancionDAO();
     
-    public void guardarSancion(CEFAS_Sancion sancion){
-        daoSancion.almacenarSancion(sancion);
+    public void guardarSancion(String empCodigo,String scnCodigo,Date scnFecha,String scnMotivo,String scnSancion){
+        CEFAS_Sancion scn= new CEFAS_Sancion();
+         
+                scn.setEmpCodigo(empCodigo);
+                scn.setScnCodigo(scnCodigo);
+                scn.setScnFecha(scnFecha);
+                scn.setScnMotivo(scnMotivo);
+                scn.setScnSancion(scnSancion);
+               
+        daoSancion.almacenarSancion(scn);
     }
         
     
