@@ -11,7 +11,6 @@ package com.colegiocefas.cefasrrhh.negocio;
  * @author Portillo
  */
 import com.colegiocefas.cefasrrhh.datos.CEFAS_SancionDAO;
-import com.colegiocefas.cefasrrhh.dominio.CEFAS_Prestamo;
 import com.colegiocefas.cefasrrhh.dominio.CEFAS_Sancion;
 import java.util.Date;
 
