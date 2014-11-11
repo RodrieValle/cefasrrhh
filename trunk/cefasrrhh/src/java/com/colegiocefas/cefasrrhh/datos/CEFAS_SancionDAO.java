@@ -23,10 +23,6 @@ import java.util.logging.Logger;
  */
 public class CEFAS_SancionDAO {
     private final String SQL_INSERT = "INSERT INTO CEFAS_SANCION (EMPCODIGO,SCNCODIGO,SCNFECHA,SCNMOTIVO,SCNSANCION) VALUES (?, ?, ?, ?, ?)";
-    private final String SQL_SELECT = "SELECT * FROM CEFAS_SANCION WHERE  LIKE ?";
-    private final String SQL_UPDATE = "UPDATE CEFAS_SANCION SET  = ?,  = ?,"
-            + "  = ?,  = ?, WHERE  = ?";
-    private final String SQL_DELETE = "";
     private Connection conexiondb;
     private Statement st;
     private PreparedStatement ps;
