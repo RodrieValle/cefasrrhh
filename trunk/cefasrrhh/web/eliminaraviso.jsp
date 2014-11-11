@@ -19,5 +19,5 @@
     String id = request.getParameter("id");
     CtrlCEFAS_Aviso ctrlAviso = new CtrlCEFAS_Aviso();
     ctrlAviso.eliminarAvisoById(id);
-    response.sendRedirect("controldeactividades.jsp");
+    response.sendRedirect("controldeavisos.jsp");
 %>
