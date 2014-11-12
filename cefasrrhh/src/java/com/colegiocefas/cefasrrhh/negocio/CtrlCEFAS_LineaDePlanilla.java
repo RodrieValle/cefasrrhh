@@ -35,6 +35,7 @@ public class CtrlCEFAS_LineaDePlanilla {
         //inicio iteracion de empleados
         for(CEFAS_Empleado empleado: listEmpleados)
         {
+            linea = new CEFAS_LineaDePlanilla();
             int codigo=Integer.parseInt(empleado.getEmpCodigo());
             linea.setEmpCodigo(codigo);
             
