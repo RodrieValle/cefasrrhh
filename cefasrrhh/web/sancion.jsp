@@ -18,7 +18,7 @@
         request.getRequestDispatcher("index.jsp").forward(request, response);
         return;
     }
-    if (!tipo.equals("subdirector") && !tipo.equals("administradora")) {
+    if (!tipo.equals("director")) {
         response.sendRedirect("avisos.jsp");
     }
     if (request.getParameter("empcodigo") != null) {
@@ -46,32 +46,40 @@
     </head>
     <body>
         <div id="container">
-            <%  if (tipo.equals("subdirector")) {
-            %>
-            <jsp:include page='inc/menu_subdirector.jsp' />
-            <% } else if (tipo.equals("administradora")) {
-            %>
-            <jsp:include page='inc/menu_administradora.jsp' />
-            <% }
-            %>
+          
+            <jsp:include page='inc/menu_directora.jsp' />
+           
             <div class="container">
-                <h1>Ingresar Sancion</h1>
+                <h1 class="form-signin-heading">Ingresar Sancion</h1>
+                 <form class="form-signin" action="sancion.jsp" method="post">   
+               <div class="panel panel-primary">
+                        <div class="panel-heading">Ingrese Datos de la Nueva Sancion</div>
+                        <div class="panel-body">
+                
                 <div class="row">
-                    <div class="col-xs-4 col-xs-offset-4">
-                        <form action="sancion.jsp" method="post">   
-                       Empleado:<select name="empcodigo" id="empleado" class="form-control input-sm">
+                    <div class="col-xs-6">
+                       
+                       
+                       Codigo de Sancion: <input type="text" name="scncodigo" value="" class="form-control input-sm" required/><br>
+                       Fecha: <input type="text" name="fecha" value="" class="form-control input-sm" placeholder= "Formato: dd/MM/yyyy" required /><br>
+                    Empleado:<select name="empcodigo" id="empleado" class="form-control input-sm">
                            <% for (CEFAS_Empleado emp : listaEmpleados) {%>
                            <option value="<%= emp.getEmpCodigo()%>"><%= emp.getEmpNombre()%></option>
                             <% }%>
-                       </select>
-                       Codigo de Sancion: <input type="text" name="scncodigo" value="" class="form-control input-sm"/><br>
-                       Fecha: <input type="text" name="fecha" value="" class="form-control input-sm" placeholder= "Formato: dd/MM/yyyy" required /><br>
-                       Sancion:<input type="text" name="sancion" style ="width:200px;height:150px" class="form-control input-sm"/>
-                       Motivo:<input type="text" name="motivo" style ="width:200px;height:150px" class="form-control input-sm"/>
-                       <input type="submit" value="Guardar" class="btn btn-success center-block"/>
-                        </form>
+                       </select>  
+                    </div>
+                       <div class="col-xs-6">
+                       Sancion:<textarea name="sancion" rows="4" cols="40" class="form-control input-sm" required></textarea>
+                       Motivo:<textarea name="motivo" rows="4" cols="40" class="form-control input-sm" required></textarea>
+                       
                     </div>
                 </div>
+                       </div>
+                       </div>
+                     <br>
+                       <input type="submit" value="Guardar" class="btn btn-success center-block"/>
+                </form>
+
             </div>
         </div>
         

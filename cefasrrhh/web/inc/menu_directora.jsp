@@ -27,7 +27,7 @@
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="download"><span class="glyphicon glyphicon-book"></span> Recurso Humano <span class="caret"></span></a>
                     <ul class="dropdown-menu" aria-labelledby="download">
                         <li><a href="gestionperfiles.jsp">Gestionar perfiles de empleado</a></li>
-                        <li><a href="#">Aplicar sanción</a></li>
+                        <li><a href="sancion.jsp">Aplicar sanción</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
