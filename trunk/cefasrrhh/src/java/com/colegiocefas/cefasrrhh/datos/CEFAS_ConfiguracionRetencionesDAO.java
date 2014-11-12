@@ -26,7 +26,7 @@ import java.util.logging.Logger;
 public class CEFAS_ConfiguracionRetencionesDAO {
     
     private final String SQL_INSERT = "";
-    private final String SQL_SELECT = "SELECT * FROM CONFIGURACIONRETENCIONES";
+    private final String SQL_SELECT = "SELECT * FROM CEFAS_CONFIGURACIONRETENCIONES";
     private final String SQL_UPDATE = "";
      private final String SQL_DELETE = "";
     private Connection conexiondb;
@@ -47,10 +47,10 @@ public class CEFAS_ConfiguracionRetencionesDAO {
                 cfg.setCfgCodigo(rs.getString("cfgCodigo"));
                 cfg.setCfgTipo(rs.getString("cfgTipo"));
                 cfg.setCfgPorcentaje(rs.getFloat("cfgPorcentaje"));
-                cfg.setCfgMinimo(rs.getFloat("cfgMinino"));
+                cfg.setCfgMinimo(rs.getFloat("cfgMinimo"));
                 cfg.setCfgMaximo(rs.getFloat("cfgMaximo"));
                 cfg.setCfgSobreExceso(rs.getFloat("cfgSobreExceso"));
-                cfg.setCfgCuotaFija(rs.getFloat("cfgCoutaFija"));
+                cfg.setCfgCuotaFija(rs.getFloat("cfgCuotaFija"));
                 retenciones.add(cfg);
             }
             ConexionDB.cerrarConexion();

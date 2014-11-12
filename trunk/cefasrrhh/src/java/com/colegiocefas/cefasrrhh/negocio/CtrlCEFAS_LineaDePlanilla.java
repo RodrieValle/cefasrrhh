@@ -20,7 +20,7 @@ public class CtrlCEFAS_LineaDePlanilla {
     
     
     
-    List<CEFAS_LineaDePlanilla> calculoPlanilla(){
+    public List<CEFAS_LineaDePlanilla> calculoPlanilla(){
         CEFAS_LineaDePlanilla linea= new CEFAS_LineaDePlanilla();
         List<CEFAS_LineaDePlanilla> listPlanilla= new ArrayList();
         CtrlCEFAS_ConfiguracionRetenciones ctrlConfiguracion=new CtrlCEFAS_ConfiguracionRetenciones();
@@ -33,10 +33,12 @@ public class CtrlCEFAS_LineaDePlanilla {
         listEmpleados=ctrlEmpleados.obtenerEmpleados();  
         
         //inicio iteracion de empleados
-        for (int i = 0; i < listEmpleados.size(); i++) {
-            linea.setEmpCodigo(Integer.parseInt(listEmpleados.get(i).getEmpCodigo()));
+        for(CEFAS_Empleado empleado: listEmpleados)
+        {
+            int codigo=Integer.parseInt(empleado.getEmpCodigo());
+            linea.setEmpCodigo(codigo);
             
-            float salario=listEmpleados.get(i).getEmpSalario();
+            float salario=empleado.getEmpSalario();
             linea.setLdpSueldoBase(salario);
             
             float horas=0;
@@ -49,16 +51,16 @@ public class CtrlCEFAS_LineaDePlanilla {
             linea.setLdpSueldoDevengado(devengado);
             
             
-            float isss=calculoISSS(devengado, listConfiguraciones.get(0));
+            float isss=calculoISSS(devengado, listConfiguraciones.get(9));
             linea.setLdpIsss(isss);
             
             float afpConfia=0;
             float afpCrecer=0;
-            if(listEmpleados.get(i).getEmpSalario()==1){
-            afpConfia= calculoAFP(salario, listConfiguraciones.get(0));
+            if(empleado.getEmpTipoAfp()==1){
+            afpConfia= calculoAFP(salario, listConfiguraciones.get(7));
                afpCrecer=0;   
                     }else{
-                afpCrecer= calculoAFP(salario, listConfiguraciones.get(0));
+                afpCrecer= calculoAFP(salario, listConfiguraciones.get(5));
                afpConfia=0; 
             }
             linea.setLdpAfpConfia(afpConfia);
@@ -69,8 +71,8 @@ public class CtrlCEFAS_LineaDePlanilla {
             linea.setLdpValorNetoSujetoRenta(sujeto);
             
             float renta=calculoRenta(sujeto, listConfiguraciones.get(0), 
-                    listConfiguraciones.get(0), listConfiguraciones.get(0), 
-                    listConfiguraciones.get(0),listConfiguraciones.get(0));
+                    listConfiguraciones.get(1), listConfiguraciones.get(2), 
+                    listConfiguraciones.get(3),listConfiguraciones.get(4));
             linea.setLdpImpuestoSobreRenta(renta);
             
             
@@ -99,7 +101,7 @@ public class CtrlCEFAS_LineaDePlanilla {
     
 
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<CALCULO IMPUESTO SOBRE LA RENTA
-float calculoRenta(float valor, CEFAS_ConfiguracionRetenciones rentaIConfig,
+public float calculoRenta(float valor, CEFAS_ConfiguracionRetenciones rentaIConfig,
         CEFAS_ConfiguracionRetenciones rentaIIConfig,CEFAS_ConfiguracionRetenciones rentaIIIConfig,
         CEFAS_ConfiguracionRetenciones rentaIVConfig,CEFAS_ConfiguracionRetenciones rentaVConfig){
     float renta=0;
@@ -150,7 +152,7 @@ return renta;
 
 
 
-float horas(float valor, float horas){
+public float horas(float valor, float horas){
     float salHoras=(valor/30)/8;
     float cantidad=horas*salHoras;
     return cantidad;
@@ -159,7 +161,7 @@ float horas(float valor, float horas){
 
 //<<<<<<<<<<<<<<<<<<<<CALCULO ISSS
 
-float calculoISSS(float valor, CEFAS_ConfiguracionRetenciones isssConfig){
+public float calculoISSS(float valor, CEFAS_ConfiguracionRetenciones isssConfig){
     
     float isss=0;
     if(valor>isssConfig.getCfgMaximo()){
@@ -172,7 +174,7 @@ float calculoISSS(float valor, CEFAS_ConfiguracionRetenciones isssConfig){
 
 
 //<<<<<<<<<<<<<<<CALCULO AFP
-float calculoAFP(float valor, CEFAS_ConfiguracionRetenciones afpConfig){
+public float calculoAFP(float valor, CEFAS_ConfiguracionRetenciones afpConfig){
      float afp=0;
     if(valor>afpConfig.getCfgMaximo()){
     afp=afpConfig.getCfgMaximo()*afpConfig.getCfgPorcentaje();
