@@ -5,6 +5,7 @@
  */
 package com.colegiocefas.cefasrrhh.servlets;
 
+import com.colegiocefas.cefasrrhh.negocio.CtrlCEFAS_Candidato;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -17,6 +18,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.swing.JOptionPane;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
@@ -68,31 +70,46 @@ public class subirCurriculo extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String ajaxUpdateResult = "Error";
+        String dui = request.getParameter("dui");
+        String nombre = request.getParameter("nombre");
+        String especialidad = request.getParameter("especialidad");
+        String url = request.getParameter("url");
+        
+        //Código para subir pdf del curriculum al servidor
         try {
             List items = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(request);
             for (int i = 0; i < items.size(); i++) {
                 FileItem item = (FileItem) items.get(i);
                 if (item.isFormField()) {
+                    if(item.getFieldName().equals("dui"))
+                        dui = item.getString("UTF-8");
+                    if(item.getFieldName().equals("especialidad"))
+                        especialidad = item.getString("UTF-8");
+                    if(item.getFieldName().equals("nombre"))
+                        nombre = item.getString("UTF-8");
                 } else {
                     Date fecha = Calendar.getInstance().getTime();
                     SimpleDateFormat formato = new SimpleDateFormat("yyyyMMdd-hhmmss-");
                     String nombreImagen = formato.format(fecha);
-                    //nombreImagen += usuario;
+                    nombreImagen += dui;
                     //String fileName = item.getName();
                     response.setContentType("text/plain");
                     response.setCharacterEncoding("UTF-8");
                     String realPath = request.getSession().getServletContext().getRealPath("/");
                     File fichero = new File(realPath + "documentos/candidatos/", nombreImagen+".pdf");
                     item.write(fichero);
-                    ajaxUpdateResult = "documentos/candidatos/"  + fichero.getName();
+                    url = "documentos/candidatos/"  + fichero.getName();
                 }
             }
+            CtrlCEFAS_Candidato ctrlcandidato = new CtrlCEFAS_Candidato();
+            ctrlcandidato.guardarCurriculum(dui, nombre, especialidad,url);
+            String mensaje ="<div class='alert alert-success' role='alert'>Guardado</div>";
+            response.sendRedirect("ingresarcurriculum.jsp");
         } catch (Exception e) {
-            ajaxUpdateResult = "ErrorException";
+            //out.write(e.getMessage());
+            //JOptionPane.showMessageDialog(null, e.getMessage());
             throw new ServletException("Parsing file upload failed.", e);
         }
-        response.getWriter().print(ajaxUpdateResult);
     }
 
     /**
