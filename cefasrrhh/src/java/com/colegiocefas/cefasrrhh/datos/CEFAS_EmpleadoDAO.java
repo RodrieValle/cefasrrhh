@@ -31,7 +31,7 @@ public class CEFAS_EmpleadoDAO {
             + "CEFAS_USUARIO.EMPCODIGO = CEFAS_EMPLEADO.EMPCODIGO AND CEFAS_USUARIO.EMPCODIGO = ?";
     private final String SQL_SELECT_ALL = "SELECT EMPCODIGO, EMPNOMBRE, EMPFOTO FROM CEFAS_EMPLEADO ORDER BY EMPNOMBRE";
     private String SQL_SELECT_CRITERIO = "SELECT DISTINCT CEFAS_EMPLEADO.EMPCODIGO, EMPNOMBRE, EMPFOTO FROM"
-            + " CEFAS_EMPLEADO INNER JOIN CEFAS_TITULO ON CEFAS_EMPLEADO.EMPCODIGO = CEFAS_TITULO.EMPCODIGO WHERE ";
+            + " CEFAS_EMPLEADO INNER JOIN CEFAS_TITULO WHERE ";
     private final String SQL_UPDATE = "UPDATE CEFAS_EMPLEADO SET EMPNOMBRE = ?, EMPFECHANACIMIENTO = ?,"
             + " EMPDIRECCION = ?, EMPDUI = ?, EMPNIT = ?, EMPNUP = ?, EMPNIP = ?, EMPTELEFONO = ?, "
             + "EMPCELULAR = ?, EMPCORREO = ?, EMPFOTO = ? WHERE EMPCODIGO = ?";
@@ -187,7 +187,7 @@ public class CEFAS_EmpleadoDAO {
                 case 20:SQL_SELECT_CRITERIO+="CEFAS_TITULO.TTLFECHA LIKE ?";break;
             }
             ps = conexiondb.prepareStatement(SQL_SELECT_CRITERIO);
-            ps.setString(1, "%"+ dato +"%");
+            ps.setString(1, "%"+ dato.toUpperCase() +"%");
             rs = ps.executeQuery();
             while(rs.next())
             {
