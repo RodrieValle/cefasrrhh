@@ -25,6 +25,14 @@ public class CtrlCEFAS_TiempoExtra {
     textra.setTexFecha(fecha);
     textra.setTexHoraInicio(hInicio);
     textra.setTexHoraFin(hFinal);
+    float tiempoInicial=hInicio.getTime();
+    float tiempoFinal=hFinal.getTime(); 
+    float resta=tiempoFinal - tiempoInicial;
+    //textra.setTexDeltaTiempo(resta);
+    //el metodo getTime te devuelve en mili segundos para saberlo en mins debes hacer
+    resta=resta /(1000*60);
+    //resultado=resta*valor; seria la multiplicacion para encontrar el valor en dinero.
+    textra.setTexValorDinero(resta);
     extradao.guardaHorasExtras(textra);
     
      

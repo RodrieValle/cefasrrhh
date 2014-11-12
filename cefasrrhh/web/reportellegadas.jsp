@@ -18,9 +18,11 @@
     if (!tipo.equals("subdirector") && !tipo.equals("administrador")) {
         response.sendRedirect("avisos.jsp");
     }
+    String empleado=request.getParameter("empleado");
     CtrlCEFAS_Empleado ctrlEmpleado = new CtrlCEFAS_Empleado();
     List<CEFAS_Empleado> listaEmpleados;
     listaEmpleados = ctrlEmpleado.obtenerEmpleados();
+    
     /*if(request.getParameter("dato")!= null)
      {
      int criterio = Integer.parseInt(request.getParameter("criterio"));
@@ -39,6 +41,10 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Reporte de llegadas</title>
         <jsp:include page='inc/head_common.jsp' /> 
+         <link rel="stylesheet" type="text/css" href="css/bootstrap-formhelpers.css">
+        <script type="text/javascript" src="js/bootstrap-formhelpers.js"></script>
+         <link rel="stylesheet" type="text/css" href="css/jquery-clockpicker.min.css">
+        <script type="text/javascript" src="js/jquery-clockpicker.min.js"></script>
     </head>
     <body>
         <div id="container">
@@ -56,17 +62,36 @@
                     <div class="col-xs-4 col-xs-offset-4">
                         <form action="reportellegadas.jsp" method="post">
                         Empleado:
-                        <select name="empleado" id="empleado" class="form-control input-sm">
+                        <select name="empleado" id="empleado" class="form-control">
                             <% for (CEFAS_Empleado emp : listaEmpleados) {%>
                             <option value="<%= emp.getEmpCodigo()%>"><%= emp.getEmpNombre()%></option>
                             <% }%>
                         </select>
                         Fecha:
-                        <input type="text" name="fecha" value="" class="form-control input-sm"/>
+                         <div class="bfh-datepicker" data-min="01/15/2013" data-max="today" 
+                             data-close="true" data-align="right" data-language="en_US" data-available="es_MX">
+                        </div>
                         Hora de entrada:
-                        <input type="text" name="horaEntrada" value="" class="form-control input-sm"/>
+                        <div class="input-group clockpicker">
+                          <input type="text" name="hinicio" class="form-control" value="07:00" disabled="">
+                          <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-time"></span>
+                          </span>
+                    </div>
+                    <script type="text/javascript">
+                        $('.clockpicker').clockpicker();
+                    </script>
                         Hora de llegada:
-                        <input type="text" name="horaLlegada" value="" class="form-control input-sm"/>
+                            <div class="input-group clockpicker">
+                           <input type="text" name="hfinal"class="form-control" value="09:30" disabled="">
+                           <span class="input-group-addon">
+                             <span class="glyphicon glyphicon-time"></span>
+                           </span>
+                         </div>
+                         <script type="text/javascript">
+                           $('.clockpicker').clockpicker();
+                         </script>
+                        
                         <br>Minutos tarde:
                         ** minutos <br><br>
                         <input type="submit" value="Guardar" class="btn btn-success center-block"/>
