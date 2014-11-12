@@ -48,7 +48,7 @@
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="download"><span class="glyphicon glyphicon-list"></span> Contratación <span class="caret"></span></a>
                     <ul class="dropdown-menu" aria-labelledby="download">
-                        <li><a href="#">Administrar currículos</a></li>
+                        <li><a href="ingresarcurriculum.jsp">Administrar currículos</a></li>
                         <li><a href="#">Evaluar candidatos</a></li>
                     </ul>
                 </li>
