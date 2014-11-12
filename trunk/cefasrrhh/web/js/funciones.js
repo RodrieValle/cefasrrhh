@@ -28,6 +28,22 @@ function cargarImagen()
     };
 }
 
+function cargarCurriculo()
+{
+    var sampleFile = document.getElementById("url").files[0];
+    var formdata = new FormData();
+    formdata.append("sampleFile", sampleFile);
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "subirCurriculo", true);
+    xhr.send(formdata);
+    xhr.onload = function(e) {
+        if (this.status === 200) {
+           // $("#foto").attr("src", this.responseText);
+           // $('#urlFoto').val($('#foto').attr('src'));
+        }
+    };
+}
+
 function agregarTitulo()
 {
     var nuevoTitulo = "<div id='tit" + noDeTitulos + "'><div class='col-xs-5'> Título: <input type='text' name='titulo" + noDeTitulos + "' value=''"
