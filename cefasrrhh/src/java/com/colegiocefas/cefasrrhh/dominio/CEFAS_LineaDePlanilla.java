@@ -13,12 +13,12 @@ import java.util.Date;
  * @author Portillo
  */
 public class CEFAS_LineaDePlanilla {
-    private String empCodigo;
-    private String ldpCodigo;
+    private int empCodigo;
+    private int ldpCodigo;
     private Date ldpFecha;
     private float ldpSueldoBase;
     private float ldpHorasExtra;
-    private int ldpAusenciasTardias;
+    private float ldpAusenciasTardias;
     private float ldpSueldoDevengado;
     private float ldpAfpConfia;
     private float ldpAfpCrecer;
@@ -31,7 +31,7 @@ public class CEFAS_LineaDePlanilla {
     private float ldpMontoViatico;
     private float ldpLiquidoAPagar;
 
-    public CEFAS_LineaDePlanilla(String empCodigo, String ldpCodigo, Date ldpFecha, float ldpSueldoBase, float ldpHorasExtra, int ldpAusenciasTardias, float ldpSueldoDevengado, float ldpAfpConfia, float ldpAfpCrecer, float ldpValorNetoSujetoRenta, float ldpImpuestoSobreRenta, float ldpAnticipo, float ldpAbonoPrestamo, float ldpOrdenDeDescuento, float ldpIsss, float ldpMontoViatico, float ldpLiquidoAPagar) {
+    public CEFAS_LineaDePlanilla(int empCodigo, int ldpCodigo, Date ldpFecha, float ldpSueldoBase, float ldpHorasExtra, float ldpAusenciasTardias, float ldpSueldoDevengado, float ldpAfpConfia, float ldpAfpCrecer, float ldpValorNetoSujetoRenta, float ldpImpuestoSobreRenta, float ldpAnticipo, float ldpAbonoPrestamo, float ldpOrdenDeDescuento, float ldpIsss, float ldpMontoViatico, float ldpLiquidoAPagar) {
         this.empCodigo = empCodigo;
         this.ldpCodigo = ldpCodigo;
         this.ldpFecha = ldpFecha;
@@ -54,19 +54,19 @@ public class CEFAS_LineaDePlanilla {
     public CEFAS_LineaDePlanilla() {
     }
 
-    public String getEmpCodigo() {
+    public int getEmpCodigo() {
         return empCodigo;
     }
 
-    public void setEmpCodigo(String empCodigo) {
+    public void setEmpCodigo(int empCodigo) {
         this.empCodigo = empCodigo;
     }
 
-    public String getLdpCodigo() {
+    public int getLdpCodigo() {
         return ldpCodigo;
     }
 
-    public void setLdpCodigo(String ldpCodigo) {
+    public void setLdpCodigo(int ldpCodigo) {
         this.ldpCodigo = ldpCodigo;
     }
 
@@ -94,7 +94,7 @@ public class CEFAS_LineaDePlanilla {
         this.ldpHorasExtra = ldpHorasExtra;
     }
 
-    public int getLdpAusenciasTardias() {
+    public float getLdpAusenciasTardias() {
         return ldpAusenciasTardias;
     }
 
@@ -188,6 +188,10 @@ public class CEFAS_LineaDePlanilla {
 
     public void setLdpLiquidoAPagar(float ldpLiquidoAPagar) {
         this.ldpLiquidoAPagar = ldpLiquidoAPagar;
+    }
+
+    public void setLdpAusenciasTardias(float ldpAusenciasTardias) {
+        this.ldpAusenciasTardias = ldpAusenciasTardias;
     }
     
     
