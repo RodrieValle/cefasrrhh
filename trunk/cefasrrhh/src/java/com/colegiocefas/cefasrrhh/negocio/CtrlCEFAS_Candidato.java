@@ -17,13 +17,12 @@ public class CtrlCEFAS_Candidato {
 
     CEFAS_CandidatoDAO daoCandidato = new CEFAS_CandidatoDAO();
 
-    public void guardarCurriculum(String cdtDUI, String evcCodigo, String cdtNombre, String cdtEspecialidad) {
+    public void guardarCurriculum(String cdtDUI,String cdtNombre, String cdtEspecialidad,String cdtCurriculum) {
         CEFAS_Candidato candidato = new CEFAS_Candidato();
         candidato.setCdtDUI(cdtDUI);
-        candidato.setEvcCodigo(evcCodigo);
         candidato.setCdtNombre(cdtNombre);
         candidato.setCdtEspecialidad(cdtEspecialidad);
-       // candidato.setCdtCurriculum();
+        candidato.setCdtCurriculum(cdtCurriculum);
 
         daoCandidato.guardarCurriculum(candidato);
     }
