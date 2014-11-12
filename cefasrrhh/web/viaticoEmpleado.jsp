@@ -75,8 +75,8 @@ int codigoEmp = Integer.parseInt(request.getParameter("codigo"));
                                             <td><%= new SimpleDateFormat("dd/MM/yyyy").format(viatico.getViaFecha())%></td>
                                             <td>$ <%= viatico.getViaCantidad()%></td>
                                             <td><%= viatico.getViaDescripcion()%></td>
-                                            <td><a href="viaticoModificar.jsp?codigoViatico=<%= viatico.getViaCodigo() %>" class="btn btn-primary btn-md" role="button">Modificar Anticipo</a></td>
-                                            <td><a href="viaticoEliminar.jsp?codigoViatico=<%= viatico.getViaCodigo() %>" class="btn btn-primary btn-md" role="button">Eliminar Anticipo</a></td>
+                                            <td><a href="#" class="btn btn-primary btn-md" role="button">Modificar Anticipo</a></td>
+                                            <td><a href="#" class="btn btn-primary btn-md" role="button">Eliminar Anticipo</a></td>
                                         </tr>
                                       <%
                                     } %>  

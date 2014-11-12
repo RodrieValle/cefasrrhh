@@ -48,10 +48,9 @@
     </head>
     <body>
         <div id="container">
-            <%  if (tipo.equals("subdirector")) {
-            %>
-            <jsp:include page='inc/menu_subdirector.jsp' />
-            <% }%>
+           
+            <jsp:include page='inc/menu_directora.jsp' />
+         
             <div class="container">
                 <h1>Evaluacion de Candidato</h1>
                 <form class="form-signin"  action="evaluarCandidato.jsp" method="post">
