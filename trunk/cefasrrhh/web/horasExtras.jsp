@@ -69,7 +69,7 @@
                 <h1>Reporte de horas extras</h1>
                 <div class="row">
                     <div class="col-xs-4 col-xs-offset-4">
-                        <form action="horasExtras.jsp" method="post">
+                        <form action="horasExtras.jsp">
 
                             Empleado: <select name="codigo" id="empleado" class="form-control">
                                 <% for (CEFAS_Empleado emp : listaEmpleados) {%>

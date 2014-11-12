@@ -22,7 +22,7 @@ import java.util.logging.Logger;
  * @author Portillo
  */
 public class CEFAS_TiempoExtraDAO {
-      private final String SQL_INSERT = "INSERT INTO CEFAS_TIEMPOEXTRA (2,EMPCODIGO,TEXFECHA,TEXHORAINICIO,TEXHORAFIN,TEXDELTATIEMPO,TEXVALORDINERO) VALUES (?,?,?, ?, ?, ?)";
+      private final String SQL_INSERT = "INSERT INTO CEFAS_TIEMPOEXTRA (TEXCODIGO,EMPCODIGO,TEXFECHA,TEXHORAINICIO,TEXHORAFIN,TEXDELTATIEMPO,TEXVALORDINERO) VALUES ('2',?,?,?,?,?,?)";
     private Connection conexiondb;
     private Statement st;
     private PreparedStatement ps;
@@ -37,6 +37,8 @@ public class CEFAS_TiempoExtraDAO {
             ps.setDate(2, new Date(textra.getTexFecha().getTime()));
             ps.setDate(3, new Date(textra.getTexHoraInicio().getTime()));
             ps.setDate(4, new Date(textra.getTexHoraFin().getTime()));
+            ps.setDate(5, null);
+            ps.setFloat(6,textra.getTexValorDinero());
             int n=ps.executeUpdate();
 
             if(n>0){
