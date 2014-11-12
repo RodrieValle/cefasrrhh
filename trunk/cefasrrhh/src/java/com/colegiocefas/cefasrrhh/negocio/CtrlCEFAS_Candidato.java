@@ -24,6 +24,6 @@ public class CtrlCEFAS_Candidato {
         candidato.setCdtEspecialidad(cdtEspecialidad);
         candidato.setCdtCurriculum(cdtCurriculum);
 
-        daoCandidato.guardarCurriculum(candidato);
+        daoCandidato.ingresarCurriculum(candidato);
     }
 }
