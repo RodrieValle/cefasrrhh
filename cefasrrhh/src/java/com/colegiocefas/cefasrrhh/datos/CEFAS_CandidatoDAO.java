@@ -22,7 +22,7 @@ import java.util.logging.Logger;
  */
 public class CEFAS_CandidatoDAO {
 
-    private final String SQL_INSERT = "INSERT INTO CEFAS_CANDIDATO(CDTDUI,EVCCODIGO,CDTNOMBRE,CDTESPECIALIDAD) VALUES (?, ?, ?,?)";
+    private final String SQL_INSERT = "INSERT INTO CEFAS_CANDIDATO(CDTDUI,CDTNOMBRE,CDTESPECIALIDAD,CDTCURRICULUM) VALUES (?, ?, ?,?)";
     private Connection conexiondb;
     private Statement st;
     private PreparedStatement ps;
@@ -34,10 +34,9 @@ public class CEFAS_CandidatoDAO {
             conexiondb = ConexionDB.getConexion();
             ps = conexiondb.prepareStatement(SQL_INSERT);
             ps.setString(1,candidato.getCdtDUI());
-            ps.setString(2,candidato.getEvcCodigo());
-            ps.setString(3,candidato.getCdtNombre());
-            ps.setString(4,candidato.getCdtEspecialidad());
-            //ps.setString(5,candidato.getCdtCurriculum());
+            ps.setString(2,candidato.getCdtNombre());
+            ps.setString(3,candidato.getCdtEspecialidad());
+            ps.setString(4,candidato.getCdtCurriculum());
             int n = ps.executeUpdate();
 
             if (n > 0) {

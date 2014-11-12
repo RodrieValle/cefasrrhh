@@ -23,13 +23,13 @@
     if(request.getParameter("dui") != null)
     {
         String dui = request.getParameter("dui");
-        String codigo = request.getParameter("codigoevc");
         String nombre = request.getParameter("nombre");
         String especialidad = request.getParameter("especialidad");
+        String url = request.getParameter("url");
     
         
         CtrlCEFAS_Candidato ctrlcandidato = new CtrlCEFAS_Candidato();
-        ctrlcandidato.guardarCurriculum(dui,codigo, nombre, especialidad);
+        ctrlcandidato.guardarCurriculum(dui, nombre, especialidad,url);
         mensaje ="<div class='alert alert-success' role='alert'>Guardado</div>";
     }
     
@@ -78,10 +78,9 @@
                  <form action="ingresarcurriculum.jsp">
                          <div class="col-xs-4 col-xs-offset-4">
                              DUI: <input type="text" name="dui" class="form-control input-sm">
-                             Codigo de Evaluacion: <input type="text" name="codigoevc" class="form-control input-sm">
                              Nombre: <input type="text" name="nombre" class="form-control input-sm">
                              Especialidad: <input type="text" name="especialidad" class="form-control input-sm">
-                             
+                             Archivo de curriculum: <input type="file" name="url" class="form-control input-sm">
                              <p>
                                  <br><br>
                          <input type="submit" value="Guardar" class="btn btn-success center-block"/><br><br>          
