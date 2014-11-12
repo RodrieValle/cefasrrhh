@@ -91,8 +91,8 @@
                                             <td>$ <%= linea.getLdpLiquidoAPagar() %></td>
                                             
                                         </tr>
-                                      <%
-                                    } %>  
+                            <%
+                          } %>  
                                     </tbody>
                                 </table>
 
