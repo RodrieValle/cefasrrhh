@@ -33,6 +33,7 @@ private String empTelefono;
 private String empCelular;
 private String empCorreo;
 private String empFoto;
+private int empTipoAfp;
 
     public CEFAS_Empleado()
     {
@@ -213,5 +214,14 @@ private String empFoto;
     public void setEmpJefeInmediato(int empJefeInmediato) {
         this.empJefeInmediato = empJefeInmediato;
     }
+
+    public int getEmpTipoAfp() {
+        return empTipoAfp;
+    }
+
+    public void setEmpTipoAfp(int empTipoAfp) {
+        this.empTipoAfp = empTipoAfp;
+    }
+    
     
 }
