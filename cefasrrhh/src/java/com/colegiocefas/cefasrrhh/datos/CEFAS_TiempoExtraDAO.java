@@ -22,7 +22,7 @@ import java.util.logging.Logger;
  * @author Portillo
  */
 public class CEFAS_TiempoExtraDAO {
-      private final String SQL_INSERT = "INSERT INTO CEFAS_TIEMPOEXTRA (TEXCODIGO,EMPCODIGO,TEXFECHA,TEXHORAINICIO,TEXHORAFIN,TEXDELTATIEMPO,TEXVALORDINERO) VALUES ('2',?,?,?,?,?,?)";
+      private final String SQL_INSERT = "INSERT INTO CEFAS_TIEMPOEXTRA (EMPCODIGO,EMPSUSTITUTO,TEXFECHA,TEXHORAINICIO,TEXHORAFIN,TEXDELTATIEMPO,TEXVALORDINERO) VALUES (?,?,?,?,?,?,?)";
     private Connection conexiondb;
     private Statement st;
     private PreparedStatement ps;
@@ -33,12 +33,14 @@ public class CEFAS_TiempoExtraDAO {
      try {
             conexiondb = ConexionDB.getConexion();
             ps=conexiondb.prepareStatement(SQL_INSERT);
+            
             ps.setInt(1, textra.getEmpCodigo());
-            ps.setDate(2, new Date(textra.getTexFecha().getTime()));
-            ps.setDate(3, new Date(textra.getTexHoraInicio().getTime()));
-            ps.setDate(4, new Date(textra.getTexHoraFin().getTime()));
-            ps.setDate(5, null);
-            ps.setFloat(6,textra.getTexValorDinero());
+            ps.setInt(2, textra.getTexCodigo2());
+            ps.setDate(3, new Date(textra.getTexFecha().getTime()));
+            ps.setDate(4, new Date(textra.getTexHoraInicio().getTime()));
+            ps.setDate(5, new Date(textra.getTexHoraFin().getTime()));
+            ps.setDate(6, null);
+            ps.setFloat(7,textra.getTexValorDinero());
             int n=ps.executeUpdate();
 
             if(n>0){

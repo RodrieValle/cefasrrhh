@@ -32,12 +32,19 @@
         int codigoemp = Integer.parseInt(request.getParameter("codigo"));
                Date fecha = new SimpleDateFormat("DD/MM/YYYY").parse(request.getParameter("fecha").toString());
       
-      
-        Date hInicio = new SimpleDateFormat("HH:mm").parse(request.getParameter("hinicio").toString());
+      //SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Date)
+        //Date hInicio = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("2000-01-01 "+request.getParameter("hinicio")+":00");
+        Date hInicio = new SimpleDateFormat("HH:mm").parse(request.getParameter("hinicio"));
         Date hFinal = new SimpleDateFormat("HH:mm").parse(request.getParameter("hfinal").toString());
-        String codigoemp2 = request.getParameter("codigo2");
+        int codigoemp2 = Integer.parseInt(request.getParameter("codigo2"));
         CtrlCEFAS_TiempoExtra textra = new CtrlCEFAS_TiempoExtra();
-        textra.guardarHoras(codigoemp,fecha,hInicio,hFinal);
+        boolean exito=textra.guardarHoras(codigoemp,fecha,hInicio,hFinal,codigoemp2);
+        String error="";
+        if(exito){
+        error = "<div class=\"alert alert-danger\"><h5>Guardado con exito</h5></div>";
+        }else
+        {
+        error = "<div class=\"alert alert-danger\"><h5>Hora inicio no puede ser mayor</h5></div>";}
     }
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -107,6 +114,7 @@
 
                             ¿A quién cubrió?
                             <select name="codigo2" id="empleado" class="form-control">
+                                <option value="0"</option>Ninguno
                                 <% for (CEFAS_Empleado emp : listaEmpleados) {%>
                                 <option value="<%= emp.getEmpCodigo()%>"><%= emp.getEmpNombre()%></option>
                                 <% }%>
@@ -114,12 +122,13 @@
 
                                 <br> 
                             <input type="submit" value="Guardar" class="btn btn-success center-block"/>
+                                                
                         </form>
-
+                        
                     </div>
                 </div>
 
             </div>
-        </div>
+          </div>
     </body>
 </html>
