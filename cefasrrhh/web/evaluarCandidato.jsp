@@ -24,7 +24,6 @@
         }
         if (request.getParameter("dui") != null) {
             String dui = request.getParameter("dui");
-            String codigo = request.getParameter("codigo");
             String notaap = request.getParameter("notaap");
             String comenll = request.getParameter("comenll");
             String comenen = request.getParameter("comenen");
@@ -35,8 +34,8 @@
             Date fechaex = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("fechaex").toString());
             Date fechapsi = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("fechapsi").toString());
 
-            CtrlCEFAS_EvaluacionCandidato ctrlcefasevaluacioncandidato = new CtrlCEFAS_EvaluacionCandidato();
-            ctrlcefasevaluacioncandidato.guardarEvaluacion(dui, codigo, comenll, fechaen, comenen, fechaex, notaap, comenap, fechapsi, notapsi, comenpsi);
+            CtrlCEFAS_EvaluacionCandidato ctrlevccandidato = new CtrlCEFAS_EvaluacionCandidato();
+            ctrlevccandidato.guardarEvaluacion(dui, comenll, fechaen, comenen, fechaex, notaap, comenap, fechapsi, notapsi, comenpsi);
         }
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -93,7 +92,7 @@
                                  <p></p>
                                  <div class="input-group" style="margin-top: 10px">
                                      Nota:<input type="text" name="notaap" class="form-control">
-                                  
+                                     <span class="input-group-addon">0.0-10.0</span>
                                      <p></p>
                                  </div>
                                      <div class="panel-heading">Comentario: </div>
@@ -115,7 +114,7 @@
                                  <p></p>
                                  <div class="input-group" style="margin-top: 10px">
                                   Nota:<input type="text" name="notapsi" class="form-control">
-                                    
+                                     <span class="input-group-addon">0.0-10.0</span>
                                      <p></p>
                                  </div>
                                      <div class="panel-heading">Comentario: </div>
@@ -131,8 +130,9 @@
                          <input type="submit" value="Guardar" class="btn btn-success center-block"/><br><br>
                  </form>
                      
-            </div>
+            
            
+        </div>
         </div>
     </body>
 </html>

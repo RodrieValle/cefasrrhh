@@ -14,6 +14,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -23,6 +25,7 @@ import java.util.logging.Logger;
  */
 public class CEFAS_SancionDAO {
     private final String SQL_INSERT = "INSERT INTO CEFAS_SANCION (EMPCODIGO,SCNCODIGO,SCNFECHA,SCNMOTIVO,SCNSANCION) VALUES (?, ?, ?, ?, ?)";
+    private final String SQL_SELECTBYID = "SELECT * FROM CEFAS_SANCION WHERE EMPCODIGO LIKE ?";
     private Connection conexiondb;
     private Statement st;
     private PreparedStatement ps;
@@ -48,5 +51,34 @@ ConexionDB.cerrarConexion();
              
         }
     }
+   public List<CEFAS_Sancion> getSancion()
+    {
+     
+        List<CEFAS_Sancion> listSancion = new ArrayList<CEFAS_Sancion>();
+        CEFAS_Sancion scn= null;
+        try {
+            conexiondb = ConexionDB.getConexion();
+            ps = conexiondb.prepareStatement(SQL_SELECTBYID);
+            ps.setString(1, scn.getEmpCodigo());
+           
+            rs = ps.executeQuery();
+            while(rs.next())
+            {
+                scn= new CEFAS_Sancion();
+                scn.setEmpCodigo(rs.getString("empCodigo"));
+                //scn.
+                //scn.
+                //scn.
+                //scn.
+                listSancion.add(scn);
+               
+            }
+            ConexionDB.cerrarConexion();
+        } catch (SQLException ex) {
+            Logger.getLogger(CEFAS_SancionDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return listSancion;
+    } 
+    
     
 }

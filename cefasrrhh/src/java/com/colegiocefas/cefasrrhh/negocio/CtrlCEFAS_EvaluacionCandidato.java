@@ -14,21 +14,19 @@ public class CtrlCEFAS_EvaluacionCandidato {
 
     private CEFAS_EvaluacionCandidatoDAO daoEvaluacionCandidato = new CEFAS_EvaluacionCandidatoDAO();
 
-    public void guardarEvaluacion(String DUI, String ecvCodigo, String evcObservacionesReferencias, Date evcFechaEntrevista, String evcComentarioEntrevista, Date evcFechaExamenAptitud, String evcNotaExamenAptitud, String evcComentarioExamenAptitud, Date evcFechaExamenPsico, String evcNotaExamenPsico, String evcComentarioExamenPsico) {
+    public void guardarEvaluacion(String DUI, String evcObservacionesReferencias, Date evcFechaEntrevista, String evcComentarioEntrevista, Date evcFechaExamenAptitud, String evcNotaExamenAptitud, String evcComentarioExamenAptitud, Date evcFechaExamenPsico, String evcNotaExamenPsico, String evcComentarioExamenPsico) {
 
-        CEFAS_EvaluacionCandidato evaluacioncan = new CEFAS_EvaluacionCandidato();
-
-        evaluacioncan.setCdtDUI(DUI);
-        evaluacioncan.setEvcCodigo(ecvCodigo);
-        evaluacioncan.setEvcObservacionesReferencias(evcObservacionesReferencias);
-        evaluacioncan.setEvcFechaEntrevista(evcFechaEntrevista);
-        evaluacioncan.setEvcComentarioEntrevista(evcComentarioEntrevista);
-        evaluacioncan.setEvcFechaExamenAptitud(evcFechaExamenAptitud);
-        evaluacioncan.setEvcNotaExamenAptitud(evcNotaExamenAptitud);
-        evaluacioncan.setEvcComentarioExamenAptitud(evcComentarioExamenAptitud);
-        evaluacioncan.setEvcFechaExamenPsico(evcFechaExamenPsico);
-        evaluacioncan.setEvcFechaExamenPsico(evcFechaExamenPsico);
-        evaluacioncan.setEvcCometarioExamenPsico(evcComentarioExamenPsico);
-        daoEvaluacionCandidato.almacenarEvaluacion(evaluacioncan);
+        CEFAS_EvaluacionCandidato evccan = new CEFAS_EvaluacionCandidato();
+        evccan.setCdtDUI(DUI);
+        evccan.setEvcObservacionesReferencias(evcObservacionesReferencias);
+        evccan.setEvcFechaEntrevista(evcFechaEntrevista);
+        evccan.setEvcComentarioEntrevista(evcComentarioEntrevista);
+        evccan.setEvcFechaExamenAptitud(evcFechaExamenAptitud);
+        evccan.setEvcNotaExamenAptitud(evcNotaExamenAptitud);
+        evccan.setEvcComentarioExamenAptitud(evcComentarioExamenAptitud);
+        evccan.setEvcFechaExamenPsico(evcFechaExamenPsico);
+        evccan.setEvcNotaExamenPsico(evcNotaExamenPsico);
+        evccan.setEvcCometarioExamenPsico(evcComentarioExamenPsico);
+        daoEvaluacionCandidato.almacenarEvaluacion(evccan);
     }
 }
