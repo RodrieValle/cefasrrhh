@@ -32,17 +32,21 @@ public class CtrlCEFAS_LineaDePlanilla {
         List<CEFAS_Empleado> listEmpleados= new ArrayList();
         listEmpleados=ctrlEmpleados.obtenerEmpleados();  
         
+   
+        
         //inicio iteracion de empleados
         for(CEFAS_Empleado empleado: listEmpleados)
         {
+
             linea = new CEFAS_LineaDePlanilla();
             int codigo=Integer.parseInt(empleado.getEmpCodigo());
+
             linea.setEmpCodigo(codigo);
             
             float salario=empleado.getEmpSalario();
             linea.setLdpSueldoBase(salario);
             
-            float horas=0;
+           float horas=0;
             linea.setLdpHorasExtra(horas);
             
             float ausencias=0;
