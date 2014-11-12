@@ -29,7 +29,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Elaborar Planilla</title>
+        <jsp:include page='inc/head_common.jsp' />
     </head>
     <body>
         <div id="container">
@@ -66,8 +67,7 @@
                                             <td>Viaticos</td>
                                             <td>Sueldo Neto</td>
                                             
-                                            <td></td>
-                                            <td></td>
+                                           
                                         </tr> 
                                      <%
                     for(CEFAS_LineaDePlanilla linea: listaLinea)
