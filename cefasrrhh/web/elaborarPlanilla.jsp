@@ -4,6 +4,8 @@
     Author     : MARIA JUAREZ
 --%>
 
+<%@page import="java.util.Date"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.List"%>
 <%@page import="com.colegiocefas.cefasrrhh.dominio.CEFAS_LineaDePlanilla"%>
 <%@page import="com.colegiocefas.cefasrrhh.negocio.CtrlCEFAS_LineaDePlanilla"%>
@@ -40,8 +42,11 @@
         <h1>Planilla del mes</h1>
         
       
-                      <div class="panel panel-primary">
-                          <div class="panel-heading">Fecha:</div>
+                      
+                
+        </div>
+<div class="panel panel-primary">
+                          <div class="panel-heading">Fecha: <%= new SimpleDateFormat("dd/MM/yyyy").format(new Date()) %></div>
                           
                   
                         <div class="panel-body">
@@ -51,21 +56,21 @@
                              <table class="table table-striped table-hover">
                                     <tbody>
                                                   <tr>
-                                            <td>Codigo de Empleado</td>
-                                            <td>Sueldo Base</td> 
-                                            <td>Horas Extras</td>
-                                            <td>Ausencias</td>
-                                            <td>Sueldo devengado</td>
-                                            <td>ISSS</td>
-                                            <td>AFP Confia</td>
-                                            <td>AFP Crecer</td>
-                                            <td>Valor sujeto a Renta</td>
-                                            <td>Renta</td>
-                                            <td>Anticipo</td>
-                                            <td>Prestamo</td>
-                                            <td>Orden de Descuento</td>
-                                            <td>Viaticos</td>
-                                            <td>Sueldo Neto</td>
+                                            <th>Codigo de Empleado</th>
+                                            <th>Sueldo Base</th> 
+                                            <th>Horas Extras</th>
+                                            <th>Ausencias</th>
+                                            <th>Sueldo devengado</th>
+                                            <th>ISSS</th>
+                                            <th>AFP Confia</th>
+                                            <th>AFP Crecer</th>
+                                            <th>Valor sujeto a Renta</th>
+                                            <th>Renta</th>
+                                            <th>Anticipo</th>
+                                            <th>Prestamo</th>
+                                            <th>Orden de Descuento</th>
+                                            <th>Viaticos</th>
+                                            <th>Sueldo Neto</th>
                                             
                                            
                                         </tr> 
@@ -75,20 +80,20 @@
                 %>  
                                         <tr>
                                             <td><%= linea.getEmpCodigo() %> </td>
-                                            <td>$<%= linea.getLdpSueldoBase() %></td>
-                                            <td>$ <%= linea.getLdpHorasExtra() %></td>
-                                            <td>$ <%= linea.getLdpAusenciasTardias() %></td>
-                                            <td>$ <%= linea.getLdpSueldoDevengado() %></td>
-                                            <td>$ <%= linea.getLdpIsss() %></td>
-                                            <td>$ <%= linea.getLdpAfpConfia() %></td>
-                                            <td>$ <%= linea.getLdpAfpCrecer() %></td>
-                                            <td>$ <%= linea.getLdpValorNetoSujetoRenta() %></td>
-                                            <td>$ <%= linea.getLdpImpuestoSobreRenta() %></td>
-                                            <td>$ <%= linea.getLdpAnticipo() %></td>
-                                            <td>$ <%= linea.getLdpAbonoPrestamo() %></td>
-                                            <td>$ <%= linea.getLdpOrdenDeDescuento() %></td>
-                                            <td>$ <%= linea.getLdpMontoViatico() %></td>
-                                            <td>$ <%= linea.getLdpLiquidoAPagar() %></td>
+                                            <td>$<%= String.format("%.2f", linea.getLdpSueldoBase()) %></td>
+                                            <td>$ <%= String.format("%.2f", linea.getLdpHorasExtra()) %></td>
+                                            <td>$ <%= String.format("%.2f", linea.getLdpAusenciasTardias()) %></td>
+                                            <td>$ <%= String.format("%.2f", linea.getLdpSueldoDevengado()) %></td>
+                                            <td>$ <%= String.format("%.2f", linea.getLdpIsss()) %></td>
+                                            <td>$ <%= String.format("%.2f", linea.getLdpAfpConfia()) %></td>
+                                            <td>$ <%= String.format("%.2f", linea.getLdpAfpCrecer()) %></td>
+                                            <td>$ <%= String.format("%.2f", linea.getLdpValorNetoSujetoRenta()) %></td>
+                                            <td>$ <%= String.format("%.2f", linea.getLdpImpuestoSobreRenta()) %></td>
+                                            <td>$ <%= String.format("%.2f", linea.getLdpAnticipo()) %></td>
+                                            <td>$ <%= String.format("%.2f", linea.getLdpAbonoPrestamo()) %></td>
+                                            <td>$ <%= String.format("%.2f", linea.getLdpOrdenDeDescuento()) %></td>
+                                            <td>$ <%= String.format("%.2f", linea.getLdpMontoViatico()) %></td>
+                                            <td>$ <%= String.format("%.2f", linea.getLdpLiquidoAPagar()) %></td>
                                             
                                         </tr>
                             <%
@@ -98,8 +103,6 @@
 
                         </div>
                       </div>
-                
-        </div>
         </div>
     </body>
 </html>
