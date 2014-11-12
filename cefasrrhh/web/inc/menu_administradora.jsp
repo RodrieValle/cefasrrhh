@@ -34,7 +34,7 @@
                         <li><a href="ordenDescuento.jsp">Ingresar órdenes de descuentos</a></li>
                         <li><a href="viatico.jsp">Ingresar viáticos</a></li>
                         <li><a href="#">Calcular indemnización</a></li>
-                        <li><a href="#">Elaborar planilla</a></li>
+                        <li><a href="elaborarPlanilla.jsp">Elaborar planilla</a></li>
                         <li><a href="#">Generar recibos</a></li>
                         <li><a href="#">Reportes</a></li>
                     </ul>
