@@ -48,91 +48,105 @@
     </head>
     <body>
         <div id="container">
-            <%  if (tipo.equals("subdirector"))
-             { 
+            <%  if (tipo.equals("subdirector")) {
             %>
             <jsp:include page='inc/menu_subdirector.jsp' />
-            <% } %>
+            <% }%>
             <div class="container">
                 <h1>Evaluacion de Candidato</h1>
-                <form action="evaluarCandidato.jsp" method="post">
+                <form class="form-signin"  action="evaluarCandidato.jsp" method="post">
                     <div class="panel panel-primary">
-                        DUI: <input type="text" name="dui" value="" class="form-control input-sm"  required> Codigo de evaluacion: <input type="text" name="codigo" value="" class="form-control input-sm"  required>
-                        <p></p>
-                        <div class="panel-heading">Observaciones de llamadas a referencia: <input type="checkbox" name="hecho"> Hecho</div>
                         <div class="panel-body">
                             <div class="row">
-                                <textarea name="comenll"  cols="100" rows="5" class="form-control"> </textarea>
-                                <p></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel panel-primary">
-                        <h2>Entrevista</h2>
-                        <div class="panel-heading"></div>
-                        <div class="row">
                             <div class="col-xs-5 col-xs-offset-1">
-                                Fecha de entrevista:<input type="text" name="fechaen" value="" class="form-control input-sm" placeholder= "Formato: dd/MM/yyyy" required /> <input type="checkbox" name="hecho"> Hecho<br>
-                                <p></p>
-
-                                <div class="panel-heading">Comentario: </div>
-                                <div class="panel-body">
-                                    <div class="row">
-                                        <textarea name="comenen" cols="100" rows="5" class="form-control"> </textarea>
-                                        <p></p>
-                                    </div>
-                                </div>
-                            </div>
+                     <p></p>
+                        DUI: <input type="text" name="dui" value="" class="form-control input-sm"  required> 
+                        Codigo de evaluacion: <input type="text" name="codigo" value="" class="form-control input-sm"  required> 
+                        <input type="checkbox" name="hecho"> Hecho
                         </div>
-                    </div>
-                    <div class="panel panel-primary">
-                        <h2>Examen de aptitud</h2>
-                        <div class="panel-heading"></div>
-                        <div class="row">
+                        </div>
+                        </div>
+                        <p></p>
+                        
+                        <div class="panel-body">
+                            <div class="row">
                             <div class="col-xs-5 col-xs-offset-1">
-                                Fecha de examen:<input type="text" name="fechaex" value="" class="form-control input-sm" placeholder= "Formato: dd/MM/yyyy" required /> <input type="checkbox" name="hecho"> Hecho
+                                Observaciones de llamadas a referencia: <textarea name="comenll"  cols="100" rows="5" class="form-control"> </textarea>
                                 <p></p>
-                                <div class="input-group" style="margin-top: 10px">
-                                    Nota:<input type="text" name="notaap" class="form-control">
-                                    <p></p>
-                                </div>
-                                <div class="panel-heading">Comentario: </div>
-                                <div class="panel-body">
-                                    <div class="row">
-                                        <textarea name="comenap" cols="100" rows="5" class="form-control"> </textarea>
-                                        <p></p>
-                                    </div>
-                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="panel panel-primary">
-                        <h2>Examen psicologico</h2>
-                        <div class="panel-heading"></div>
-                        <div class="row">
-                            <div class="col-xs-5 col-xs-offset-1">
-                                Fecha de examen :<input type="text" name="fechapsi" value="" class="form-control input-sm" placeholder= "Formato: dd/MM/yyyy" required /> <input type="checkbox" name="hecho"> Hecho
+                        </div>
+                     </div>
+                     <div class="panel panel-primary">
+                             
+                         <div class="panel-heading"><h2>Entrevista</h2></div>
+                         <div class="row">
+
+                             <div class="col-xs-5 col-xs-offset-1">
+                             <p></p>
+                                 Fecha de entrevista:<input type="text" name="fechaen" value="" class="form-control input-sm" placeholder= "Formato: dd/MM/yyyy" required /> 
+                                 <input type="checkbox" name="hecho"> Hecho
+                                 <p></p>
+
+                               
+                        <div class="panel-body">
+                            <div class="row">
+                            Comentarios:
+                                <textarea name="comenen" cols="100" rows="5" class="form-control"> </textarea>
                                 <p></p>
-                                <div class="input-group" style="margin-top: 10px">
-                                    Nota:<input type="text" name="notapsi" class="form-control">
-                                    <p></p>
-                                </div>
-                                <div class="panel-heading">Comentario: </div>
-                                <div class="panel-body">
-                                    <div class="row">
-                                        <textarea name="comenpsi" cols="100" rows="5" class="form-control"> </textarea>
-                                        <p></p>
-                                    </div>
-                                </div>
                             </div>
                         </div>
-                    </div>
-                    <input type="submit" value="Guardar" class="btn btn-success center-block"/><br><br>
-                </form>
+                             </div>
+                         </div>
+                     </div>
+                     <div class="panel panel-primary">
+                      <div class="panel-heading"><h2>Examen de aptitud</h2></div>
+                         <div class="row">
+                             <div class="col-xs-5 col-xs-offset-1">
+                             <p></p>
+                                 Fecha de examen :<input type="text" name="fechaex" value="" class="form-control input-sm" placeholder= "Formato: dd/MM/yyyy" required />
+                                 Nota: <input type="number" name="notaap" min="0.0" max="10.0" step="0.1" class="form-control input-sm"> 
+                                 <input type="checkbox" name="hecho"> Hecho
+                                 <p></p>
+                                 
+                                    
+                        <div class="panel-body">
+                            <div class="row">
+                                Comentarios: <textarea name="comenap" cols="100" rows="5" class="form-control"> </textarea>
+                                <p></p>
+                                
+                            </div>
+                        </div>
+                             </div>
+                         </div>
+                     </div><div class="panel panel-primary">
+                      <div class="panel-heading"><h2>Examen Psicologico</h2></div>
+                         <div class="row">
+                             <div class="col-xs-5 col-xs-offset-1">
+                             <p></p>
+                                 Fecha de examen :<input type="text" name="fechapsi" value="" class="form-control input-sm" placeholder= "Formato: dd/MM/yyyy" required />
+                                 Nota: <input type="number" name="notapsi" min="0.0" max="10.0" step="0.1" class="form-control input-sm"> 
+                                 <input type="checkbox" name="hecho"> Hecho
+                                 <p></p>
+                                 
+                                    
+                        <div class="panel-body">
+                            <div class="row">
+                                Comentarios: <textarea name="comenpsi" cols="100" rows="5" class="form-control"> </textarea>
+                                <p></p>
+                                
+                            </div>
+                        </div>
+                             </div>
+                         </div>
+                     </div>
+                     <input type="submit" value="Guardar" class="btn btn-success center-block"/><br><br>
 
 
+                     </form>
+                     </div>
+                     </div>
 
-            </div>
-        </div>
+        
     </body>
 </html>
