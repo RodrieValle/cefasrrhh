@@ -22,13 +22,13 @@ import java.util.logging.Logger;
  */
 public class CEFAS_CandidatoDAO {
 
-    private final String SQL_INSERT = "INSERT INTO CEFAS_CANDIDATO(CDTDUI,CDTNOMBRE,CDTESPECIALIDAD,CDTCURRICULUM) VALUES (?, ?, ?,?)";
+    private final String SQL_INSERT = "INSERT INTO CEFAS_CANDIDATO(CDTDUI,CDTNOMBRE,CDTESPECIALIDAD,CDTCURRICULUM) VALUES (?, ?, ?, ?)";
     private Connection conexiondb;
     private Statement st;
     private PreparedStatement ps;
     private ResultSet rs;
 
-    public void guardarCurriculum(CEFAS_Candidato candidato) {
+    public void ingresarCurriculum(CEFAS_Candidato candidato) {
 
         try {
             conexiondb = ConexionDB.getConexion();
