@@ -29,7 +29,7 @@ public class CEFAS_EmpleadoDAO {
     private final String SQL_INSERT = "";
     private final String SQL_SELECT = "SELECT * FROM CEFAS_USUARIO INNER JOIN CEFAS_EMPLEADO ON "
             + "CEFAS_USUARIO.EMPCODIGO = CEFAS_EMPLEADO.EMPCODIGO AND CEFAS_USUARIO.EMPCODIGO = ?";
-    private final String SQL_SELECT_ALL = "SELECT EMPCODIGO, EMPNOMBRE, EMPFOTO FROM CEFAS_EMPLEADO ORDER BY EMPNOMBRE";
+    private final String SQL_SELECT_ALL = "SELECT EMPCODIGO, EMPNOMBRE, EMPSALARIO, EMPTIPOAFP, EMPFOTO FROM CEFAS_EMPLEADO ORDER BY EMPNOMBRE";
     private String SQL_SELECT_CRITERIO = "SELECT DISTINCT CEFAS_EMPLEADO.EMPCODIGO, EMPNOMBRE, EMPFOTO FROM"
             + " CEFAS_EMPLEADO INNER JOIN CEFAS_TITULO WHERE ";
     private final String SQL_UPDATE = "UPDATE CEFAS_EMPLEADO SET EMPNOMBRE = ?, EMPFECHANACIMIENTO = ?,"
@@ -147,6 +147,8 @@ public class CEFAS_EmpleadoDAO {
                 emp.setEmpCodigo(rs.getString("empCodigo"));
                 emp.setEmpNombre(rs.getString("empNombre"));
                 emp.setEmpFoto(rs.getString("empFoto"));
+                emp.setEmpSalario(rs.getFloat("empSalario"));
+                emp.setEmpTipoAfp(rs.getInt("empTipoafp"));
                 listaEmpleados.add(emp);
             }
             ConexionDB.cerrarConexion();
