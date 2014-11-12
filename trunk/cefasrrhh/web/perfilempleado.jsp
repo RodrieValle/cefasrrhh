@@ -3,6 +3,7 @@
     Created on : 10-24-2014, 11:23:43 PM
     Author     : Rodrigo
 --%>
+<%@page import="com.colegiocefas.cefasrrhh.negocio.CtrlCEFAS_Sancion"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Date"%>
@@ -79,6 +80,9 @@
     CEFAS_Empleado empleado = ctrlEmpleado.getEmpleadoPorUsuario(usuario);
     CtrlCEFAS_Titulo ctrlTitulo = new CtrlCEFAS_Titulo();
     List<CEFAS_Titulo> titulos = ctrlTitulo.getTitulos(Integer.parseInt(empleado.getEmpCodigo()));
+    
+    CtrlCEFAS_Sancion ctrlSancion = new CtrlCEFAS_Sancion();
+    //ctrlSancion.
 %>
 
 <!DOCTYPE html>
@@ -189,6 +193,12 @@
                     </div>
                     <div class="panel panel-primary">
                         <div class="panel-heading">Evaluaciones</div>
+                        <div class="panel-body">
+                            
+                        </div>
+                    </div>
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">Sanciones</div>
                         <div class="panel-body">
                             
                         </div>

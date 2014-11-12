@@ -43,7 +43,7 @@
         <div id="container">
             <jsp:include page='inc/menu_directora.jsp' />
             <div class="container">
-                <h1>Gestion de perfiles de empleado</h1>
+                <h1>Gestión de perfiles de empleado</h1>
                 <div class="panel panel-primary">
                     <div class="panel-heading">Zona de búsqueda</div>
                     <div class="panel-body">
