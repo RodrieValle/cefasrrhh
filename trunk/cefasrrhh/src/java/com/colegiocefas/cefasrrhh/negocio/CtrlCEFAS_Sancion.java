@@ -13,6 +13,7 @@ package com.colegiocefas.cefasrrhh.negocio;
 import com.colegiocefas.cefasrrhh.datos.CEFAS_SancionDAO;
 import com.colegiocefas.cefasrrhh.dominio.CEFAS_Sancion;
 import java.util.Date;
+import java.util.List;
 
 public class CtrlCEFAS_Sancion {
     private CEFAS_SancionDAO daoSancion = new CEFAS_SancionDAO();
@@ -29,5 +30,8 @@ public class CtrlCEFAS_Sancion {
         daoSancion.almacenarSancion(scn);
     }
         
-    
+    public List<CEFAS_Sancion> getSancion()
+    {
+        return daoSancion.getSancion();
+    }
 }
