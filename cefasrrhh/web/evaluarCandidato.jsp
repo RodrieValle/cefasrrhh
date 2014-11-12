@@ -61,7 +61,7 @@
                             <div class="col-xs-5 col-xs-offset-1">
                      <p></p>
                         DUI: <input type="text" name="dui" value="" class="form-control input-sm"  required> 
-                        Codigo de evaluacion: <input type="text" name="codigo" value="" class="form-control input-sm"  required> 
+                       <%-- Codigo de evaluacion: <input type="text" name="codigo" value="" class="form-control input-sm"  required> --%>
                         <input type="checkbox" name="hecho"> Hecho
                         </div>
                         </div>
