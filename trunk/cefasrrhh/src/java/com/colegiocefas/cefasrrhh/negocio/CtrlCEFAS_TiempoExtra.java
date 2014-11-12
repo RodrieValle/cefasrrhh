@@ -17,11 +17,12 @@ import java.util.Date;
 public class CtrlCEFAS_TiempoExtra {
   
     CEFAS_TiempoExtraDAO extradao= new CEFAS_TiempoExtraDAO();
-    public void guardarHoras(int codigoemp, Date fecha,Date hInicio,Date hFinal){
+    public boolean guardarHoras(int codigoemp, Date fecha,Date hInicio,Date hFinal,int codigo2){
    
-    
+    if(hInicio.getTime()>hFinal.getTime()){
     CEFAS_TiempoExtra textra= new CEFAS_TiempoExtra();
     textra.setEmpCodigo(codigoemp);
+    textra.setTexCodigo2(codigo2);
     textra.setTexFecha(fecha);
     textra.setTexHoraInicio(hInicio);
     textra.setTexHoraFin(hFinal);
@@ -30,11 +31,14 @@ public class CtrlCEFAS_TiempoExtra {
     float resta=tiempoFinal - tiempoInicial;
     //textra.setTexDeltaTiempo(resta);
     //el metodo getTime te devuelve en mili segundos para saberlo en mins debes hacer
-    resta=resta /(1000*60);
+    float resultado=((resta /(1000*60))/60)*4;
     //resultado=resta*valor; seria la multiplicacion para encontrar el valor en dinero.
-    textra.setTexValorDinero(resta);
+    textra.setTexValorDinero(resultado);
     extradao.guardaHorasExtras(textra);
-    
+    return true;
+    }else{
+    return false;
+            }
      
     }
     
