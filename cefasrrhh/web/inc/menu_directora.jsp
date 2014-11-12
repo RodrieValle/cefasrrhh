@@ -24,6 +24,13 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="avisos.jsp"><span class="glyphicon glyphicon-home"></span> Inicio</a></li>
                 <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="download"><span class="glyphicon glyphicon-transfer"></span> Actividades <span class="caret"></span></a>
+                    <ul class="dropdown-menu" aria-labelledby="download">
+                        <li><a href="controldeactividades.jsp">Control de actividades</a></li>
+                        <li><a href="controldeavisos.jsp">Control de avisos</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="download"><span class="glyphicon glyphicon-book"></span> Recurso Humano <span class="caret"></span></a>
                     <ul class="dropdown-menu" aria-labelledby="download">
                         <li><a href="gestionperfiles.jsp">Gestionar perfiles de empleado</a></li>
