@@ -33,8 +33,8 @@
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="download"><span class="glyphicon glyphicon-ok"></span> Evaluaciones <span class="caret"></span></a>
                     <ul class="dropdown-menu" aria-labelledby="download">
-                        <li><a href="#">Evaluar funciones</a></li>
-                        <li><a href="#">Evaluar competencias</a></li>
+                        <li><a href="evaluacionFunciones.jsp">Evaluar funciones</a></li>
+                        <li><a href="evaluacionCompetencias.jsp">Evaluar competencias</a></li>
                         <li><a href="#">Supervisar clase</a></li>
                     </ul>
                 </li>

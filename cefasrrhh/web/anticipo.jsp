@@ -45,8 +45,18 @@
         ctrlAnticipo.guardarAnticipo(anticipo);
 }
     
-        CtrlCEFAS_Empleado ctrlEmpleado = new CtrlCEFAS_Empleado();
-    List<CEFAS_Empleado> listaEmpleados = ctrlEmpleado.obtenerEmpleados();
+    CtrlCEFAS_Empleado ctrlEmpleado = new CtrlCEFAS_Empleado();
+    List<CEFAS_Empleado> listaEmpleados;
+    if(request.getParameter("dato")!= null)
+    {
+        int criterio = Integer.parseInt(request.getParameter("criterio"));
+        String dato = request.getParameter("dato");
+        listaEmpleados = ctrlEmpleado.obtenerEmpleados(criterio, dato);
+    }
+    else
+    {
+        listaEmpleados = ctrlEmpleado.obtenerEmpleados();
+    }
 %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -63,25 +73,50 @@
             <jsp:include page='inc/menu_administradora.jsp' />
             <div class="container">
                 <h1>Ingreso Anticipo a Empleados.</h1>
-                <div class="panel panel-primary">
+                
+                 <div class="panel panel-primary">
                     <div class="panel-heading">Zona de búsqueda</div>
                     <div class="panel-body">
                         <div class="row">
-                            <div class="col-xs-8 col-xs-offset-2">
-                                Buscar empleado por cualquier criterio
+                            <form action="anticipo.jsp" method="post">
+                            <div class="col-xs-4 col-xs-offset-1">
+                                <select name="criterio" id="criterio" class="form-control input-sm">
+                                    <option value="1">Código de empleado</option>
+                                    <option value="2">Nombre</option>
+                                    <option value="3">Fecha de nacimiento</option>
+                                    <option value="4">Dirección</option>
+                                    <option value="5">Año de contratación</option>
+                                    <option value="6">Plaza actual</option>
+                                    <option value="7">Plaza anterior</option>
+                                    <option value="8">Jefe inmediato</option>
+                                    <option value="9">Salario</option>
+                                    <option value="10">Tipo de contrato</option>
+                                    <option value="11">NUP</option>
+                                    <option value="12">DUI</option>
+                                    <option value="13">NIT</option>
+                                    <option value="14">NIP</option>
+                                    <option value="15">Teléfono</option>
+                                    <option value="16">Celular</option>
+                                    <option value="17">Correo</option>
+                                    <option value="18">Título</option>
+                                    <option value="19">Lugar de título</option>
+                                    <option value="20">Fecha de título</option>
+                                </select>
+                            </div>
+                            <div class="col-xs-4 col-xs-offset-2">
                                 <div class="input-group">
-                                    <input type="text" class="form-control">
+                                    <input type="text" name="dato" class="form-control input-sm">
                                     <span class="input-group-btn">
-                                        <button class="btn btn-success" type="button">
+                                        <button class="btn btn-sm btn-success" type="submit">
                                             <span class="glyphicon glyphicon-search"></span> 
                                         </button>
                                     </span>
                                 </div>
                             </div>
+                            </form>
                         </div>
-
                     </div>
-                </div><%-- fin del buscador --%>
+                </div>
                 
                 <%-- inicio lista de empleados --%>
                 <div class="panel panel-primary">

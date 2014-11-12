@@ -40,147 +40,181 @@
  </head>
 
  <body>
-   <h1>Evaluacion por Competencias</h1>
-      
-      <form method="post">
-   <p>
-      Introduzca los datos de la Evaluacion<br>
-      Codigo del empleado: <input type="text" name="codigo"><br>
-      Nombre del empleado: <input type="text" name="nombre"><br>
-      Codigo de la evaluacion: <input type="text" name="codeva"><br>
-      Fecha:    <input type="text" name="fecha"><br>
+     
+     <div id="container">
+        <%  if(tipo.equals("director"))
+            {
+        %>
+                <jsp:include page='inc/menu_directora.jsp' />
+         <% }
+            else if(tipo.equals("empleado"))
+            {
+         %>
+                <jsp:include page='inc/menu_empleado.jsp' />
+         <% }
+            else if(tipo.equals("subdirector"))
+            {
+         %>
+                <jsp:include page='inc/menu_subdirector.jsp' />
+         <% }
+            else if(tipo.equals("asistente"))
+            {
+         %>
+                <jsp:include page='inc/menu_asistente.jsp' />
+         <% }
+            else if(tipo.equals("administrador"))
+            {
+         %>
+                <jsp:include page='inc/menu_administradora.jsp' />
+         <% } %>
+         
+          <div class="container">
+   <h1>Evaluacion por Funciones</h1>
+        Introduzca los datos de la Evaluacion<br>
+      <form class="form-signin" role="form" method="post" action="">
+   <div class="row"> 
+       <div class="col-xs-4">  
+                            </div> 
+                             <div class="col-xs-4">  
+    
+      Codigo del empleado: <input type="text" name="codigo" class="form-control input-sm" required><br>
+      Nombre del empleado: <input type="text" name="nombre" class="form-control input-sm" required><br>
+      Codigo de la evaluacion: <input type="text" name="codeva" class="form-control input-sm" required><br>
+      Fecha:    <input type="text" name="fecha" class="form-control input-sm" required><br>
     <br>
-  </p>
-</form>
+ </div>
+      
+</div>
 
 
+          
      <table border="1" align="center">
        <tr>
-       
-          <td> Evaluacion por funciones</td>
-          <td>Fecha</td>
-    
+         
+           <td colspan="2"><h1>Evaluacion por funciones</h1></td>
        </tr>
 
        <tr>
-         <td> Criterios</td>
-         <td>Observaciones</td>
+           <td> <h2>Criterios</h2></td>
+         <td><h2>Observaciones</h2></td>
 
        </tr>
 
 
     <tr>
        <td>Clases, Deacuerdo a formato de supervision de clases</td>
-       <td><input name="item1" type="text" size="50" maxlength="50">
+       <td><input name="item1" type="text" size="50" maxlength="50"></td>
+    </tr>
+  
+    <tr>
+       <td>Tareas, Distribuidas, Apropiadas, Revisadas</td>
+      <td><input name="item2" type="text" size="50" maxlength="50"></td>
+     
+    </tr>
+
+    <tr>
+       <td>Cuadernos, Contenido, Revisado, Corregido</td>
+       <td><input name="item3" type="text" size="50" maxlength="50"></td>
+    </tr>
+
+    <tr>
+       <td>Libros, Limpieza, útiles, forrados, revisados</td>
+       <td><input name="item4" type="text"  size="50" maxlength="50"></td>
+    </tr>
+
+    <tr>
+       <td>Examenes,Formato, ortografía, contenido, aplicativo, revisión</td>
+       <td><input name="item5" type="text" size="50" maxlength="50"></td>
 
     </tr>
 
     <tr>
-       <td>Tareas, Distribuidas, Apropiadas, Revisadas<td>
-       <td><input name="item2" type="text" size="50" maxlength="50">
+       <td>Planificaciones, Contenido, entrega a tiempo, utilizadas</td>
+       <td><input name="item6" type="text" size="50" maxlength="50"></td>
 
     </tr>
 
     <tr>
-       <td>Cuadernos, Contenido, Revisado, Corregido<td>
-       <td><input name="item3" type="text" size="50" maxlength="50">
+       <td>Responsabilidades, Cuidos, Asamblea, Per. Mur., Reu. c/Padres</td>
+       <td><input name="item7" type="text" size="50" maxlength="50"></td>
 
     </tr>
 
     <tr>
-       <td>Libros, Limpieza, útiles, forrados, revisados<td>
-       <td><input name="item4" type="text" size="50" maxlength="50">
-
-    </tr>
-
-    <tr>
-       <td>Examenes,Formato, ortografía, contenido, aplicativo, revisión<td>
-       <td><input name="item5" type="text" size="50" maxlength="50">
-
-    </tr>
-
-    <tr>
-       <td>Planificaciones, Contenido, entrega a tiempo, utilizadas<td>
-       <td><input name="item6" type="text" size="50" maxlength="50">
-
-    </tr>
-
-    <tr>
-       <td>Responsabilidades, Cuidos, Asamblea, Per. Mur., Reu. c/Padres<td>
-       <td><input name="item7" type="text" size="50" maxlength="50">
-
-    </tr>
-
-    <tr>
-       <td>Disciplina, Seguimiento Manual, Pastoreo, claro y consistente, orden<td>
-       <td><input name="item8" type="text" size="50" maxlength="50">
+       <td>Disciplina, Seguimiento Manual, Pastoreo, claro y consistente, orden</td>
+       <td><input name="item8" type="text" size="50" maxlength="50"></td>
 
     </tr>
 
     
     <tr>
-       <td>Habitos y procedimientos<td>
-       <td><input name="item10" type="text" size="50" maxlength="50">
+       <td>Habitos y procedimientos</td>
+       <td><input name="item10" type="text" size="50" maxlength="50"></td>
 
     </tr>
 
     <tr>
-       <td>Aula<td>
-       <td><input name="item11" type="text" size="50" maxlength="50">
+       <td>Aula</td>
+       <td><input name="item11" type="text" size="50" maxlength="50"></td>
 
     </tr>
 
     <tr>
-       <td>Teachers book<td>
-       <td><input name="item12" type="text" size="50" maxlength="50">
+       <td>Teachers book</td>
+       <td><input name="item12" type="text" size="50" maxlength="50"></td>
 
     </tr>
 
     <tr>
-       <td>Lealtad al ausente<td>
-       <td><input name="item15" type="text" size="50" maxlength="50">
+       <td>Lealtad al ausente</td>
+       <td><input name="item15" type="text" size="50" maxlength="50"></td>
 
     </tr>
 
     
     <tr>
-       <td>Respeto a autoridades<td>
-       <td><input name="item15" type="text" size="50" maxlength="50">
+       <td>Respeto a autoridades</td>
+       <td><input name="item15" type="text" size="50" maxlength="50"></td>
 
     </tr>
 
     <tr>
-       <td>Puntualidad, asistencia y permisos<td>
-       <td><input name="item16" type="text" size="50" maxlength="50">
+       <td>Puntualidad, asistencia y permisos</td>
+       <td><input name="item16" type="text" size="50" maxlength="50"></td>
 
     </tr>
 
     <tr>
-       <td>Presentacion personal<td>
-       <td><input name="item17" type="text" size="50" maxlength="50">
+       <td>Presentacion personal</td>
+       <td><input name="item17" type="text" size="50" maxlength="50"></td>
 
     </tr>
 
     <tr>
-       <td>Sigue indicaciones<td>
-       <td><input name="item18" type="text" size="50" maxlength="50">
+       <td>Sigue indicaciones</td>
+       <td><input name="item18" type="text" size="50" maxlength="50"></td>
 
     </tr>
 
     <tr>
-       <td>Disposicion y actitud<td>
-       <td><input name="item19" type="text" size="50" maxlength="50">
+       <td>Disposicion y actitud</td>
+       <td><input name="item19" type="text" size="50" maxlength="50"></td>
 
     </tr>
       
       <tr>
-       <td>Cuida propiedad del colegio<td>
-       <td><input name="item121" type="text" size="50" maxlength="50">
+       <td>Cuida propiedad del colegio</td>
+       <td><input name="item121" type="text" size="50" maxlength="50"></td>
 
     </tr>
 
-   </table>
-   <input type="submit" value="Procesa">
- </body>
+   </table><br><br>
+   
+   <input type="submit" value="Procesa" class="btn btn-success center-block">
+  
+   </form>
+    </div> <%-- fin del div id=container --%>
+ </div>
+     </body>
 </html>
 
