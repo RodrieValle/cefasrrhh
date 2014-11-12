@@ -26,8 +26,8 @@
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="download"><span class="glyphicon glyphicon-book"></span> Recurso Humano <span class="caret"></span></a>
                     <ul class="dropdown-menu" aria-labelledby="download">
-                        <li><a href="#">Ingresar horas extras</a></li>
-                        <li><a href="#">Reportar llegadas</a></li>
+                        <li><a href="horasExtras.jsp">Ingresar horas extras</a></li>
+                        <li><a href="reportellegadas.jsp">Reportar llegadas</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -35,7 +35,7 @@
                     <ul class="dropdown-menu" aria-labelledby="download">
                         <li><a href="evaluacionFunciones.jsp">Evaluar funciones</a></li>
                         <li><a href="evaluacionCompetencias.jsp">Evaluar competencias</a></li>
-                        <li><a href="#">Supervisar clase</a></li>
+                        <li><a href="supervisarClase.jsp">Supervisar clase</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
