@@ -78,11 +78,11 @@
     int usuario = Integer.parseInt(sesionOk.getAttribute("codigo").toString());
     CtrlCEFAS_Empleado ctrlEmpleado = new CtrlCEFAS_Empleado();
     CEFAS_Empleado empleado = ctrlEmpleado.getEmpleadoPorUsuario(usuario);
+    CEFAS_Empleado jefe = ctrlEmpleado.getEmpleadoPorUsuario(empleado.getEmpJefeInmediato());
     CtrlCEFAS_Titulo ctrlTitulo = new CtrlCEFAS_Titulo();
     List<CEFAS_Titulo> titulos = ctrlTitulo.getTitulos(Integer.parseInt(empleado.getEmpCodigo()));
+    //CtrlCEFAS_Sancion ctrlSancion = new CtrlCEFAS_Sancion();
     
-    CtrlCEFAS_Sancion ctrlSancion = new CtrlCEFAS_Sancion();
-    //ctrlSancion.
 %>
 
 <!DOCTYPE html>
@@ -158,7 +158,7 @@
                                     Plaza anterior: <%= empleado.getEmpPlazaAnterior() %><br>
                                 </div>
                                 <div class="col-xs-6">
-                                    Jefe inmediato: <%= empleado.getEmpJefeInmediato() %><br>
+                                    Jefe inmediato: <%= jefe.getEmpNombre() %><br>
                                     Salario: <%= new DecimalFormat("$ #,###.00").format(empleado.getEmpSalario()) %><br>
                                     Tipo de contrato: <%= empleado.getEmpTipoDeContrato() %><br>
                                 </div>

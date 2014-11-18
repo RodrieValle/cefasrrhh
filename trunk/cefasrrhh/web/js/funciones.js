@@ -33,8 +33,11 @@ function agregarTitulo()
     var nuevoTitulo = "<div id='tit" + noDeTitulos + "'><div class='col-xs-5'> Título: <input type='text' name='titulo" + noDeTitulos + "' value=''"
             + "class='form-control input-sm' required/> </div><div class='col-xs-4'>Lugar: <input type='text'"
             + " name='lugar" + noDeTitulos + "' value='' class='form-control input-sm' required/></div><div class='col-xs-2'>"
+            //+ "<div class='bfh-datepicker' data-format='d/m/y'  data-name='fecha" + noDeTitulos + "' data-language='es' data-input='input-sm form-control' data-icon=''"
+            //+ "data-close='true' data-align='right' data-date='01/01/2015'></div>"
             + "Fecha: <input type='text' name='fecha" + noDeTitulos + "' value='' class='form-control "
-            + "input-sm' required/></div><div class='col-xs-1'><br><button type='button' class='btn btn-danger"
+            + "input-sm' required maxlength='10' placeholder='dd/MM/yyyy' pattern='(0[1-9]|1[0-9]|2[0-9]|3[01]).(0[1-9]|1[012]).[0-9]{4}'/>"
+            + "</div><div class='col-xs-1'><br><button type='button' class='btn btn-danger"
             + " btn-sm center-block' onclick='eliminarTitulo(" + noDeTitulos + ")'><span class='glyphicon glyphicon-remove'></span></button></div></div>";
     $('#titulos').append(nuevoTitulo);
     noDeTitulos++;
