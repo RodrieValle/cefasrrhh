@@ -32,6 +32,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Modificar perfil de empleado - CEFAS RRHH</title>
         <jsp:include page='inc/head_common.jsp' /> 
+        <link rel="stylesheet" type="text/css" href="css/bootstrap-formhelpers.css">
+        <script type="text/javascript" src="js/bootstrap-formhelpers.js"></script>
     </head>
     <body>
         <div id="container">
@@ -75,18 +77,22 @@
                                     <input type="text" style="display: none" value="<%= empleado.getEmpFoto() %>" id="urlFoto" name="urlFoto">
                                 </div>
                                 <div class="col-xs-4">
-                                    Nombre: <input type="text" name="nombre" value="<%= empleado.getEmpNombre() %>" class="form-control input-sm"  required><br>
-                                    Fecha de nacimiento: <input type="text" name="fechaNacimiento" value="<%= new SimpleDateFormat("dd/MM/yyyy").format(empleado.getEmpFechaNacimiento()) %>" class="form-control input-sm" required><br>
-                                    Dirección: <input type="text" name="direccion" value="<%= empleado.getEmpDireccion() %>" class="form-control input-sm" required><br>
-                                    DUI: <input type="text" name="dui" value="<%= empleado.getEmpDUI() %>" class="form-control input-sm" required><br>
-                                    NIT: <input type="text" name="nit" value="<%= empleado.getEmpNIT() %>" class="form-control input-sm" required><br>
+                                    Nombre: <input type="text" name="nombre" value="<%= empleado.getEmpNombre() %>" class="form-control input-sm"  required maxlength="100"><br>
+                                    Fecha de nacimiento: 
+                                    <div class="bfh-datepicker" data-format="d/m/y"  data-name="fechaNacimiento" data-language="es" data-input="input-sm form-control" data-icon=""
+                                            data-close="true" data-align="right" data-date="<%= new SimpleDateFormat("dd/MM/yyyy").format(empleado.getEmpFechaNacimiento()) %>">
+                                    </div>
+                                    <br>
+                                    Dirección: <input type="text" name="direccion" value="<%= empleado.getEmpDireccion() %>" class="form-control input-sm" required maxlength="200"><br>
+                                    DUI: <input type="number" name="dui" value="<%= empleado.getEmpDUI() %>" class="form-control input-sm" required max="999999999"><br>
+                                    NIT: <input type="number" name="nit" value="<%= empleado.getEmpNIT() %>" class="form-control input-sm" required maxlength="99999999999999"><br>
                                 </div>
                                 <div class="col-xs-4">
-                                    NUP: <input type="text" name="nup" value="<%= empleado.getEmpNUP() %>" class="form-control input-sm" required><br>
-                                    NIP: <input type="text" name="nip" value="<%= empleado.getEmpNIP() %>" class="form-control input-sm" required><br>
-                                    Teléfono: <input type="text" name="telefono" value="<%= empleado.getEmpTelefono()%>" class="form-control input-sm" required><br>
-                                    Celular: <input type="text" name="celular" value="<%= empleado.getEmpCelular()%>" class="form-control input-sm" required><br>
-                                    E-mail: <input type="text" name="email" value="<%= empleado.getEmpCorreo() %>" class="form-control input-sm" required><br>
+                                    NUP: <input type="number" name="nup" value="<%= empleado.getEmpNUP() %>" class="form-control input-sm" required max="999999999999"><br>
+                                    NIP: <input type="number" name="nip" value="<%= empleado.getEmpNIP() %>" class="form-control input-sm" required max="999999999"><br>
+                                    Teléfono: <input type="number" name="telefono" value="<%= empleado.getEmpTelefono()%>" class="form-control input-sm" max="99999999"><br>
+                                    Celular: <input type="number" name="celular" value="<%= empleado.getEmpCelular()%>" class="form-control input-sm" max="99999999"><br>
+                                    E-mail: <input type="email" name="email" value="<%= empleado.getEmpCorreo() %>" class="form-control input-sm" maxlength="25"><br>
                                 </div>
                             </div>
                         </div>
@@ -103,13 +109,16 @@
                                 %>
                                 <div id="tit<%= x%>">
                                     <div class="col-xs-5">
-                                        Título: <input type="text" name="titulo<%= x%>" value="<%= titulo.getTtltitulo() %>" class="form-control input-sm" required/> 
+                                        Título: <input type="text" name="titulo<%= x%>" value="<%= titulo.getTtltitulo() %>" class="form-control input-sm" required maxlength="200"/> 
                                     </div>
                                     <div class="col-xs-4">
-                                        Lugar: <input type="text" name="lugar<%= x%>" value="<%= titulo.getTtllugar()%>" class="form-control input-sm" required/> 
+                                        Lugar: <input type="text" name="lugar<%= x%>" value="<%= titulo.getTtllugar()%>" class="form-control input-sm" required maxlength="200"/> 
                                     </div>
                                     <div class="col-xs-2">
-                                        Fecha: <input type="text" name="fecha<%= x%>" value="<%= new SimpleDateFormat("dd/MM/yyyy").format(titulo.getTtlfecha())%>" class="form-control input-sm" required/> 
+                                        Fecha:
+                                        <div class="bfh-datepicker" data-format="d/m/y"  data-name="fecha<%= x%>" data-language="es" data-input="input-sm form-control" data-icon=""
+                                            data-close="true" data-align="right" data-date="<%= new SimpleDateFormat("dd/MM/yyyy").format(titulo.getTtlfecha())%>">
+                                        </div>
                                     </div>
                                     <div class="col-xs-1">
                                         <br>

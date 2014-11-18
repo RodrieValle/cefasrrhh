@@ -65,6 +65,10 @@
             <div class="container">
                 <h1>Avisos </h1>
                 <%
+                    if(lista.isEmpty())
+                    { %>
+                        No hay avisos <br>
+                  <%}
                     for(CEFAS_Aviso avs: lista)
                     {
                 %>
@@ -79,28 +83,35 @@
                 %>
                 <br>
                 <h1>Fechas importantes </h1>
+                <% if(actividades.isEmpty())
+                {%>
+                    No hay actividades próximas
+                <%}else
+                {%>
                 <div class="panel panel-primary">
-                          <div class="panel-heading">Actividades próximas</div>
-                        <div class="panel-body">
-                            <table class="table table-striped table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th class="col-xs-2">Fecha</th>
-                                            <th class="col-xs-6">Descripción</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <% for(CEFAS_Actividad actividad : actividades)
-                                        { %>
-                                        <tr>
-                                            <td><%= new SimpleDateFormat("dd/MM/yyyy").format(actividad.getActFecha()) %></td>
-                                            <td><%= actividad.getActDescripcion() %></td>
-                                        </tr>
-                                     <% } %>
-                                    </tbody>
-                                </table>
-                        </div>
-                </div>
+                  <div class="panel-heading">Actividades próximas</div>
+                    <div class="panel-body">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th class="col-xs-2">Fecha</th>
+                                <th class="col-xs-6">Descripción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% for(CEFAS_Actividad actividad : actividades)
+                            { %>
+                            <tr>
+                                <td><%= new SimpleDateFormat("dd/MM/yyyy").format(actividad.getActFecha()) %></td>
+                                <td><%= actividad.getActDescripcion() %></td>
+                            </tr>
+                         <% } %>
+                        </tbody>
+                    </table>
+                    </div>
+            </div>
+             <% }%>
+                
             </div>
         </div> <%-- fin del div id=container --%>
     </body>

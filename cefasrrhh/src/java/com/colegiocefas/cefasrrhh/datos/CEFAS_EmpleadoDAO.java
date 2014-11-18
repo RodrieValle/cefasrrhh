@@ -63,6 +63,7 @@ public class CEFAS_EmpleadoDAO {
                 empleado.setEmpAnioContratacion(rs.getString("empAnioContratacion"));
                 empleado.setEmpPlazaActual(rs.getString("empPlazaActual"));
                 empleado.setEmpPlazaAnterior(rs.getString("empPlazaAnterior"));
+                empleado.setEmpJefeInmediato(rs.getInt("empJefeInmediato"));
                 empleado.setEmpSalario(rs.getFloat("empSalario"));
                 empleado.setEmpTipoDeContrato(rs.getString("emptipoDeContrato"));
                 empleado.setEmpNUP(rs.getString("empNup"));

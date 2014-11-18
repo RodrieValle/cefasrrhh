@@ -27,6 +27,7 @@
     CEFAS_Empleado empleado = ctrlEmpleado.getEmpleadoPorUsuario(codigoEmp);
     CtrlCEFAS_Titulo ctrlTitulo = new CtrlCEFAS_Titulo();
     List<CEFAS_Titulo> titulos = ctrlTitulo.getTitulos(Integer.parseInt(empleado.getEmpCodigo()));
+    List<CEFAS_Empleado> emp = ctrlEmpleado.obtenerEmpleados();
     response.setContentType("text/html;charset=UTF-8");
 %>
 
@@ -36,6 +37,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Modificar perfil de empleado - CEFAS RRHH</title>
         <jsp:include page='inc/head_common.jsp' /> 
+        <link rel="stylesheet" type="text/css" href="css/bootstrap-formhelpers.css">
+        <script type="text/javascript" src="js/bootstrap-formhelpers.js"></script>
     </head>
     <body>
         <div id="container">
@@ -55,18 +58,22 @@
                                     <input type="text" style="display: none" value="<%= empleado.getEmpFoto() %>" id="urlFoto" name="urlFoto">
                                 </div>
                                 <div class="col-xs-4">
-                                    Nombre: <input type="text" name="nombre" value="<%= empleado.getEmpNombre() %>" class="form-control input-sm"  required><br>
-                                    Fecha de nacimiento: <input type="text" name="fechaNacimiento" value="<%= new SimpleDateFormat("dd/MM/yyyy").format(empleado.getEmpFechaNacimiento()) %>" class="form-control input-sm" required><br>
-                                    Dirección: <input type="text" name="direccion" value="<%= empleado.getEmpDireccion() %>" class="form-control input-sm" required><br>
-                                    DUI: <input type="text" name="dui" value="<%= empleado.getEmpDUI() %>" class="form-control input-sm" required><br>
-                                    NIT: <input type="text" name="nit" value="<%= empleado.getEmpNIT() %>" class="form-control input-sm" required><br>
+                                    Nombre: <input type="text" name="nombre" value="<%= empleado.getEmpNombre() %>" class="form-control input-sm"  required maxlength="100"><br>
+                                    Fecha de nacimiento: 
+                                    <div class="bfh-datepicker" data-format="d/m/y"  data-name="fechaNacimiento" data-language="es" data-input="input-sm form-control" data-icon=""
+                                            data-close="true" data-align="right" data-date="<%= new SimpleDateFormat("dd/MM/yyyy").format(empleado.getEmpFechaNacimiento()) %>">
+                                    </div>
+                                    <br>
+                                    Dirección: <input type="text" name="direccion" value="<%= empleado.getEmpDireccion() %>" class="form-control input-sm" required maxlength="200"><br>
+                                    DUI: <input type="number" name="dui" value="<%= empleado.getEmpDUI() %>" class="form-control input-sm" required max="999999999"><br>
+                                    NIT: <input type="number" name="nit" value="<%= empleado.getEmpNIT() %>" class="form-control input-sm" required maxlength="99999999999999"><br>
                                 </div>
                                 <div class="col-xs-4">
-                                    NUP: <input type="text" name="nup" value="<%= empleado.getEmpNUP() %>" class="form-control input-sm" required><br>
-                                    NIP: <input type="text" name="nip" value="<%= empleado.getEmpNIP() %>" class="form-control input-sm" required><br>
-                                    Teléfono: <input type="text" name="telefono" value="<%= empleado.getEmpTelefono()%>" class="form-control input-sm" required><br>
-                                    Celular: <input type="text" name="celular" value="<%= empleado.getEmpCelular()%>" class="form-control input-sm" required><br>
-                                    E-mail: <input type="text" name="email" value="<%= empleado.getEmpCorreo() %>" class="form-control input-sm" required><br>
+                                    NUP: <input type="number" name="nup" value="<%= empleado.getEmpNUP() %>" class="form-control input-sm" required max="999999999999"><br>
+                                    NIP: <input type="number" name="nip" value="<%= empleado.getEmpNIP() %>" class="form-control input-sm" required max="999999999"><br>
+                                    Teléfono: <input type="number" name="telefono" value="<%= empleado.getEmpTelefono()%>" class="form-control input-sm" max="99999999"><br>
+                                    Celular: <input type="number" name="celular" value="<%= empleado.getEmpCelular()%>" class="form-control input-sm" max="99999999"><br>
+                                    E-mail: <input type="email" name="email" value="<%= empleado.getEmpCorreo() %>" class="form-control input-sm" maxlength="25"><br>
                                 </div>
                             </div>
                         </div>
@@ -76,16 +83,24 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-xs-5 col-xs-offset-1">
-                                    Año de contratación: <input type="text" name="anioContratacion" value="<%= empleado.getEmpAnioContratacion() %>" class="form-control input-sm" required><br>
-                                    Plaza actual: <input type="text" name="plazaActual" value="<%= empleado.getEmpPlazaActual() %>" class="form-control input-sm" required> <br>
-                                    Plaza anterior: <input type="text" name="plazaAnterior" value="<%= empleado.getEmpPlazaAnterior() %>" class="form-control input-sm" required><br>
+                                    Año de contratación: <input type="number" name="anioContratacion" value="<%= empleado.getEmpAnioContratacion() %>" class="form-control input-sm" required max="9999"><br>
+                                    Plaza actual: <input type="text" name="plazaActual" value="<%= empleado.getEmpPlazaActual() %>" class="form-control input-sm" required maxlength="50"> <br>
+                                    Plaza anterior: <input type="text" name="plazaAnterior" value="<%= empleado.getEmpPlazaAnterior() %>" class="form-control input-sm" required maxlength="50"><br>
                                 </div>
                                 <div class="col-xs-5">
-                                    Jefe inmediato: <input type="text" name="jefeInmediato" value="<% %>" class="form-control input-sm" required><br>
+                                    Jefe inmediato: 
+                                    <select name="jefeInmediato" id="" class="form-control input-sm" required>
+                                        <% 
+                                            for(CEFAS_Empleado e : emp)
+                                            { %>
+                                            <option value="<%= e.getEmpCodigo() %>"><%= e.getEmpNombre() %></option>
+                                        <%  }
+                                        %>
+                                    </select><br>
                                     Salario: <br>
                                     <div class="input-group">
                                         <span class="input-group-addon input-sm">$</span>
-                                        <input type="text" name="salario" value="<%= new DecimalFormat("#,###.00").format(empleado.getEmpSalario()) %>" class="form-control input-sm" required><br>
+                                        <input type="number" name="salario" value="<%= new DecimalFormat("#,###.00").format(empleado.getEmpSalario()) %>" class="form-control input-sm" required min="0.00"><br>
                                     </div><br>
                                     Tipo de contrato: <input type="text" name="tipoContrato" value="<%= empleado.getEmpTipoDeContrato() %>" class="form-control input-sm" required><br>
                                 </div>
