@@ -22,7 +22,7 @@ import java.util.logging.Logger;
  */
 public class CEFAS_CandidatoDAO {
 
-    private final String SQL_INSERT = "INSERT INTO CEFAS_CANDIDATO(CDTDUI,CDTNOMBRE,CDTESPECIALIDAD,CDTCURRICULO) VALUES (?, ?, ?, ?)";
+    private final String SQL_INSERT = "INSERT INTO CEFAS_CANDIDATO(CDTDUI,EVCCODIGO,CDTNOMBRE,CDTESPECIALIDAD,CDTCURRICULO) VALUES (?, NULL, ?, ?)";
     private Connection conexiondb;
     private Statement st;
     private PreparedStatement ps;
