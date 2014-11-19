@@ -78,7 +78,7 @@
                      </div>
                      <div class="panel panel-primary">
                              
-                         <div class="panel-heading"><h2>Entrevista</h2></div>
+                         <div class="panel-heading">Entrevista</div>
                          <div class="row">
 
                              <div class="col-xs-5 col-xs-offset-1">
@@ -99,7 +99,7 @@
                          </div>
                      </div>
                      <div class="panel panel-primary">
-                      <div class="panel-heading"><h2>Examen de aptitud</h2></div>
+                      <div class="panel-heading">Examen de aptitud</div>
                          <div class="row">
                              <div class="col-xs-5 col-xs-offset-1">
                              <p></p>
@@ -119,7 +119,7 @@
                              </div>
                          </div>
                      </div><div class="panel panel-primary">
-                      <div class="panel-heading"><h2>Examen Psicologico</h2></div>
+                      <div class="panel-heading">Examen Psicologico</div>
                          <div class="row">
                              <div class="col-xs-5 col-xs-offset-1">
                              <p></p>
