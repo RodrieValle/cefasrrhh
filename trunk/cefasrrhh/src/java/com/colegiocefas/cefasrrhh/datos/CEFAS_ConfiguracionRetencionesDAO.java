@@ -27,7 +27,9 @@ public class CEFAS_ConfiguracionRetencionesDAO {
     
     private final String SQL_INSERT = "";
     private final String SQL_SELECT = "SELECT * FROM CEFAS_CONFIGURACIONRETENCIONES";
-    private final String SQL_UPDATE = "";
+    private final String SQL_RENTA = "UPDATE CEFAS_CONFIGURACIONRETENCIONES SET CFGPORCENTAJE = ?, CFGMINIMO = ?,"
+            + " CFGMAXIMO = ?, CFGSOBREEXCESO = ?, CFGCUOTAFIJA = ? WHERE CFGCODIGO = ?";
+    private final String SQL_BASICOS = "UPDATE CEFAS_CONFIGURACIONRETENCIONES SET CFGPORCENTAJE = ?, CFGMAXIMO = ? WHERE CFGCODIGO = ?";
      private final String SQL_DELETE = "";
     private Connection conexiondb;
     private Statement st;
@@ -59,5 +61,40 @@ public class CEFAS_ConfiguracionRetencionesDAO {
         }
         return retenciones;
     }
+    
+    
+    
+    public void actualizarRENTA(int codigo, float porcentaje, float minimo, float maximo, float exceso, float fija) {
+        try {
+            conexiondb = ConexionDB.getConexion();
+            ps = conexiondb.prepareStatement(SQL_RENTA);
+            ps.setFloat(1, porcentaje);
+            ps.setFloat(2, minimo);
+            ps.setFloat(3, maximo);
+            ps.setFloat(4, exceso);
+            ps.setFloat(5, fija);
+            ps.setFloat(6, codigo);
+            ps.executeUpdate();
+            ConexionDB.cerrarConexion();
+        } catch (SQLException ex) {
+            Logger.getLogger(CEFAS_ConfiguracionRetencionesDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    
+     public void actualizarBasicas(int codigo, float porcentaje, float maximo) {
+        try {
+            conexiondb = ConexionDB.getConexion();
+            ps = conexiondb.prepareStatement(SQL_BASICOS);
+            ps.setFloat(1, porcentaje);
+            ps.setFloat(2, maximo);
+            ps.setFloat(3, codigo);
+            ps.executeUpdate();
+            ConexionDB.cerrarConexion();
+        } catch (SQLException ex) {
+            Logger.getLogger(CEFAS_ConfiguracionRetencionesDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     
 }

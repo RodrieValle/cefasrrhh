@@ -117,6 +117,10 @@ public float calculoRenta(float valor, CEFAS_ConfiguracionRetenciones rentaIConf
 
 if(valor >= rentaIConfig.getCfgMinimo() && valor <=rentaIConfig.getCfgMaximo()){
 //no tiene renta
+    exceso=rentaIConfig.getCfgSobreExceso();
+fija=rentaIConfig.getCfgCuotaFija();
+sujeto=valor-exceso;
+renta=sujeto*rentaIConfig.getCfgPorcentaje() +fija;
     return renta;
 
 }
