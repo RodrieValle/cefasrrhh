@@ -23,4 +23,14 @@ public class CtrlCEFAS_ConfiguracionRetenciones {
         return daoretencion.obtenerRetenciones();
     }
     
+    
+    
+     public void actualizarConfiguraciones(int codigo, float porcentaje, float minimo, float maximo, float exceso, float fija){
+         daoretencion.actualizarRENTA(codigo, porcentaje, minimo,  maximo,  exceso, fija);
+     }
+     
+     public void actualizarConfiguraciones(int codigo, float porcentaje, float maximo){
+         daoretencion.actualizarBasicas(codigo, porcentaje, maximo);
+     }
+    
 }
