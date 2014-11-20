@@ -14,6 +14,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -37,8 +38,8 @@ public class CEFAS_TiempoExtraDAO {
             ps.setInt(1, textra.getEmpCodigo());
             ps.setInt(2, textra.getTexCodigo2());
             ps.setDate(3, new Date(textra.getTexFecha().getTime()));
-            ps.setDate(4, new Date(textra.getTexHoraInicio().getTime()));
-            ps.setDate(5, new Date(textra.getTexHoraFin().getTime()));
+            ps.setString(4, new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(textra.getTexHoraInicio()));
+            ps.setString(5, new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(textra.getTexHoraFin()));
             ps.setDate(6, null);
             ps.setFloat(7,textra.getTexValorDinero());
             int n=ps.executeUpdate();
