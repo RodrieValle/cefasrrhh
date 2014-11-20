@@ -79,22 +79,23 @@
                      <div class="panel panel-primary">
                              
                          <div class="panel-heading">Entrevista</div>
+                         <div class="panel-body">
+                                    <div class="row">
+                                    Comentarios:
+                                        <textarea name="comenen" cols="100" rows="5" class="form-control"> </textarea>
+                                        <p></p>
+                                    </div>
+                                </div>
+                         
                          <div class="row">
-
-                             <div class="col-xs-5 col-xs-offset-1">
+                             <div class="col-xs-3 col-xs-offset-1">
                              <p></p>
                                  Fecha de entrevista:<input type="text" name="fechaen" value="" class="form-control input-sm" placeholder= "Formato: dd/MM/yyyy" required /> 
                                  <input type="checkbox" name="hecho"> Hecho
                                  <p></p>
 
                                
-                        <div class="panel-body">
-                            <div class="row">
-                            Comentarios:
-                                <textarea name="comenen" cols="100" rows="5" class="form-control"> </textarea>
-                                <p></p>
-                            </div>
-                        </div>
+                                
                              </div>
                          </div>
                      </div>
