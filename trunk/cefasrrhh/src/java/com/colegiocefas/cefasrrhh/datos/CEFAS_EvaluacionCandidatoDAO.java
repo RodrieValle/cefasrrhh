@@ -26,20 +26,20 @@ public class CEFAS_EvaluacionCandidatoDAO {
     private PreparedStatement ps;
     private ResultSet rs;
 
-    public boolean almacenarEvaluacion(CEFAS_EvaluacionCandidato evaluacioncan) {
+    public boolean almacenarEvaluacion(CEFAS_EvaluacionCandidato evccan) {
         try {
             conexiondb = ConexionDB.getConexion();
             ps = conexiondb.prepareStatement(SQL_INSERT);
-            ps.setString(1, evaluacioncan.getCdtDUI());
-            ps.setString(2, evaluacioncan.getEvcObservacionesReferencias());
-            ps.setDate(3, new Date(evaluacioncan.getEvcFechaEntrevista().getTime()));
-            ps.setString(4, evaluacioncan.getEvcComentarioEntrevista());
-            ps.setDate(5, new Date(evaluacioncan.getEvcFechaExamenAptitud().getTime()));
-            ps.setString(6, evaluacioncan.getEvcNotaExamenAptitud());
-            ps.setString(7, evaluacioncan.getEvcComentarioExamenAptitud());
-            ps.setDate(8, new Date(evaluacioncan.getEvcFechaExamenPsico().getTime()));
-            ps.setString(9, evaluacioncan.getEvcNotaExamenPsico());
-            ps.setString(10, evaluacioncan.getEvcCometarioExamenPsico());
+            ps.setString(1, evccan.getCdtDUI());
+            ps.setString(2, evccan.getEvcObservacionesReferencias());
+            ps.setDate(3, new Date(evccan.getEvcFechaEntrevista().getTime()));
+            ps.setString(4, evccan.getEvcComentarioEntrevista());
+            ps.setDate(5, new Date(evccan.getEvcFechaExamenAptitud().getTime()));
+            ps.setString(6, evccan.getEvcNotaExamenAptitud());
+            ps.setString(7, evccan.getEvcComentarioExamenAptitud());
+            ps.setDate(8, new Date(evccan.getEvcFechaExamenPsico().getTime()));
+            ps.setString(9, evccan.getEvcNotaExamenPsico());
+            ps.setString(10, evccan.getEvcCometarioExamenPsico());
 
             ps.executeUpdate();
             ConexionDB.cerrarConexion();
