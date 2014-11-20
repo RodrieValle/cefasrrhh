@@ -42,14 +42,14 @@
         CtrlCEFAS_TiempoExtra textra = new CtrlCEFAS_TiempoExtra();
         boolean exito=textra.guardarHoras(codigoemp,fecha,hInicio,hFinal,codigoemp2);
         if(exito){
-        error = "<div class='alert alert-danger alert-dismissible' role='alert'><button type='button' class='close'"
+        error = "<div class='alert alert-success' role='alert'><button type='button' class='close'"
                 + " data-dismiss='alert'><span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span></button>"
                 + "Guardado con éxito</div>";
         }else
         {
         error = "<div class='alert alert-danger alert-dismissible' role='alert'><button type='button' class='close'"
                 + " data-dismiss='alert'><span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span></button>"
-                + "Hora inicio no puede ser mayor</div>";
+                + "Hora inicio no puede ser mayor o sustituto no debe ser igual</div>";
         }
     }
 %>

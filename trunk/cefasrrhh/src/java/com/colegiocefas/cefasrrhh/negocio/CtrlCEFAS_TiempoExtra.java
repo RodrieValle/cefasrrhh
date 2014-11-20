@@ -19,7 +19,7 @@ public class CtrlCEFAS_TiempoExtra {
     CEFAS_TiempoExtraDAO extradao= new CEFAS_TiempoExtraDAO();
     public boolean guardarHoras(int codigoemp, Date fecha,Date hInicio,Date hFinal,int codigo2){
    
-    if(hInicio.before(hFinal)){
+    if(hInicio.before(hFinal) && (codigoemp!=codigo2)){
     CEFAS_TiempoExtra textra= new CEFAS_TiempoExtra();
     textra.setEmpCodigo(codigoemp);
     textra.setTexCodigo2(codigo2);
