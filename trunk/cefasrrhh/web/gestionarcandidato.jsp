@@ -3,7 +3,8 @@
     Created on : 19/11/2014, 09:02:13 PM
     Author     : Sergio
 --%>
-
+<%@page import="com.colegiocefas.cefasrrhh.dominio.CEFAS_Empleado"%>
+<%@page import="com.colegiocefas.cefasrrhh.dominio.CEFAS_Empleado"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     request.setCharacterEncoding("UTF-8");
@@ -63,17 +64,18 @@
 		<div class="panel-body">
 		<table class="table table-striped table-hover">
 		<tbody>
+              
 			<tr>
 				<td>Nombre:</td>
 				<td>Especialidad:</td>
-				<td>Curriculum:</a></td>
+				<td>Curriculum:</td>
 				<td>Evaluacion:</td>
 			</tr>
 			<tr>
 				<td></td>
 				<td></td>
 				<td><a href="" class="btn btn-primary btn-md" role="button">Ver Curriculum</a></td>
-				<td><a href="" class="btn btn-primary btn-md" role="button">Ver Evaluacion</a></td>
+				<td><a href="evaluarCandidato.jsp" class="btn btn-primary btn-md" role="button">Ver Evaluacion</a></td>
 
 			</tr>
 		</tbody>
