@@ -26,7 +26,7 @@ public class CEFAS_EvaluacionCandidatoDAO {
     private PreparedStatement ps;
     private ResultSet rs;
 
-    public void almacenarEvaluacion(CEFAS_EvaluacionCandidato evaluacioncan) {
+    public boolean almacenarEvaluacion(CEFAS_EvaluacionCandidato evaluacioncan) {
         try {
             conexiondb = ConexionDB.getConexion();
             ps = conexiondb.prepareStatement(SQL_INSERT);
@@ -41,16 +41,14 @@ public class CEFAS_EvaluacionCandidatoDAO {
             ps.setString(9, evaluacioncan.getEvcNotaExamenPsico());
             ps.setString(10, evaluacioncan.getEvcCometarioExamenPsico());
 
-            int n = ps.executeUpdate();
-
-            if (n > 0) {
-                Logger.getLogger("Se guardo correctamente");
-            }
+            ps.executeUpdate();
             ConexionDB.cerrarConexion();
+            return true;
         } catch (SQLException ex) {
             Logger.getLogger(CEFAS_EvaluacionCandidatoDAO.class.getName()).log(Level.SEVERE, null, ex);
-
+            
         }
+        return false;
     }
 
 }
