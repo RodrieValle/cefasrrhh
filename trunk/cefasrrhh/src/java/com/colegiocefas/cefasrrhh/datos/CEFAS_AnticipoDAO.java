@@ -29,7 +29,7 @@ public class CEFAS_AnticipoDAO {
     
     private final String SQL_INSERT = "INSERT INTO CEFAS_ANTICIPO (EMPCODIGO, ATPFECHA, ATPCANTIDAD) VALUES (?, ?, ?)";
     private final String SQL_SELECT = "SELECT * FROM CEFAS_ANTICIPO WHERE EMPCODIGO LIKE ?";
-     private final String SQL_SELECT_DATE = "";
+     private final String SQL_SELECT_DATE = "SELECT * FROM CEFAS_ANTICIPO WHERE EMPCODIGO LIKE ?";
     private final String SQL_SELECTBYID = "SELECT * FROM CEFAS_ANTICIPO WHERE ATPCODIGO LIKE ?";
     private final String SQL_UPDATE = "UPDATE CEFAS_ANTICIPO SET EMPCODIGO = ?, ATPFECHA = ?,"
             + " ATPCANTIDAD = ?, WHERE ATPCODIGO = ?";
@@ -188,7 +188,7 @@ ConexionDB.cerrarConexion();
      
      //>>>>>>>>>>>>>>>>>>>>>CALCULO DE LOS ANTICIPOS DESDE EL ULTIMO CORTE DE PLANILLA<<<<<<<<<<<<<<<<<<<<<
      
-    public List<CEFAS_Anticipo> getAnticiposEmpleadoFecha(int codigo, Date fecha)
+    public List<CEFAS_Anticipo> getAnticiposEmpleadoFecha(int codigo, java.util.Date fecha)
     {
         //retorna todos los anticipos de un empleado dentro de la planilla
      
@@ -197,6 +197,7 @@ ConexionDB.cerrarConexion();
         try {
             conexiondb = ConexionDB.getConexion();
             ps = conexiondb.prepareStatement(SQL_SELECT_DATE);
+            Date fech=new Date(fecha.getTime());
             ps.setInt(1, codigo);
            // ps.setString(2, fecha);
             rs = ps.executeQuery();
