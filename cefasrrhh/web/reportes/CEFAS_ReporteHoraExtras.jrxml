@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CEFAS_ReporteHoraExtras" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="dbe9154d-729b-40d0-9e4a-10942b4c1427">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="fecha" class="java.util.Date"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     CEFAS_TIEMPOEXTRA.`TEXCODIGO` AS CEFAS_TIEMPOEXTRA_TEXCODIGO,
+     CEFAS_TIEMPOEXTRA.`EMPCODIGO` AS CEFAS_TIEMPOEXTRA_EMPCODIGO,
+     CEFAS_TIEMPOEXTRA.`EMPSUSTITUTO` AS CEFAS_TIEMPOEXTRA_EMPSUSTITUTO,
+       CEFAS_TIEMPOEXTRA.`TEXFECHA` AS CEFAS_TIEMPOEXTRA_TEXFECHA,
+     CEFAS_TIEMPOEXTRA.`TEXHORAINICIO` AS CEFAS_TIEMPOEXTRA_TEXHORAINICIO,
+     CEFAS_TIEMPOEXTRA.`TEXHORAFIN` AS CEFAS_TIEMPOEXTRA_TEXHORAFIN,
+     CEFAS_TIEMPOEXTRA.`TEXDELTATIEMPO` AS CEFAS_TIEMPOEXTRA_TEXDELTATIEMPO,
+     CEFAS_TIEMPOEXTRA.`TEXVALORDINERO` AS CEFAS_TIEMPOEXTRA_TEXVALORDINERO
+FROM
+     `CEFAS_TIEMPOEXTRA` CEFAS_TIEMPOEXTRA
+WHERE
+    CEFAS_TIEMPOEXTRA.`TEXFECHA`=$P{fecha}]]>
+	</queryString>
+	<field name="CEFAS_TIEMPOEXTRA_TEXVALORDINERO" class="java.math.BigDecimal"/>
+	<field name="CEFAS_TIEMPOEXTRA_TEXDELTATIEMPO" class="java.sql.Date"/>
+	<field name="CEFAS_TIEMPOEXTRA_TEXCODIGO" class="java.lang.Integer"/>
+	<field name="CEFAS_TIEMPOEXTRA_EMPCODIGO" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="26" splitType="Stretch"/>
+	</pageHeader>
+	<detail>
+		<band height="24" splitType="Stretch">
+			<textField>
+				<reportElement uuid="a52461cf-2021-4245-a322-daa75aada50a" x="24" y="3" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{CEFAS_TIEMPOEXTRA_TEXCODIGO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="afadc3a0-55ad-4614-b529-6bc2d5353896" x="148" y="4" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{CEFAS_TIEMPOEXTRA_EMPCODIGO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="1940aa17-ee9c-42aa-9033-6c8458790301" x="285" y="3" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{CEFAS_TIEMPOEXTRA_TEXDELTATIEMPO}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="8dd54d6c-079e-4c7f-8aaa-4d557f2206da" x="5" y="3" width="550" height="1"/>
+			</line>
+			<textField>
+				<reportElement uuid="d0321d3f-e1ce-48cb-a32a-1fd418e6c116" x="432" y="3" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{CEFAS_TIEMPOEXTRA_TEXVALORDINERO}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="8dd54d6c-079e-4c7f-8aaa-4d557f2206da" x="0" y="22" width="555" height="1"/>
+			</line>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+</jasperReport>

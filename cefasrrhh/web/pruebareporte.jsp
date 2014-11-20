@@ -1,5 +1,5 @@
 <%@page import="java.text.DateFormat"%>
-<%@page import="sv.gob.isna.sistemacis.modelo_hibernate.MAdolescente"%>
+
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.text.SimpleDateFormat"%>
@@ -17,7 +17,7 @@
     Connection conn = null;
     try {
         Class.forName("com.mysql.jdbc.Driver"); //se carga el driver
-        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/cefasrrhhdb", "cefasusuariodb", "we7854*/++");
+        conn = DriverManager.getConnection("jdbc:mysql://www.db4free.net:3306/cefasrrhhdb", "cefasusuariodb", "we7854*/++");
     } catch (Exception ex) {
         ex.printStackTrace();
         //out.print("Excepcion");
@@ -32,7 +32,7 @@
     
     parametros.put("fecha", new Date());
     
-    File reportFile = new File(application.getRealPath("reportes/CEFAS_ReporteHorasExtras.jasper"));
+    File reportFile = new File(application.getRealPath("reportes/CEFAS_ReporteHoraExtras.jasper"));
     byte[] bytes = JasperRunManager.runReportToPdf(reportFile.getPath(), parametros, conn);
     response.setContentType("application/pdf");
     response.setHeader("Content-Disposition", "filename=horasExtras-"+dia+".pdf"); 
