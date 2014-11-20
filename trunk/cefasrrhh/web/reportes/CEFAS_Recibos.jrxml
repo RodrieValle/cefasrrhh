@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CEFAS_Recibos" language="groovy" pageWidth="612" pageHeight="792" whenNoDataType="NoDataSection" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="743b5907-f6d1-40a8-b042-57ee067e25e1">
+	<property name="ireport.zoom" value="1.3310000000000004"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     CEFAS_LINEADEPLANILLA.`LDPSUELDOBASE` AS CEFAS_LINEADEPLANILLA_LDPSUELDOBASE,
+     CEFAS_EMPLEADO.`EMPNOMBRE` AS CEFAS_EMPLEADO_EMPNOMBRE,
+     CEFAS_LINEADEPLANILLA.`LDPFECHA` AS CEFAS_LINEADEPLANILLA_LDPFECHA,
+     CEFAS_LINEADEPLANILLA.`LDPISSS` AS CEFAS_LINEADEPLANILLA_LDPISSS,
+     CEFAS_LINEADEPLANILLA.`LDPAFPCONFIA` AS CEFAS_LINEADEPLANILLA_LDPAFPCONFIA,
+     CEFAS_LINEADEPLANILLA.`LDPAFPCRECER` AS CEFAS_LINEADEPLANILLA_LDPAFPCRECER,
+     CEFAS_LINEADEPLANILLA.`LDPIMPUESTOSOBRERENTA` AS CEFAS_LINEADEPLANILLA_LDPIMPUESTOSOBRERENTA,
+     CEFAS_LINEADEPLANILLA.`LDPANTICIPO` AS CEFAS_LINEADEPLANILLA_LDPANTICIPO,
+     CEFAS_LINEADEPLANILLA.`LDPABONOPRESTAMO` AS CEFAS_LINEADEPLANILLA_LDPABONOPRESTAMO,
+     CEFAS_LINEADEPLANILLA.`LDPORDENDEDESCUENTO` AS CEFAS_LINEADEPLANILLA_LDPORDENDEDESCUENTO,
+     CEFAS_LINEADEPLANILLA.`LDPHORASEXTRAS` AS CEFAS_LINEADEPLANILLA_LDPHORASEXTRAS,
+     CEFAS_LINEADEPLANILLA.`LDPMONTOVIATICO` AS CEFAS_LINEADEPLANILLA_LDPMONTOVIATICO,
+     CEFAS_LINEADEPLANILLA.`LDPLIQUIDOAPAGAR` AS CEFAS_LINEADEPLANILLA_LDPLIQUIDOAPAGAR,
+     CEFAS_LINEADEPLANILLA.`LDPAUSENCIASTARDIAS` AS CEFAS_LINEADEPLANILLA_LDPAUSENCIASTARDIAS
+FROM
+     `CEFAS_EMPLEADO` CEFAS_EMPLEADO INNER JOIN `CEFAS_LINEADEPLANILLA` CEFAS_LINEADEPLANILLA ON CEFAS_EMPLEADO.`EMPCODIGO` = CEFAS_LINEADEPLANILLA.`EMPCODIGO`]]>
+	</queryString>
+	<field name="CEFAS_LINEADEPLANILLA_LDPSUELDOBASE" class="java.math.BigDecimal"/>
+	<field name="CEFAS_EMPLEADO_EMPNOMBRE" class="java.lang.String"/>
+	<field name="CEFAS_LINEADEPLANILLA_LDPFECHA" class="java.sql.Date"/>
+	<field name="CEFAS_LINEADEPLANILLA_LDPISSS" class="java.math.BigDecimal"/>
+	<field name="CEFAS_LINEADEPLANILLA_LDPAFPCONFIA" class="java.math.BigDecimal"/>
+	<field name="CEFAS_LINEADEPLANILLA_LDPAFPCRECER" class="java.math.BigDecimal"/>
+	<field name="CEFAS_LINEADEPLANILLA_LDPIMPUESTOSOBRERENTA" class="java.math.BigDecimal"/>
+	<field name="CEFAS_LINEADEPLANILLA_LDPANTICIPO" class="java.math.BigDecimal"/>
+	<field name="CEFAS_LINEADEPLANILLA_LDPABONOPRESTAMO" class="java.math.BigDecimal"/>
+	<field name="CEFAS_LINEADEPLANILLA_LDPORDENDEDESCUENTO" class="java.math.BigDecimal"/>
+	<field name="CEFAS_LINEADEPLANILLA_LDPHORASEXTRAS" class="java.math.BigDecimal"/>
+	<field name="CEFAS_LINEADEPLANILLA_LDPMONTOVIATICO" class="java.math.BigDecimal"/>
+	<field name="CEFAS_LINEADEPLANILLA_LDPLIQUIDOAPAGAR" class="java.math.BigDecimal"/>
+	<field name="CEFAS_LINEADEPLANILLA_LDPAUSENCIASTARDIAS" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="308" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="3705ac94-93fe-40f3-aa7b-dbfb2463b5c0" x="0" y="0" width="528" height="273"/>
+			</rectangle>
+			<image>
+				<reportElement uuid="47f2e648-d937-42c3-aa0a-0e323789f394" x="457" y="7" width="57" height="47"/>
+				<imageExpression><![CDATA["C:\\Users\\Rodrigo\\Documents\\NetBeansProjects\\cefasrrhh\\web\\img\\cefas-logo.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement uuid="b01233ee-c4af-4227-b360-19ffe36315d1" x="320" y="8" width="100" height="20"/>
+				<textElement>
+					<font fontName="Calisto MT"/>
+				</textElement>
+				<text><![CDATA[Por____________]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="8001bdee-880a-4cdd-8198-ec8d564926da" x="10" y="41" width="439" height="13"/>
+				<textElement>
+					<font fontName="Calisto MT"/>
+					<paragraph lineSpacing="Fixed"/>
+				</textElement>
+				<text><![CDATA[Recibí del Colegio Cefas la cantidad de ________________________________________]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ef90255a-ce9b-4e3f-92dc-a6774d1f1fe8" x="10" y="54" width="439" height="13"/>
+				<textElement>
+					<font fontName="Calisto MT"/>
+				</textElement>
+				<text><![CDATA[en concepto de salario correspondiente al mes de Enero 2014, según el detalle siguiente:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="8d70154e-6269-47e8-be89-1d55a5c09149" x="10" y="92" width="100" height="13"/>
+				<textElement>
+					<font fontName="Calisto MT"/>
+					<paragraph lineSpacing="Fixed"/>
+				</textElement>
+				<text><![CDATA[Nombre:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9ebada64-a07d-4957-9e2d-4d91e9b3349c" x="10" y="105" width="100" height="13"/>
+				<textElement>
+					<font fontName="Calisto MT"/>
+					<paragraph lineSpacing="Fixed"/>
+				</textElement>
+				<text><![CDATA[Salario]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7ad02436-affd-4670-88e5-f07e50f6fba5" x="10" y="118" width="100" height="13"/>
+				<textElement>
+					<font fontName="Calisto MT"/>
+					<paragraph lineSpacing="Fixed"/>
+				</textElement>
+				<text><![CDATA[Descuento ISSS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="13b4dc6e-996a-4dcd-8902-5ac749d42056" x="10" y="131" width="100" height="13"/>
+				<textElement>
+					<font fontName="Calisto MT"/>
+					<paragraph lineSpacing="Fixed"/>
+				</textElement>
+				<text><![CDATA[Descuento AFP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="24cb30fb-d79c-43f6-881b-4d80483d421c" x="10" y="157" width="100" height="13"/>
+				<textElement>
+					<font fontName="Calisto MT"/>
+					<paragraph lineSpacing="Fixed"/>
+				</textElement>
+				<text><![CDATA[Anticipos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3293d7ce-36f0-4f6a-9890-d1e58b009b90" x="10" y="170" width="100" height="13"/>
+				<textElement>
+					<font fontName="Calisto MT"/>
+					<paragraph lineSpacing="Fixed"/>
+				</textElement>
+				<text><![CDATA[Préstamos Cefas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a19ea01e-948b-4eb3-9e6d-43692454c677" x="10" y="183" width="100" height="13"/>
+				<textElement>
+					<font fontName="Calisto MT"/>
+					<paragraph lineSpacing="Fixed"/>
+				</textElement>
+				<text><![CDATA[Orden de descuento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="93e061d1-8c74-47bb-81d2-d5f98cec94a6" x="10" y="144" width="100" height="13"/>
+				<textElement>
+					<font fontName="Calisto MT"/>
+					<paragraph lineSpacing="Fixed"/>
+				</textElement>
+				<text><![CDATA[Descuento renta]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0bd3cdbf-308d-46dc-8587-d2f162cacdbc" x="10" y="235" width="100" height="13"/>
+				<textElement>
+					<font fontName="Calisto MT" isBold="true"/>
+					<paragraph lineSpacing="Fixed"/>
+				</textElement>
+				<text><![CDATA[Líquido a pagar]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="43a472d8-b0ad-4463-9df7-f07103309f9e" x="10" y="209" width="100" height="13"/>
+				<textElement>
+					<font fontName="Calisto MT"/>
+					<paragraph lineSpacing="Fixed"/>
+				</textElement>
+				<text><![CDATA[Viáticos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1003b821-2856-471f-a882-684031b2d357" x="10" y="222" width="100" height="13"/>
+				<textElement>
+					<font fontName="Calisto MT"/>
+					<paragraph lineSpacing="Fixed"/>
+				</textElement>
+				<text><![CDATA[Tardías y Ausencias]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e523008b-2ca7-4d0a-877e-d13cab1da1eb" x="10" y="196" width="100" height="13"/>
+				<textElement>
+					<font fontName="Calisto MT"/>
+					<paragraph lineSpacing="Fixed"/>
+				</textElement>
+				<text><![CDATA[Horas extra]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="ff8afe74-8c49-4037-9192-75b53ac270c7" x="110" y="92" width="100" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{CEFAS_EMPLEADO_EMPNOMBRE}]]></textFieldExpression>
+			</textField>
+			<textField pattern="$ #,##0.00">
+				<reportElement uuid="583ddce7-f0aa-4f81-b91b-cbd608a76c35" x="110" y="105" width="100" height="13"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{CEFAS_LINEADEPLANILLA_LDPSUELDOBASE}]]></textFieldExpression>
+			</textField>
+			<textField pattern="$ #,##0.00">
+				<reportElement uuid="338f941d-6ca5-489b-9507-6c9862cb7de9" x="110" y="118" width="100" height="13"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{CEFAS_LINEADEPLANILLA_LDPISSS}]]></textFieldExpression>
+			</textField>
+			<textField pattern="$ #,##0.00">
+				<reportElement uuid="e935151d-5f96-4258-829c-e6d51a2b1865" x="110" y="131" width="100" height="13"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{CEFAS_LINEADEPLANILLA_LDPAFPCONFIA}]]></textFieldExpression>
+			</textField>
+			<textField pattern="$ #,##0.00">
+				<reportElement uuid="fb93a79c-5922-4acd-89f8-308d67e76e5e" x="110" y="144" width="100" height="13"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{CEFAS_LINEADEPLANILLA_LDPIMPUESTOSOBRERENTA}]]></textFieldExpression>
+			</textField>
+			<textField pattern="$ #,##0.00">
+				<reportElement uuid="85c34f22-7676-47d3-8cfc-6b38c1b74a79" x="110" y="157" width="100" height="13"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{CEFAS_LINEADEPLANILLA_LDPANTICIPO}]]></textFieldExpression>
+			</textField>
+			<textField pattern="$ #,##0.00">
+				<reportElement uuid="4efe8207-30d9-402c-9b5b-e66cacc46fbc" x="110" y="170" width="100" height="13"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{CEFAS_LINEADEPLANILLA_LDPABONOPRESTAMO}]]></textFieldExpression>
+			</textField>
+			<textField pattern="$ #,##0.00">
+				<reportElement uuid="cba66a5d-672d-4f2d-8883-4c6929ac19a1" x="110" y="183" width="100" height="13"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{CEFAS_LINEADEPLANILLA_LDPORDENDEDESCUENTO}]]></textFieldExpression>
+			</textField>
+			<textField pattern="$ #,##0.00">
+				<reportElement uuid="e7bbd29b-35e8-438f-862f-c1c11ff58aca" x="110" y="196" width="100" height="13"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{CEFAS_LINEADEPLANILLA_LDPHORASEXTRAS}]]></textFieldExpression>
+			</textField>
+			<textField pattern="$ #,##0.00">
+				<reportElement uuid="5aafd581-6ef2-4e35-b5c6-a99dca71f8f7" x="110" y="209" width="100" height="13"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{CEFAS_LINEADEPLANILLA_LDPMONTOVIATICO}]]></textFieldExpression>
+			</textField>
+			<textField pattern="$ #,##0.00">
+				<reportElement uuid="7b956839-742d-47c8-a966-39b49444e3c4" x="110" y="222" width="100" height="13"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{CEFAS_LINEADEPLANILLA_LDPAUSENCIASTARDIAS}]]></textFieldExpression>
+			</textField>
+			<textField pattern="$ #,##0.00">
+				<reportElement uuid="e8b66c3a-40df-40d2-b13e-3fa21e3f7115" x="110" y="235" width="100" height="13"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{CEFAS_LINEADEPLANILLA_LDPLIQUIDOAPAGAR}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="bc45b8f4-466f-4e45-8824-616ad5632378" mode="Transparent" x="237" y="92" width="253" height="20" backcolor="#FFFFFF"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[ANUNCIOS Y COMENTARIOS]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="3c5dce22-9899-4e56-95c2-d0407e511a3d" x="237" y="112" width="253" height="136"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="5993df43-fde6-401a-83ba-c4658699fdea" x="10" y="260" width="100" height="13"/>
+				<textElement>
+					<font fontName="Calisto MT" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha:]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="fe5c66c0-95c7-4e57-bdb5-cbee8d87e0ab" x="110" y="260" width="100" height="13"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{CEFAS_LINEADEPLANILLA_LDPFECHA}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="2395d058-2d2d-44f9-a944-4023bc5815af" x="237" y="260" width="184" height="13"/>
+				<textElement>
+					<font fontName="Calisto MT"/>
+				</textElement>
+				<text><![CDATA[Firma: ________________________]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>
