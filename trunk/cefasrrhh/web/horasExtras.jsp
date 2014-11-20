@@ -28,23 +28,29 @@
     CtrlCEFAS_Empleado ctrlEmpleado = new CtrlCEFAS_Empleado();
     List<CEFAS_Empleado> listaEmpleados;
     listaEmpleados = ctrlEmpleado.obtenerEmpleados();
+    String error="";
     if (request.getParameter("codigo") != null) {
         int codigoemp = Integer.parseInt(request.getParameter("codigo"));
-               Date fecha = new SimpleDateFormat("DD/MM/YYYY").parse(request.getParameter("fecha").toString());
+               Date fecha = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("fecha").toString());
       
       //SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Date)
         //Date hInicio = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("2000-01-01 "+request.getParameter("hinicio")+":00");
-        Date hInicio = new SimpleDateFormat("HH:mm").parse(request.getParameter("hinicio"));
+        Date hInicio = new SimpleDateFormat("HH:mm").parse(request.getParameter("hinicio").toString());
         Date hFinal = new SimpleDateFormat("HH:mm").parse(request.getParameter("hfinal").toString());
         int codigoemp2 = Integer.parseInt(request.getParameter("codigo2"));
+        
         CtrlCEFAS_TiempoExtra textra = new CtrlCEFAS_TiempoExtra();
         boolean exito=textra.guardarHoras(codigoemp,fecha,hInicio,hFinal,codigoemp2);
-        String error="";
         if(exito){
-        error = "<div class=\"alert alert-danger\"><h5>Guardado con exito</h5></div>";
+        error = "<div class='alert alert-danger alert-dismissible' role='alert'><button type='button' class='close'"
+                + " data-dismiss='alert'><span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span></button>"
+                + "Guardado con éxito</div>";
         }else
         {
-        error = "<div class=\"alert alert-danger\"><h5>Hora inicio no puede ser mayor</h5></div>";}
+        error = "<div class='alert alert-danger alert-dismissible' role='alert'><button type='button' class='close'"
+                + " data-dismiss='alert'><span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span></button>"
+                + "Hora inicio no puede ser mayor</div>";
+        }
     }
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -74,9 +80,10 @@
             %>
             <div class="container">
                 <h1>Reporte de horas extras</h1>
+                <%= error%>
                 <div class="row">
                     <div class="col-xs-4 col-xs-offset-4">
-                        <form action="horasExtras.jsp">
+                        <form action="horasExtras.jsp" method="post">
 
                             Empleado: <select name="codigo" id="empleado" class="form-control">
                                 <% for (CEFAS_Empleado emp : listaEmpleados) {%>
