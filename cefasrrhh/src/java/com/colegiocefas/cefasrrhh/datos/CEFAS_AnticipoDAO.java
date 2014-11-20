@@ -24,10 +24,12 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+
 public class CEFAS_AnticipoDAO {
     
     private final String SQL_INSERT = "INSERT INTO CEFAS_ANTICIPO (EMPCODIGO, ATPFECHA, ATPCANTIDAD) VALUES (?, ?, ?)";
     private final String SQL_SELECT = "SELECT * FROM CEFAS_ANTICIPO WHERE EMPCODIGO LIKE ?";
+     private final String SQL_SELECT_DATE = "";
     private final String SQL_SELECTBYID = "SELECT * FROM CEFAS_ANTICIPO WHERE ATPCODIGO LIKE ?";
     private final String SQL_UPDATE = "UPDATE CEFAS_ANTICIPO SET EMPCODIGO = ?, ATPFECHA = ?,"
             + " ATPCANTIDAD = ?, WHERE ATPCODIGO = ?";
@@ -182,12 +184,40 @@ ConexionDB.cerrarConexion();
      
      }
      
-      public void almacenarAnticipoQuincena() {
-     //almacena un anticipo a todos los empleados
      
      
-     }
+     //>>>>>>>>>>>>>>>>>>>>>CALCULO DE LOS ANTICIPOS DESDE EL ULTIMO CORTE DE PLANILLA<<<<<<<<<<<<<<<<<<<<<
      
+    public List<CEFAS_Anticipo> getAnticiposEmpleadoFecha(int codigo, Date fecha)
+    {
+        //retorna todos los anticipos de un empleado dentro de la planilla
+     
+        List<CEFAS_Anticipo> listAnticipos = new ArrayList<CEFAS_Anticipo>();
+        CEFAS_Anticipo anticipo= null;
+        try {
+            conexiondb = ConexionDB.getConexion();
+            ps = conexiondb.prepareStatement(SQL_SELECT_DATE);
+            ps.setInt(1, codigo);
+           // ps.setString(2, fecha);
+            rs = ps.executeQuery();
+            while(rs.next())
+            {
+                anticipo = new CEFAS_Anticipo();
+                anticipo.setAtpCodigo(rs.getInt("atpCodigo"));
+                anticipo.setEmpCodigo(rs.getInt("empCodigo"));
+                anticipo.setAtpFecha(rs.getDate("atpFecha"));
+                anticipo.setAtpCantidad(rs.getFloat("atpCantidad"));
+                listAnticipos.add(anticipo);
+               
+            }
+            ConexionDB.cerrarConexion();
+        } catch (SQLException ex) {
+            Logger.getLogger(CEFAS_AnticipoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return listAnticipos;
+    }
+      
+      
      
     
 }

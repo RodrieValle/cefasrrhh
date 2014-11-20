@@ -8,8 +8,11 @@ package com.colegiocefas.cefasrrhh.negocio;
 
 import com.colegiocefas.cefasrrhh.datos.CEFAS_AnticipoDAO;
 import com.colegiocefas.cefasrrhh.dominio.CEFAS_Anticipo;
+import com.colegiocefas.cefasrrhh.dominio.CEFAS_Planilla;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
 
 /**
  *
@@ -19,11 +22,33 @@ public class CtrlCEFAS_Anticipo {
     
     private CEFAS_AnticipoDAO daoAnticipo = new CEFAS_AnticipoDAO();
     
-   /*   LLAMADA A METODO DE RETORNO DE ANTICIPOS A UNA FECHA DADA
-    public List<CEFAS_Anticipo> getAnticiposEmpleado(int codigo, String fecha)
+
+    public float sumaAnticipos(int codigo){
+        float suma=0;
+        List<CEFAS_Anticipo> listAnticipos= new ArrayList();
+        listAnticipos=getAnticiposEmpleadoFecha(codigo);
+        
+         for(CEFAS_Anticipo anticipo: listAnticipos)
+        {
+            suma=suma+anticipo.getAtpCantidad();
+        }
+        return suma;
+    }
+    
+    
+    
+    //  LLAMADA A METODO DE RETORNO DE ANTICIPOS A UNA FECHA DADA
+    public List<CEFAS_Anticipo> getAnticiposEmpleadoFecha(int codigo)
     {
-        return daoAnticipo.getAnticiposEmpleado(codigo, fecha);
-    }*/
+        CtrlCEFAS_Planilla ctrlPlanilla= new CtrlCEFAS_Planilla();
+        CEFAS_Planilla planilla=ctrlPlanilla.getUltimaPlanilla();
+        Date fechaUltima=planilla.getPlnFecha();
+     
+        return daoAnticipo.getAnticiposEmpleadoFecha(codigo, fechaUltima);
+    }
+    
+    
+    
     
        public CEFAS_Anticipo getAnticipo(int codigo)
     {
@@ -52,9 +77,6 @@ public class CtrlCEFAS_Anticipo {
         daoAnticipo.almacenarAnticipo(anticipo);
     }
     
-    public void guardarAnticipoQuincena()
-    {
-        daoAnticipo.almacenarAnticipoQuincena();
-    }
+
     
 }
