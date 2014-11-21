@@ -31,7 +31,7 @@ public class CtrlCEFAS_LineaDePlanilla {
         //lista de empleados
         List<CEFAS_Empleado> listEmpleados= new ArrayList();
         listEmpleados=ctrlEmpleados.obtenerEmpleados();  
-        
+       
    
         
         //inicio iteracion de empleados
@@ -81,7 +81,8 @@ public class CtrlCEFAS_LineaDePlanilla {
             linea.setLdpImpuestoSobreRenta(renta);
             
             
-            float anticipo=0;
+           float anticipo=0;
+            //float anticipo=calculoAnticipo(codigo);
             linea.setLdpAnticipo(anticipo);
             
              float prestamo=0;
@@ -90,7 +91,8 @@ public class CtrlCEFAS_LineaDePlanilla {
              float ordenDescuento=0;
             linea.setLdpOrdenDeDescuento(ordenDescuento);
             
-             float viaticos=0;
+            float viaticos=0;
+            // float viaticos=calculoViatico(codigo);
             linea.setLdpMontoViatico(viaticos);
             
             float liquidoPagar=sujeto-isss-renta-anticipo-ordenDescuento-prestamo+viaticos;
@@ -193,5 +195,113 @@ public float calculoAFP(float valor, CEFAS_ConfiguracionRetenciones afpConfig){
 }
 
  
+
+//<<<<<<<<<<<<<<<<<<<CALCULO DE ANTICIPOS
+public float calculoAnticipo(int codEmpleado){
+    CtrlCEFAS_Anticipo ctrlAnticipo = new CtrlCEFAS_Anticipo();
+    float suma=ctrlAnticipo.sumaAnticipos(codEmpleado);
+    return suma;
+}
+
+
+
+//<<<<<<<<<<<<<<<<<<<CALCULO DE VIATICOS
+public float calculoViaticos(int codEmpleado){
+    CtrlCEFAS_Viatico ctrlViatico = new CtrlCEFAS_Viatico();
+    float suma=ctrlViatico.sumaViaticos(codEmpleado);
+    return suma;
+}
+
+
+
+
+//Aguinaldo
+   public List<CEFAS_LineaDePlanilla> calculoPlanillaAguinaldo(){
+        CEFAS_LineaDePlanilla linea= new CEFAS_LineaDePlanilla();
+        List<CEFAS_LineaDePlanilla> listPlanilla= new ArrayList();
+        CtrlCEFAS_ConfiguracionRetenciones ctrlConfiguracion=new CtrlCEFAS_ConfiguracionRetenciones();
+        CtrlCEFAS_Empleado ctrlEmpleados=new CtrlCEFAS_Empleado();
+        //carga configuracion
+        List<CEFAS_ConfiguracionRetenciones> listConfiguraciones= new ArrayList();
+        listConfiguraciones=ctrlConfiguracion.obtenerRetenciones();
+        //lista de empleados
+        List<CEFAS_Empleado> listEmpleados= new ArrayList();
+        listEmpleados=ctrlEmpleados.obtenerEmpleados();  
+       
+   
+        
+        //inicio iteracion de empleados
+        for(CEFAS_Empleado empleado: listEmpleados)
+        {
+
+            linea = new CEFAS_LineaDePlanilla();
+            int codigo=Integer.parseInt(empleado.getEmpCodigo());
+
+            linea.setEmpCodigo(codigo);
+            
+            float salario=empleado.getEmpSalario();
+            linea.setLdpSueldoBase(salario);
+            
+           float horas=0;
+            linea.setLdpHorasExtra(horas);
+            
+            float ausencias=0;
+            linea.setLdpAusenciasTardias(ausencias);
+            
+            float devengado=salario+horas-ausencias;
+            linea.setLdpSueldoDevengado(devengado);
+            
+            
+            float isss=calculoISSS(devengado, listConfiguraciones.get(9));
+            linea.setLdpIsss(isss);
+            
+            float afpConfia=0;
+            float afpCrecer=0;
+            if(empleado.getEmpTipoAfp()==1){
+            afpConfia= calculoAFP(salario, listConfiguraciones.get(7));
+               afpCrecer=0;   
+                    }else{
+                afpCrecer= calculoAFP(salario, listConfiguraciones.get(5));
+               afpConfia=0; 
+            }
+            linea.setLdpAfpConfia(afpConfia);
+            linea.setLdpAfpCrecer(afpCrecer);
+            
+            
+            float sujeto=devengado-afpConfia-afpCrecer;
+            linea.setLdpValorNetoSujetoRenta(sujeto);
+            
+            float renta=calculoRenta(sujeto, listConfiguraciones.get(0), 
+                    listConfiguraciones.get(1), listConfiguraciones.get(2), 
+                    listConfiguraciones.get(3),listConfiguraciones.get(4));
+            linea.setLdpImpuestoSobreRenta(renta);
+            
+            
+           float anticipo=0;
+            //float anticipo=calculoAnticipo(codigo);
+            linea.setLdpAnticipo(anticipo);
+            
+             float prestamo=0;
+            linea.setLdpAbonoPrestamo(prestamo);
+            
+             float ordenDescuento=0;
+            linea.setLdpOrdenDeDescuento(ordenDescuento);
+            
+            float viaticos=0;
+            // float viaticos=calculoViatico(codigo);
+            linea.setLdpMontoViatico(viaticos);
+            
+            float liquidoPagar=sujeto-isss-renta-anticipo-ordenDescuento-prestamo+viaticos;
+            linea.setLdpLiquidoAPagar(liquidoPagar);
+            listPlanilla.add(linea);
+        }
+
+    return listPlanilla;
+    }
+    
+
+
+
+
     
 }
