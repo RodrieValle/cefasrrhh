@@ -20,7 +20,7 @@ private String empNombre;
 private Date   empFechaNacimiento;
 private String empDireccion;
 private int empJefeInmediato;
-private String empAnioContratacion;
+private Date empAnioContratacion;
 private String empPlazaActual;
 private String empPlazaAnterior;
 private float  empSalario;
@@ -40,7 +40,7 @@ private int empTipoAfp;
         
     }
 
-    public CEFAS_Empleado(String empCodigo, String usrCodigo, String empNombre, Date empFechaNacimiento, String empDireccion, String empAnioContratacion, String empPlazaActual, String empPlazaAnterior, float empSalario, String empTipoDeContrato, String empNUP, String empDUI, String empNIT, String empNIP, String empTelefono, String empCelular, String empCorreo, String empFoto) {
+    public CEFAS_Empleado(String empCodigo, String usrCodigo, String empNombre, Date empFechaNacimiento, String empDireccion, Date empAnioContratacion, String empPlazaActual, String empPlazaAnterior, float empSalario, String empTipoDeContrato, String empNUP, String empDUI, String empNIT, String empNIP, String empTelefono, String empCelular, String empCorreo, String empFoto) {
         this.empCodigo = empCodigo;
         this.usrCodigo = usrCodigo;
         this.empNombre = empNombre;
@@ -103,11 +103,11 @@ private int empTipoAfp;
         this.empDireccion = empDireccion;
     }
 
-    public String getEmpAnioContratacion() {
+    public Date getEmpAnioContratacion() {
         return empAnioContratacion;
     }
 
-    public void setEmpAnioContratacion(String empAnioContratacion) {
+    public void setEmpAnioContratacion(Date empAnioContratacion) {
         this.empAnioContratacion = empAnioContratacion;
     }
 
