@@ -30,6 +30,7 @@ public class CEFAS_ViaticoDAO {
       
     private final String SQL_INSERT = "INSERT INTO CEFAS_VIATICO (EMPCODIGO, VIAFECHA, VIACANTIDAD, VIADESCRIPCION) VALUES (?, ?, ?, ?)";
     private final String SQL_SELECT = "SELECT * FROM CEFAS_VIATICO WHERE EMPCODIGO LIKE ?";
+     private final String SQL_SELECT_DATE = "SELECT * FROM `CEFAS_ANTICIPO` WHERE `EMPCODIGO`=2 and `ATPFECHA`>='2014-09-00'   ";//por definir
     private final String SQL_UPDATE = "UPDATE CEFAS_VIATICO SET EMPCODIGO = ?, VIAFECHA = ?,"
             + " VIACANTIDAD = ?, VIADESCRIPCION = ?, WHERE ATPCODIGO = ?";
     private final String SQL_DELETE = "";
@@ -130,6 +131,41 @@ ConexionDB.cerrarConexion();
      
      
      
+     
+     //>>>>>>>>>>>>>>>>>>>>>CALCULO DE LOS ANTICIPOS DESDE EL ULTIMO CORTE DE PLANILLA<<<<<<<<<<<<<<<<<<<<<
+     
+    public List<CEFAS_Viatico> getViaticosEmpleadoFecha(int codigo, java.util.Date fecha)
+    {
+        //retorna todos los anticipos de un empleado dentro de la planilla
+     
+        List<CEFAS_Viatico> listViaticos = new ArrayList<CEFAS_Viatico>();
+        CEFAS_Viatico viatico= null;
+        try {
+            conexiondb = ConexionDB.getConexion();
+            ps = conexiondb.prepareStatement(SQL_SELECT_DATE);
+            Date fech=new Date(fecha.getTime());
+            ps.setInt(1, codigo);
+           // ps.setString(2, fecha);
+            rs = ps.executeQuery();
+            while(rs.next())
+            {
+               viatico = new CEFAS_Viatico();
+                viatico.setViaCodigo(rs.getInt("viaCodigo"));
+                viatico.setEmpCodigo(rs.getInt("empCodigo"));
+                viatico.setViaFecha(rs.getDate("viaFecha"));
+                viatico.setViaCantidad(rs.getFloat("viaCantidad"));
+                viatico.setViaDescripcion(rs.getString("viaDescripcion"));
+                listViaticos.add(viatico);
+               
+            }
+            ConexionDB.cerrarConexion();
+        } catch (SQLException ex) {
+            Logger.getLogger(CEFAS_ViaticoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return listViaticos;
+    }
+      
+      
      
     
     

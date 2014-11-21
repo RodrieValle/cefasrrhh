@@ -14,6 +14,7 @@ import java.util.Date;
  */
 public class CEFAS_LineaDePlanilla {
     private int empCodigo;
+    private int plnCodigo;
     private int ldpCodigo;
     private Date ldpFecha;
     private float ldpSueldoBase;
@@ -31,8 +32,9 @@ public class CEFAS_LineaDePlanilla {
     private float ldpMontoViatico;
     private float ldpLiquidoAPagar;
 
-    public CEFAS_LineaDePlanilla(int empCodigo, int ldpCodigo, Date ldpFecha, float ldpSueldoBase, float ldpHorasExtra, float ldpAusenciasTardias, float ldpSueldoDevengado, float ldpAfpConfia, float ldpAfpCrecer, float ldpValorNetoSujetoRenta, float ldpImpuestoSobreRenta, float ldpAnticipo, float ldpAbonoPrestamo, float ldpOrdenDeDescuento, float ldpIsss, float ldpMontoViatico, float ldpLiquidoAPagar) {
+    public CEFAS_LineaDePlanilla(int empCodigo, int plnCodigo, int ldpCodigo, Date ldpFecha, float ldpSueldoBase, float ldpHorasExtra, float ldpAusenciasTardias, float ldpSueldoDevengado, float ldpAfpConfia, float ldpAfpCrecer, float ldpValorNetoSujetoRenta, float ldpImpuestoSobreRenta, float ldpAnticipo, float ldpAbonoPrestamo, float ldpOrdenDeDescuento, float ldpIsss, float ldpMontoViatico, float ldpLiquidoAPagar) {
         this.empCodigo = empCodigo;
+        this.plnCodigo = plnCodigo;
         this.ldpCodigo = ldpCodigo;
         this.ldpFecha = ldpFecha;
         this.ldpSueldoBase = ldpSueldoBase;
@@ -192,6 +194,14 @@ public class CEFAS_LineaDePlanilla {
 
     public void setLdpAusenciasTardias(float ldpAusenciasTardias) {
         this.ldpAusenciasTardias = ldpAusenciasTardias;
+    }
+
+    public int getPlnCodigo() {
+        return plnCodigo;
+    }
+
+    public void setPlnCodigo(int plnCodigo) {
+        this.plnCodigo = plnCodigo;
     }
     
     
