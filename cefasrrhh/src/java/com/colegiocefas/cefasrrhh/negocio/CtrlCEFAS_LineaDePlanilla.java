@@ -81,8 +81,8 @@ public class CtrlCEFAS_LineaDePlanilla {
             linea.setLdpImpuestoSobreRenta(renta);
             
             
-           float anticipo=0;
-            //float anticipo=calculoAnticipo(codigo);
+          // float anticipo=0;
+            float anticipo=calculoAnticipo(codigo);
             linea.setLdpAnticipo(anticipo);
             
              float prestamo=0;
@@ -91,8 +91,8 @@ public class CtrlCEFAS_LineaDePlanilla {
              float ordenDescuento=0;
             linea.setLdpOrdenDeDescuento(ordenDescuento);
             
-            float viaticos=0;
-            // float viaticos=calculoViatico(codigo);
+           // float viaticos=0;
+             float viaticos=calculoViatico(codigo);
             linea.setLdpMontoViatico(viaticos);
             
             float liquidoPagar=sujeto-isss-renta-anticipo-ordenDescuento-prestamo+viaticos;
@@ -206,7 +206,7 @@ public float calculoAnticipo(int codEmpleado){
 
 
 //<<<<<<<<<<<<<<<<<<<CALCULO DE VIATICOS
-public float calculoViaticos(int codEmpleado){
+public float calculoViatico(int codEmpleado){
     CtrlCEFAS_Viatico ctrlViatico = new CtrlCEFAS_Viatico();
     float suma=ctrlViatico.sumaViaticos(codEmpleado);
     return suma;
@@ -304,4 +304,4 @@ public float calculoViaticos(int codEmpleado){
 
 
     
-}
+}//fin clase

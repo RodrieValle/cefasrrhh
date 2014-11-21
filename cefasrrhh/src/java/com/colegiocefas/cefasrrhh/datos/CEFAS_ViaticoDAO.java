@@ -30,7 +30,7 @@ public class CEFAS_ViaticoDAO {
       
     private final String SQL_INSERT = "INSERT INTO CEFAS_VIATICO (EMPCODIGO, VIAFECHA, VIACANTIDAD, VIADESCRIPCION) VALUES (?, ?, ?, ?)";
     private final String SQL_SELECT = "SELECT * FROM CEFAS_VIATICO WHERE EMPCODIGO LIKE ?";
-     private final String SQL_SELECT_DATE = "SELECT * FROM CEFAS_ANTICIPO WHERE EMPCODIGO= ? and ATPFECHA>= ?";//por definir
+     private final String SQL_SELECT_DATE = "SELECT * FROM CEFAS_VIATICO WHERE EMPCODIGO= ? and VIAFECHA>= ?";//por definir
     private final String SQL_UPDATE = "UPDATE CEFAS_VIATICO SET EMPCODIGO = ?, VIAFECHA = ?,"
             + " VIACANTIDAD = ?, VIADESCRIPCION = ?, WHERE ATPCODIGO = ?";
     private final String SQL_DELETE = "";
@@ -40,7 +40,7 @@ public class CEFAS_ViaticoDAO {
     private ResultSet rs;
       
     
-    /*      RETORNA ANTICIPOS DE EMPLEADO A UNA FECHA DADA*/
+    /*      RETORNA ANTICIPOS DE EMPLEADO A UNA FECHA DADA
     public List<CEFAS_Viatico> getViaticosEmpleado(int codigo, java.util.Date fecha)
     {
        //retorna todos los anticipos de un empleado
@@ -69,7 +69,7 @@ public class CEFAS_ViaticoDAO {
         }
         return listViaticos;
     }
-    
+    */
     
     //Retorna todos los anticipos del empleado
      public List<CEFAS_Viatico> getViaticosEmpleado(int codigo)
@@ -135,31 +135,29 @@ ConexionDB.cerrarConexion();
      
     public List<CEFAS_Viatico> getViaticosEmpleadoFecha(int codigo, java.util.Date fecha)
     {
-        //retorna todos los anticipos de un empleado dentro de la planilla
+         //retorna todos los anticipos de un empleado a una fecha
      
         List<CEFAS_Viatico> listViaticos = new ArrayList<CEFAS_Viatico>();
-        CEFAS_Viatico viatico= null;
+        CEFAS_Viatico viatico;
         try {
             conexiondb = ConexionDB.getConexion();
             ps = conexiondb.prepareStatement(SQL_SELECT_DATE);
-            Date fech=new Date(fecha.getTime());
             ps.setInt(1, codigo);
-           // ps.setString(2, fecha);
+            ps.setDate(2, new Date(fecha.getTime()));
             rs = ps.executeQuery();
             while(rs.next())
             {
-               viatico = new CEFAS_Viatico();
+                viatico = new CEFAS_Viatico();
                 viatico.setViaCodigo(rs.getInt("viaCodigo"));
                 viatico.setEmpCodigo(rs.getInt("empCodigo"));
                 viatico.setViaFecha(rs.getDate("viaFecha"));
-                viatico.setViaCantidad(rs.getFloat("viaCantidad"));
                 viatico.setViaDescripcion(rs.getString("viaDescripcion"));
+                viatico.setViaCantidad(rs.getFloat("viaCantidad"));
                 listViaticos.add(viatico);
-               
             }
             ConexionDB.cerrarConexion();
         } catch (SQLException ex) {
-            Logger.getLogger(CEFAS_ViaticoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CEFAS_AnticipoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return listViaticos;
     }
