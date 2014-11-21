@@ -45,11 +45,11 @@
 <jsp:include page='inc/menu_administradora.jsp' />
 
             <div class="container">
-        <h1>Lista de Prestamos</h1>
+        <h1>Lista de Préstamos</h1>
         
       
                       <div class="panel panel-primary">
-                          <div class="panel-heading">Prestamos Otorgados</div>
+                          <div class="panel-heading">Préstamos Otorgados</div>
                           
                   
                         <div class="panel-body">
@@ -59,8 +59,8 @@
                              <table class="table table-striped table-hover">
                                     <tbody>
                                                   <tr>
-                                            <td>Codigo de Prestamo</td>
-                                            <td>Codigo Empleado</td> 
+                                            <td>Código de Préstamo</td>
+                                            <td>Código Empleado</td> 
                                             <td>Fecha de Ingreso</td>
                                             <td>Monto</td> 
                                             <td>Plazos</td> 
@@ -79,10 +79,10 @@
                                             <td> <%= prestamo.getEmpCodigo() %></td>
                                             <td><%= new SimpleDateFormat("dd/MM/yyyy").format(prestamo.getPrmFecha())%></td>
                                             
-                                            <td>$ <%= prestamo.getPrmMonto() %></td>
+                                            <td>$ <%= String.format("%.2f", prestamo.getPrmMonto()) %></td>
                                             <td> <%= prestamo.getPrmPlazo() %></td>
-                                            <td>$<%= prestamo.getPrmSaldo() %></td>
-                                            <td>$ <%= prestamo.getPrmCuota() %></td>
+                                            <td>$<%= String.format("%.2f", prestamo.getPrmSaldo()) %></td>
+                                            <td>$ <%= String.format("%.2f", prestamo.getPrmCuota()) %></td>
                                             <td><a href="" class="btn btn-primary btn-md" role="button">Modificar Prestamo</a></td>
                                             <td><a href="" class="btn btn-primary btn-md" role="button">Eliminar Prestamo</a></td>
                                         </tr>

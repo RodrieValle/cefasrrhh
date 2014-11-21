@@ -46,7 +46,7 @@
         
       
                       <div class="panel panel-primary">
-                          <div class="panel-heading">Ordenes de descuento.</div>
+                          <div class="panel-heading">Ordenes de descuento</div>
                           
                   
                         <div class="panel-body">
@@ -56,8 +56,8 @@
                              <table class="table table-striped table-hover">
                                     <tbody>
                                                   <tr>
-                                            <td>Codigo de Orden</td>
-                                            <td>Codigo Empleado</td> 
+                                            <td>Código de Orden</td>
+                                            <td>Código Empleado</td> 
                                             <td>Fecha de Ingreso</td>
                                             <td>Monto</td> 
                                             <td>Plazos</td> 
@@ -76,10 +76,10 @@
                                             <td> <%= orden.getEmpCodigo() %></td>
                                             <td><%= new SimpleDateFormat("dd/MM/yyyy").format(orden.getOddFecha())%></td>
                                             
-                                            <td>$ <%= orden.getOddMonto() %></td>
+                                            <td>$ <%= String.format("%.2f", orden.getOddMonto()) %></td>
                                             <td> <%= orden.getOddPlazo() %></td>
-                                            <td>$<%= orden.getOddSaldo() %></td>
-                                            <td>$ <%= orden.getOddCuota() %></td>
+                                            <td>$<%= String.format("%.2f", orden.getOddSaldo()) %></td>
+                                            <td>$ <%= String.format("%.2f", orden.getOddCuota()) %></td>
                                             <td><a href="" class="btn btn-primary btn-md" role="button">Modificar Orden</a></td>
                                             <td><a href="" class="btn btn-primary btn-md" role="button">Eliminar Eliminar</a></td>
                                         </tr>
