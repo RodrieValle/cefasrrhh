@@ -16,6 +16,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -40,6 +41,7 @@ public class CEFAS_EmpleadoDAO {
             + "EMPCELULAR = ?, EMPCORREO = ?, EMPFOTO = ?, EMPANIOCONTRATACION = ?, EMPPLAZAACTUAL = ?, "
             + "EMPPLAZAANTERIOR = ?, EMPJEFEINMEDIATO = ?, EMPSALARIO = ?, EMPTIPODECONTRATO = ? WHERE EMPCODIGO = ?";
     private final String SQL_DELETE = "";
+    private final String SQL_SELECT_CONTRATACION = "SELECT EMPANIOCONTRATACION FROM CEFAS_EMPLEADO WHERE EMPCODIGO = ?";
     private Connection conexiondb;
     private Statement st;
     private PreparedStatement ps;
@@ -205,5 +207,52 @@ public class CEFAS_EmpleadoDAO {
             Logger.getLogger(CEFAS_EmpleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return listaEmpleados;
+    }
+    
+    public List<Integer> getTiempoTrabajado(int codigoEmpleado)
+    {
+        List<Integer> tiempoTrabajado = new ArrayList<Integer>();
+        try {
+            java.util.Date contratacion = new java.util.Date();
+            conexiondb = ConexionDB.getConexion();
+            ps = conexiondb.prepareStatement(SQL_SELECT_CONTRATACION);
+            ps.setInt(1, codigoEmpleado);
+            rs = ps.executeQuery();
+            while(rs.next())
+            {
+                contratacion = rs.getDate("empAnioContratacion");
+            }
+            ConexionDB.cerrarConexion();
+            //Cáculo del tiempo
+            Calendar fechaActual = Calendar.getInstance();
+            Calendar fechaContrato = Calendar.getInstance();
+            fechaContrato.setTime(contratacion);
+            int año = fechaActual.get(Calendar.YEAR) - fechaContrato.get(Calendar.YEAR);
+            int mes = fechaActual.get(Calendar.MONTH) - fechaContrato.get(Calendar.MONTH);
+            int dia = fechaActual.get(Calendar.DATE) - fechaContrato.get(Calendar.DATE);
+            //Se ajusta el año dependiendo el mes y el día
+            if (mes < 0 || (mes == 0 && dia < 0)) {
+                año--;
+            }
+            if(mes == 0 && dia < 0)
+            {
+                mes = 11;
+                dia = 30 + dia;
+            }
+            if(mes < 0)
+            {
+                mes = 12 + mes;
+            }
+            if(dia < 0)
+            {
+                dia = 30 + dia;
+            }
+            tiempoTrabajado.add(dia);
+            tiempoTrabajado.add(mes);
+            tiempoTrabajado.add(año);
+        }catch (SQLException ex) {
+            Logger.getLogger(CEFAS_EmpleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return tiempoTrabajado;
     }
 }
