@@ -42,6 +42,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Nuevo Anticipo</title>
          <jsp:include page='inc/head_common.jsp' />
+         <link rel="stylesheet" type="text/css" href="css/bootstrap-formhelpers.css">
+        <script type="text/javascript" src="js/bootstrap-formhelpers.js"></script>
     </head>
     <body>
         
@@ -65,19 +67,21 @@
                            
                      <div class="col-xs-4">  
                                   
-                         Codigo Empleado:<input  type="text" name="empcodigo" value="<%= empleado.getEmpCodigo() %>" class="form-control input-sm"  required />
+                         Codigo Empleado:<input  type="text" name="empcodigo" value="<%= empleado.getEmpCodigo() %>" class="form-control input-sm"  required readonly/>
                          
                                   
                         
-                         Fecha: <input id="fecha" type="text" name="fecha"  class="form-control input-sm" placeholder="Formato: dd/MM/yyyy"required />
-                         
-                           </div>
+                         Fecha: 
+                         <div class="bfh-datepicker" data-format="d/m/y"  data-name="fecha" data-language="es" data-input="input-sm form-control" data-icon=""
+                                data-close="true" data-align="right">
+                        </div>
+                          </div>
                     <div class="col-xs-4">  
-                        Nombre:<input  type="text" name="nombre" value="<%= empleado.getEmpNombre() %>" class="form-control input-sm"  required />
+                        Nombre:<input  type="text" name="nombre" value="<%= empleado.getEmpNombre() %>" class="form-control input-sm"  required readonly/>
                         Cantidad: <br>
                                     <div class="input-group">
                                         <span class="input-group-addon input-sm">$</span>
-                                        <input type="text" name="cantidad"  class="form-control input-sm" required><br>
+                                        <input type="number" name="cantidad"  class="form-control input-sm" required min="0.00"><br>
                                     </div><br>
                           
                     </div>

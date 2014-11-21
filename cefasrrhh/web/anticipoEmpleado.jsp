@@ -70,7 +70,7 @@ int codigoEmp = Integer.parseInt(request.getParameter("codigo"));
                                         <tr>
                                             <td><%= anticipo.getAtpCodigo() %></td>
                                             <td><%= new SimpleDateFormat("dd/MM/yyyy").format(anticipo.getAtpFecha())%></td>
-                                            <td>$ <%= anticipo.getAtpCantidad() %></td>
+                                            <td>$ <%= String.format("%.2f", anticipo.getAtpCantidad()) %></td>
                                             <td><a href="#" class="btn btn-primary btn-md" role="button">Modificar Anticipo</a></td>
                                             <td><a href="#" class="btn btn-primary btn-md" role="button">Eliminar Anticipo</a></td>
                                         </tr>
