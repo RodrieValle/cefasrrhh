@@ -1,3 +1,4 @@
+<%@page import="com.colegiocefas.cefasrrhh.utilidades.ConexionDB"%>
 <%@page import="java.text.DateFormat"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
@@ -16,7 +17,7 @@
     Connection conn = null;
     try {
         Class.forName("com.mysql.jdbc.Driver"); //se carga el driver
-        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/cefasrrhhdb", "cefasusuariodb", "we7854*/++");
+        conn = ConexionDB.getConexion();// DriverManager.getConnection("jdbc:mysql://localhost:3306/cefasrrhhdb", "cefasusuariodb", "we7854*/++");
     } catch (Exception ex) {
         ex.printStackTrace();
         //out.print("Excepcion");
