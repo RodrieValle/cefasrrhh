@@ -29,7 +29,7 @@ public class CEFAS_AnticipoDAO {
     
     private final String SQL_INSERT = "INSERT INTO CEFAS_ANTICIPO (EMPCODIGO, ATPFECHA, ATPCANTIDAD) VALUES (?, ?, ?)";
     private final String SQL_SELECT = "SELECT * FROM CEFAS_ANTICIPO WHERE EMPCODIGO LIKE ?";
-     private final String SQL_SELECT_DATE = "SELECT * FROM `CEFAS_ANTICIPO` WHERE `EMPCODIGO`=2 and `ATPFECHA`>='2014-09-00'   ";//por definir
+     private final String SQL_SELECT_DATE = "SELECT * FROM CEFAS_ANTICIPO WHERE EMPCODIGO= ? and ATPFECHA>= ?";//por definir
     private final String SQL_SELECTBYID = "SELECT * FROM CEFAS_ANTICIPO WHERE ATPCODIGO LIKE ?";
     private final String SQL_UPDATE = "UPDATE CEFAS_ANTICIPO SET EMPCODIGO = ?, ATPFECHA = ?,"
             + " ATPCANTIDAD = ?, WHERE ATPCODIGO = ?";
@@ -40,18 +40,18 @@ public class CEFAS_AnticipoDAO {
     private ResultSet rs;
       
     
-    /*      RETORNA ANTICIPOS DE EMPLEADO A UNA FECHA DADA
-    public List<CEFAS_Anticipo> getAnticiposEmpleado(int codigo, String fecha)
+    /*      RETORNA ANTICIPOS DE EMPLEADO A UNA FECHA DADA*/
+    public List<CEFAS_Anticipo> getAnticiposEmpleado(int codigo, java.util.Date fecha)
     {
        //retorna todos los anticipos de un empleado
      
         List<CEFAS_Anticipo> listAnticipos = new ArrayList<CEFAS_Anticipo>();
-        CEFAS_Anticipo anticipo= null;
+        CEFAS_Anticipo anticipo;
         try {
             conexiondb = ConexionDB.getConexion();
-            ps = conexiondb.prepareStatement(SQL_SELECT);
+            ps = conexiondb.prepareStatement(SQL_SELECT_DATE);
             ps.setInt(1, codigo);
-           // ps.setString(2, fecha);
+            ps.setDate(2, new Date(fecha.getTime()));
             rs = ps.executeQuery();
             while(rs.next())
             {
@@ -61,7 +61,6 @@ public class CEFAS_AnticipoDAO {
                 anticipo.setAtpFecha(rs.getDate("atpFecha"));
                 anticipo.setAtpCantidad(rs.getFloat("atpCantidad"));
                 listAnticipos.add(anticipo);
-               
             }
             ConexionDB.cerrarConexion();
         } catch (SQLException ex) {
@@ -69,8 +68,7 @@ public class CEFAS_AnticipoDAO {
         }
         return listAnticipos;
     }
-    */
-    
+
     
     public CEFAS_Anticipo getAnticipo(int codigo)
     {
