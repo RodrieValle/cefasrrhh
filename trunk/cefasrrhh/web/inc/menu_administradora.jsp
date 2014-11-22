@@ -35,7 +35,7 @@
                         <li><a href="viatico.jsp">Ingresar viáticos</a></li>
                         <li><a href="#">Calcular indemnización</a></li>
                          <li><a href="retencionesconfig.jsp">Configuración de las Retenciones</a></li>
-                        <li><a href="elaborarPlanilla.jsp">Elaborar planilla</a></li>
+                        <li><a href="planillaDelMes.jsp">Elaborar planilla</a></li>
                         <li><a href="#">Generar recibos</a></li>
                         <li><a href="#">Reportes</a></li>
                     </ul>
