@@ -45,8 +45,9 @@ public class CEFAS_EvaluacionDeClasesDAO {
        try {
             conexiondb = ConexionDB.getConexion();
             ps = conexiondb.prepareStatement(SQL_INSERT);
-            ps.setDate(1, new Date(evalcl.getEclFecha().getTime()));
-            ps.setString(2, evalcl.getEclRutaArchivo());
+            ps.setString(1, evalcl.getEmpCodigo());
+            ps.setDate(2, new Date(evalcl.getEclFecha().getTime()));
+            ps.setString(3, evalcl.getEclRutaArchivo());
             ps.executeUpdate();
             ConexionDB.cerrarConexion();
             return true;
