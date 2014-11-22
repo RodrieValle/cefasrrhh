@@ -54,7 +54,7 @@
                                                   <tr>
                                             <td>Codigo Sancion</td>
                                             <td>Fecha</td> 
-                       
+                                            <td>Sancion</td>
                                             <td></td>
                                             <td></td>
                                         </tr> 
@@ -65,8 +65,8 @@
                                         <tr>
                                             <td><%= scn.getScnCodigo()%></td>
                                             <td><%= new SimpleDateFormat("dd/MM/yyyy").format(scn.getScnFecha())%></td>
-                                            <td><%=scn.getScnMotivo() %></td>
-                                            <td><a href="#" class="btn btn-primary btn-md" role="button">Eliminar Anticipo</a></td>
+                                            <td><%=scn.getScnSancion() %></td>
+                                            <td><a href="#" class="btn btn-primary btn-md" role="button">Sancion</a></td>
                                         </tr>
                                       <%
                                     } %>  
