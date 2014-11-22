@@ -47,7 +47,7 @@
                     <div class="panel-heading">Zona de búsqueda</div>
                     <div class="panel-body">
                         <div class="row">
-                            <form action="anticipo.jsp" method="post">
+                            <form action="gestionarsancion.jsp" method="post">
                             <div class="col-xs-4 col-xs-offset-1">
                                 <select name="criterio" id="criterio" class="form-control input-sm">
                                     <option value="1">Código de empleado</option>
@@ -98,7 +98,7 @@
                                             <td><img src="<%= empleado.getEmpFoto() %>" class="center-block" alt="fotoempleado" width="150" height="100"/></td>
                                             <td><%= empleado.getEmpNombre() %></td>
                                             <td><a href="sancion.jsp?codigo=<%= empleado.getEmpCodigo() %>" class="btn btn-primary btn-md" role="button">Ingresar Sancion</a></td>
-                                            <td><a href="anticipoEmpleado.jsp?codigo=<%= empleado.getEmpCodigo() %>" class="btn btn-primary btn-md" role="button">Ver Sancion</a></td>
+                                            <td><a href="empleadosancion.jsp?codigo=<%= empleado.getEmpCodigo() %>" class="btn btn-primary btn-md" role="button">Ver Sancion</a></td>
                                         </tr>
                                       <%
                                     } %>  
