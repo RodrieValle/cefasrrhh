@@ -18,7 +18,7 @@ import java.util.List;
 public class CtrlCEFAS_Sancion {
     private CEFAS_SancionDAO daoSancion = new CEFAS_SancionDAO();
     
-    public void guardarSancion(String empCodigo,String scnCodigo,Date scnFecha,String scnMotivo,String scnSancion){
+    public void guardarSancion(int empCodigo,int scnCodigo,Date scnFecha,String scnMotivo,String scnSancion){
         CEFAS_Sancion scn= new CEFAS_Sancion();
          
                 scn.setEmpCodigo(empCodigo);
@@ -30,9 +30,9 @@ public class CtrlCEFAS_Sancion {
         daoSancion.almacenarSancion(scn);
     }
         
-    public List<CEFAS_Sancion> getSancion()
+   public List<CEFAS_Sancion> getSancion(int codigo)
     {
-        return daoSancion.getSancion();
+        return daoSancion.getSancion(codigo);
     }
    
 }
