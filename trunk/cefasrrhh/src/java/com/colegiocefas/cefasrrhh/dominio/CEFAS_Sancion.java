@@ -14,8 +14,8 @@ import java.util.Date;
  */
 public class CEFAS_Sancion {
     
-    private String empCodigo;
-    private String scnCodigo;   
+    private int empCodigo;
+    private int scnCodigo;   
     private Date   scnFecha;
     private String scnMotivo;
     private String scnSancion;
@@ -23,7 +23,7 @@ public class CEFAS_Sancion {
     public CEFAS_Sancion() {
     }
 
-    public CEFAS_Sancion(String empCodigo, String scnCodigo, Date scnFecha, String scnMotivo, String scnSancion) {
+    public CEFAS_Sancion(int empCodigo, int scnCodigo, Date scnFecha, String scnMotivo, String scnSancion) {
         this.empCodigo = empCodigo;
         this.scnCodigo = scnCodigo;
         this.scnFecha = scnFecha;
@@ -31,19 +31,19 @@ public class CEFAS_Sancion {
         this.scnSancion = scnSancion;
     }
 
-    public String getEmpCodigo() {
+    public int getEmpCodigo() {
         return empCodigo;
     }
 
-    public void setEmpCodigo(String empCodigo) {
+    public void setEmpCodigo(int empCodigo) {
         this.empCodigo = empCodigo;
     }
 
-    public String getScnCodigo() {
+    public int getScnCodigo() {
         return scnCodigo;
     }
 
-    public void setScnCodigo(String scnCodigo) {
+    public void setScnCodigo(int scnCodigo) {
         this.scnCodigo = scnCodigo;
     }
 

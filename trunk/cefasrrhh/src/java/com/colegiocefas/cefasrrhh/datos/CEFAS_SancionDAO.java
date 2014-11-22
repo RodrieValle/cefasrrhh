@@ -25,7 +25,7 @@ import java.util.logging.Logger;
  */
 public class CEFAS_SancionDAO {
     private final String SQL_INSERT = "INSERT INTO CEFAS_SANCION (EMPCODIGO,SCNCODIGO,SCNFECHA,SCNMOTIVO,SCNSANCION) VALUES (?, ?, ?, ?, ?)";
-    private final String SQL_SELECTBYID = "SELECT * FROM CEFAS_SANCION WHERE EMPCODIGO LIKE ?";
+    private final String SQL_SELECT = "SELECT * FROM CEFAS_SANCION WHERE EMPCODIGO LIKE ?";
 
     private Connection conexiondb;
     private Statement st;
@@ -36,8 +36,8 @@ public class CEFAS_SancionDAO {
          try {
             conexiondb = ConexionDB.getConexion();
             ps=conexiondb.prepareStatement(SQL_INSERT);
-            ps.setString(1,sancion.getEmpCodigo());
-            ps.setString(2,sancion.getScnCodigo());
+            ps.setInt(1,sancion.getEmpCodigo());
+            ps.setInt(2,sancion.getScnCodigo());
             ps.setDate(3, new Date(sancion.getScnFecha().getTime()));
             ps.setString(4,sancion.getScnMotivo());
             ps.setString(5,sancion.getScnSancion());
@@ -52,25 +52,24 @@ ConexionDB.cerrarConexion();
              
         }
     }
-   public List<CEFAS_Sancion> getSancion()
+   public List<CEFAS_Sancion> getSancion(int codigo)
     {
      
         List<CEFAS_Sancion> listSancion = new ArrayList<CEFAS_Sancion>();
         CEFAS_Sancion scn= null;
         try {
             conexiondb = ConexionDB.getConexion();
-            ps = conexiondb.prepareStatement(SQL_SELECTBYID);
-            ps.setString(1, scn.getEmpCodigo());
+            ps = conexiondb.prepareStatement(SQL_SELECT);
+            ps.setInt(1, codigo);
            
             rs = ps.executeQuery();
             while(rs.next())
             {
                 scn= new CEFAS_Sancion();
-                scn.setEmpCodigo(rs.getString("empCodigo"));
-                //scn.
-                //scn.
-                //scn.
-                //scn.
+                scn.setScnCodigo(rs.getInt("scnCodigo"));
+                scn.setEmpCodigo(rs.getInt("empCodigo"));
+                scn.setScnFecha(rs.getDate("scnFecha"));
+                scn.setScnMotivo(rs.getString("scnMotivo"));
                 listSancion.add(scn);
                
             }
