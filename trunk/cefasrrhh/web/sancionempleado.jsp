@@ -55,8 +55,7 @@
                                             <td>Codigo Sancion</td>
                                             <td>Fecha</td> 
                                             <td>Sancion</td>
-                                            <td></td>
-                                            <td></td>
+                                   
                                         </tr> 
                                      <%
                     for(CEFAS_Sancion scn: listSancion)
@@ -66,7 +65,7 @@
                                             <td><%= scn.getScnCodigo()%></td>
                                             <td><%= new SimpleDateFormat("dd/MM/yyyy").format(scn.getScnFecha())%></td>
                                             <td><%=scn.getScnSancion() %></td>
-                                            <td><a href="#" class="btn btn-primary btn-md" role="button">Sancion</a></td>
+                                            <td><a href="#" class="btn btn-primary btn-md" role="button">Eliminar Sancion</a></td>
                                         </tr>
                                       <%
                                     } %>  
