@@ -35,6 +35,7 @@ public class CEFAS_OrdenDeDescuentoDAO {
        private final String SQL_INSERT = "INSERT INTO CEFAS_ORDENDEDESCUENTO (EMPCODIGO, ODDFECHA, ODDMONTO, ODDPLAZO, ODDSALDO, ODDCUOTA) VALUES (?, ?, ?, ?, ?, ?)";
     private final String SQL_SELECT = "SELECT * FROM CEFAS_ORDENDEDESCUENTO WHERE EMPCODIGO LIKE ?";
     private final String SQL_SELECTBYID = "SELECT * FROM CEFAS_ORDENDEDESCUENTO WHERE ODDCODIGO LIKE ?";
+    private final String SQL_SELECTBYEMP = "SELECT * FROM CEFAS_ORDENDEDESCUENTO WHERE EMPCODIGO LIKE ?";
     private final String SQL_SELECTALL = "SELECT * FROM CEFAS_ORDENDEDESCUENTO";
     private final String SQL_UPDATE = "UPDATE CEFAS_ORDENDEDESCUENTO SET EMPCODIGO = ?, ODDFECHA = ?,"
             + " ODDMONTO = ?, ODDPLAZO = ?, ODDSALDO = ?, ODDCUOTA = ?,WHERE ODDCODIGO = ?";
@@ -49,9 +50,7 @@ public class CEFAS_OrdenDeDescuentoDAO {
     
     public CEFAS_OrdenDeDescuento getOrdenDescuento(int codigo)
     {
-       //retorna todos los anticipos de un empleado
-     
-        
+       //retorna ORDEN por id
         CEFAS_OrdenDeDescuento orden = null;
         try {
             conexiondb = ConexionDB.getConexion();
@@ -170,7 +169,32 @@ ConexionDB.cerrarConexion();
      }
      
     
-    
-    
+    //retorna orden por empleado
+       public CEFAS_OrdenDeDescuento obtenerDescuentoEmpleado(int codigo)
+    {
+   CEFAS_OrdenDeDescuento orden = null;
+        try {
+            conexiondb = ConexionDB.getConexion();
+            ps = conexiondb.prepareStatement(SQL_SELECTBYEMP);
+            ps.setInt(1, codigo);
+           // ps.setString(2, fecha);
+            rs = ps.executeQuery();
+            while(rs.next())
+            {
+                orden = new CEFAS_OrdenDeDescuento();
+                orden.setOddCodigo(rs.getInt("oddCodigo"));
+               orden.setEmpCodigo(rs.getInt("empCodigo"));
+                orden.setOddFecha(rs.getDate("oddFecha"));
+                orden.setOddMonto(rs.getFloat("oddMonto"));
+                orden.setOddPlazo(rs.getInt("oddPlazo"));
+                orden.setOddSaldo(rs.getFloat("oddSaldo"));
+                orden.setOddCuota(rs.getFloat("oddCuota")); 
+            }
+            ConexionDB.cerrarConexion();
+        } catch (SQLException ex) {
+            Logger.getLogger(CEFAS_OrdenDeDescuentoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return orden;
+    }
     
 }

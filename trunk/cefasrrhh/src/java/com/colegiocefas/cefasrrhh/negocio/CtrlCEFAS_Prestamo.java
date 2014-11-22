@@ -35,9 +35,14 @@ public class CtrlCEFAS_Prestamo {
                 daoPrestamo.almacenarPrestamos(prestamo);
     }
     
+        
               public List<CEFAS_Prestamo> getPrestamos()
     {
         return daoPrestamo.getPrestamos();
     }
     
+     public CEFAS_Prestamo getPrestamoEmpleado(int codigo)
+    {
+        return daoPrestamo.obtenerPrestamoEmpleado(codigo);
+    }
 }
