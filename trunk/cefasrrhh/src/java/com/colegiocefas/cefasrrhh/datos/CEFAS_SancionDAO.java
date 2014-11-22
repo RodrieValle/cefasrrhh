@@ -26,6 +26,7 @@ import java.util.logging.Logger;
 public class CEFAS_SancionDAO {
     private final String SQL_INSERT = "INSERT INTO CEFAS_SANCION (EMPCODIGO,SCNCODIGO,SCNFECHA,SCNMOTIVO,SCNSANCION) VALUES (?, ?, ?, ?, ?)";
     private final String SQL_SELECTBYID = "SELECT * FROM CEFAS_SANCION WHERE EMPCODIGO LIKE ?";
+
     private Connection conexiondb;
     private Statement st;
     private PreparedStatement ps;
