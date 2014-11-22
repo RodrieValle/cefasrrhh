@@ -25,7 +25,7 @@
  
 
     CtrlCEFAS_LineaDePlanilla ctrlLinea = new CtrlCEFAS_LineaDePlanilla();
-    List<CEFAS_LineaDePlanilla> listaLinea = ctrlLinea.calculoPlanilla();
+    List<CEFAS_LineaDePlanilla> listaLinea = ctrlLinea.calculoPlanillaAguinaldo();
 %>
 <!DOCTYPE html>
 <html>
@@ -64,6 +64,8 @@
                                             <th>ISSS</th>
                                             <th>AFP Confia</th>
                                             <th>AFP Crecer</th>
+                                            <th>Vacacion</th>
+                                            <th>Aguinaldo</th>
                                             <th>Valor sujeto a Renta</th>
                                             <th>Renta</th>
                                             <th>Anticipo</th>
@@ -87,6 +89,8 @@
                                             <td>$ <%= String.format("%.2f", linea.getLdpIsss()) %></td>
                                             <td>$ <%= String.format("%.2f", linea.getLdpAfpConfia()) %></td>
                                             <td>$ <%= String.format("%.2f", linea.getLdpAfpCrecer()) %></td>
+                                            <td>$ <%= String.format("%.2f", linea.getLdpVacacion()) %></td>
+                                            <td>$ <%= String.format("%.2f", linea.getLdpAguinaldo()) %></td>
                                             <td>$ <%= String.format("%.2f", linea.getLdpValorNetoSujetoRenta()) %></td>
                                             <td>$ <%= String.format("%.2f", linea.getLdpImpuestoSobreRenta()) %></td>
                                             <td>$ <%= String.format("%.2f", linea.getLdpAnticipo()) %></td>

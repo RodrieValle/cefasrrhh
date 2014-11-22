@@ -31,6 +31,8 @@ public class CEFAS_LineaDePlanilla {
     private float ldpIsss;  
     private float ldpMontoViatico;
     private float ldpLiquidoAPagar;
+    private float ldpAguinaldo;
+    private float ldpVacacion;
 
     public CEFAS_LineaDePlanilla(int empCodigo, int plnCodigo, int ldpCodigo, Date ldpFecha, float ldpSueldoBase, float ldpHorasExtra, float ldpAusenciasTardias, float ldpSueldoDevengado, float ldpAfpConfia, float ldpAfpCrecer, float ldpValorNetoSujetoRenta, float ldpImpuestoSobreRenta, float ldpAnticipo, float ldpAbonoPrestamo, float ldpOrdenDeDescuento, float ldpIsss, float ldpMontoViatico, float ldpLiquidoAPagar) {
         this.empCodigo = empCodigo;
@@ -202,6 +204,22 @@ public class CEFAS_LineaDePlanilla {
 
     public void setPlnCodigo(int plnCodigo) {
         this.plnCodigo = plnCodigo;
+    }
+
+    public float getLdpAguinaldo() {
+        return ldpAguinaldo;
+    }
+
+    public void setLdpAguinaldo(float ldpAguinaldo) {
+        this.ldpAguinaldo = ldpAguinaldo;
+    }
+
+    public float getLdpVacacion() {
+        return ldpVacacion;
+    }
+
+    public void setLdpVacacion(float ldpVacacion) {
+        this.ldpVacacion = ldpVacacion;
     }
     
     

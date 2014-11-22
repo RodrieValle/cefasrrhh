@@ -122,7 +122,7 @@ public class CEFAS_EmpleadoDAO {
             ps.setString(9, empleado.getEmpCelular());
             ps.setString(10, empleado.getEmpCorreo());
             ps.setString(11, empleado.getEmpFoto());
-            ps.setDate(12, new java.sql.Date(empleado.getEmpAnioContratacion().getTime()));
+            ps.setDate(12, new Date(empleado.getEmpAnioContratacion().getTime()));
             ps.setString(13, empleado.getEmpPlazaActual());
             ps.setString(14, empleado.getEmpPlazaAnterior());
             ps.setInt(15, empleado.getEmpJefeInmediato());
