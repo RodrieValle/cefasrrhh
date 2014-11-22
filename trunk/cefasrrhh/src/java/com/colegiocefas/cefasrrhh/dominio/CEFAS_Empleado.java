@@ -6,7 +6,10 @@
 
 package com.colegiocefas.cefasrrhh.dominio;
 
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -223,5 +226,38 @@ private int empTipoAfp;
         this.empTipoAfp = empTipoAfp;
     }
     
+    
+    
+    public int añosTrabajados(){
+        List<Integer> tiempoTrabajado = new ArrayList<Integer>();
+        Calendar fechaActual = Calendar.getInstance();
+            Calendar fechaContrato = Calendar.getInstance();
+            fechaContrato.setTime(empAnioContratacion);
+            int año = fechaActual.get(Calendar.YEAR) - fechaContrato.get(Calendar.YEAR);
+            int mes = fechaActual.get(Calendar.MONTH) - fechaContrato.get(Calendar.MONTH);
+            int dia = fechaActual.get(Calendar.DATE) - fechaContrato.get(Calendar.DATE);
+            //Se ajusta el año dependiendo el mes y el día
+            if (mes < 0 || (mes == 0 && dia < 0)) {
+                año--;
+            }
+            if(mes == 0 && dia < 0)
+            {
+                mes = 11;
+                dia = 30 + dia;
+            }
+            if(mes < 0)
+            {
+                mes = 12 + mes;
+            }
+            if(dia < 0)
+            {
+                dia = 30 + dia;
+            }
+            tiempoTrabajado.add(dia);
+            tiempoTrabajado.add(mes);
+            tiempoTrabajado.add(año);
+            
+            return año;
+    }
     
 }

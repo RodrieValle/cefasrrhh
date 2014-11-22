@@ -6,10 +6,15 @@
 
 package com.colegiocefas.cefasrrhh.negocio;
 
+import com.colegiocefas.cefasrrhh.datos.CEFAS_EmpleadoDAO;
 import com.colegiocefas.cefasrrhh.dominio.CEFAS_ConfiguracionRetenciones;
 import com.colegiocefas.cefasrrhh.dominio.CEFAS_Empleado;
 import com.colegiocefas.cefasrrhh.dominio.CEFAS_LineaDePlanilla;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -19,7 +24,7 @@ import java.util.List;
 public class CtrlCEFAS_LineaDePlanilla {
     
     
-    
+    //<<<<<<<<<<<<<<<planilla normal.....sin vacaciones y aguinaldo<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     public List<CEFAS_LineaDePlanilla> calculoPlanilla(){
         CEFAS_LineaDePlanilla linea= new CEFAS_LineaDePlanilla();
         List<CEFAS_LineaDePlanilla> listPlanilla= new ArrayList();
@@ -33,7 +38,7 @@ public class CtrlCEFAS_LineaDePlanilla {
         listEmpleados=ctrlEmpleados.obtenerEmpleados();  
        
    
-        
+   
         //inicio iteracion de empleados
         for(CEFAS_Empleado empleado: listEmpleados)
         {
@@ -215,7 +220,47 @@ public float calculoViatico(int codEmpleado){
 
 
 
-//Aguinaldo
+public float calculoAguinaldo(float valor, List<Integer> tiempoTrabajando){
+    float aguinaldo=0;
+  
+int año=tiempoTrabajando.get(2);  //calcula tiempo trabajado
+int mes=tiempoTrabajando.get(1);
+int dia=tiempoTrabajando.get(0);
+
+    //fin tiempo trabajado
+    
+    if(año>=1&&año<3){
+        //si entre 1 año y 3  15
+        aguinaldo=valor/30 *15;
+        return aguinaldo;
+    }else
+      if(año>=3&&año<10){
+        //si entre 3 año y 10  19
+          aguinaldo=valor/30 *19;
+          return aguinaldo;
+    }else
+        if(año>=10){
+        //si tiene mas de 10 años   21
+            aguinaldo=valor/30 *21;
+     return aguinaldo;     
+    }else
+    
+    return aguinaldo;
+}
+
+
+public float calculoVacacion(float valor){
+    float vacacion;
+    float salarioDiario=valor/30;
+    float quincena=salarioDiario *15;
+    float extra=(quincena*30)/100;
+    vacacion=extra;
+    return vacacion;
+}
+
+
+
+//>>>>>>>>>>>>>>>>>>>>planilla de diciembre..........incluye vacacion y aguinaldo<<<<<<<<<<<<<<<<<<<<<<
    public List<CEFAS_LineaDePlanilla> calculoPlanillaAguinaldo(){
         CEFAS_LineaDePlanilla linea= new CEFAS_LineaDePlanilla();
         List<CEFAS_LineaDePlanilla> listPlanilla= new ArrayList();
@@ -268,6 +313,16 @@ public float calculoViatico(int codEmpleado){
             linea.setLdpAfpCrecer(afpCrecer);
             
             
+            //float vacacion=0;
+            float vacacion=calculoVacacion(salario);
+            linea.setLdpVacacion(vacacion);
+            
+            CEFAS_EmpleadoDAO daoEmpleado=new CEFAS_EmpleadoDAO();
+            List<Integer> año=daoEmpleado.getTiempoTrabajado(codigo);
+            float aguinaldo=calculoAguinaldo(salario, año);
+            //float aguinaldo=0;
+            linea.setLdpAguinaldo(aguinaldo);
+            
             float sujeto=devengado-afpConfia-afpCrecer;
             linea.setLdpValorNetoSujetoRenta(sujeto);
             
@@ -277,8 +332,8 @@ public float calculoViatico(int codEmpleado){
             linea.setLdpImpuestoSobreRenta(renta);
             
             
-           float anticipo=0;
-            //float anticipo=calculoAnticipo(codigo);
+           
+            float anticipo=calculoAnticipo(codigo);
             linea.setLdpAnticipo(anticipo);
             
              float prestamo=0;
@@ -287,8 +342,8 @@ public float calculoViatico(int codEmpleado){
              float ordenDescuento=0;
             linea.setLdpOrdenDeDescuento(ordenDescuento);
             
-            float viaticos=0;
-            // float viaticos=calculoViatico(codigo);
+           
+            float viaticos=calculoViatico(codigo);
             linea.setLdpMontoViatico(viaticos);
             
             float liquidoPagar=sujeto-isss-renta-anticipo-ordenDescuento-prestamo+viaticos;
