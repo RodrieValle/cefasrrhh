@@ -97,8 +97,8 @@
                                         <tr>
                                             <td><img src="<%= empleado.getEmpFoto() %>" class="center-block" alt="fotoempleado" width="150" height="100"/></td>
                                             <td><%= empleado.getEmpNombre() %></td>
-                                            <td><a href="sancion.jsp?codigo=<%= empleado.getEmpCodigo() %>" class="btn btn-primary btn-md" role="button">Generar Anticipo</a></td>
-                                            <td><a href="anticipoEmpleado.jsp?codigo=<%= empleado.getEmpCodigo() %>" class="btn btn-primary btn-md" role="button">Ver Anticipos</a></td>
+                                            <td><a href="sancion.jsp?codigo=<%= empleado.getEmpCodigo() %>" class="btn btn-primary btn-md" role="button">Ingresar Sancion</a></td>
+                                            <td><a href="anticipoEmpleado.jsp?codigo=<%= empleado.getEmpCodigo() %>" class="btn btn-primary btn-md" role="button">Ver Sancion</a></td>
                                         </tr>
                                       <%
                                     } %>  
