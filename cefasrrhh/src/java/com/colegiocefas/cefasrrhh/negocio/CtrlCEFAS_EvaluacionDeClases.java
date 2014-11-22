@@ -20,9 +20,10 @@ public class CtrlCEFAS_EvaluacionDeClases {
 
 	CEFAS_EvaluacionDeClasesDAO evalcDao = new CEFAS_EvaluacionDeClasesDAO ();
     
-     public boolean guardar(Date fecha, String ruta)
+     public boolean guardar(String codigoEmpleado, Date fecha, String ruta)
     {
         CEFAS_EvaluacionDeClases evalc = new CEFAS_EvaluacionDeClases();
+        evalc.setEmpCodigo(codigoEmpleado);
         evalc.setEclFecha(fecha);
         evalc.setEclRutaArchivo(ruta);
         return evalcDao.guardar(evalc);
