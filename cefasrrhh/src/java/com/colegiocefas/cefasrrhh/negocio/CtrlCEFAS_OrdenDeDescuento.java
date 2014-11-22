@@ -40,4 +40,10 @@ public class CtrlCEFAS_OrdenDeDescuento {
     {
         return daoOrden.getOrdenDeDescuentos();
     }
+         
+         
+            public CEFAS_OrdenDeDescuento getOrdenDescuentoEmpleado(int codigo)
+    {
+        return daoOrden.obtenerDescuentoEmpleado(codigo);
+    }
 }

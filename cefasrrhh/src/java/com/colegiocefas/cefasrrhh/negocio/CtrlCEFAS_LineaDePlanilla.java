@@ -10,6 +10,8 @@ import com.colegiocefas.cefasrrhh.datos.CEFAS_EmpleadoDAO;
 import com.colegiocefas.cefasrrhh.dominio.CEFAS_ConfiguracionRetenciones;
 import com.colegiocefas.cefasrrhh.dominio.CEFAS_Empleado;
 import com.colegiocefas.cefasrrhh.dominio.CEFAS_LineaDePlanilla;
+import com.colegiocefas.cefasrrhh.dominio.CEFAS_OrdenDeDescuento;
+import com.colegiocefas.cefasrrhh.dominio.CEFAS_Prestamo;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -37,7 +39,10 @@ public class CtrlCEFAS_LineaDePlanilla {
         List<CEFAS_Empleado> listEmpleados= new ArrayList();
         listEmpleados=ctrlEmpleados.obtenerEmpleados();  
        
-   
+      //prestamo
+        CtrlCEFAS_Prestamo ctrlPrestamo=new CtrlCEFAS_Prestamo();
+   //descuento
+        CtrlCEFAS_OrdenDeDescuento ctrlDescuento=new CtrlCEFAS_OrdenDeDescuento();
    
         //inicio iteracion de empleados
         for(CEFAS_Empleado empleado: listEmpleados)
@@ -90,17 +95,26 @@ public class CtrlCEFAS_LineaDePlanilla {
             float anticipo=calculoAnticipo(codigo);
             linea.setLdpAnticipo(anticipo);
             
-             float prestamo=0;
-            linea.setLdpAbonoPrestamo(prestamo);
+            float prest=0;
+             CEFAS_Prestamo prestamo=ctrlPrestamo.getPrestamoEmpleado(codigo);
+            if(prestamo!=null){
+                prest=prestamo.getPrmCuota();
+             linea.setLdpAbonoPrestamo(prest);
+            }
+            else linea.setLdpAbonoPrestamo(0);
             
-             float ordenDescuento=0;
-            linea.setLdpOrdenDeDescuento(ordenDescuento);
-            
+            float orden=0;
+           CEFAS_OrdenDeDescuento ordenDescuento=ctrlDescuento.getOrdenDescuentoEmpleado(codigo);
+           if(ordenDescuento!=null){
+               orden=ordenDescuento.getOddCuota();
+            linea.setLdpOrdenDeDescuento(orden);
+           }
+           else  linea.setLdpOrdenDeDescuento(0);
            // float viaticos=0;
              float viaticos=calculoViatico(codigo);
             linea.setLdpMontoViatico(viaticos);
             
-            float liquidoPagar=sujeto-isss-renta-anticipo-ordenDescuento-prestamo+viaticos;
+            float liquidoPagar=sujeto-isss-renta-anticipo-orden-prest+viaticos;
             linea.setLdpLiquidoAPagar(liquidoPagar);
             listPlanilla.add(linea);
         }
@@ -273,7 +287,10 @@ public float calculoVacacion(float valor){
         List<CEFAS_Empleado> listEmpleados= new ArrayList();
         listEmpleados=ctrlEmpleados.obtenerEmpleados();  
        
-   
+        //prestamo
+        CtrlCEFAS_Prestamo ctrlPrestamo=new CtrlCEFAS_Prestamo();
+   //descuento
+        CtrlCEFAS_OrdenDeDescuento ctrlDescuento=new CtrlCEFAS_OrdenDeDescuento();
         
         //inicio iteracion de empleados
         for(CEFAS_Empleado empleado: listEmpleados)
@@ -323,7 +340,13 @@ public float calculoVacacion(float valor){
             //float aguinaldo=0;
             linea.setLdpAguinaldo(aguinaldo);
             
-            float sujeto=devengado-afpConfia-afpCrecer;
+            float aguinaldoSujeto=0;
+            if(aguinaldo>=listConfiguraciones.get(11).getCfgMinimo())
+            {
+            aguinaldoSujeto=aguinaldo-listConfiguraciones.get(11).getCfgMinimo();
+            }
+            
+            float sujeto=devengado-afpConfia-afpCrecer+aguinaldoSujeto+vacacion;
             linea.setLdpValorNetoSujetoRenta(sujeto);
             
             float renta=calculoRenta(sujeto, listConfiguraciones.get(0), 
@@ -336,17 +359,26 @@ public float calculoVacacion(float valor){
             float anticipo=calculoAnticipo(codigo);
             linea.setLdpAnticipo(anticipo);
             
-             float prestamo=0;
-            linea.setLdpAbonoPrestamo(prestamo);
+          float prest=0;
+             CEFAS_Prestamo prestamo=ctrlPrestamo.getPrestamoEmpleado(codigo);
+            if(prestamo!=null){
+                prest=prestamo.getPrmCuota();
+             linea.setLdpAbonoPrestamo(prest);
+            }
+            else linea.setLdpAbonoPrestamo(0);
             
-             float ordenDescuento=0;
-            linea.setLdpOrdenDeDescuento(ordenDescuento);
-            
-           
+            float orden=0;
+           CEFAS_OrdenDeDescuento ordenDescuento=ctrlDescuento.getOrdenDescuentoEmpleado(codigo);
+           if(ordenDescuento!=null){
+               orden=ordenDescuento.getOddCuota();
+            linea.setLdpOrdenDeDescuento(orden);
+           }
+           else  linea.setLdpOrdenDeDescuento(0);
+          
             float viaticos=calculoViatico(codigo);
             linea.setLdpMontoViatico(viaticos);
             
-            float liquidoPagar=sujeto-isss-renta-anticipo-ordenDescuento-prestamo+viaticos;
+            float liquidoPagar=sujeto-isss-renta-anticipo-orden-prest+viaticos;
             linea.setLdpLiquidoAPagar(liquidoPagar);
             listPlanilla.add(linea);
         }

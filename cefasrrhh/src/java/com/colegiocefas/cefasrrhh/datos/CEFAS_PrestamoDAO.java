@@ -32,6 +32,7 @@ public class CEFAS_PrestamoDAO {
        private final String SQL_INSERT = "INSERT INTO CEFAS_PRESTAMO (EMPCODIGO, PRMFECHA, PRMMONTO, PRMPLAZO, PRMSALDO, PRMCUOTA) VALUES (?, ?, ?, ?, ?, ?)";
     private final String SQL_SELECT = "SELECT * FROM CEFAS_PRESTAMO WHERE EMPCODIGO LIKE ?";
     private final String SQL_SELECTBYID = "SELECT * FROM CEFAS_PRESTAMO WHERE PRMCODIGO LIKE ?";
+    private final String SQL_SELECTBYEMP = "SELECT * FROM CEFAS_PRESTAMO WHERE EMPCODIGO LIKE ?";
     private final String SQL_SELECTALL = "SELECT * FROM CEFAS_PRESTAMO";
     private final String SQL_UPDATE = "UPDATE CEFAS_PRESTAMO SET EMPCODIGO = ?, PRMFECHA = ?,"
             + " PRMMONTO = ?, PRMPLAZO = ?, PRMSALDO = ?, PRMCUOTA = ?,WHERE PRMCODIGO = ?";
@@ -46,9 +47,7 @@ public class CEFAS_PrestamoDAO {
     
     public CEFAS_Prestamo getPrestamo(int codigo)
     {
-       //retorna todos los anticipos de un empleado
-     
-        
+        //da prestamo por id
         CEFAS_Prestamo prestamo=null;
         try {
             conexiondb = ConexionDB.getConexion();
@@ -65,9 +64,7 @@ public class CEFAS_PrestamoDAO {
                 prestamo.setPrmMonto(rs.getFloat("prmMonto"));
                 prestamo.setPrmPlazo(rs.getInt("prmPlazo"));
                 prestamo.setPrmSaldo(rs.getFloat("prmSaldo"));
-                prestamo.setPrmCuota(rs.getFloat("prmCuota"));
-                
-               
+                prestamo.setPrmCuota(rs.getFloat("prmCuota"));             
             }
             ConexionDB.cerrarConexion();
         } catch (SQLException ex) {
@@ -77,11 +74,9 @@ public class CEFAS_PrestamoDAO {
     }
     
 
-    //Retorna todos las ordenes del sistema
+    //Retorna todos los prestamos del sistema
      public List<CEFAS_Prestamo> getPrestamos()
     {
-       //retorna todos los anticipos de un empleado
-     
         List<CEFAS_Prestamo> listPrestamos = new ArrayList<CEFAS_Prestamo>();
         CEFAS_Prestamo prestamo= null;
         try {
@@ -100,8 +95,7 @@ public class CEFAS_PrestamoDAO {
                 prestamo.setPrmPlazo(rs.getInt("prmPlazo"));
                 prestamo.setPrmSaldo(rs.getFloat("prmSaldo"));
                 prestamo.setPrmCuota(rs.getFloat("prmCuota"));
-                listPrestamos.add(prestamo);
-               
+                listPrestamos.add(prestamo); 
             }
             ConexionDB.cerrarConexion();
         } catch (SQLException ex) {
@@ -112,8 +106,7 @@ public class CEFAS_PrestamoDAO {
     
    
      public void almacenarPrestamos(CEFAS_Prestamo prestamo) {
-     //almacena un anticipo leido desde el navegador
-    
+     //almacena un prestamo leido desde el navegador
         try {
             conexiondb = ConexionDB.getConexion();
             ps=conexiondb.prepareStatement(SQL_INSERT);
@@ -130,18 +123,14 @@ public class CEFAS_PrestamoDAO {
             }
 ConexionDB.cerrarConexion();
         } catch (SQLException ex) {
-            Logger.getLogger(CEFAS_Prestamo.class.getName()).log(Level.SEVERE, null, ex);
-             
+            Logger.getLogger(CEFAS_Prestamo.class.getName()).log(Level.SEVERE, null, ex);         
         }
-     
-     
      }
      
      
      
      public void actualizarPrestamo(CEFAS_Prestamo prestamo) {
      //almacena un anticipo leido desde el navegador
-    
         try {
             conexiondb = ConexionDB.getConexion();
             ps=conexiondb.prepareStatement(SQL_UPDATE);
@@ -152,17 +141,43 @@ ConexionDB.cerrarConexion();
             ps.setDouble(5, prestamo.getPrmSaldo());
             ps.setDouble(6, prestamo.getPrmCuota());
             int n=ps.executeUpdate();
-
+            
             if(n>0){
                Logger.getLogger("Se guardo correctamente");
             }
 ConexionDB.cerrarConexion();
         } catch (SQLException ex) {
-            Logger.getLogger(CEFAS_PrestamoDAO.class.getName()).log(Level.SEVERE, null, ex);
-             
+            Logger.getLogger(CEFAS_PrestamoDAO.class.getName()).log(Level.SEVERE, null, ex);   
         }
-     
-     
      }
+     
+     
+     //prestamo de un empleado
+        public CEFAS_Prestamo obtenerPrestamoEmpleado(int codigo)
+    {
+        CEFAS_Prestamo prestamo=null;
+        try {
+            conexiondb = ConexionDB.getConexion();
+            ps = conexiondb.prepareStatement(SQL_SELECTBYEMP);
+            ps.setInt(1, codigo);
+           // ps.setString(2, fecha);
+            rs = ps.executeQuery();
+            while(rs.next())
+            {
+                prestamo= new CEFAS_Prestamo();
+                prestamo.setPrmCodigo(rs.getInt("prmCodigo"));
+               prestamo.setEmpCodigo(rs.getInt("empCodigo"));
+                prestamo.setPrmFecha(rs.getDate("prmFecha"));
+                prestamo.setPrmMonto(rs.getFloat("prmMonto"));
+                prestamo.setPrmPlazo(rs.getInt("prmPlazo"));
+                prestamo.setPrmSaldo(rs.getFloat("prmSaldo"));
+                prestamo.setPrmCuota(rs.getFloat("prmCuota"));             
+            }
+            ConexionDB.cerrarConexion();
+        } catch (SQLException ex) {
+            Logger.getLogger(CEFAS_PrestamoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return prestamo;
+    }
     
 }
