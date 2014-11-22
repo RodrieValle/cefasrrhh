@@ -34,4 +34,5 @@ public class CtrlCEFAS_Sancion {
     {
         return daoSancion.getSancion();
     }
+   
 }
