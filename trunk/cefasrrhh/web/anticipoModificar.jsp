@@ -4,6 +4,7 @@
     Author     : MARIA JUAREZ
 --%>
 
+<%@page import="com.colegiocefas.cefasrrhh.negocio.CtrlCEFAS_Bitacora"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Date"%>
 <%@page import="com.colegiocefas.cefasrrhh.negocio.CtrlCEFAS_Anticipo"%>
@@ -13,7 +14,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <% 
-
+String mensaje="";
  HttpSession sesionOk = request.getSession();
     String tipo = (String) sesionOk.getAttribute("tipo");
     if (tipo == null) {
@@ -29,13 +30,28 @@ if(request.getParameter("fecha") != null)
         int codigo = Integer.parseInt(request.getParameter("empcodigo"));
         Date fecha = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("fecha").toString());
         float cantidad = Float.parseFloat(request.getParameter("cantidad"));
-       
+       //String mensaje="";
           
         CtrlCEFAS_Anticipo ctrlAnticipo = new CtrlCEFAS_Anticipo();
-        ctrlAnticipo.actualizarAnticipo(codigoAtp, codigo, fecha, cantidad);
+        int resultado=ctrlAnticipo.actualizarAnticipo(codigoAtp, codigo, fecha, cantidad);
+        
+        if(resultado==1){
+             mensaje = "<br><br><div class='alert alert-success' role='alert'><button type='button' class='close'"
+                + " data-dismiss='alert'><span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span></button>"
+                + "La actualizacion se realizo con exito</div>";
+              CtrlCEFAS_Bitacora ctrlBitacora= new CtrlCEFAS_Bitacora();
+        ctrlBitacora.guardarBitacora((Integer) sesionOk.getAttribute("codigo"), "Se actualizo el anticipo con codigo "+codigoAtp);
+             
+        }else{
+         mensaje = "<br><br><div class='alert alert-success' role='alert'><button type='button' class='close'"
+                + " data-dismiss='alert'><span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span></button>"
+                + "Error en la actualizacion del registro vuelva a intentar</div>";
+        }
+        
+        
 }
 
-    int codigoAnticipo = Integer.parseInt(request.getParameter("codigoAnticipo"));
+    int codigoAnticipo = Integer.parseInt(request.getParameter("codigo"));
     //CtrlCEFAS_Empleado ctrlEmpleado = new CtrlCEFAS_Empleado();
     //CEFAS_Empleado empleado = ctrlEmpleado.getEmpleadoPorUsuario(codigoEmp);
     
@@ -55,6 +71,8 @@ if(request.getParameter("fecha") != null)
      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Modificar Anticipo</title>
          <jsp:include page='inc/head_common.jsp' />
+         <link rel="stylesheet" type="text/css" href="css/bootstrap-formhelpers.css">
+        <script type="text/javascript" src="js/bootstrap-formhelpers.js"></script>
     </head>
     <body>
         
@@ -99,7 +117,7 @@ if(request.getParameter("fecha") != null)
              </div>
  <input type="submit" value="Guardar" class="btn btn-success center-block"/><br>
  </form>
-
+<%= mensaje%>
   </div><%-- fin class=container --%>
   </div><%-- fin id=container --%>
     </body>
