@@ -69,9 +69,9 @@
          <% } %>
          
           <div class="container">
-   <h1>Evaluacion por Funciones</h1>
-        Introduzca los datos de la Evaluacion<br>
-      <form class="form-signin" role="form" method="post" action="">
+   <h1>Evaluación por Funciones</h1>
+        Introduzca los datos de la Evaluación<br>
+      <form class="form-signin" role="form" method="post" action="evaluacionFunciones.jsp">
    <div class="row"> 
        <div class="col-xs-4">  
                             </div> 

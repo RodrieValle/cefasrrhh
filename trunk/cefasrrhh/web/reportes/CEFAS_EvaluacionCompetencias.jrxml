@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CEFAS_EvaluacionCompetencias" language="groovy" pageWidth="792" pageHeight="612" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="42ac161b-f323-425a-9c5d-6c43d2e8b35b">
+	<property name="ireport.zoom" value="0.75"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="a1" class="java.lang.Integer"/>
+	<parameter name="a2" class="java.lang.Integer"/>
+	<parameter name="a3" class="java.lang.Integer"/>
+	<parameter name="a4" class="java.lang.Integer"/>
+	<parameter name="a5" class="java.lang.Integer"/>
+	<parameter name="b1" class="java.lang.Integer"/>
+	<parameter name="b2" class="java.lang.Integer"/>
+	<parameter name="b3" class="java.lang.Integer"/>
+	<parameter name="b4" class="java.lang.Integer"/>
+	<parameter name="b5" class="java.lang.Integer"/>
+	<parameter name="c1" class="java.lang.Integer"/>
+	<parameter name="c2" class="java.lang.Integer"/>
+	<parameter name="c3" class="java.lang.Integer"/>
+	<parameter name="c4" class="java.lang.Integer"/>
+	<parameter name="c5" class="java.lang.Integer"/>
+	<parameter name="d1" class="java.lang.Integer"/>
+	<parameter name="d2" class="java.lang.Integer"/>
+	<parameter name="d3" class="java.lang.Integer"/>
+	<parameter name="d4" class="java.lang.Integer"/>
+	<parameter name="d5" class="java.lang.Integer"/>
+	<parameter name="e1" class="java.lang.Integer"/>
+	<parameter name="e2" class="java.lang.Integer"/>
+	<parameter name="e3" class="java.lang.Integer"/>
+	<parameter name="e4" class="java.lang.Integer"/>
+	<parameter name="e5" class="java.lang.Integer"/>
+	<parameter name="f1" class="java.lang.Integer"/>
+	<parameter name="f2" class="java.lang.Integer"/>
+	<parameter name="f3" class="java.lang.Integer"/>
+	<parameter name="f4" class="java.lang.Integer"/>
+	<parameter name="f5" class="java.lang.Integer"/>
+	<parameter name="g1" class="java.lang.Integer"/>
+	<parameter name="g2" class="java.lang.Integer"/>
+	<parameter name="g3" class="java.lang.Integer"/>
+	<parameter name="g4" class="java.lang.Integer"/>
+	<parameter name="g5" class="java.lang.Integer"/>
+	<parameter name="h1" class="java.lang.Integer"/>
+	<parameter name="h2" class="java.lang.Integer"/>
+	<parameter name="h3" class="java.lang.Integer"/>
+	<parameter name="h4" class="java.lang.Integer"/>
+	<parameter name="h5" class="java.lang.Integer"/>
+	<parameter name="i1" class="java.lang.Integer"/>
+	<parameter name="i2" class="java.lang.Integer"/>
+	<parameter name="i3" class="java.lang.Integer"/>
+	<parameter name="i4" class="java.lang.Integer"/>
+	<parameter name="i5" class="java.lang.Integer"/>
+	<parameter name="j1" class="java.lang.Integer"/>
+	<parameter name="j2" class="java.lang.Integer"/>
+	<parameter name="j3" class="java.lang.Integer"/>
+	<parameter name="j4" class="java.lang.Integer"/>
+	<parameter name="j5" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="23" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="e488c9c5-230d-48ff-924b-17cf33a324b0" x="300" y="0" width="156" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isItalic="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Evaluación por Competencias]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c60a975c-0ca7-41b3-b21b-e1e10cfe424c" x="692" y="3" width="30" height="20"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[3]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9e541f3e-d02d-4635-91da-895fe6ab6b81" x="722" y="3" width="30" height="20"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[4]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="54ee9e04-c576-4105-b258-128dc43f848e" x="662" y="3" width="30" height="20"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d2fddb94-86f2-4a8d-950d-4d2423bb22d6" x="632" y="3" width="30" height="20"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[1]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="547" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="8876858a-3eba-471c-a96a-0e4e7f5a4297" x="0" y="0" width="632" height="497"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Compromiso
+	Comprende y asume como propios los objetivos de la organización.
+	Se mantiene motivado y motiva a sus compañeros para guiar su accionar según los objetivos pautados.
+	Tiene un buen nivel de desempeño, y alcanza siempre los objetivos que se le pautan, esforzándose por mejorar continuamente y por participar y aportar ideas y soluciones superadoras.
+	Genera informaciónón para el control de la gestión, y busca feedbak para chequear su nivel de desempeño.
+	Nunca se compromete a realizar algo que no puede cumplir.
+Calidad de Trabajo
+	Define objetivos claros, y diseña procesos adecuados, prácticos y operables en beneficio de todos.
+	Es líder experto de equipos eficientes, en los que promueve la mejora continua.
+	Supervisa y corrige el trabajo del equipo anticipando errores o fallas.
+	Trabaja con altos estándares de calidad y resultados.
+	Hace preguntas, investiga, y busca siempre la mejor manera de hacer las cosas y de crecer como profesional.
+Orientación al Cliente
+	Adecua su servicio a las necesidades tanto actuales y potenciales de sus clientes.
+	Está disponible para los clientes internos y externos.
+	Responde a las demandas de los clientes brindándoles satisfacción más allá de lo esperado.
+	Es paciente y tolerante con sus clientes internos y externos, aun en situaciones complejas.
+	Comprende que el cliente es fundamental para su organización y actúa en consecuencia.
+Trabajo en Equipo
+	Anima y motiva a los demás.
+	Actúa para generar un ambiente de trabajo amistoso, de buen clima y cooperación.
+	Resuelve los conflictos de su equipo.
+	Mantiene una actitud abierta para aprender de los otros.
+	Apoya las decisiones de su equipo.
+Liderazgo
+	Fija objetivos, los transmite y realiza un adecuado seguimiento al respecto, brindando feedback a los integrantes de su equipo.
+	Escucha a los demás y es escuchado. Suele ser buscado para consejo.
+	Tiene energía y perseverancia, lo cual transmite a los demás.
+	Motiva a cada uno de acuerdo con sus necesidades, y en pos del logro de los objetivos generales e individuales de desarrollo.
+	Inspira con su ejemplo.
+Desarrollo de Relaciones
+	Se conduce con naturalidad y cordialidad en el intercambio con sus pares; mantiene una actitud de escuchar y es atinado en sus comentarios y en la información que brinda.
+	Logra la cooperación de las personas involucradas directa o indirectamente con su área, ya que mantiene relaciones cordiales y fluidas con ellas.
+	Se preocupa por establecer, entre sus relaciones, el compromiso de colaborar, de modo de poder satisfacer sus necesidades o recurrir a ellas en los momentos que sea necesario.
+]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="13aad40a-9dd3-46a6-bdfb-78b6586271b9" x="632" y="11" width="120" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[("    X,               X,                          X,                                     X".split(",")[$P{a1}.intValue()-1])]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="97966210-be93-4425-ae00-4c571bc96a52" x="661" y="0" width="1" height="497"/>
+			</line>
+			<line>
+				<reportElement uuid="7cc6d351-a6b6-4ffc-98cd-3e658ab6e967" x="691" y="0" width="1" height="497"/>
+			</line>
+			<line>
+				<reportElement uuid="f31115f1-f893-46e4-8ce0-fe14915ee1c0" x="721" y="0" width="1" height="497"/>
+			</line>
+			<line>
+				<reportElement uuid="52d2e0d1-f82b-43b8-8b47-6da9f615a466" x="751" y="0" width="1" height="497"/>
+			</line>
+			<textField>
+				<reportElement uuid="293629ab-f220-46e2-884d-4039a8f390cf" x="632" y="24" width="120" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[("    X,               X,                          X,                                     X".split(",")[$P{a2}.intValue()-1])]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="14a7f59f-736d-410d-9c94-46e72af00124" x="632" y="45" width="120" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[("    X,               X,                          X,                                     X".split(",")[$P{a3}.intValue()-1])]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="cfe84456-071d-4e65-bd27-efac131da9ce" x="632" y="64" width="120" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[("    X,               X,                          X,                                     X".split(",")[$P{a4}.intValue()-1])]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a8ffe177-2f86-406e-9996-a94078fdfcce" x="632" y="77" width="120" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[("    X,               X,                          X,                                     X".split(",")[$P{a5}.intValue()-1])]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="74301638-5c4e-4077-b3d2-fa78d370fd73" x="632" y="126" width="120" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[("    X,               X,                          X,                                     X".split(",")[$P{b3}.intValue()-1])]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="6cad68ea-e541-477b-afb2-62d39cd457aa" x="632" y="152" width="120" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[("    X,               X,                          X,                                     X".split(",")[$P{b5}.intValue()-1])]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="4158c1fb-b57d-4735-ae9b-db9f2d7a5226" x="632" y="113" width="120" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[("    X,               X,                          X,                                     X".split(",")[$P{b2}.intValue()-1])]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="ca7ab23e-d943-4090-8e19-6ed2d923cbad" x="631" y="139" width="120" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[("    X,               X,                          X,                                     X".split(",")[$P{b4}.intValue()-1])]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="7b817d34-b03f-4f82-8330-6fc3a3c2b19f" x="631" y="100" width="120" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[("    X,               X,                          X,                                     X".split(",")[$P{b1}.intValue()-1])]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="430a1f07-f810-4853-beb8-0d30cc1121f5" x="633" y="205" width="120" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[("    X,               X,                          X,                                     X".split(",")[$P{c3}.intValue()-1])]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="ba1c87e9-aca4-45c7-875e-9d0f304683c7" x="632" y="218" width="120" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[("    X,               X,                          X,                                     X".split(",")[$P{c4}.intValue()-1])]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="9b2c9898-bdfa-4a17-a77d-cf6743b6d7af" x="633" y="231" width="120" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[("    X,               X,                          X,                                     X".split(",")[$P{c5}.intValue()-1])]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="712d6d0a-fb02-4e3a-80ec-1301f12167d8" x="633" y="192" width="120" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[("    X,               X,                          X,                                     X".split(",")[$P{c2}.intValue()-1])]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="87bbb504-4226-4381-92cf-2ebe8e7caf64" x="632" y="179" width="120" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[("    X,               X,                          X,                                     X".split(",")[$P{c1}.intValue()-1])]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="8b34dcd6-4ffc-4341-be16-c0a9a10a4a69" x="632" y="278" width="120" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[("    X,               X,                          X,                                     X".split(",")[$P{d3}.intValue()-1])]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="3da329e1-f8fc-4b87-a6c9-1736acbef90e" x="631" y="291" width="120" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[("    X,               X,                          X,                                     X".split(",")[$P{d4}.intValue()-1])]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d4802271-00e7-4f4e-8497-525aab38befb" x="632" y="304" width="120" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[("    X,               X,                          X,                                     X".split(",")[$P{d5}.intValue()-1])]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="8f9721a6-612d-4586-96fc-276f68b5c082" x="632" y="265" width="120" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[("    X,               X,                          X,                                     X".split(",")[$P{d2}.intValue()-1])]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="1ff8f4ac-f4fc-4e47-a7c4-c0a749166032" x="631" y="252" width="120" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[("    X,               X,                          X,                                     X".split(",")[$P{d1}.intValue()-1])]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b4945687-2743-456d-a994-fe97fb9c7e53" x="632" y="353" width="120" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[("    X,               X,                          X,                                     X".split(",")[$P{e3}.intValue()-1])]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="0e35341f-6644-4e66-8c27-58efc552e90a" x="631" y="366" width="120" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[("    X,               X,                          X,                                     X".split(",")[$P{e4}.intValue()-1])]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="45dde88e-8f0b-4506-8fd4-517d093f326d" x="632" y="379" width="120" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[("    X,               X,                          X,                                     X".split(",")[$P{e5}.intValue()-1])]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="9417a378-ce0c-426d-83d8-9d6bc0878533" x="632" y="340" width="120" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[("    X,               X,                          X,                                     X".split(",")[$P{e2}.intValue()-1])]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="db279396-2f77-46c7-92c7-7b7c2d583659" x="631" y="327" width="120" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[("    X,               X,                          X,                                     X".split(",")[$P{e1}.intValue()-1])]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="0dc253ee-9863-417a-8f69-e8675c9680b2" x="632" y="413" width="120" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[("    X,               X,                          X,                                     X".split(",")[$P{f1}.intValue()-1])]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e78f3245-2bc4-4ff6-a373-f03ae045b344" x="633" y="434" width="120" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[("    X,               X,                          X,                                     X".split(",")[$P{f2}.intValue()-1])]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e8ac15b9-49a0-4b73-9f97-442fb63b5175" x="633" y="458" width="120" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[("    X,               X,                          X,                                     X".split(",")[$P{f3}.intValue()-1])]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="a9d8c3dd-d287-4cf3-85a8-d5c2572ed3d3" x="630" y="496" width="121" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="a9d8c3dd-d287-4cf3-85a8-d5c2572ed3d3" x="630" y="496" width="121" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="150766a1-ddbd-4328-b453-59f1eaa041e7" x="633" y="0" width="121" height="1"/>
+			</line>
+		</band>
+		<band height="537">
+			<textField>
+				<reportElement uuid="f8505d1d-bba1-4a58-bde8-3a6f352ba60a" x="631" y="18" width="120" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[("    X,               X,                          X,                                     X".split(",")[$P{f4}.intValue()-1])]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b8fa06dd-7800-4c51-964e-122505260a7b" x="632" y="31" width="120" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[("    X,               X,                          X,                                     X".split(",")[$P{e5}.intValue()-1])]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="0e5972d3-d8ea-44e2-9048-bdd7b8574dbe" x="631" y="54" width="120" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[("    X,               X,                          X,                                     X".split(",")[$P{g1}.intValue()-1])]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="69789c14-1cc5-4f72-882a-b57f71dfde0a" x="632" y="67" width="120" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[("    X,               X,                          X,                                     X".split(",")[$P{g2}.intValue()-1])]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="86e692bb-7442-4c11-b1de-3294ca583f16" x="631" y="93" width="120" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[("    X,               X,                          X,                                     X".split(",")[$P{g4}.intValue()-1])]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="6ffef41a-a8fc-4d13-923a-b15f64cc29ff" x="632" y="106" width="120" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[("    X,               X,                          X,                                     X".split(",")[$P{g5}.intValue()-1])]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="0e2ee7a4-9134-436d-a5bc-8b0dd6c17de4" x="632" y="80" width="120" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[("    X,               X,                          X,                                     X".split(",")[$P{g3}.intValue()-1])]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="51d5d2fa-56a0-45c3-9fcb-6180dd86f855" x="633" y="149" width="120" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[("    X,               X,                          X,                                     X".split(",")[$P{h2}.intValue()-1])]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="75c97566-3497-446a-81fb-787383846844" x="631" y="181" width="120" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[("    X,               X,                          X,                                     X".split(",")[$P{h4}.intValue()-1])]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="aaa0d599-89f2-46b2-8ba1-6d3b161f585d" x="632" y="133" width="120" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[("    X,               X,                          X,                                     X".split(",")[$P{h1}.intValue()-1])]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="36decdc8-6d79-4ee1-a356-c484950bd47a" x="633" y="168" width="120" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[("    X,               X,                          X,                                     X".split(",")[$P{h3}.intValue()-1])]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="f941d133-5587-4298-9c0d-4f1c4fbac4c5" x="632" y="194" width="120" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[("    X,               X,                          X,                                     X".split(",")[$P{h5}.intValue()-1])]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="cee45ab7-d8dd-48c3-b96f-d0ffe4f3d93f" x="632" y="269" width="120" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[("    X,               X,                          X,                                     X".split(",")[$P{i3}.intValue()-1])]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="cdcb615c-145f-499a-97bd-2dcfab96c796" x="632" y="251" width="120" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[("    X,               X,                          X,                                     X".split(",")[$P{i2}.intValue()-1])]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="93304340-b7a7-4bb4-8d9e-11f4f76f6d04" x="633" y="233" width="120" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[("    X,               X,                          X,                                     X".split(",")[$P{i1}.intValue()-1])]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="4281bc3f-ffea-4fd6-b3ec-1b3572297afe" x="632" y="282" width="120" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[("    X,               X,                          X,                                     X".split(",")[$P{i4}.intValue()-1])]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="ad9c9f41-5f0a-42c6-b52b-c13b813883a6" x="632" y="295" width="120" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[("    X,               X,                          X,                                     X".split(",")[$P{i5}.intValue()-1])]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="193ebd73-a548-47af-8e83-5ecf744d97f8" x="632" y="343" width="120" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[("    X,               X,                          X,                                     X".split(",")[$P{j1}.intValue()-1])]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="f7bd3428-ea9d-4037-a291-2955561dacc3" x="632" y="369" width="120" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[("    X,               X,                          X,                                     X".split(",")[$P{j3}.intValue()-1])]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="11eb06b4-adb6-4674-ba31-13aaff41c821" x="632" y="394" width="120" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[("    X,               X,                          X,                                     X".split(",")[$P{j5}.intValue()-1])]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="bc8fa359-83f1-44be-8776-b03f1a301cc2" x="632" y="356" width="120" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[("    X,               X,                          X,                                     X".split(",")[$P{j2}.intValue()-1])]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e3451e3d-c344-4994-82ae-f5e98f3e618f" x="632" y="381" width="120" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[("    X,               X,                          X,                                     X".split(",")[$P{j4}.intValue()-1])]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="30c3cf96-0bf8-4dd3-8160-c214774a516f" x="663" y="18" width="1" height="413"/>
+			</line>
+			<line>
+				<reportElement uuid="49b5c765-c344-47ea-ae4a-61f2dcd06ed8" x="693" y="18" width="1" height="413"/>
+			</line>
+			<line>
+				<reportElement uuid="c0f8b723-1afe-4ebe-be7c-b5f5297d55a1" x="723" y="18" width="1" height="413"/>
+			</line>
+			<line>
+				<reportElement uuid="de052797-846f-4d8b-9e96-8e08da3f6c51" x="753" y="18" width="1" height="413"/>
+			</line>
+			<line>
+				<reportElement uuid="cb10260e-a62d-4497-9383-978c1996473e" x="633" y="430" width="121" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="c289db45-946a-493c-a534-06541be1a133" x="633" y="17" width="121" height="1"/>
+			</line>
+			<staticText>
+				<reportElement uuid="f4a5f00c-578a-4f40-b5df-118897590fe2" x="0" y="17" width="632" height="413"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[	Es abierto a conocer nuevas personas, con quienes procura establecer contactos duraderos.
+	Privilegia, dentro y fuera de la organización, el contacto con aquellas personas con quienes comparte temas en común.
+Integridad
+	Genera y promueve equipos de trabajo orientados por valores.
+	Sus acciones son congruentes con sus dichos.
+	Supervisa el trabajo de sus equipos de acuerdo con los objetivos, ideas y expectativas que previamente les ha expuesto.
+	Cuando se equivoca admite sus errores y actúa en consecuencia.
+	Es ejemplo de integridad y promueve acciones integrad entre sus compañeros.
+Orientación a Resultados
+•	Trabaja con objetivos claramente establecidos, realistas y desafiantes.
+•	Fija para sí y para los otros, los parámetros a alcanzar, y orienta su accionar para lograr y superar los estándares de desempeño y respetar los plazos establecidos.
+•	Reconoce y recompensa el valor de los resultados tanto grupales como individuales de su equipo.
+•	Es un referente dentro de la organización en lo que respecta a la mejora continua de la eficiencia.
+•	Estimula y premia las actitudes y las acciones de los colaboradores orientadas a promover la mejora continua y la eficiencia.
+Responsabilidad
+	Tiene una actitud comprometida con las tareas en las que está involucrado, y puede dar cuenta de los resultados, que siempre procura cumplir en tiempo y forma.
+	Identifica con claridad aquellas tareas que requieren de mayor dedicación y sabe redistribuir sus tiempos para desarrollarse adecuadamente.
+	Se fija altos objetivos que siempre cumple, auto exigiéndose plazos y mejorando la calidad del trabajo o proyecto asignado.
+	Prefiere organizar en primer lugar sus tareas y luego distribuir el tiempo libre que pueda quedarle para dedicarse a otras actividades.
+	Propone modalidades alternativas de trabajo en pos del cumplimiento del proyecto o tarea asignada, sin necesidad de indicación alguna por parte de sus superiores.
+Desarrollo de Personas
+	Plantea objetivos y plazo, y da feedback para que los colaboradores conozcan sus resultados y estén al tanto de si logran lo esperado.
+	Facilita el aprendizaje explicando cómo y por qué se hacen las cosas de determinada forma.
+	Verifica que sus explicaciones e instrucciones hayan sido comprendidas.
+	Monitorea las mejoras en los resultados a partir de sus explicaciones.
+	Detecta las falencias de formación en las personas que lo rodean e idea estrategias grupales e individuales de mejora.
+]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>
