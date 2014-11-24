@@ -34,6 +34,7 @@ public class CEFAS_PrestamoDAO {
     private final String SQL_SELECTBYID = "SELECT * FROM CEFAS_PRESTAMO WHERE PRMCODIGO LIKE ?";
     private final String SQL_SELECTBYEMP = "SELECT * FROM CEFAS_PRESTAMO WHERE EMPCODIGO LIKE ?";
     private final String SQL_SELECTALL = "SELECT * FROM CEFAS_PRESTAMO";
+    private final String SQL_SELECT_ACTIVOS = "SELECT * FROM CEFAS_PRESTAMO WHERE PRMSALDO > 0";
     private final String SQL_UPDATE = "UPDATE CEFAS_PRESTAMO SET EMPCODIGO = ?, PRMFECHA = ?,"
             + " PRMMONTO = ?, PRMPLAZO = ?, PRMSALDO = ?, PRMCUOTA = ?,WHERE PRMCODIGO = ?";
     private final String SQL_DELETE = "";
@@ -180,4 +181,36 @@ ConexionDB.cerrarConexion();
         return prestamo;
     }
     
+        public void actualizarSaldo()
+        {
+            List<CEFAS_Prestamo> prestamosActivos = new ArrayList<CEFAS_Prestamo>();
+            CEFAS_Prestamo prestamo;
+            try {
+            conexiondb = ConexionDB.getConexion();
+            st = conexiondb.createStatement();
+            rs = st.executeQuery(SQL_SELECT_ACTIVOS);
+            while(rs.next())
+            {
+                prestamo= new CEFAS_Prestamo();
+                prestamo.setPrmCodigo(rs.getInt("prmCodigo"));
+                prestamo.setEmpCodigo(rs.getInt("empCodigo"));
+                prestamo.setPrmFecha(rs.getDate("prmFecha"));
+                prestamo.setPrmMonto(rs.getFloat("prmMonto"));
+                prestamo.setPrmPlazo(rs.getInt("prmPlazo"));
+                prestamo.setPrmSaldo(rs.getFloat("prmSaldo"));
+                prestamo.setPrmCuota(rs.getFloat("prmCuota"));  
+                prestamosActivos.add(prestamo);
+            }
+            ConexionDB.cerrarConexion();
+        } catch (SQLException ex) {
+            Logger.getLogger(CEFAS_PrestamoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            for(CEFAS_Prestamo p : prestamosActivos)
+            {
+                float nuevoSaldo = p.getPrmSaldo() - p.getPrmCuota();
+                p.setPrmSaldo(nuevoSaldo);
+                //Se pronostica una afectación en el rendimiento, pero es bueno reutilizar código ;)
+                actualizarPrestamo(p);
+            }
+        }
 }

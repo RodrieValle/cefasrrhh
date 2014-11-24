@@ -37,6 +37,7 @@ public class CEFAS_OrdenDeDescuentoDAO {
     private final String SQL_SELECTBYID = "SELECT * FROM CEFAS_ORDENDEDESCUENTO WHERE ODDCODIGO LIKE ?";
     private final String SQL_SELECTBYEMP = "SELECT * FROM CEFAS_ORDENDEDESCUENTO WHERE EMPCODIGO LIKE ?";
     private final String SQL_SELECTALL = "SELECT * FROM CEFAS_ORDENDEDESCUENTO";
+    private final String SQL_SELECT_ACTIVOS = "SELECT * FROM CEFAS_ORDENDEDESCUENTO WHERE ODDSALDO > 0";
     private final String SQL_UPDATE = "UPDATE CEFAS_ORDENDEDESCUENTO SET EMPCODIGO = ?, ODDFECHA = ?,"
             + " ODDMONTO = ?, ODDPLAZO = ?, ODDSALDO = ?, ODDCUOTA = ?,WHERE ODDCODIGO = ?";
     private final String SQL_DELETE = "";
@@ -196,5 +197,38 @@ ConexionDB.cerrarConexion();
         }
         return orden;
     }
+       
+       public void actualizarSaldo()
+        {
+            List<CEFAS_OrdenDeDescuento> ordenesActivos = new ArrayList<CEFAS_OrdenDeDescuento>();
+            CEFAS_OrdenDeDescuento orden;
+            try {
+            conexiondb = ConexionDB.getConexion();
+            st = conexiondb.createStatement();
+            rs = st.executeQuery(SQL_SELECT_ACTIVOS);
+            while(rs.next())
+            {
+                orden= new CEFAS_OrdenDeDescuento();
+                orden.setOddCodigo(rs.getInt("oddCodigo"));
+                orden.setEmpCodigo(rs.getInt("empCodigo"));
+                orden.setOddFecha(rs.getDate("oddFecha"));
+                orden.setOddMonto(rs.getFloat("oddMonto"));
+                orden.setOddPlazo(rs.getInt("oddPlazo"));
+                orden.setOddSaldo(rs.getFloat("oddSaldo"));
+                orden.setOddCuota(rs.getFloat("oddCuota"));
+                ordenesActivos.add(orden);
+            }
+            ConexionDB.cerrarConexion();
+        } catch (SQLException ex) {
+            Logger.getLogger(CEFAS_OrdenDeDescuentoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            for(CEFAS_OrdenDeDescuento odd : ordenesActivos)
+            {
+                float nuevoSaldo = odd.getOddSaldo() - odd.getOddCuota();
+                odd.setOddSaldo(nuevoSaldo);
+                //Se pronostica una afectación en el rendimiento, pero es bueno reutilizar código ;)
+                actualizarOrdenDeDescuento(odd);
+            }
+        }
     
 }
