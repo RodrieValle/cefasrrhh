@@ -43,7 +43,7 @@
         String email = request.getParameter("email");
         String urlFoto = request.getParameter("urlFoto");
         //Datos de trabajo
-        String anioContratacion = request.getParameter("anioContratacion");
+        Date anioContratacion = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("anioContratacion"));
         String plazaActual = request.getParameter("plazaActual");
         String plazaAnterior = request.getParameter("plazaAnterior");
         String jefeInmediato = request.getParameter("jefeInmediato");
