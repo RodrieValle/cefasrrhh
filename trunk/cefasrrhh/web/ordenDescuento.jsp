@@ -3,6 +3,7 @@
     Created on : 31-oct-2014, 9:38:29
     Author     : MARIA JUAREZ
 --%>
+<%@page import="com.colegiocefas.cefasrrhh.negocio.CtrlCEFAS_Bitacora"%>
 <%@page import="com.colegiocefas.cefasrrhh.negocio.CtrlCEFAS_OrdenDeDescuento"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Date"%>
@@ -42,6 +43,10 @@
   
         CtrlCEFAS_OrdenDeDescuento ctrlOrdenDeDescuento = new CtrlCEFAS_OrdenDeDescuento();
         ctrlOrdenDeDescuento.guardarOrdenDeDescuento(codigo, fecha, monto, plazo, cuota);
+        
+         CtrlCEFAS_Bitacora ctrlBitacora= new CtrlCEFAS_Bitacora();
+        ctrlBitacora.guardarBitacora((Integer) sesionOk.getAttribute("codigo"), "Se almaceno una nueva orden de descuento al empleado con codigo "+codigo);
+        
     }
     CtrlCEFAS_Empleado ctrlEmpleado = new CtrlCEFAS_Empleado();
     List<CEFAS_Empleado> listaEmpleados;

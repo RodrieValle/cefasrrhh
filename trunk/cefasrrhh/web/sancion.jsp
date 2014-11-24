@@ -3,6 +3,7 @@
     Created on : 30/10/2014, 10:32:35 AM
     Author     : Sergio
 --%>
+<%@page import="com.colegiocefas.cefasrrhh.negocio.CtrlCEFAS_Bitacora"%>
 <%@page import="com.colegiocefas.cefasrrhh.dominio.CEFAS_Empleado"%>
 <%@page import="java.util.List"%>
 <%@page import="java.text.SimpleDateFormat"%>
@@ -29,6 +30,9 @@
         String motivo = request.getParameter("motivo");
         CtrlCEFAS_Sancion ctrlsancion = new CtrlCEFAS_Sancion();
         ctrlsancion.guardarSancion(empcodigo, scncodigo, fecha, scn, motivo);
+        
+         CtrlCEFAS_Bitacora ctrlBitacora= new CtrlCEFAS_Bitacora();
+        ctrlBitacora.guardarBitacora((Integer) sesionOk.getAttribute("codigo"), "Se almaceno una nueva sancion al empleado con codigo "+empcodigo);
     }
 
     CtrlCEFAS_Empleado ctrlEmpleado = new CtrlCEFAS_Empleado();

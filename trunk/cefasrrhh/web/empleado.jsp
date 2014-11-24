@@ -3,6 +3,7 @@
     Created on : 10-24-2014, 11:23:43 PM
     Author     : Rodrigo
 --%>
+<%@page import="com.colegiocefas.cefasrrhh.negocio.CtrlCEFAS_Bitacora"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Date"%>
@@ -93,6 +94,9 @@
             CtrlCEFAS_Titulo ctrlTitulo = new CtrlCEFAS_Titulo();
         ctrlTitulo.actualizarTitulos(titulos);
         }
+        
+         CtrlCEFAS_Bitacora ctrlBitacora= new CtrlCEFAS_Bitacora();
+        ctrlBitacora.guardarBitacora((Integer) sesionOk.getAttribute("codigo"), "Se modifico perfil de empleado con codigo "+codigo);
     }
     int usuario = Integer.parseInt(request.getParameter("codigo"));
     CtrlCEFAS_Empleado ctrlEmpleado = new CtrlCEFAS_Empleado();

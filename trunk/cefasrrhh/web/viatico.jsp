@@ -4,6 +4,7 @@
     Author     : MARIA JUAREZ
 --%>
 
+<%@page import="com.colegiocefas.cefasrrhh.negocio.CtrlCEFAS_Bitacora"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Date"%>
 <%@page import="com.colegiocefas.cefasrrhh.dominio.CEFAS_Viatico"%>
@@ -45,6 +46,9 @@
            
         CtrlCEFAS_Viatico ctrlViatico = new CtrlCEFAS_Viatico();
       ctrlViatico.guardarViatico(viatico);
+      
+        CtrlCEFAS_Bitacora ctrlBitacora= new CtrlCEFAS_Bitacora();
+        ctrlBitacora.guardarBitacora((Integer) sesionOk.getAttribute("codigo"), "Se almaceno un nuevo viatico al empleado con codigo "+codigo);
 }
     CtrlCEFAS_Empleado ctrlEmpleado = new CtrlCEFAS_Empleado();
     List<CEFAS_Empleado> listaEmpleados;

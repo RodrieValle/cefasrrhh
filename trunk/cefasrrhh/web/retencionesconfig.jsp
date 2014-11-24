@@ -3,6 +3,7 @@
     Created on : 11-11-2014, 10:12:21 PM
     Author     : Rodrigo
 --%>
+<%@page import="com.colegiocefas.cefasrrhh.negocio.CtrlCEFAS_Bitacora"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page import="com.colegiocefas.cefasrrhh.dominio.CEFAS_ConfiguracionRetenciones"%>
@@ -90,6 +91,9 @@
         ctrlConfiguracion.actualizarConfiguraciones(11, Float.parseFloat(request.getParameter("issspatronal")),
                                                        Float.parseFloat(request.getParameter("techoisss")));
     
+    
+     CtrlCEFAS_Bitacora ctrlBitacora= new CtrlCEFAS_Bitacora();
+        ctrlBitacora.guardarBitacora((Integer) sesionOk.getAttribute("codigo"), "Se cambio la configuracion de las retenciones");
     }
     CtrlCEFAS_ConfiguracionRetenciones ctrlCfgRetenciones = new CtrlCEFAS_ConfiguracionRetenciones();
     List<CEFAS_ConfiguracionRetenciones> retenciones =  ctrlCfgRetenciones.obtenerRetenciones();
