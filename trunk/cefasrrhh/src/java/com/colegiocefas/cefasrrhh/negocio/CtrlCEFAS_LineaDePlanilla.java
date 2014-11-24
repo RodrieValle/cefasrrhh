@@ -273,6 +273,23 @@ public float calculoVacacion(float valor){
 }
 
 
+//<<<<<<<<<<<<<<<<<<<<CALCULO INDEMNIZACION
+public float calculoIndemnizacion(int codigo){
+    float indemnizacion=0;
+    
+    
+    CtrlCEFAS_Empleado ctrlEmpleados=new CtrlCEFAS_Empleado();
+    CEFAS_Empleado empleado=ctrlEmpleados.getEmpleadoPorID(codigo);
+   // List<Integer> año=ctrlEmpleados.tiempoTrabajado(codigo);
+    
+    
+    indemnizacion=empleado.getEmpSalario()*ctrlEmpleados.tiempoTrabajado(codigo).get(2);
+    
+    
+    return indemnizacion;
+}
+
+
 
 //>>>>>>>>>>>>>>>>>>>>planilla de diciembre..........incluye vacacion y aguinaldo<<<<<<<<<<<<<<<<<<<<<<
    public List<CEFAS_LineaDePlanilla> calculoPlanillaAguinaldo(){
@@ -334,8 +351,11 @@ public float calculoVacacion(float valor){
             float vacacion=calculoVacacion(salario);
             linea.setLdpVacacion(vacacion);
             
-            CEFAS_EmpleadoDAO daoEmpleado=new CEFAS_EmpleadoDAO();
-            List<Integer> año=daoEmpleado.getTiempoTrabajado(codigo);
+            //CEFAS_EmpleadoDAO daoEmpleado=new CEFAS_EmpleadoDAO();
+            //List<Integer> año=daoEmpleado.getTiempoTrabajado(codigo);
+            
+            
+            List<Integer> año=ctrlEmpleados.tiempoTrabajado(codigo);
             float aguinaldo=calculoAguinaldo(salario, año);
             //float aguinaldo=0;
             linea.setLdpAguinaldo(aguinaldo);

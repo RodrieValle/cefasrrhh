@@ -33,7 +33,7 @@
                         <li><a href="prestamo.jsp">Administrar préstamos</a></li>
                         <li><a href="ordenDescuento.jsp">Ingresar órdenes de descuentos</a></li>
                         <li><a href="viatico.jsp">Ingresar viáticos</a></li>
-                        <li><a href="#">Calcular indemnización</a></li>
+                        <li><a href="indemnizacion.jsp">Calcular indemnización</a></li>
                          <li><a href="retencionesconfig.jsp">Configuración de las Retenciones</a></li>
                         <li><a href="planillaDelMes.jsp">Elaborar planilla</a></li>
                         <li><a href="#">Generar recibos</a></li>
