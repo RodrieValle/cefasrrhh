@@ -14,34 +14,34 @@ import java.util.Date;
  */
 public class CEFAS_Bitacora {
     
-    private String empCodigo;
-    private String btcCodigo;
+    private int userCodigo;
+    private int btcCodigo;
     private Date btcFechaHora;
     private String btcDescripcion;
 
     public CEFAS_Bitacora() {
     }
 
-    public CEFAS_Bitacora(String empCodigo, String btcCodigo, Date btcFechaHora, String btcDescripcion) {
-        this.empCodigo = empCodigo;
+    public CEFAS_Bitacora(int  userCodigo, int btcCodigo, Date btcFechaHora, String btcDescripcion) {
+        this. userCodigo = userCodigo;
         this.btcCodigo = btcCodigo;
         this.btcFechaHora = btcFechaHora;
         this.btcDescripcion = btcDescripcion;
     }
 
-    public String getEmpCodigo() {
-        return empCodigo;
+    public int getUserCodigo() {
+        return  userCodigo;
     }
 
-    public void setEmpCodigo(String empCodigo) {
-        this.empCodigo = empCodigo;
+    public void setUserCodigo(int  userCodigo) {
+        this. userCodigo =  userCodigo;
     }
 
-    public String getBtcCodigo() {
+    public int getBtcCodigo() {
         return btcCodigo;
     }
 
-    public void setBtcCodigo(String btcCodigo) {
+    public void setBtcCodigo(int btcCodigo) {
         this.btcCodigo = btcCodigo;
     }
 

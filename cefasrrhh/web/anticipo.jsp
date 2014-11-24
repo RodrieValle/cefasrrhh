@@ -6,6 +6,7 @@
 
 
     
+<%@page import="com.colegiocefas.cefasrrhh.negocio.CtrlCEFAS_Bitacora"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Date"%>
 <%@page import="com.colegiocefas.cefasrrhh.negocio.CtrlCEFAS_Anticipo"%>
@@ -43,6 +44,10 @@
            
         CtrlCEFAS_Anticipo ctrlAnticipo = new CtrlCEFAS_Anticipo();
         ctrlAnticipo.guardarAnticipo(anticipo);
+        
+        CtrlCEFAS_Bitacora ctrlBitacora= new CtrlCEFAS_Bitacora();
+        ctrlBitacora.guardarBitacora((Integer) sesionOk.getAttribute("codigo"), "Se almaceno un nuevo anticipo al empleado con codigo "+codigo);
+        
 }
     
     CtrlCEFAS_Empleado ctrlEmpleado = new CtrlCEFAS_Empleado();
