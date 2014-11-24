@@ -8,6 +8,7 @@ package com.colegiocefas.cefasrrhh.negocio;
 
 import com.colegiocefas.cefasrrhh.datos.CEFAS_EmpleadoDAO;
 import com.colegiocefas.cefasrrhh.dominio.CEFAS_Empleado;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,6 +21,11 @@ public class CtrlCEFAS_Empleado {
     public CEFAS_Empleado getEmpleadoPorUsuario(int codigo)
     {
         return daoEmpleado.getEmpleadoPorUsuario(codigo);
+    }
+    
+      public CEFAS_Empleado getEmpleadoPorID(int codigo)
+    {
+        return daoEmpleado.getEmpleadoPorID(codigo);
     }
     
     public void guardarEmpleado(CEFAS_Empleado empleado)
@@ -40,5 +46,10 @@ public class CtrlCEFAS_Empleado {
     public List<CEFAS_Empleado> obtenerEmpleados(int criterio, String dato)
     {
         return daoEmpleado.obtenerEmpleados(criterio, dato);
+    }
+    
+    public List<Integer> tiempoTrabajado(int codigoEmpleado){
+       //List<Integer> tiempoTrabajado = new ArrayList<Integer>();
+        return daoEmpleado.getTiempoTrabajado(codigoEmpleado);
     }
 }
