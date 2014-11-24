@@ -3,6 +3,7 @@
     Created on : 31-oct-2014, 9:38:43
     Author     : MARIA JUAREZ
 --%>
+<%@page import="com.colegiocefas.cefasrrhh.negocio.CtrlCEFAS_Bitacora"%>
 <%@page import="com.colegiocefas.cefasrrhh.negocio.CtrlCEFAS_Prestamo"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Date"%>
@@ -43,6 +44,9 @@
   
         CtrlCEFAS_Prestamo ctrlPrestamo = new CtrlCEFAS_Prestamo();
         ctrlPrestamo.guardarPrestamo(codigo, fecha, monto, plazo, cuota);
+        
+         CtrlCEFAS_Bitacora ctrlBitacora= new CtrlCEFAS_Bitacora();
+        ctrlBitacora.guardarBitacora((Integer) sesionOk.getAttribute("codigo"), "Se almaceno un nuevo prestamo al empleado con codigo "+codigo);
 }
     CtrlCEFAS_Empleado ctrlEmpleado = new CtrlCEFAS_Empleado();
     List<CEFAS_Empleado> listaEmpleados;
