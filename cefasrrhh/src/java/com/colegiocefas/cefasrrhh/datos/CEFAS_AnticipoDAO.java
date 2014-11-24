@@ -32,7 +32,7 @@ public class CEFAS_AnticipoDAO {
      private final String SQL_SELECT_DATE = "SELECT * FROM CEFAS_ANTICIPO WHERE EMPCODIGO= ? and ATPFECHA>= ?";//por definir
     private final String SQL_SELECTBYID = "SELECT * FROM CEFAS_ANTICIPO WHERE ATPCODIGO LIKE ?";
     private final String SQL_UPDATE = "UPDATE CEFAS_ANTICIPO SET EMPCODIGO = ?, ATPFECHA = ?,"
-            + " ATPCANTIDAD = ?, WHERE ATPCODIGO = ?";
+            + " ATPCANTIDAD = ? WHERE ATPCODIGO = ?";
     private final String SQL_DELETE = "";
     private Connection conexiondb;
     private Statement st;
@@ -158,9 +158,9 @@ ConexionDB.cerrarConexion();
      
      }
      
-     public void actualizarAnticipo(CEFAS_Anticipo anticipo) {
-     //almacena un anticipo leido desde el navegador
-    
+     public int actualizarAnticipo(CEFAS_Anticipo anticipo) {
+     
+    int n=0;
         try {
             conexiondb = ConexionDB.getConexion();
             ps=conexiondb.prepareStatement(SQL_UPDATE);
@@ -168,7 +168,7 @@ ConexionDB.cerrarConexion();
             ps.setDate(2, new Date(anticipo.getAtpFecha().getTime()));
             ps.setDouble(3, anticipo.getAtpCantidad());
             ps.setInt(4, anticipo.getAtpCodigo());
-            int n=ps.executeUpdate();
+           n=ps.executeUpdate();
 
             if(n>0){
                Logger.getLogger("Se guardo correctamente");
@@ -178,7 +178,7 @@ ConexionDB.cerrarConexion();
             Logger.getLogger(CEFAS_AnticipoDAO.class.getName()).log(Level.SEVERE, null, ex);
              
         }
-     
+     return n;
      
      }
      

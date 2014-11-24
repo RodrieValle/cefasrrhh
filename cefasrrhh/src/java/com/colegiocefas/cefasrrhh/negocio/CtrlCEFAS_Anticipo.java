@@ -62,14 +62,14 @@ public class CtrlCEFAS_Anticipo {
         return daoAnticipo.getAnticiposEmpleado(codigo);
     }
       
-       public void actualizarAnticipo(int atpCodigo, int empCodigo, Date atpFecha, float atpCantidad)
+       public int actualizarAnticipo(int atpCodigo, int empCodigo, Date atpFecha, float atpCantidad)
     {
         CEFAS_Anticipo anticipo=new CEFAS_Anticipo();
         anticipo.setAtpCodigo(atpCodigo);
         anticipo.setEmpCodigo(empCodigo);
         anticipo.setAtpFecha(atpFecha);
         anticipo.setAtpCantidad(atpCantidad);
-        daoAnticipo.actualizarAnticipo(anticipo);
+        return daoAnticipo.actualizarAnticipo(anticipo);
     }
     
     public void guardarAnticipo(CEFAS_Anticipo anticipo)
