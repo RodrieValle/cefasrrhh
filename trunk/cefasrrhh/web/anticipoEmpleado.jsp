@@ -4,6 +4,7 @@
     Author     : JUAREZ
 --%>
 
+<%@page import="com.colegiocefas.cefasrrhh.negocio.CtrlCEFAS_Bitacora"%>
 <%@page import="com.colegiocefas.cefasrrhh.dominio.CEFAS_Empleado"%>
 <%@page import="com.colegiocefas.cefasrrhh.negocio.CtrlCEFAS_Empleado"%>
 <%@page import="java.util.List"%>
@@ -13,7 +14,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%
- 
+ String mensaje="";
  HttpSession sesionOk = request.getSession();
     String tipo = (String) sesionOk.getAttribute("tipo");
     if (tipo == null) {
@@ -23,6 +24,34 @@
     if (!tipo.equals("administrador")) {
         response.sendRedirect("avisos.jsp");
                }
+    
+    //peticion de eliminacion
+    if(request.getParameter("codigoAnt") != null)
+    { 
+    int resultado=0;
+     int codigoAtp = Integer.parseInt(request.getParameter("codigoAnt"));
+     
+       CtrlCEFAS_Anticipo ctrlAnticipo = new CtrlCEFAS_Anticipo();
+       resultado=ctrlAnticipo.eliminarAnticipo(codigoAtp);
+     
+          if(resultado==1){
+             mensaje = "<br><br><div class='alert alert-success' role='alert'><button type='button' class='close'"
+                + " data-dismiss='alert'><span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span></button>"
+                + "La eliminación se realizo con exito</div>";
+              CtrlCEFAS_Bitacora ctrlBitacora= new CtrlCEFAS_Bitacora();
+        ctrlBitacora.guardarBitacora((Integer) sesionOk.getAttribute("codigo"), "Se elimino el anticipo con codigo " +codigoAtp);
+             
+        }else{
+         mensaje = "<br><br><div class='alert alert-success' role='alert'><button type='button' class='close'"
+                + " data-dismiss='alert'><span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span></button>"
+                + "Error en la eliminación del registro vuelva a intentar</div>";
+        }
+        
+        
+    }
+    
+    
+    
 int codigoEmp = Integer.parseInt(request.getParameter("codigo"));
     CtrlCEFAS_Empleado ctrlEmpleado = new CtrlCEFAS_Empleado();
     CEFAS_Empleado empleado = ctrlEmpleado.getEmpleadoPorUsuario(codigoEmp);
@@ -38,7 +67,7 @@ int codigoEmp = Integer.parseInt(request.getParameter("codigo"));
         <jsp:include page='inc/head_common.jsp' /> 
     </head>
     <body>
-        
+        <%= mensaje%>
 <div id="container">
 <jsp:include page='inc/menu_administradora.jsp' />
 
@@ -72,7 +101,7 @@ int codigoEmp = Integer.parseInt(request.getParameter("codigo"));
                                             <td><%= new SimpleDateFormat("dd/MM/yyyy").format(anticipo.getAtpFecha())%></td>
                                             <td>$ <%= String.format("%.2f", anticipo.getAtpCantidad()) %></td>
                                             <td><a href="anticipoModificar.jsp?codigo=<%=anticipo.getAtpCodigo()%>" class="btn btn-primary btn-md" role="button">Modificar Anticipo</a></td>
-                                            <td><a href="#" class="btn btn-primary btn-md" role="button">Eliminar Anticipo</a></td>
+                                            <td><a href="anticipoEmpleado.jsp?codigoAnt=<%=anticipo.getAtpCodigo()%>&codigo=<%=empleado.getEmpCodigo()%>" class="btn btn-primary btn-md" role="button">Eliminar Anticipo</a></td>
                                         </tr>
                                       <%
                                     } %>  
