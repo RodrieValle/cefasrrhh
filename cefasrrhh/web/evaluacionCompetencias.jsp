@@ -1,4 +1,13 @@
 
+<%@page import="net.sf.jasperreports.engine.JRException"%>
+<%@page import="net.sf.jasperreports.engine.JasperExportManager"%>
+<%@page import="java.util.Date"%>
+<%@page import="net.sf.jasperreports.engine.JasperPrint"%>
+<%@page import="net.sf.jasperreports.engine.JasperFillManager"%>
+<%@page import="net.sf.jasperreports.engine.JREmptyDataSource"%>
+<%@page import="java.io.File"%>
+<%@page import="java.util.Map"%>
+<%@page import="java.util.HashMap"%>
 <%-- 
     Document   : evaluacionCompetencias
     Created on : 10-31-2014, 01:38:05 AM
@@ -17,6 +26,41 @@
     if (tipo == null) {
         request.getRequestDispatcher("index.jsp").forward(request, response);
         return;
+    }
+    String cadena="abcdefghij";
+    if(request.getParameter("a1")!=null)
+    {
+        Map parametros = new HashMap();
+        for(int x=0; x<=9; x++)
+        {
+            for(int y=1; y<=5; y++)
+            {
+                parametros.put(String.valueOf(cadena.charAt(x))+y, Integer.parseInt(request.getParameter(String.valueOf(cadena.charAt(x))+y)) );
+            }
+        }
+        
+        try
+        {
+          //se carga el reporte
+          //URL  in=this.getClass().getResource( "CEFAS_SupervisionClase.jasper" );
+          File reportFile = new File(application.getRealPath("reportes/CEFAS_EvaluacionCompetencias.jasper"));
+          //JasperReport jasperReport=(JasperReport)JRLoader.loadObject(in);
+          //se procesa el archivo jasper
+          JasperPrint jasperPrint = JasperFillManager.fillReport(reportFile.getPath(), parametros,  new JREmptyDataSource());
+          //se crea el archivo PDF
+          String realPath = request.getSession().getServletContext().getRealPath("/");
+          realPath += "documentos/evaluaciones/ev_competencias_"+ "-" + new SimpleDateFormat("dd-MM-yy").format(new Date()) +".pdf";
+          JasperExportManager.exportReportToPdfFile( jasperPrint, realPath);
+          //CtrlCEFAS_EvaluacionDeClases ctrlEvaluacionDeClases = new CtrlCEFAS_EvaluacionDeClases();
+          //ctrlEvaluacionDeClases.guardar(request.getParameter("docente"), new Date(), realPath);
+          /*mensaje = "<div class='alert alert-danger alert-dismissible' role='alert'><button type='button' class='close'"
+                + " data-dismiss='alert'><span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span></button>"
+                + "La evaluación se guardó correctamente</div>";*/
+        }
+        catch (JRException ex)
+        {
+          System.err.println( "Error iReport: " + ex.getMessage() );
+        }
     }
     String usuario = (String) sesionOk.getAttribute("usuario");
     //CtrlCEFAS_Aviso ctrlAviso = new CtrlCEFAS_Aviso();
@@ -203,10 +247,10 @@
 
 <tr>
   <td>Está disponible para los clientes internos y externos.</td>
-  <td><input type="checkbox" name="c2" value ="1"> </td>
-  <td><input type="checkbox" name="c2" value ="2"> </td>
-  <td><input type="checkbox" name="c2" value ="3"> </td>
-  <td><input type="checkbox" name="c2" value ="4"> </td>
+  <td><input type="radio" name="c2" value ="1"> </td>
+  <td><input type="radio" name="c2" value ="2"> </td>
+  <td><input type="radio" name="c2" value ="3"> </td>
+  <td><input type="radio" name="c2" value ="4"> </td>
 </tr>
 
 <tr>
