@@ -33,7 +33,7 @@ public class CEFAS_AnticipoDAO {
     private final String SQL_SELECTBYID = "SELECT * FROM CEFAS_ANTICIPO WHERE ATPCODIGO LIKE ?";
     private final String SQL_UPDATE = "UPDATE CEFAS_ANTICIPO SET EMPCODIGO = ?, ATPFECHA = ?,"
             + " ATPCANTIDAD = ? WHERE ATPCODIGO = ?";
-    private final String SQL_DELETE = "";
+    private final String SQL_DELETE = "DELETE FROM CEFAS_ANTICIPO WHERE ATPCODIGO = ?";
     private Connection conexiondb;
     private Statement st;
     private PreparedStatement ps;
@@ -135,16 +135,16 @@ public class CEFAS_AnticipoDAO {
      
      
     
-     public void almacenarAnticipo(CEFAS_Anticipo anticipo) {
+     public int almacenarAnticipo(CEFAS_Anticipo anticipo) {
      //almacena un anticipo leido desde el navegador
-    
+    int n=0;
         try {
             conexiondb = ConexionDB.getConexion();
             ps=conexiondb.prepareStatement(SQL_INSERT);
             ps.setInt(1, anticipo.getEmpCodigo());
             ps.setDate(2, new Date(anticipo.getAtpFecha().getTime()));
             ps.setDouble(3, anticipo.getAtpCantidad());
-            int n=ps.executeUpdate();
+            n=ps.executeUpdate();
 
             if(n>0){
                Logger.getLogger("Se guardo correctamente");
@@ -154,10 +154,10 @@ ConexionDB.cerrarConexion();
             Logger.getLogger(CEFAS_AnticipoDAO.class.getName()).log(Level.SEVERE, null, ex);
              
         }
+     return n;
+  }
      
-     
-     }
-     
+     //ACTUALIZA
      public int actualizarAnticipo(CEFAS_Anticipo anticipo) {
      
     int n=0;
@@ -182,6 +182,25 @@ ConexionDB.cerrarConexion();
      
      }
      
+     
+     //eliminar anticipo
+       public int eliminarAnticipo(int codigo){
+          int resultado=0;
+            try {
+            conexiondb = ConexionDB.getConexion();
+            //Borrado de títulos
+            ps = conexiondb.prepareStatement(SQL_DELETE);
+            ps.setInt(1, codigo);
+            resultado=ps.executeUpdate();
+           
+            ConexionDB.cerrarConexion();
+        } catch (SQLException ex) {
+            Logger.getLogger(CEFAS_AnticipoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            return resultado; 
+    }
+          
+       
      
      
      //>>>>>>>>>>>>>>>>>>>>>CALCULO DE LOS ANTICIPOS DESDE EL ULTIMO CORTE DE PLANILLA<<<<<<<<<<<<<<<<<<<<<
@@ -214,6 +233,7 @@ ConexionDB.cerrarConexion();
         return listAnticipos;
     }
       
+    
       
      
     

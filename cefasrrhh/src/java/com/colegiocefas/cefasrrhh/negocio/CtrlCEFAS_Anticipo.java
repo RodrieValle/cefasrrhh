@@ -48,6 +48,10 @@ public class CtrlCEFAS_Anticipo {
     }
     
     
+         public int eliminarAnticipo(int codigo)
+    {
+        return daoAnticipo.eliminarAnticipo(codigo);
+    }
     
     
        public CEFAS_Anticipo getAnticipo(int codigo)
@@ -72,9 +76,13 @@ public class CtrlCEFAS_Anticipo {
         return daoAnticipo.actualizarAnticipo(anticipo);
     }
     
-    public void guardarAnticipo(CEFAS_Anticipo anticipo)
+    public int guardarAnticipo(int codigo, Date fecha, float cantidad)
     {
-        daoAnticipo.almacenarAnticipo(anticipo);
+         CEFAS_Anticipo anticipo = new CEFAS_Anticipo();
+        anticipo.setEmpCodigo(codigo);
+        anticipo.setAtpFecha(fecha);
+        anticipo.setAtpCantidad(cantidad);
+        return daoAnticipo.almacenarAnticipo(anticipo);
     }
     
 
