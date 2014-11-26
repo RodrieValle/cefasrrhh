@@ -192,15 +192,19 @@
                         </div>
                     </div>
                     <div class="panel panel-primary">
-                        <div class="panel-heading">Evaluaciones</div>
+                        <div class="panel-heading">Historiales</div>
                         <div class="panel-body">
-                            
-                        </div>
-                    </div>
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">Sanciones</div>
-                        <div class="panel-body">
-                            
+                            <div class="container">
+                                <div class="col-xs-4 col-xs-offset-1">
+                                <a href="historialEvClase.jsp" class="btn btn-sm btn-success center-block">Evaluaciones de clases</a><br>
+                                <a href="historialEvCompetencias.jsp" class="btn btn-sm btn-success center-block">Evaluaciones por competencias</a>
+                                </div>
+                                <div class="col-xs-4 col-xs-offset-2">
+                                <a href="historialEvFunciones.jsp" class="btn btn-sm btn-success center-block">Evaluaciones por funciones</a><br>
+                                <a href="historialSanciones.jsp" class="btn btn-sm btn-success center-block">Sanciones</a>
+                                </div>
+                                
+                            </div>
                         </div>
                     </div>
             </div>

@@ -70,6 +70,7 @@ ConexionDB.cerrarConexion();
                 scn.setEmpCodigo(rs.getInt("empCodigo"));
                 scn.setScnFecha(rs.getDate("scnFecha"));
                 scn.setScnSancion(rs.getString("scnSancion"));
+                scn.setScnMotivo(rs.getString("scnMotivo"));
                 listSancion.add(scn);
                
             }

@@ -30,7 +30,7 @@ public class CEFAS_EvaluacionPorCompetenciasDAO {
 	private final String SQL_INSERT = "INSERT INTO CEFAS_EvaluacionPorCompetencias (ecoCodigo, empCodigo, ecoFecha, ecoRutaArchivo )"
            							  + " VALUES (NULL, ?, ?,?);";
     private final String SQL_SELECT_ALL = "SELECT * FROM CEFAS_EVALUACIONPORCOMPETENCIAS ORDER BY ECOFECHA DESC";
-    private final String SQL_SELECT_ID = "SELECT * FROM CEFAS_EVALUACIONPORCOMPETENCIAS WHERE ECOCODIGO = ?";
+    private final String SQL_SELECT_ID = "SELECT * FROM CEFAS_EVALUACIONPORCOMPETENCIAS WHERE EMPCODIGO = ? ORDER BY ECOFECHA";
     private final String SQL_UPDATE = "UPDATE CEFAS_EVALUACIONPORCOMPETENCIAS SET ACTFECHA = ?, ECOFECHA = ? WHERE ECOCODIGO = ?";
     private final String SQL_DELETE = "DELETE FROM CEFAS_EVALUACIONPORCOMPETENCIAS WHERE ECOCODIGO = ?";
     private Connection conexiondb;
@@ -56,14 +56,15 @@ public class CEFAS_EvaluacionPorCompetenciasDAO {
     }
 
 
-    public List<CEFAS_EvaluacionPorCompetencias> obtenerEvaluacionPorcompetenciasById()
+    public List<CEFAS_EvaluacionPorCompetencias> obtenerEvaluacionPorcompetenciasById(int codigoEmpleado)
     {
         List<CEFAS_EvaluacionPorCompetencias> listaEval = new ArrayList<CEFAS_EvaluacionPorCompetencias>();
         CEFAS_EvaluacionPorCompetencias eval;
         try {
             conexiondb = ConexionDB.getConexion();
-            st = conexiondb.createStatement();
-            rs = st.executeQuery(SQL_SELECT_ALL);
+            ps = conexiondb.prepareStatement(SQL_SELECT_ID);
+            ps.setInt(1, codigoEmpleado);
+            rs = ps.executeQuery();
             while(rs.next())
             {
                 eval = new CEFAS_EvaluacionPorCompetencias();

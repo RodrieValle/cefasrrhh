@@ -30,7 +30,7 @@ public class CEFAS_EvaluacionPorFuncionesDAO {
 	private final String SQL_INSERT = "INSERT INTO CEFAS_EvaluacionPorFunciones (efuCodigo, empCodigo, efuFecha, efuRutaArchivo )"
            							  + " VALUES (NULL, ?, ?,?);";
     private final String SQL_SELECT_ALL = "SELECT * FROM CEFAS_EVALUACIONPORFUNCIONES ORDER BY ECOFECHA DESC";
-    private final String SQL_SELECT_ID = "SELECT * FROM CEFAS_EVALUACIONPORFUNCIONES WHERE ECOCODIGO = ?";
+    private final String SQL_SELECT_ID = "SELECT * FROM CEFAS_EVALUACIONPORFUNCIONES WHERE EMPCODIGO = ? ORDER BY EFUFECHA";
     private final String SQL_UPDATE = "UPDATE CEFAS_EVALUACIONPORFUNCIONES SET ACTFECHA = ?, ECOFECHA = ? WHERE ECOCODIGO = ?";
     private final String SQL_DELETE = "DELETE FROM CEFAS_EVALUACIONPORFUNCIONES WHERE ECOCODIGO = ?";
     private Connection conexiondb;
@@ -56,20 +56,21 @@ public class CEFAS_EvaluacionPorFuncionesDAO {
     }
 
 
-    public List<CEFAS_EvaluacionPorFunciones> obtenerEvaluacionPorFuncionesById()
+    public List<CEFAS_EvaluacionPorFunciones> obtenerEvaluacionPorFuncionesById(int codigoEmpleado)
     {
         List<CEFAS_EvaluacionPorFunciones> listaEval = new ArrayList<CEFAS_EvaluacionPorFunciones>();
         CEFAS_EvaluacionPorFunciones evalf;
         try {
             conexiondb = ConexionDB.getConexion();
-            st = conexiondb.createStatement();
-            rs = st.executeQuery(SQL_SELECT_ALL);
+            ps = conexiondb.prepareStatement(SQL_SELECT_ID);
+            ps.setInt(1, codigoEmpleado);
+            rs = ps.executeQuery();
             while(rs.next())
             {
                 evalf = new CEFAS_EvaluacionPorFunciones();
-                evalf.setEfuCodigo(rs.getString("ecoCodigo"));
-                evalf.setEfuFecha(rs.getDate("ecoFecha"));
-                evalf.setEfuRutaArchivo(rs.getString("ecoRutaArchivo"));
+                evalf.setEfuCodigo(rs.getString("efuCodigo"));
+                evalf.setEfuFecha(rs.getDate("efuFecha"));
+                evalf.setEfuRutaArchivo(rs.getString("efuRutaArchivo"));
                 listaEval.add(evalf);
             }
             ConexionDB.cerrarConexion();

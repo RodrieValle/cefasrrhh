@@ -28,9 +28,9 @@ public class CtrlCEFAS_EvaluacionPorFunciones {
         return evalfDao.guardar(evalf);
     }
     
-    public List<CEFAS_EvaluacionPorFunciones> obtenerEvaluacionPorFuncionesById()
+    public List<CEFAS_EvaluacionPorFunciones> obtenerEvaluacionPorFuncionesById(int codigoEmpleado)
     {
-        return evalfDao.obtenerEvaluacionPorFuncionesById();
+        return evalfDao.obtenerEvaluacionPorFuncionesById(codigoEmpleado);
     }
     
    

@@ -31,7 +31,7 @@ public class CEFAS_EvaluacionDeClasesDAO {
 	private final String SQL_INSERT = "INSERT INTO CEFAS_EVALUACIONDECLASES (eclCodigo, empCodigo, eclFecha, eclRutaArchivo )"
            							  + " VALUES (NULL, ?, ?,?);";
     private final String SQL_SELECT_ALL = "SELECT * FROM CEFAS_EVALUACIONDECLASES ORDER BY ECLFECHA DESC";
-    private final String SQL_SELECT_ID = "SELECT * FROM CEFAS_EVALUACIONDECLASES WHERE ECLCODIGO = ?";
+    private final String SQL_SELECT_ID = "SELECT * FROM CEFAS_EVALUACIONDECLASES WHERE EMPCODIGO = ? ORDER BY ECLFECHA";
     private final String SQL_UPDATE = "UPDATE CEFAS_EVALUACIONDECLASES SET ECLFECHA = ?, ECLFECHA = ? WHERE ECLCODIGO = ?";
     private final String SQL_DELETE = "DELETE FROM CEFAS_EVALUACIONDECLASES WHERE ECLCODIGO = ?";
     private Connection conexiondb;
@@ -58,14 +58,15 @@ public class CEFAS_EvaluacionDeClasesDAO {
     }
 
 
-    public List<CEFAS_EvaluacionDeClases> obtenerEvaluacionDeClasesById()
+    public List<CEFAS_EvaluacionDeClases> obtenerEvaluacionDeClasesById(int codigoEmpleado)
     {
         List<CEFAS_EvaluacionDeClases> listaEvalcl = new ArrayList<CEFAS_EvaluacionDeClases>();
         CEFAS_EvaluacionDeClases evalcl;
         try {
             conexiondb = ConexionDB.getConexion();
-            st = conexiondb.createStatement();
-            rs = st.executeQuery(SQL_SELECT_ALL);
+            ps = conexiondb.prepareStatement(SQL_SELECT_ID);
+            ps.setInt(1, codigoEmpleado);
+            rs = ps.executeQuery();
             while(rs.next())
             {
                 evalcl = new CEFAS_EvaluacionDeClases();
@@ -78,7 +79,6 @@ public class CEFAS_EvaluacionDeClasesDAO {
         } catch (SQLException ex) {
             Logger.getLogger(CEFAS_EvaluacionDeClases.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
         return listaEvalcl;
     }
 
