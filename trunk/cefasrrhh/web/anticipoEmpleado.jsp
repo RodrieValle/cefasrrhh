@@ -4,6 +4,7 @@
     Author     : JUAREZ
 --%>
 
+<%@page import="java.util.Date"%>
 <%@page import="com.colegiocefas.cefasrrhh.negocio.CtrlCEFAS_Bitacora"%>
 <%@page import="com.colegiocefas.cefasrrhh.dominio.CEFAS_Empleado"%>
 <%@page import="com.colegiocefas.cefasrrhh.negocio.CtrlCEFAS_Empleado"%>
@@ -50,6 +51,33 @@
         
     }
     
+    
+if(request.getParameter("fecha") != null)
+    { 
+        int codigoAtp = Integer.parseInt(request.getParameter("atpcodigo"));
+        int codigo = Integer.parseInt(request.getParameter("codigo"));
+        Date fecha = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("fecha").toString());
+        float cantidad = Float.parseFloat(request.getParameter("cantidad"));
+       //String mensaje="";
+          
+        CtrlCEFAS_Anticipo ctrlAnticipo = new CtrlCEFAS_Anticipo();
+        int resultado=ctrlAnticipo.actualizarAnticipo(codigoAtp, codigo, fecha, cantidad);
+        
+        if(resultado==1){
+             mensaje = "<br><br><div class='alert alert-success' role='alert'><button type='button' class='close'"
+                + " data-dismiss='alert'><span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span></button>"
+                + "La actualizacion se realizo con exito</div>";
+              CtrlCEFAS_Bitacora ctrlBitacora= new CtrlCEFAS_Bitacora();
+        ctrlBitacora.guardarBitacora((Integer) sesionOk.getAttribute("codigo"), "Se actualizo el anticipo con codigo "+codigoAtp);
+             
+        }else{
+         mensaje = "<br><br><div class='alert alert-success' role='alert'><button type='button' class='close'"
+                + " data-dismiss='alert'><span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span></button>"
+                + "Error en la actualizacion del registro vuelva a intentar</div>";
+        }
+        
+        
+}
     
     
 int codigoEmp = Integer.parseInt(request.getParameter("codigo"));
