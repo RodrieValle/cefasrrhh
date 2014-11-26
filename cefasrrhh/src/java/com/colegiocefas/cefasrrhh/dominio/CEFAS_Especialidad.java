@@ -27,5 +27,11 @@ public class CEFAS_Especialidad {
     public void setEspCodigo(int espCodigo){
         this.espCodigo=espCodigo;
     }
+    public String getEspNombre(){
+        return espNombre;
+    }
+    public void setEspNombre(String espNombre){
+        this.espNombre=espNombre;
+    }
     
 }
