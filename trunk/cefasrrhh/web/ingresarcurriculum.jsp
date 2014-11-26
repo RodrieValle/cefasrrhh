@@ -4,6 +4,8 @@
     Author     : ANIBAL
 --%>
 
+<%@page import="com.colegiocefas.cefasrrhh.dominio.CEFAS_Especialidad"%>
+<%@page import="com.colegiocefas.cefasrrhh.negocio.CtrlCEFAS_Especialidad"%>
 <%@page import="org.apache.commons.fileupload.FileItemFactory"%>
 <%@page import="javax.swing.JOptionPane"%>
 <%@page import="java.io.File"%>
@@ -34,6 +36,9 @@
     {
         
     }
+    
+    CtrlCEFAS_Especialidad ctrlEspecialidad = new CtrlCEFAS_Especialidad();
+    List<CEFAS_Especialidad> listaEspecialidad = ctrlEspecialidad.obtenerEspecialidad();
     //response.setHeader("Content-Type","multipart/form-data;");
         %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -77,7 +82,11 @@
                          <div class="col-xs-4 col-xs-offset-4">
                              DUI: <input type="text" name="dui" class="form-control input-sm" value="" required>
                              Nombre: <input type="text" name="nombre" class="form-control input-sm">
-                             Especialidad: <input type="text" name="especialidad" class="form-control input-sm">
+                             Especialidad:<select name="empcodigo" id="empleado" class="form-control input-sm">
+                           <% for (CEFAS_Especialidad esp : listaEspecialidad) {%>
+                           <option value="<%= esp.getEspCodigo()%>"><%= esp.getEspNombre()%></option>
+                            <% }%>
+                       </select> 
                              Archivo de curriculum: <input type="file" name="url" id="url" class="form-control input-sm">
                              <p>
                                  <br><br>
