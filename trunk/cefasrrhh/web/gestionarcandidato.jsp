@@ -70,9 +70,7 @@
 		<div class="panel-body">
 		<table class="table table-striped table-hover">
 		<tbody>
-                     <% for(CEFAS_Especialidad esp: listaEspecialidad)
-                                    {
-                                    %>
+                     
               
 			<tr>
 				<td>Nombre:</td>
@@ -80,6 +78,9 @@
 				<td>Curriculum:</td>
 				<td>Evaluacion:</td>
 			</tr>
+                        <% for(CEFAS_Especialidad esp: listaEspecialidad)
+                                    {
+                                    %>
 			<tr>
 				<td></td>
 				<td><%= esp.getEspNombre() %></td>
