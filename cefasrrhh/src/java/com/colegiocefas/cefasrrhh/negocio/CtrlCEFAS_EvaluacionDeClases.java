@@ -29,9 +29,9 @@ public class CtrlCEFAS_EvaluacionDeClases {
         return evalcDao.guardar(evalc);
     }
     
-    public List<CEFAS_EvaluacionDeClases> obtenerEvaluacionPorFuncionesById()
+    public List<CEFAS_EvaluacionDeClases> obtenerEvaluacionDeClasesById(int codigoEmpleado)
     {
-        return evalcDao.obtenerEvaluacionDeClasesById();
+        return evalcDao.obtenerEvaluacionDeClasesById(codigoEmpleado);
     }
     
    /*

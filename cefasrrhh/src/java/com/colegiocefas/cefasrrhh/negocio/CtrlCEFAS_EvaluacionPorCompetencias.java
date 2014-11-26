@@ -29,9 +29,9 @@ public class CtrlCEFAS_EvaluacionPorCompetencias {
         return evalDao.guardar(eval);
     }
     
-    public List<CEFAS_EvaluacionPorCompetencias> obtenerEvaluacionPorcompetenciasById()
+    public List<CEFAS_EvaluacionPorCompetencias> obtenerEvaluacionPorcompetenciasById(int codigoEmpleado)
     {
-        return evalDao.obtenerEvaluacionPorcompetenciasById();
+        return evalDao.obtenerEvaluacionPorcompetenciasById(codigoEmpleado);
     }
     
   
