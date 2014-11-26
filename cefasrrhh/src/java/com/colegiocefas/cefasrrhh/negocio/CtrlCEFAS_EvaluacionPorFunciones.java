@@ -20,9 +20,10 @@ public class CtrlCEFAS_EvaluacionPorFunciones {
 
 	CEFAS_EvaluacionPorFuncionesDAO evalfDao = new CEFAS_EvaluacionPorFuncionesDAO ();
     
-     public boolean guardar(Date fecha, String ruta)
+     public boolean guardar(String codigoEmpleado, Date fecha, String ruta)
     {
         CEFAS_EvaluacionPorFunciones evalf = new CEFAS_EvaluacionPorFunciones();
+        evalf.setEmpCodigo(codigoEmpleado);
         evalf.setEfuFecha(fecha);
         evalf.setEfuRutaArchivo(ruta);
         return evalfDao.guardar(evalf);

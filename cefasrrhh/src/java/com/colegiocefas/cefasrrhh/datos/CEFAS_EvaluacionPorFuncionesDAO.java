@@ -27,7 +27,7 @@ import java.util.logging.Logger;
 public class CEFAS_EvaluacionPorFuncionesDAO {
     
 
-	private final String SQL_INSERT = "INSERT INTO CEFAS_EvaluacionPorFunciones (efuCodigo, empCodigo, efuFecha, efuRutaArchivo )"
+	private final String SQL_INSERT = "INSERT INTO CEFAS_EVALUACIONPORFUNCIONES (EFUCODIGO, EMPCODIGO, EFUFECHA, EFURUTAARCHIVO )"
            							  + " VALUES (NULL, ?, ?,?);";
     private final String SQL_SELECT_ALL = "SELECT * FROM CEFAS_EVALUACIONPORFUNCIONES ORDER BY ECOFECHA DESC";
     private final String SQL_SELECT_ID = "SELECT * FROM CEFAS_EVALUACIONPORFUNCIONES WHERE EMPCODIGO = ? ORDER BY EFUFECHA";
@@ -44,8 +44,9 @@ public class CEFAS_EvaluacionPorFuncionesDAO {
        try {
             conexiondb = ConexionDB.getConexion();
             ps = conexiondb.prepareStatement(SQL_INSERT);
-            ps.setDate(1, new Date(evalf.getEfuFecha().getTime()));
-            ps.setString(2, evalf.getEfuRutaArchivo());
+            ps.setString(1, evalf.getEmpCodigo());
+            ps.setDate(2, new Date(evalf.getEfuFecha().getTime()));
+            ps.setString(3, evalf.getEfuRutaArchivo());
             ps.executeUpdate();
             ConexionDB.cerrarConexion();
             return true;

@@ -6,6 +6,17 @@
 
 
 
+<%@page import="net.sf.jasperreports.engine.JRException"%>
+<%@page import="net.sf.jasperreports.engine.JasperExportManager"%>
+<%@page import="net.sf.jasperreports.engine.JasperPrint"%>
+<%@page import="net.sf.jasperreports.engine.JasperFillManager"%>
+<%@page import="net.sf.jasperreports.engine.JREmptyDataSource"%>
+<%@page import="java.io.File"%>
+<%@page import="java.util.Map"%>
+<%@page import="java.util.HashMap"%>
+<%@page import="java.util.Date"%>
+<%@page import="com.colegiocefas.cefasrrhh.dominio.CEFAS_Empleado"%>
+<%@page import="com.colegiocefas.cefasrrhh.negocio.CtrlCEFAS_Empleado"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.text.DateFormat"%>
 <%@page import="java.util.List"%>
@@ -19,9 +30,41 @@
         request.getRequestDispatcher("index.jsp").forward(request, response);
         return;
     }
-    String usuario = (String) sesionOk.getAttribute("usuario");
-    //CtrlCEFAS_Aviso ctrlAviso = new CtrlCEFAS_Aviso();
-    //List<CEFAS_Aviso> lista = ctrlAviso.consultarAvisos(usuario);
+    String mensaje = "";
+    request.setCharacterEncoding("UTF-8");
+    if(request.getParameter("item1")!=null)
+    {
+        Map parametros = new HashMap();
+        for(int x= 1; x<=19; x++)
+        {
+            parametros.put("parameter"+x, request.getParameter("item"+x));
+        }
+        parametros.put("mes", "Enero");
+        
+        try {
+            //se carga el reporte
+            File reportFile = new File(application.getRealPath("reportes/CEFAS_EvaluacionFunciones.jasper"));
+            //se procesa el archivo jasper
+            JasperPrint jasperPrint = JasperFillManager.fillReport(reportFile.getPath(), parametros, new JREmptyDataSource());
+            //se crea el archivo PDF
+            String rutaCompleta = request.getSession().getServletContext().getRealPath("/");
+            String rutaParcial = "documentos/evaluaciones/ev_funciones-"+ request.getParameter("codigo") + "-" + new SimpleDateFormat("ddMMyyHHmmss").format(new Date()) + ".pdf";
+            rutaCompleta += rutaParcial;
+            JasperExportManager.exportReportToPdfFile(jasperPrint, rutaCompleta);
+            CtrlCEFAS_EvaluacionPorFunciones ctrlEvaluacionFunciones = new CtrlCEFAS_EvaluacionPorFunciones();
+            ctrlEvaluacionFunciones.guardar(request.getParameter("codigo"), new Date(), rutaParcial);
+          mensaje = "<div class='alert alert-danger alert-dismissible' role='alert'><button type='button' class='close'"
+             + " data-dismiss='alert'><span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span></button>"
+             + "La evaluación se guardó correctamente</div>";
+        } catch (JRException ex) {
+            System.err.println("Error iReport: " + ex.getMessage());
+        }
+        
+        
+    }
+    
+    CtrlCEFAS_Empleado ctrlEmpleado = new CtrlCEFAS_Empleado();
+    List<CEFAS_Empleado> empleados = ctrlEmpleado.obtenerEmpleados();
 %>
 
 
@@ -34,7 +77,7 @@
  <head>
   
      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-     <title>Evaluacion por funciones</title>
+     <title>Evaluación por funciones</title>
      <jsp:include page='inc/head_common.jsp' /> 
     
  </head>
@@ -69,32 +112,34 @@
          <% } %>
          
           <div class="container">
-   <h1>Evaluación por Funciones</h1>
-        Introduzca los datos de la Evaluación<br>
-      <form class="form-signin" role="form" method="post" action="evaluacionFunciones.jsp">
-   <div class="row"> 
-       <div class="col-xs-4">  
-                            </div> 
-                             <div class="col-xs-4">  
-    
-      Codigo del empleado: <input type="text" name="codigo" class="form-control input-sm" required><br>
-      Nombre del empleado: <input type="text" name="nombre" class="form-control input-sm" required><br>
-      Codigo de la evaluacion: <input type="text" name="codeva" class="form-control input-sm" required><br>
-      Fecha:    <input type="text" name="fecha" class="form-control input-sm" required><br>
-    <br>
- </div>
-      
-</div>
+              
+           <h1>Evaluación por Funciones</h1>
+           <%= mensaje %>
+          <form class="form-signin" role="form" method="post" action="evaluacionFunciones.jsp">
+          <div class="panel panel-primary">
+                    <div class="panel-heading">Datos de la Evaluación</div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-xs-4 col-xs-offset-1">
+                                Empleado:
+                                <select name="codigo" id="empleado" class="input-sm form-control">
+                                 <% for(CEFAS_Empleado emp: empleados)
+                                 { %>
+                                 <option value="<%= emp.getEmpCodigo() %>"><%= emp.getEmpNombre() %></option> 
+                                 <%}%>   
+                                </select>
+                            </div>
+                            <div class="col-xs-4 col-xs-offset-2">
+                                Fecha: <input type="text" name="fecha" value="<%= new SimpleDateFormat("dd/MM/yyyy").format(new Date()) %>" readonly class="form-control input-sm"/> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-
-          
-     <table border="1" align="center">
-       <tr>
-         
-           <td colspan="2"><h1>Evaluacion por funciones</h1></td>
-       </tr>
-
-       <tr>
+       <table border="1" align="center" class="table table-hover">
+       
+           
+        <tr>
            <td> <h2>Criterios</h2></td>
          <td><h2>Observaciones</h2></td>
 
@@ -103,114 +148,114 @@
 
     <tr>
        <td>Clases, Deacuerdo a formato de supervision de clases</td>
-       <td><input name="item1" type="text" size="50" maxlength="50"></td>
+       <td><input required name="item1" type="text" size="60" maxlength="50"></td>
     </tr>
   
     <tr>
        <td>Tareas, Distribuidas, Apropiadas, Revisadas</td>
-      <td><input name="item2" type="text" size="50" maxlength="50"></td>
+      <td><input required name="item2" type="text" size="60" maxlength="50"></td>
      
     </tr>
 
     <tr>
        <td>Cuadernos, Contenido, Revisado, Corregido</td>
-       <td><input name="item3" type="text" size="50" maxlength="50"></td>
+       <td><input required name="item3" type="text" size="60" maxlength="50"></td>
     </tr>
 
     <tr>
        <td>Libros, Limpieza, útiles, forrados, revisados</td>
-       <td><input name="item4" type="text"  size="50" maxlength="50"></td>
+       <td><input required name="item4" type="text"  size="60" maxlength="50"></td>
     </tr>
 
     <tr>
        <td>Examenes,Formato, ortografía, contenido, aplicativo, revisión</td>
-       <td><input name="item5" type="text" size="50" maxlength="50"></td>
+       <td><input required name="item5" type="text" size="60" maxlength="50"></td>
 
     </tr>
 
     <tr>
        <td>Planificaciones, Contenido, entrega a tiempo, utilizadas</td>
-       <td><input name="item6" type="text" size="50" maxlength="50"></td>
+       <td><input required name="item6" type="text" size="60" maxlength="50"></td>
 
     </tr>
 
     <tr>
        <td>Responsabilidades, Cuidos, Asamblea, Per. Mur., Reu. c/Padres</td>
-       <td><input name="item7" type="text" size="50" maxlength="50"></td>
+       <td><input required name="item7" type="text" size="60" maxlength="50"></td>
 
     </tr>
 
     <tr>
        <td>Disciplina, Seguimiento Manual, Pastoreo, claro y consistente, orden</td>
-       <td><input name="item8" type="text" size="50" maxlength="50"></td>
+       <td><input required name="item8" type="text" size="60" maxlength="50"></td>
 
     </tr>
 
     
     <tr>
        <td>Habitos y procedimientos</td>
-       <td><input name="item10" type="text" size="50" maxlength="50"></td>
+       <td><input required name="item10" type="text" size="60" maxlength="50"></td>
 
     </tr>
 
     <tr>
        <td>Aula</td>
-       <td><input name="item11" type="text" size="50" maxlength="50"></td>
+       <td><input required name="item11" type="text" size="60" maxlength="50"></td>
 
     </tr>
 
     <tr>
        <td>Teachers book</td>
-       <td><input name="item12" type="text" size="50" maxlength="50"></td>
+       <td><input required name="item12" type="text" size="60" maxlength="50"></td>
 
     </tr>
 
     <tr>
        <td>Lealtad al ausente</td>
-       <td><input name="item15" type="text" size="50" maxlength="50"></td>
+       <td><input required name="item15" type="text" size="60" maxlength="50"></td>
 
     </tr>
 
     
     <tr>
        <td>Respeto a autoridades</td>
-       <td><input name="item15" type="text" size="50" maxlength="50"></td>
+       <td><input required name="item15" type="text" size="60" maxlength="50"></td>
 
     </tr>
 
     <tr>
        <td>Puntualidad, asistencia y permisos</td>
-       <td><input name="item16" type="text" size="50" maxlength="50"></td>
+       <td><input required name="item16" type="text" size="60" maxlength="50"></td>
 
     </tr>
 
     <tr>
        <td>Presentacion personal</td>
-       <td><input name="item17" type="text" size="50" maxlength="50"></td>
+       <td><input required name="item17" type="text" size="60" maxlength="50"></td>
 
     </tr>
 
     <tr>
        <td>Sigue indicaciones</td>
-       <td><input name="item18" type="text" size="50" maxlength="50"></td>
+       <td><input required name="item18" type="text" size="60" maxlength="50"></td>
 
     </tr>
 
     <tr>
        <td>Disposicion y actitud</td>
-       <td><input name="item19" type="text" size="50" maxlength="50"></td>
+       <td><input required name="item19" type="text" size="60" maxlength="50"></td>
 
     </tr>
       
       <tr>
        <td>Cuida propiedad del colegio</td>
-       <td><input name="item121" type="text" size="50" maxlength="50"></td>
+       <td><input required name="item121" type="text" size="60" maxlength="50"></td>
 
     </tr>
 
    </table><br><br>
    
-   <input type="submit" value="Procesa" class="btn btn-success center-block">
+   <input type="submit" value="Guardar" class="btn btn-success center-block"><br><br>
   
    </form>
     </div> <%-- fin del div id=container --%>

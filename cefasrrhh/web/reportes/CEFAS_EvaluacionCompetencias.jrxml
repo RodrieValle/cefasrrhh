@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CEFAS_EvaluacionCompetencias" language="groovy" pageWidth="792" pageHeight="612" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="42ac161b-f323-425a-9c5d-6c43d2e8b35b">
-	<property name="ireport.zoom" value="0.75"/>
-	<property name="ireport.x" value="0"/>
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="197"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="a1" class="java.lang.Integer"/>
 	<parameter name="a2" class="java.lang.Integer"/>
@@ -57,7 +57,7 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="23" splitType="Stretch">
+		<band height="24" splitType="Stretch">
 			<staticText>
 				<reportElement uuid="e488c9c5-230d-48ff-924b-17cf33a324b0" x="300" y="0" width="156" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -116,9 +116,9 @@
 		</band>
 	</title>
 	<detail>
-		<band height="547" splitType="Stretch">
+		<band height="547">
 			<staticText>
-				<reportElement uuid="8876858a-3eba-471c-a96a-0e4e7f5a4297" x="0" y="0" width="632" height="497"/>
+				<reportElement uuid="88388dd4-cb08-48ef-a248-1b05736a0b3f" x="0" y="1" width="630" height="495"/>
 				<box>
 					<pen lineWidth="0.75"/>
 					<topPen lineWidth="0.75"/>
@@ -170,18 +170,6 @@ Desarrollo de Relaciones
 				<textElement/>
 				<textFieldExpression><![CDATA[("    X,               X,                          X,                                     X".split(",")[$P{a1}.intValue()-1])]]></textFieldExpression>
 			</textField>
-			<line>
-				<reportElement uuid="97966210-be93-4425-ae00-4c571bc96a52" x="661" y="0" width="1" height="497"/>
-			</line>
-			<line>
-				<reportElement uuid="7cc6d351-a6b6-4ffc-98cd-3e658ab6e967" x="691" y="0" width="1" height="497"/>
-			</line>
-			<line>
-				<reportElement uuid="f31115f1-f893-46e4-8ce0-fe14915ee1c0" x="721" y="0" width="1" height="497"/>
-			</line>
-			<line>
-				<reportElement uuid="52d2e0d1-f82b-43b8-8b47-6da9f615a466" x="751" y="0" width="1" height="497"/>
-			</line>
 			<textField>
 				<reportElement uuid="293629ab-f220-46e2-884d-4039a8f390cf" x="632" y="24" width="120" height="13"/>
 				<textElement/>
@@ -317,6 +305,18 @@ Desarrollo de Relaciones
 				<textElement/>
 				<textFieldExpression><![CDATA[("    X,               X,                          X,                                     X".split(",")[$P{f3}.intValue()-1])]]></textFieldExpression>
 			</textField>
+			<line>
+				<reportElement uuid="97966210-be93-4425-ae00-4c571bc96a52" x="661" y="0" width="1" height="497"/>
+			</line>
+			<line>
+				<reportElement uuid="7cc6d351-a6b6-4ffc-98cd-3e658ab6e967" x="691" y="0" width="1" height="497"/>
+			</line>
+			<line>
+				<reportElement uuid="f31115f1-f893-46e4-8ce0-fe14915ee1c0" x="721" y="0" width="1" height="497"/>
+			</line>
+			<line>
+				<reportElement uuid="52d2e0d1-f82b-43b8-8b47-6da9f615a466" x="750" y="0" width="1" height="497"/>
+			</line>
 			<line>
 				<reportElement uuid="a9d8c3dd-d287-4cf3-85a8-d5c2572ed3d3" x="630" y="496" width="121" height="1"/>
 			</line>

@@ -29,6 +29,7 @@
         request.getRequestDispatcher("index.jsp").forward(request, response);
         return;
     }
+    request.setCharacterEncoding("UTF-8");
     String cadena = "abcdefghij";
     String mensaje = "";
     if (request.getParameter("a1") != null) {
@@ -36,6 +37,7 @@
         for (int x = 0; x <= 9; x++) {
             for (int y = 1; y <= 5; y++) {
                 parametros.put(String.valueOf(cadena.charAt(x)) + y, Integer.parseInt(request.getParameter(String.valueOf(cadena.charAt(x)) + y)));
+                //parametros.put(String.valueOf(cadena.charAt(x)) + y, 1);
             }
         }
 
@@ -119,7 +121,7 @@
                             <table border = "1" class="table table-hover table-striped">
 
                         <tr>
-                            <td><strong>Evaluacion por competencias</strong></td>
+                            <td><strong>Evaluación por competencias</strong></td>
                             <td><strong>1</strong></td>
                             <td><strong>2</strong></td>
                             <td><strong>3</strong></td>
@@ -156,7 +158,7 @@
 
 
                         <tr>
-                            <td>Genera informaciónón para el control de la gestión, y busca feedbak para chequear su nivel de desempeño.</td>
+                            <td>Genera información para el control de la gestión, y busca feedback para chequear su nivel de desempeño.</td>
                             <td><input type="radio" name="a4" value="1" required> </td>
                             <td><input type="radio" name="a4" value="2"> </td>
                             <td><input type="radio" name="a4" value="3"> </td>
