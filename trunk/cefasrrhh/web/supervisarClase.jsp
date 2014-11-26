@@ -247,7 +247,7 @@
                         <tr>
                             <td>17</td>
                             <td>Tarea integrada al objetivo de la clase</td>
-                            <td><input required name="item17" type="text" size="80" maxlength="80">
+                            <td><input required name="item17" type="text" class="form-control input-sm" maxlength="80">
 
                         </tr>
 
