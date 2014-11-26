@@ -26,6 +26,7 @@ import java.util.logging.Logger;
 public class CEFAS_SancionDAO {
     private final String SQL_INSERT = "INSERT INTO CEFAS_SANCION (EMPCODIGO,SCNCODIGO,SCNFECHA,SCNSANCION,SCNMOTIVO) VALUES (?, ?, ?, ?, ?)";
     private final String SQL_SELECT = "SELECT * FROM CEFAS_SANCION WHERE EMPCODIGO LIKE ?";
+    private final String SQL_DELETE = "DELETE FROM CEFAS_SANCION WHERE SCNCODIGO = ?";
 
     private Connection conexiondb;
     private Statement st;
@@ -79,7 +80,22 @@ ConexionDB.cerrarConexion();
             Logger.getLogger(CEFAS_SancionDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return listSancion;
-    } 
+    }
+   public int eliminarSancion(int codigo){
+          int resultado=0;
+            try {
+            conexiondb = ConexionDB.getConexion();
+            //Borrado de títulos
+            ps = conexiondb.prepareStatement(SQL_DELETE);
+            ps.setInt(1, codigo);
+            resultado=ps.executeUpdate();
+           
+            ConexionDB.cerrarConexion();
+        } catch (SQLException ex) {
+            Logger.getLogger(CEFAS_SancionDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            return resultado; 
+    }
     
     
 }

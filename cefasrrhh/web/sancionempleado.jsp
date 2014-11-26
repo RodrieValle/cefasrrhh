@@ -12,6 +12,7 @@
 <%@page import="com.colegiocefas.cefasrrhh.negocio.CtrlCEFAS_Empleado"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
+    String mensaje="";
     HttpSession sesionOk = request.getSession();
     String tipo = (String) sesionOk.getAttribute("tipo");
     if (tipo == null) {
@@ -20,6 +21,21 @@
     }
     if (!tipo.equals("director")) {
         response.sendRedirect("avisos.jsp");
+    }
+    if(request.getParameter("codigoSan") != null)
+    { 
+ 
+     int codigoSan = Integer.parseInt(request.getParameter("codigoSan"));
+     int resultado=0;
+     
+       CtrlCEFAS_Sancion ctrlAnticipo = new CtrlCEFAS_Sancion();
+       resultado=ctrlAnticipo.eliminarSancion(codigoSan);
+       if(resultado==1){
+             mensaje ="La eliminación se realizo con exito";
+       }
+       else{
+           mensaje ="Error en la eliminación del registro vuelva a intentar";
+       }
     }
     int codigoEmp = Integer.parseInt(request.getParameter("codigo"));
     CtrlCEFAS_Empleado ctrlEmpleado = new CtrlCEFAS_Empleado();
@@ -65,7 +81,7 @@
                                             <td><%= scn.getScnCodigo()%></td>
                                             <td><%= new SimpleDateFormat("dd/MM/yyyy").format(scn.getScnFecha())%></td>
                                             <td><%=scn.getScnSancion() %></td>
-                                            <td><a href="#" class="btn btn-primary btn-md" role="button">Eliminar Sancion</a></td>
+                                            <td><a href="sancionempleado.jsp?codigoSan=<%=scn.getScnCodigo()%>&codigo=<%=empleado.getEmpCodigo()%>" class="btn btn-primary btn-md" role="button">Eliminar Sancion</a></td>
                                         </tr>
                                       <%
                                     } %>  

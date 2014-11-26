@@ -34,5 +34,9 @@ public class CtrlCEFAS_Sancion {
     {
         return daoSancion.getSancion(codigo);
     }
+   public int eliminarSancion(int codigo)
+    {
+        return daoSancion.eliminarSancion(codigo);
+    }
    
 }
