@@ -69,5 +69,23 @@ public class CtrlCEFAS_Viatico {
     }
     
    
+          public int actualizarViatico(int viaCodigo, int empCodigo, Date viaFecha, float viaCantidad, String viaDescripcion)
+    {
+        CEFAS_Viatico viatico=new CEFAS_Viatico();
+        viatico.setViaCodigo(viaCodigo);
+        viatico.setEmpCodigo(empCodigo);
+        viatico.setViaFecha(viaFecha);
+        viatico.setViaCantidad(viaCantidad);
+        viatico.setViaDescripcion(viaDescripcion);
+        return daoViatico.actualizarViatico(viatico);
+    }
     
+   public int eliminarViatico(int codigo)
+    {
+        return daoViatico.eliminarViatico(codigo);
+    }
+    
+         public CEFAS_Viatico getViatico(int codigo){
+        return daoViatico.getViatico(codigo);
+    }
 }
