@@ -3,6 +3,9 @@
     Created on : 19/11/2014, 09:02:13 PM
     Author     : Sergio
 --%>
+<%@page import="java.util.List"%>
+<%@page import="com.colegiocefas.cefasrrhh.negocio.CtrlCEFAS_Especialidad"%>
+<%@page import="com.colegiocefas.cefasrrhh.dominio.CEFAS_Especialidad"%>
 <%@page import="com.colegiocefas.cefasrrhh.dominio.CEFAS_Empleado"%>
 <%@page import="com.colegiocefas.cefasrrhh.dominio.CEFAS_Empleado"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -18,6 +21,9 @@
     if (!tipo.equals("director")) {
         response.sendRedirect("avisos.jsp");
     }
+    CtrlCEFAS_Especialidad ctrlEspecialidad = new CtrlCEFAS_Especialidad();
+    List<CEFAS_Especialidad> listaEspecialidad;
+    listaEspecialidad = ctrlEspecialidad.obtenerEspecialidad();
 %>
 <!DOCTYPE html>
 <html>
@@ -64,6 +70,9 @@
 		<div class="panel-body">
 		<table class="table table-striped table-hover">
 		<tbody>
+                     <% for(CEFAS_Especialidad esp: listaEspecialidad)
+                                    {
+                                    %>
               
 			<tr>
 				<td>Nombre:</td>
@@ -73,11 +82,13 @@
 			</tr>
 			<tr>
 				<td></td>
-				<td></td>
+				<td><%= esp.getEspNombre() %></td>
 				<td><a href="" class="btn btn-primary btn-md" role="button">Ver Curriculum</a></td>
 				<td><a href="evaluarCandidato.jsp" class="btn btn-primary btn-md" role="button">Ver Evaluacion</a></td>
 
 			</tr>
+                        <%
+                                    } %>
 		</tbody>
 			
 		</table>
