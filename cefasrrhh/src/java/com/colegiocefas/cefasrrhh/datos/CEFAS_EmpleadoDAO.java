@@ -27,7 +27,8 @@ import java.util.logging.Logger;
  */
 public class CEFAS_EmpleadoDAO {
     
-    private final String SQL_INSERT = "";
+    private final String SQL_INSERT = "INSERT INTO CEFAS_EMPLEADO(EMPCODIGO, EMPNOMBRE, EMPANIOCONTRATACION, "
+            + "EMPPLAZAACTUAL, EMPJEFEINMEDIATO, EMPSALARIO, EMPTIPODECONTRATO) VALUES(NULL, ?, ?, ?, ?, ?, ?)";
     private final String SQL_SELECT = "SELECT * FROM CEFAS_USUARIO INNER JOIN CEFAS_EMPLEADO ON "
             + "CEFAS_USUARIO.EMPCODIGO = CEFAS_EMPLEADO.EMPCODIGO AND CEFAS_USUARIO.EMPCODIGO = ?";
     private final String SQL_SELECTBYID = "SELECT * FROM CEFAS_EMPLEADO WHERE EMPCODIGO = ?";
@@ -294,5 +295,25 @@ public class CEFAS_EmpleadoDAO {
             Logger.getLogger(CEFAS_EmpleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return tiempoTrabajado;
+    }
+
+    public boolean registrar(CEFAS_Empleado empleado) {
+        boolean exito = false;
+        try {
+            conexiondb = ConexionDB.getConexion();
+            ps = conexiondb.prepareStatement(SQL_INSERT);
+            ps.setString(1, empleado.getEmpNombre());
+            ps.setDate(2, new java.sql.Date(empleado.getEmpAnioContratacion().getTime()));
+            ps.setString(3, empleado.getEmpPlazaActual());
+            ps.setInt(4, empleado.getEmpJefeInmediato());
+            ps.setFloat(5, empleado.getEmpSalario());
+            ps.setString(6, empleado.getEmpTipoDeContrato());
+            ps.execute();
+            ConexionDB.cerrarConexion();
+            exito = true;
+        } catch (SQLException ex) {
+            Logger.getLogger(CEFAS_EmpleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return exito;
     }
 }

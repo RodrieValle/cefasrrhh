@@ -188,7 +188,7 @@
                     <div class="panel panel-primary">
                         <div class="panel-heading">Historiales</div>
                         <div class="panel-body">
-                            <div class="container">
+                            <div class="row">
                                 <div class="col-xs-4 col-xs-offset-1">
                                     <a href="historialEvClase.jsp?codigo=<%= empleado.getEmpCodigo() %>" class="btn btn-sm btn-success center-block">Evaluaciones de clases</a><br>
                                 <a href="historialEvCompetencias.jsp?codigo=<%= empleado.getEmpCodigo() %>" class="btn btn-sm btn-success center-block">Evaluaciones por competencias</a>

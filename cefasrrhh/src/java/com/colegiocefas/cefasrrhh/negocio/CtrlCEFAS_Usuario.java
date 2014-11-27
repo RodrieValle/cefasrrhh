@@ -25,4 +25,13 @@ public class CtrlCEFAS_Usuario {
     {
         return daoUsuario.actualizar(codigoUsuario, usuario, password);
     }
+    
+    public boolean registrar(String usuarioNombre, String password, String tipo)
+    {
+        CEFAS_Usuario usuario = new CEFAS_Usuario();
+        usuario.setUsrNombre(usuarioNombre);
+        usuario.setUsrPassword(password);
+        usuario.setUsrTipo(tipo);
+        return daoUsuario.registrar(usuario);
+    }
 }

@@ -3,6 +3,10 @@
     Created on : 11-26-2014, 08:32:23 PM
     Author     : Rodrigo
 --%>
+<%@page import="com.colegiocefas.cefasrrhh.negocio.CtrlCEFAS_Usuario"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
+<%@page import="com.colegiocefas.cefasrrhh.negocio.CtrlCEFAS_Empleado"%>
 <%@page import="com.colegiocefas.cefasrrhh.negocio.CtrlCEFAS_Candidato"%>
 <%
     //Verificación de sesión abierta
@@ -14,6 +18,23 @@
     }
     if (!tipo.equals("director")) {
         response.sendRedirect("avisos.jsp");
+    }
+    request.setCharacterEncoding("UTF-8");
+    if(request.getParameter("usuario")!=null)
+    {
+        String nombre = request.getParameter("nombre");
+        Date fechaContratacion = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("fechaContratacion"));
+        String plaza = request.getParameter("Plaza");
+        int jefeInmediato = Integer.parseInt(request.getParameter("jefeInmediato"));
+        float salario = Float.parseFloat(request.getParameter("salario"));
+        String tipoContrato = request.getParameter("tipoContrato");
+        CtrlCEFAS_Empleado ctrlEmpleado = new CtrlCEFAS_Empleado();
+        String usuario = request.getParameter("usuario");
+        String password = request.getParameter("pw1");
+        String tipoUsuario = request.getParameter("tipoUsuario");
+        ctrlEmpleado.registrar(nombre, fechaContratacion, plaza, jefeInmediato, salario, tipoContrato);
+        CtrlCEFAS_Usuario ctrlUsuario = new CtrlCEFAS_Usuario();
+        ctrlUsuario.registrar(usuario, password, tipoUsuario);
     }
     //Saber de cual página viene
     String nombre = "";
@@ -42,7 +63,7 @@
             <jsp:include page='inc/menu_directora.jsp' />
             <div class="container">
                 <h1>Registro de empleado</h1>
-                <form action="registro.jsp">
+                <form action="registro.jsp" method="post">
                     <div class="panel panel-primary">
                     <div class="panel-heading">Datos de usuario</div>
                     <div class="panel-body">
@@ -86,11 +107,11 @@
                         </div>
                         <div class="col-xs-4 col-xs-offset-2">
                             Jefe inmediato:
-                            <input type="text" class="form-control input-sm" maxlength="50" name="usuario" required /><br>
+                            <input type="text" class="form-control input-sm" maxlength="50" name="jefeInmediato" required /><br>
                             Salario:
-                            <input type="number" class="form-control input-sm" maxlength="50" name="usuario" required /><br>
+                            <input type="number" class="form-control input-sm" maxlength="50" name="salario" required /><br>
                             Tipo de contrato:
-                            <input type="text" class="form-control input-sm" maxlength="50" name="usuario" required /><br>
+                            <input type="text" class="form-control input-sm" maxlength="50" name="tipoContrato" required /><br>
                         </div>
                     </div>
                   </div> 
