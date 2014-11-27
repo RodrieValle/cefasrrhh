@@ -23,6 +23,7 @@
     if (!tipo.equals("director")) {
         response.sendRedirect("avisos.jsp");
     }
+    
     int codigoEmp = Integer.parseInt(request.getParameter("empcodigo"));
     CtrlCEFAS_Empleado ctrlEmpleado = new CtrlCEFAS_Empleado();
     CEFAS_Empleado empleado = ctrlEmpleado.getEmpleadoPorUsuario(codigoEmp);
@@ -56,7 +57,9 @@
                        
                        
                        Codigo de Sancion: <input type="text" name="scncodigo" value="" class="form-control input-sm" required/><br>
-                       Fecha: <input type="text" name="fecha" value="" class="form-control input-sm" placeholder= "Formato: dd/MM/yyyy" required /><br>
+                       Fecha: <div class="bfh-datepicker" data-format="d/m/y"  data-name="fecha" data-language="es" data-input="input-sm form-control" data-icon=""
+                                data-close="true" data-align="right">
+                                </div>
                        Empleado:<input  type="text" name="empcodigo" value="<%= empleado.getEmpCodigo() %>" class="form-control input-sm"  required readonly/>
         
                     </div>
