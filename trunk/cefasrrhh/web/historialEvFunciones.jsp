@@ -15,7 +15,24 @@
         request.getRequestDispatcher("index.jsp").forward(request, response);
         return;
     }
-    int codEmpleado = Integer.parseInt(sesionOk.getAttribute("empleado").toString());
+     //Saber de cual página viene
+    int codEmpleado;
+    if(request.getHeader("Referer")!=null)
+    {
+        String partes[] = request.getHeader("Referer").split("/");
+        String pagina = partes[partes.length-1];
+        
+        if(pagina.equals("empleado.jsp"))
+        {
+            codEmpleado = Integer.parseInt(request.getParameter("codigo").toString());
+        }
+        else{
+            codEmpleado = Integer.parseInt(sesionOk.getAttribute("empleado").toString());
+        }
+    }
+    else{
+        codEmpleado = Integer.parseInt(sesionOk.getAttribute("empleado").toString());
+    }
     CtrlCEFAS_EvaluacionPorFunciones ctrlEvFunc = new CtrlCEFAS_EvaluacionPorFunciones();
     List<CEFAS_EvaluacionPorFunciones> evsFunciones = ctrlEvFunc.obtenerEvaluacionPorFuncionesById(codEmpleado);
 

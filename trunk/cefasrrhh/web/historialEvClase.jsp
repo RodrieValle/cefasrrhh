@@ -3,6 +3,7 @@
     Created on : 11-25-2014, 08:06:31 PM
     Author     : Rodrigo
 --%>
+<%@page import="javax.swing.JOptionPane"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.List"%>
 <%@page import="com.colegiocefas.cefasrrhh.dominio.CEFAS_EvaluacionDeClases"%>
@@ -15,7 +16,25 @@
         request.getRequestDispatcher("index.jsp").forward(request, response);
         return;
     }
-    int codEmpleado = Integer.parseInt(sesionOk.getAttribute("empleado").toString());
+    //Saber de cual página viene
+    int codEmpleado;
+    if(request.getHeader("Referer")!=null)
+    {
+        String partes[] = request.getHeader("Referer").split("/");
+        String pagina = partes[partes.length-1];
+        
+        if(pagina.equals("empleado.jsp"))
+        {
+            codEmpleado = Integer.parseInt(request.getParameter("codigo").toString());
+        }
+        else{
+            codEmpleado = Integer.parseInt(sesionOk.getAttribute("empleado").toString());
+        }
+    }
+    else{
+        codEmpleado = Integer.parseInt(sesionOk.getAttribute("empleado").toString());
+    }
+    
     CtrlCEFAS_EvaluacionDeClases ctrlEvClases = new CtrlCEFAS_EvaluacionDeClases();
     List<CEFAS_EvaluacionDeClases> evsClases = ctrlEvClases.obtenerEvaluacionDeClasesById(codEmpleado);
 
