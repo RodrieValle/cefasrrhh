@@ -22,22 +22,6 @@
     if (!tipo.equals("director")) {
         response.sendRedirect("avisos.jsp");
     }
-    if (request.getParameter("empcodigo") != null) {
-        int empcodigo = Integer.parseInt(request.getParameter("empcodigo"));
-        int scncodigo = Integer.parseInt(request.getParameter("scncodigo"));
-        Date fecha = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("fecha").toString());
-        String scn = request.getParameter("sancion");
-        String motivo = request.getParameter("motivo");
-        CtrlCEFAS_Sancion ctrlsancion = new CtrlCEFAS_Sancion();
-        ctrlsancion.guardarSancion(empcodigo, scncodigo, fecha, scn, motivo);
-        
-         CtrlCEFAS_Bitacora ctrlBitacora= new CtrlCEFAS_Bitacora();
-         ctrlBitacora.guardarBitacora((Integer) sesionOk.getAttribute("codigo"), "Se almaceno una nueva sancion al empleado con codigo "+empcodigo);
-    
-    
-    }
-    
-    
     int empcodigo = Integer.parseInt(request.getParameter("empcodigo"));
     CtrlCEFAS_Empleado ctrlEmpleado = new CtrlCEFAS_Empleado();
     CEFAS_Empleado empleado = ctrlEmpleado.getEmpleadoPorUsuario(empcodigo);
