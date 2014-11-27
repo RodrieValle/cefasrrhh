@@ -37,13 +37,14 @@
     CEFAS_Planilla planilla=ctrlPlanilla.getUltimaPlanilla();
         int resultado=0;
         int i, codigoPlanilla=planilla.getPlnCodigo();
-           for(i=0; i<listaLinea.size(); i++)
+         //mensaje="codigo planilla" +codigoPlanilla;
+         for(i=0; i<listaLinea.size(); i++)
             {
                CEFAS_LineaDePlanilla linea=new CEFAS_LineaDePlanilla();
               linea=listaLinea.get(i);
         resultado=ctrlLinea.almacenarLineas(linea, codigoPlanilla);
                }
-           
+         
         if(resultado==1){
              mensaje = "<br><br><div class='alert alert-success' role='alert'><button type='button' class='close'"
                 + " data-dismiss='alert'><span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span></button>"
@@ -140,6 +141,7 @@
                       </div>
  <br><br>
  <a href="elaborarPlanilla.jsp?codigoPlanilla=1" class="btn btn-primary btn-md" role="button">Guardar Planilla</a>
+<%= mensaje%>
         </div>
     </body>
 </html>

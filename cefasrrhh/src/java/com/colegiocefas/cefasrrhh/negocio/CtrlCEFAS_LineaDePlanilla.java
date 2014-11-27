@@ -415,7 +415,7 @@ public float calculoIndemnizacion(int codigo){
 
 public int almacenarLineas(CEFAS_LineaDePlanilla linea, int codigoPln){
     int resultado=0;
-  
+  linea.setLdpFecha(new Date());
     resultado=daoLinea.almacenarLineasPlanilla(linea, codigoPln);
     
     return resultado;
