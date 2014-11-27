@@ -3,6 +3,8 @@
     Created on : 11-26-2014, 08:32:23 PM
     Author     : Rodrigo
 --%>
+<%@page import="java.util.List"%>
+<%@page import="com.colegiocefas.cefasrrhh.dominio.CEFAS_Empleado"%>
 <%@page import="com.colegiocefas.cefasrrhh.negocio.CtrlCEFAS_Usuario"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Date"%>
@@ -24,7 +26,7 @@
     {
         String nombre = request.getParameter("nombre");
         Date fechaContratacion = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("fechaContratacion"));
-        String plaza = request.getParameter("Plaza");
+        String plaza = request.getParameter("plaza");
         int jefeInmediato = Integer.parseInt(request.getParameter("jefeInmediato"));
         float salario = Float.parseFloat(request.getParameter("salario"));
         String tipoContrato = request.getParameter("tipoContrato");
@@ -47,6 +49,9 @@
             nombre = ctrlCandidato.consultarPorCodigo(Integer.parseInt(request.getParameter("codigo").toString())).getCdtNombre();
         }
     }
+    CtrlCEFAS_Empleado ctrlEmpleado = new CtrlCEFAS_Empleado();
+    List<CEFAS_Empleado> empleados = ctrlEmpleado.obtenerEmpleados();
+
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -107,7 +112,14 @@
                         </div>
                         <div class="col-xs-4 col-xs-offset-2">
                             Jefe inmediato:
-                            <input type="text" class="form-control input-sm" maxlength="50" name="jefeInmediato" required /><br>
+                            <select name="jefeInmediato" class="form-control input-sm">
+                                <%
+                                    for(CEFAS_Empleado emp : empleados)
+                                    { %>
+                                    <option value="<%= emp.getEmpCodigo() %>"><%= emp.getEmpNombre() %></option>
+                                 <% }
+                                %>
+                            </select><br>
                             Salario:
                             <input type="number" class="form-control input-sm" maxlength="50" name="salario" required /><br>
                             Tipo de contrato:
