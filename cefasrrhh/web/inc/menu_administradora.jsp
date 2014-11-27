@@ -52,6 +52,7 @@
                     <ul class="dropdown-menu" aria-labelledby="download">
                         <li><a href="perfilempleado.jsp">Ver perfil</a></li>
                         <li><a href="modificarperfil.jsp">Modificar perfil</a></li>
+                        <li><a href="seguridad.jsp">Seguridad</a></li>
                         <li><a href="logout.jsp">Cerrar sesión</a></li>
                     </ul>
                 </li>
