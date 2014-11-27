@@ -7,6 +7,7 @@
 <%@page import="com.colegiocefas.cefasrrhh.dominio.CEFAS_Empleado"%>
 <%@page import="java.util.List"%>
 <%@page import="java.text.SimpleDateFormat"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.util.Date"%>
 <%@page import="com.colegiocefas.cefasrrhh.negocio.CtrlCEFAS_Sancion"%>
 <%@page import="com.colegiocefas.cefasrrhh.dominio.CEFAS_Sancion"%>
@@ -30,7 +31,7 @@
  response.setContentType("text/html;charset=UTF-8");
 
 %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>
