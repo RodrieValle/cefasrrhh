@@ -30,7 +30,8 @@ public class CEFAS_UsuarioDAO {
     private final String SQL_BUSCARUSUARIO = "SELECT USRCODIGO, EMPCODIGO, AES_DECRYPT(USRNOMBRE,'seguridadCEFAS*'), "
             + "AES_DECRYPT(USRPASSWORD,'seguridadCEFAS*'), USRTIPO FROM CEFAS_USUARIO WHERE AES_DECRYPT(usrnombre,"
             + "'seguridadCEFAS*') = ? and AES_DECRYPT(usrpassword,'seguridadCEFAS*') = ?";
-    private final String SQL_UPDATE = "";
+    private final String SQL_UPDATE = "UPDATE CEFAS_USUARIO SET USRPASSWORD = AES_ENCRYPT(?,'seguridadCEFAS*') "
+            + "WHERE USRCODIGO = ? AND AES_DECRYPT(USRNOMBRE,'seguridadCEFAS*') = ?";
     private final String SQL_DELETE = "";
     private Connection conexiondb;
     private Statement st;
@@ -59,5 +60,23 @@ public class CEFAS_UsuarioDAO {
             Logger.getLogger(CEFAS_UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return usr;
+    }
+    
+    public boolean actualizar(int codigoUsuario, String usuario, String password)
+    {
+        boolean exito = false;
+        try {
+            conexiondb = ConexionDB.getConexion();
+            ps = conexiondb.prepareStatement(SQL_UPDATE);
+            ps.setString(1, password);
+            ps.setInt(2, codigoUsuario);
+            ps.setString(3, usuario);
+            ps.executeUpdate();
+            ConexionDB.cerrarConexion();
+            exito = true;
+        } catch (SQLException ex) {
+            Logger.getLogger(CEFAS_UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return exito;
     }
 }
