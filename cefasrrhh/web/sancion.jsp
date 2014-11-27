@@ -23,14 +23,14 @@
     if (!tipo.equals("director")) {
         response.sendRedirect("avisos.jsp");
     }
-    
-    int codigoEmp = Integer.parseInt(request.getParameter("empcodigo"));
+   
+    int codigoEmp = Integer.parseInt(request.getParameter("empCodigo"));
     CtrlCEFAS_Empleado ctrlEmpleado = new CtrlCEFAS_Empleado();
     CEFAS_Empleado empleado = ctrlEmpleado.getEmpleadoPorUsuario(codigoEmp);
 
     
  response.setContentType("text/html;charset=UTF-8");
-
+    
 %>
 
 <!DOCTYPE html>
