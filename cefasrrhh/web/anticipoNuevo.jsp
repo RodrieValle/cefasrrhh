@@ -27,7 +27,7 @@
     if (!tipo.equals("administrador")) {
         response.sendRedirect("avisos.jsp");
                }
-    int codigoEmp = Integer.parseInt(request.getParameter("codigo"));
+    int codigoEmp = Integer.parseInt(request.getParameter("empcodigo"));
     CtrlCEFAS_Empleado ctrlEmpleado = new CtrlCEFAS_Empleado();
     CEFAS_Empleado empleado = ctrlEmpleado.getEmpleadoPorUsuario(codigoEmp);
     
