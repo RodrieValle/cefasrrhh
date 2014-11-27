@@ -22,12 +22,14 @@
     if (!tipo.equals("director")) {
         response.sendRedirect("avisos.jsp");
     }
-    if (request.getParameter("fecha") != null) {
+    
+    if (request.getParameter("empcodigo") != null) {
         int empcodigo = Integer.parseInt(request.getParameter("empcodigo"));
         int scncodigo = Integer.parseInt(request.getParameter("scncodigo"));
         Date fecha = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("fecha").toString());
         String scn = request.getParameter("sancion");
         String motivo = request.getParameter("motivo");
+        
         CtrlCEFAS_Sancion ctrlsancion = new CtrlCEFAS_Sancion();
         ctrlsancion.guardarSancion(empcodigo, scncodigo, fecha, scn, motivo);
         
