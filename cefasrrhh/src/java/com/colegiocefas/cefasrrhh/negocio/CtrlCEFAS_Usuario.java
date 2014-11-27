@@ -20,4 +20,9 @@ public class CtrlCEFAS_Usuario {
     public CEFAS_Usuario verificarUsuario(String usuario, String password){
         return daoUsuario.verificarUsuario(usuario, password);
     }
+    
+    public boolean actualizar(int codigoUsuario, String usuario, String password)
+    {
+        return daoUsuario.actualizar(codigoUsuario, usuario, password);
+    }
 }
