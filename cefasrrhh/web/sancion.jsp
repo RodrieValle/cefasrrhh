@@ -32,12 +32,18 @@
         ctrlsancion.guardarSancion(empcodigo, scncodigo, fecha, scn, motivo);
         
          CtrlCEFAS_Bitacora ctrlBitacora= new CtrlCEFAS_Bitacora();
-        ctrlBitacora.guardarBitacora((Integer) sesionOk.getAttribute("codigo"), "Se almaceno una nueva sancion al empleado con codigo "+empcodigo);
+         ctrlBitacora.guardarBitacora((Integer) sesionOk.getAttribute("codigo"), "Se almaceno una nueva sancion al empleado con codigo "+empcodigo);
+    
+    
     }
-
+    
+    
+    int empcodigo = Integer.parseInt(request.getParameter("empcodigo"));
     CtrlCEFAS_Empleado ctrlEmpleado = new CtrlCEFAS_Empleado();
-    List<CEFAS_Empleado> listaEmpleados;
-    listaEmpleados = ctrlEmpleado.obtenerEmpleados();
+    CEFAS_Empleado empleado = ctrlEmpleado.getEmpleadoPorUsuario(empcodigo);
+
+    
+ 
 
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -66,11 +72,8 @@
                        
                        Codigo de Sancion: <input type="text" name="scncodigo" value="" class="form-control input-sm" required/><br>
                        Fecha: <input type="text" name="fecha" value="" class="form-control input-sm" placeholder= "Formato: dd/MM/yyyy" required /><br>
-                    Empleado:<select name="empcodigo" id="empleado" class="form-control input-sm">
-                           <% for (CEFAS_Empleado emp : listaEmpleados) {%>
-                           <option value="<%= emp.getEmpCodigo()%>"><%= emp.getEmpNombre()%></option>
-                            <% }%>
-                       </select>  
+                       Empleado:<input  type="text" name="empcodigo" value="<%= empleado.getEmpCodigo() %>" class="form-control input-sm"  required readonly/>
+        
                     </div>
                        <div class="col-xs-6">
                        Sancion:<textarea name="sancion" rows="4" cols="40" class="form-control input-sm" required></textarea>
