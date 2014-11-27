@@ -4,6 +4,9 @@
     Author     : MARIA JUAREZ
 --%>
 
+<%@page import="com.colegiocefas.cefasrrhh.negocio.CtrlCEFAS_Bitacora"%>
+<%@page import="com.colegiocefas.cefasrrhh.dominio.CEFAS_Planilla"%>
+<%@page import="com.colegiocefas.cefasrrhh.negocio.CtrlCEFAS_Planilla"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.List"%>
@@ -11,7 +14,7 @@
 <%@page import="com.colegiocefas.cefasrrhh.negocio.CtrlCEFAS_LineaDePlanilla"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
- 
+ String mensaje="";
  HttpSession sesionOk = request.getSession();
     String tipo = (String) sesionOk.getAttribute("tipo");
     if (tipo == null) {
@@ -21,11 +24,42 @@
     if (!tipo.equals("administrador")) {
         response.sendRedirect("avisos.jsp");
                }
-
- 
-
+    
     CtrlCEFAS_LineaDePlanilla ctrlLinea = new CtrlCEFAS_LineaDePlanilla();
     List<CEFAS_LineaDePlanilla> listaLinea = ctrlLinea.calculoPlanilla();
+    
+   if(request.getParameter("codigoPlanilla") != null)
+    { 
+        int codigoPlanillaTipo = Integer.parseInt(request.getParameter("codigoPlanilla"));
+    
+        CtrlCEFAS_Planilla ctrlPlanilla = new CtrlCEFAS_Planilla();
+        ctrlPlanilla.guardarPlanilla(codigoPlanillaTipo);
+    CEFAS_Planilla planilla=ctrlPlanilla.getUltimaPlanilla();
+        int resultado=0;
+        int i, codigoPlanilla=planilla.getPlnCodigo();
+           for(i=0; i<listaLinea.size(); i++)
+            {
+               CEFAS_LineaDePlanilla linea=new CEFAS_LineaDePlanilla();
+              linea=listaLinea.get(i);
+        resultado=ctrlLinea.almacenarLineas(linea, codigoPlanilla);
+               }
+           
+        if(resultado==1){
+             mensaje = "<br><br><div class='alert alert-success' role='alert'><button type='button' class='close'"
+                + " data-dismiss='alert'><span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span></button>"
+                + "Los datos de la planilla fueron guardados con exito</div>";
+              CtrlCEFAS_Bitacora ctrlBitacora= new CtrlCEFAS_Bitacora();
+        ctrlBitacora.guardarBitacora((Integer) sesionOk.getAttribute("codigo"), "Se calculo una planilla de tipo "+codigoPlanillaTipo);
+             
+        }else{
+         mensaje = "<br><br><div class='alert alert-success' role='alert'><button type='button' class='close'"
+                + " data-dismiss='alert'><span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span></button>"
+                + "Error al guardar la planilla</div>";
+        }
+        
+        
+}
+    
 %>
 <!DOCTYPE html>
 <html>
@@ -100,9 +134,12 @@
                           } %>  
                                     </tbody>
                                 </table>
+                                    
 
                         </div>
                       </div>
+ <br><br>
+ <a href="elaborarPlanilla.jsp?codigoPlanilla=1" class="btn btn-primary btn-md" role="button">Guardar Planilla</a>
         </div>
     </body>
 </html>

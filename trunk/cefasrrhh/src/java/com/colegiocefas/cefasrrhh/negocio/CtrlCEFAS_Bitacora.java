@@ -17,7 +17,7 @@ import java.util.Date;
  */
 public class CtrlCEFAS_Bitacora {
     
-    CEFAS_BitacoraDAO daoBitacora= new CEFAS_BitacoraDAO();
+    private CEFAS_BitacoraDAO daoBitacora= new CEFAS_BitacoraDAO();
     
     public void guardarBitacora(int codigoUsuario,  String descripcion){
         Date fecha=new Date();

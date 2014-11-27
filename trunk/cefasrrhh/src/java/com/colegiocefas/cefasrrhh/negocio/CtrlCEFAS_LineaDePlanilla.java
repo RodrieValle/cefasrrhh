@@ -7,10 +7,12 @@
 package com.colegiocefas.cefasrrhh.negocio;
 
 import com.colegiocefas.cefasrrhh.datos.CEFAS_EmpleadoDAO;
+import com.colegiocefas.cefasrrhh.datos.CEFAS_LineaDePlanillaDAO;
 import com.colegiocefas.cefasrrhh.dominio.CEFAS_ConfiguracionRetenciones;
 import com.colegiocefas.cefasrrhh.dominio.CEFAS_Empleado;
 import com.colegiocefas.cefasrrhh.dominio.CEFAS_LineaDePlanilla;
 import com.colegiocefas.cefasrrhh.dominio.CEFAS_OrdenDeDescuento;
+import com.colegiocefas.cefasrrhh.dominio.CEFAS_Planilla;
 import com.colegiocefas.cefasrrhh.dominio.CEFAS_Prestamo;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -24,7 +26,7 @@ import java.util.List;
  * @author Portillo
  */
 public class CtrlCEFAS_LineaDePlanilla {
-    
+    private CEFAS_LineaDePlanillaDAO daoLinea= new CEFAS_LineaDePlanillaDAO();
     
     //<<<<<<<<<<<<<<<planilla normal.....sin vacaciones y aguinaldo<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     public List<CEFAS_LineaDePlanilla> calculoPlanilla(){
@@ -116,6 +118,10 @@ public class CtrlCEFAS_LineaDePlanilla {
             
             float liquidoPagar=sujeto-isss-renta-anticipo-orden-prest+viaticos;
             linea.setLdpLiquidoAPagar(liquidoPagar);
+            
+            linea.setLdpAguinaldo(0);
+            linea.setLdpVacacion(0);
+            
             listPlanilla.add(linea);
         }
 
@@ -407,7 +413,13 @@ public float calculoIndemnizacion(int codigo){
     }
     
 
-
+public int almacenarLineas(CEFAS_LineaDePlanilla linea, int codigoPln){
+    int resultado=0;
+  
+    resultado=daoLinea.almacenarLineasPlanilla(linea, codigoPln);
+    
+    return resultado;
+}
 
 
     
