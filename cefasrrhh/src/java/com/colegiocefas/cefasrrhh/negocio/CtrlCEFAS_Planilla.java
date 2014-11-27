@@ -6,6 +6,7 @@ package com.colegiocefas.cefasrrhh.negocio;
 
 import com.colegiocefas.cefasrrhh.datos.CEFAS_PlanillaDAO;
 import com.colegiocefas.cefasrrhh.dominio.CEFAS_Planilla;
+import java.util.Date;
 
 /**
  *
@@ -20,6 +21,12 @@ public class CtrlCEFAS_Planilla {
       return daoPlanilla.getUltimaPlanilla();
     }
     
+     public void guardarPlanilla( int tipo){
+         CEFAS_Planilla planilla= new CEFAS_Planilla();
+         planilla.setPlnTipo(tipo);
+         planilla.setPlnFecha(new Date());
+         daoPlanilla.almacenarPlanilla(planilla);
+     }
      
     
 }
