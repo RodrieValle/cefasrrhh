@@ -23,6 +23,7 @@ import java.util.logging.Logger;
 public class CEFAS_CandidatoDAO {
 
     private final String SQL_INSERT = "INSERT INTO CEFAS_CANDIDATO(CDTDUI,CDTNOMBRE,CDTESPECIALIDAD,CDTCURRICULO) VALUES (?, ?, ?, ?)";
+    private final String SQL_SELECT_ID = "SELECT * FROM CEFAS_CANDIDATO WHERE CDTDUI = ?";
     private Connection conexiondb;
     private Statement st;
     private PreparedStatement ps;
@@ -47,5 +48,26 @@ public class CEFAS_CandidatoDAO {
             Logger.getLogger(CEFAS_CandidatoDAO.class.getName()).log(Level.SEVERE, null, ex);
 
         }
+    }
+
+    public CEFAS_Candidato cosultarPorCodigo(int codigo) {
+        CEFAS_Candidato candidato = null;
+        try {
+            conexiondb = ConexionDB.getConexion();
+            ps = conexiondb.prepareStatement(SQL_SELECT_ID);
+            ps.setInt(1, codigo);
+            rs = ps.executeQuery();
+            while(rs.next())
+            {
+                candidato = new CEFAS_Candidato();
+                candidato.setCdtNombre(rs.getString("cdtNombre"));
+                        
+            }
+            ConexionDB.cerrarConexion();
+        } catch (SQLException ex) {
+            Logger.getLogger(CEFAS_CandidatoDAO.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+        return candidato;
     }
 }
