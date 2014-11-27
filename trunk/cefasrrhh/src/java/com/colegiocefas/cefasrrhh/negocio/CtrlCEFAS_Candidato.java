@@ -26,4 +26,9 @@ public class CtrlCEFAS_Candidato {
 
         daoCandidato.ingresarCurriculum(candidato);
     }
+    
+    public CEFAS_Candidato consultarPorCodigo(int codigo)
+    {
+        return daoCandidato.cosultarPorCodigo(codigo);
+    }
 }
