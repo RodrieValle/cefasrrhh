@@ -27,7 +27,7 @@
     CEFAS_Empleado empleado = ctrlEmpleado.getEmpleadoPorUsuario(empcodigo);
 
     
- 
+ response.setContentType("text/html;charset=UTF-8");
 
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
