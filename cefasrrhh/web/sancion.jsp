@@ -39,6 +39,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Aplicar Sancion-CEFAS RRHH</title>
         <jsp:include page='inc/head_common.jsp' /> 
+        <link rel="stylesheet" type="text/css" href="css/bootstrap-formhelpers.css">
+        <script type="text/javascript" src="js/bootstrap-formhelpers.js"></script>
     </head>
     <body>
         <div id="container">

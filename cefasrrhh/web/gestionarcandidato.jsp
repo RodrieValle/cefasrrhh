@@ -3,6 +3,8 @@
     Created on : 19/11/2014, 09:02:13 PM
     Author     : Sergio
 --%>
+<%@page import="com.colegiocefas.cefasrrhh.negocio.CtrlCEFAS_Candidato"%>
+<%@page import="com.colegiocefas.cefasrrhh.dominio.CEFAS_Candidato"%>
 <%@page import="java.util.List"%>
 <%@page import="com.colegiocefas.cefasrrhh.negocio.CtrlCEFAS_Especialidad"%>
 <%@page import="com.colegiocefas.cefasrrhh.dominio.CEFAS_Especialidad"%>
@@ -24,6 +26,8 @@
     CtrlCEFAS_Especialidad ctrlEspecialidad = new CtrlCEFAS_Especialidad();
     List<CEFAS_Especialidad> listaEspecialidad;
     listaEspecialidad = ctrlEspecialidad.obtenerEspecialidad();
+    
+    
 %>
 <!DOCTYPE html>
 <html>
@@ -78,12 +82,12 @@
 				<td>Curriculum:</td>
 				<td>Evaluacion:</td>
 			</tr>
-                        <% for(CEFAS_Especialidad esp: listaEspecialidad)
+                       //<% 
                                     {
                                     %>
 			<tr>
 				<td></td>
-				<td><%= esp.getEspNombre() %></td>
+				<td></td>
 				<td><a href="" class="btn btn-primary btn-md" role="button">Ver Curriculum</a></td>
 				<td><a href="evaluarCandidato.jsp" class="btn btn-primary btn-md" role="button">Ver Evaluacion</a></td>
 
