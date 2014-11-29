@@ -24,7 +24,7 @@ import java.util.logging.Logger;
  * @author Portillo
  */
 public class CEFAS_SancionDAO {
-    private final String SQL_INSERT = "INSERT INTO CEFAS_SANCION (EMPCODIGO,SCNCODIGO,SCNFECHA,SCNSANCION,SCNMOTIVO) VALUES (?, ?, ?, ?)";
+    private final String SQL_INSERT = "INSERT INTO CEFAS_SANCION (EMPCODIGO,SCNFECHA,SCNSANCION,SCNMOTIVO) VALUES (?, ?, ?, ?)";
     private final String SQL_SELECT = "SELECT * FROM CEFAS_SANCION WHERE EMPCODIGO LIKE ?";
     private final String SQL_DELETE = "DELETE FROM CEFAS_SANCION WHERE SCNCODIGO = ?";
 
