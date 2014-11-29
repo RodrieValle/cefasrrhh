@@ -82,7 +82,7 @@
                          <div class="col-xs-4 col-xs-offset-4">
                              DUI: <input type="text" name="dui" class="form-control input-sm" value="" required>
                              Nombre: <input type="text" name="nombre" class="form-control input-sm">
-                             Especialidad:<select name="empcodigo" id="empleado" class="form-control input-sm">
+                             Especialidad:<select name="especialidad"  class="form-control input-sm">
                            <% for (CEFAS_Especialidad esp : listaEspecialidad) {%>
                            <option value="<%= esp.getEspCodigo()%>"><%= esp.getEspNombre()%></option>
                             <% }%>
