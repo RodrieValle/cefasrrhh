@@ -15,17 +15,17 @@ public class CEFAS_Candidato {
     private String cdtDUI;
     private String evcCodigo;
     private String cdtNombre;   
-    private String cdtEspecialidad;
+    private int espCodigo;
     private String cdtCurriculum;
 
     public CEFAS_Candidato() {
     }
 
-    public CEFAS_Candidato(String cdtDUI, String evcCodigo, String cdtNombre, String cdtEspecialidad, String cdtCurriculum) {
+    public CEFAS_Candidato(String cdtDUI, String evcCodigo, String cdtNombre, int espCodigo, String cdtCurriculum) {
         this.cdtDUI = cdtDUI;
         this.evcCodigo = evcCodigo;
         this.cdtNombre = cdtNombre;
-        this.cdtEspecialidad = cdtEspecialidad;
+        this.espCodigo = espCodigo;
         this.cdtCurriculum = cdtCurriculum;
     }
 
@@ -53,12 +53,12 @@ public class CEFAS_Candidato {
         this.cdtNombre = cdtNombre;
     }
 
-    public String getCdtEspecialidad() {
-        return cdtEspecialidad;
+    public int getEspCodigo() {
+        return espCodigo;
     }
 
-    public void setCdtEspecialidad(String cdtEspecialidad) {
-        this.cdtEspecialidad = cdtEspecialidad;
+    public void setEspCodigo(int espCodigo) {
+        this.espCodigo = espCodigo;
     }
 
     public String getCdtCurriculum() {
