@@ -18,11 +18,12 @@ public class CtrlCEFAS_Candidato {
 
     CEFAS_CandidatoDAO daoCandidato = new CEFAS_CandidatoDAO();
 
-    public void guardarCurriculum(String cdtDUI,String cdtNombre, String cdtEspecialidad,String cdtCurriculum) {
+    public void guardarCurriculum(String cdtDUI,String cdtNombre, int espCodigo,String cdtCurriculum) {
+       
         CEFAS_Candidato candidato = new CEFAS_Candidato();
         candidato.setCdtDUI(cdtDUI);
         candidato.setCdtNombre(cdtNombre);
-        candidato.setCdtEspecialidad(cdtEspecialidad);
+        candidato.setEspCodigo(espCodigo);
         candidato.setCdtCurriculum(cdtCurriculum);
 
         daoCandidato.ingresarCurriculum(candidato);

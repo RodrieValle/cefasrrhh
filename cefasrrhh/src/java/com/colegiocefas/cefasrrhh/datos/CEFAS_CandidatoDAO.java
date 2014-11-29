@@ -24,7 +24,7 @@ import java.util.logging.Logger;
  */
 public class CEFAS_CandidatoDAO {
 
-    private final String SQL_INSERT = "INSERT INTO CEFAS_CANDIDATO(CDTDUI,CDTNOMBRE,CDTESPECIALIDAD,CDTCURRICULO) VALUES (?, ?, ?, ?)";
+    private final String SQL_INSERT = "INSERT INTO CEFAS_CANDIDATO(CDTDUI,CDTNOMBRE,ESPCODIGO,CDTCURRICULO) VALUES (?, ?, ?, ?)";
     private final String SQL_SELECT_ID = "SELECT * FROM CEFAS_CANDIDATO WHERE CDTDUI = ?";
     private final String SQL_SELECT = "SELECT CDTDUI,CDTNOMBRE FROM CEFAS_CANDIDATO ORDER BY CDTNOMBRE";
     private Connection conexiondb;
@@ -39,7 +39,7 @@ public class CEFAS_CandidatoDAO {
             ps = conexiondb.prepareStatement(SQL_INSERT);
             ps.setString(1,candidato.getCdtDUI());
             ps.setString(2,candidato.getCdtNombre());
-            ps.setString(3,candidato.getCdtEspecialidad());
+            ps.setInt(3,candidato.getEspCodigo());
             ps.setString(4,candidato.getCdtCurriculum());
             int n = ps.executeUpdate();
 
