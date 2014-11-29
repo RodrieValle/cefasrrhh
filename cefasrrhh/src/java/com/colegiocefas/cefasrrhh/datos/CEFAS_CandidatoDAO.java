@@ -13,6 +13,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -24,6 +26,7 @@ public class CEFAS_CandidatoDAO {
 
     private final String SQL_INSERT = "INSERT INTO CEFAS_CANDIDATO(CDTDUI,CDTNOMBRE,CDTESPECIALIDAD,CDTCURRICULO) VALUES (?, ?, ?, ?)";
     private final String SQL_SELECT_ID = "SELECT * FROM CEFAS_CANDIDATO WHERE CDTDUI = ?";
+    private final String SQL_SELECT = "SELECT CDTDUI,CDTNOMBRE FROM CEFAS_CANDIDATO ORDER BY CDTNOMBRE";
     private Connection conexiondb;
     private Statement st;
     private PreparedStatement ps;
@@ -49,6 +52,8 @@ public class CEFAS_CandidatoDAO {
 
         }
     }
+    
+
 
     public CEFAS_Candidato cosultarPorCodigo(int codigo) {
         CEFAS_Candidato candidato = null;
@@ -70,4 +75,27 @@ public class CEFAS_CandidatoDAO {
         }
         return candidato;
     }
+    public List<CEFAS_Candidato> obtenerCandidato()
+    {
+        List<CEFAS_Candidato> listaCandidato = new ArrayList<CEFAS_Candidato>();
+        CEFAS_Candidato cdt;
+        try {
+            conexiondb = ConexionDB.getConexion();
+            st = conexiondb.createStatement();
+            rs = st.executeQuery(SQL_SELECT);
+            while(rs.next())
+            {
+                cdt = new CEFAS_Candidato();
+                cdt.setCdtDUI(rs.getString("cdtDUI"));
+                cdt.setCdtNombre(rs.getString("cdtNombre"));
+                listaCandidato.add(cdt);
+            }
+            ConexionDB.cerrarConexion();
+        } catch (SQLException ex) {
+            Logger.getLogger(CEFAS_CandidatoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return listaCandidato;
+    }
+
 }
