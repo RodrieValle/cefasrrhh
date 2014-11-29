@@ -4,6 +4,8 @@
     Author     : Sergio
 --%>
 
+<%@page import="com.colegiocefas.cefasrrhh.dominio.CEFAS_Candidato"%>
+<%@page import="com.colegiocefas.cefasrrhh.negocio.CtrlCEFAS_Candidato"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.text.DateFormat"%>
@@ -37,6 +39,10 @@
         CtrlCEFAS_EvaluacionCandidato ctrlevccandidato = new CtrlCEFAS_EvaluacionCandidato();
         ctrlevccandidato.guardarEvaluacion(dui, comenll, fechaen, comenen, fechaex, notaap, comenap, fechapsi, notapsi, comenpsi);
     }
+    
+    CtrlCEFAS_Candidato ctrlCandidato = new CtrlCEFAS_Candidato();
+    List<CEFAS_Candidato> listaDui;
+    listaDui = ctrlCandidato.obtenerDui();
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -61,8 +67,11 @@
                             <div class="row">
                             <div class="col-xs-5 col-xs-offset-1">
                      <p></p>
-                        DUI: <input type="text" name="dui" value="" class="form-control input-sm"  required> 
-                       <%-- Codigo de evaluacion: <input type="text" name="codigo" value="" class="form-control input-sm"  required> --%>
+                        Dui:<select name="dui"  class="form-control input-sm">
+                           <% for (CEFAS_Candidato esp : listaDui) {%>
+                           <option value="<%= esp.getCdtDUI()%>"><%= esp.getCdtNombre()%></option>
+                            <% }%>
+                       </select> 
                         <input type="checkbox" name="hecho"> Hecho
                         </div>
                         </div>

@@ -23,9 +23,7 @@
     if (!tipo.equals("director")) {
         response.sendRedirect("avisos.jsp");
     }
-    CtrlCEFAS_Especialidad ctrlEspecialidad = new CtrlCEFAS_Especialidad();
-    List<CEFAS_Especialidad> listaEspecialidad;
-    listaEspecialidad = ctrlEspecialidad.obtenerEspecialidad();
+    
     
     
     CtrlCEFAS_Candidato ctrlCandidato = new CtrlCEFAS_Candidato();

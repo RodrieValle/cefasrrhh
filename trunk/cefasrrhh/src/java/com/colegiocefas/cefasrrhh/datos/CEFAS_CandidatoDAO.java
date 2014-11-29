@@ -27,6 +27,7 @@ public class CEFAS_CandidatoDAO {
     private final String SQL_INSERT = "INSERT INTO CEFAS_CANDIDATO(CDTDUI,CDTNOMBRE,ESPCODIGO,CDTCURRICULO) VALUES (?, ?, ?, ?)";
     private final String SQL_SELECT_ID = "SELECT * FROM CEFAS_CANDIDATO WHERE CDTDUI = ?";
     private final String SQL_SELECT = "SELECT CDTNOMBRE,ESPNOMBRE FROM CEFAS_CANDIDATO INNER JOIN CEFAS_ESPECIALIDAD ON CEFAS_CANDIDATO.ESPCODIGO = CEFAS_ESPECIALIDAD.ESPCODIGO";
+    private final String SQL_SELECT_ALL = "SELECT CDTDUI,CDTNOMBRE,ESPCODIGO,CDTCURRICULO FROM CEFAS_CANDIDATO ORDER BY CDTDUI";
     private Connection conexiondb;
     private Statement st;
     private PreparedStatement ps;
@@ -87,7 +88,7 @@ public class CEFAS_CandidatoDAO {
             {
                 cdt = new CEFAS_Candidato();
                 cdt.setCdtNombre(rs.getString("cdtNombre"));
-               
+                
                 listaCandidato.add(cdt);
             }
             ConexionDB.cerrarConexion();
@@ -96,6 +97,30 @@ public class CEFAS_CandidatoDAO {
         }
         
         return listaCandidato;
+    }
+    public List<CEFAS_Candidato> obtenerDui()
+    {
+        List<CEFAS_Candidato> listaDui = new ArrayList<CEFAS_Candidato>();
+        CEFAS_Candidato cdt;
+        try {
+            conexiondb = ConexionDB.getConexion();
+            st = conexiondb.createStatement();
+            rs = st.executeQuery(SQL_SELECT_ALL);
+            while(rs.next())
+            {
+                cdt = new CEFAS_Candidato();
+                cdt.setCdtDUI(rs.getString("cdtDUI"));
+                cdt.setCdtNombre(rs.getString("cdtNombre"));
+                cdt.setEspCodigo(rs.getInt("espCodigo"));
+                cdt.setCdtCurriculum(rs.getString("cdtCurriculum"));
+                listaDui.add(cdt);
+            }
+            ConexionDB.cerrarConexion();
+        } catch (SQLException ex) {
+            Logger.getLogger(CEFAS_CandidatoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return listaDui;
     }
 
 }
