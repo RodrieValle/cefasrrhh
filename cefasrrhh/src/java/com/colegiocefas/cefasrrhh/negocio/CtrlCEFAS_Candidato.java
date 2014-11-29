@@ -34,9 +34,10 @@ public class CtrlCEFAS_Candidato {
     {
         return daoCandidato.cosultarPorCodigo(codigo);
     }
-    public List<CEFAS_Candidato> obtenerCandidato()
+    public List<CEFAS_Candidato> obtenerPorEspecialidad()
     {
-        return daoCandidato.obtenerCandidato();
+        return daoCandidato.obtenerPorEspecialidad();
     }
+     
 
 }
