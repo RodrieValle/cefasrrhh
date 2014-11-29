@@ -68,8 +68,8 @@
                             <div class="col-xs-5 col-xs-offset-1">
                      <p></p>
                         Dui:<select name="dui"  class="form-control input-sm">
-                           <% for (CEFAS_Candidato esp : listaDui) {%>
-                           <option value="<%= esp.getCdtDUI()%>"><%= esp.getCdtNombre()%></option>
+                           <% for (CEFAS_Candidato cdt : listaDui) {%>
+                           <option value="<%= cdt.getCdtNombre()%>"><%= cdt.getCdtDUI()%></option>
                             <% }%>
                        </select> 
                         <input type="checkbox" name="hecho"> Hecho
