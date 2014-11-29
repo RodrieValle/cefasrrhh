@@ -8,6 +8,7 @@ package com.colegiocefas.cefasrrhh.negocio;
 
 import com.colegiocefas.cefasrrhh.datos.CEFAS_CandidatoDAO;
 import com.colegiocefas.cefasrrhh.dominio.CEFAS_Candidato;
+import java.util.List;
 
 /**
  *
@@ -26,9 +27,15 @@ public class CtrlCEFAS_Candidato {
 
         daoCandidato.ingresarCurriculum(candidato);
     }
+
     
     public CEFAS_Candidato consultarPorCodigo(int codigo)
     {
         return daoCandidato.cosultarPorCodigo(codigo);
     }
+    public List<CEFAS_Candidato> obtenerCandidato()
+    {
+        return daoCandidato.obtenerCandidato();
+    }
+
 }
