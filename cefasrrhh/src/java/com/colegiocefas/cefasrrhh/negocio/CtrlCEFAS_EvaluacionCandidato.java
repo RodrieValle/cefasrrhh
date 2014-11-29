@@ -29,4 +29,5 @@ public class CtrlCEFAS_EvaluacionCandidato {
         evccan.setEvcCometarioExamenPsico(evcComentarioExamenPsico);
         return daoEvaluacionCandidato.almacenarEvaluacion(evccan);
     }
+    
 }
