@@ -29,6 +29,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
  */
 @WebServlet(name = "subirCurriculo", urlPatterns = {"/subirCurriculo"})
 public class subirCurriculo extends HttpServlet {
+    
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -102,7 +103,7 @@ public class subirCurriculo extends HttpServlet {
                 }
             }
             CtrlCEFAS_Candidato ctrlcandidato = new CtrlCEFAS_Candidato();
-            ctrlcandidato.guardarCurriculum(dui, nombre, especialidad,url);
+            ctrlcandidato.guardarCurriculum(dui, nombre, Integer.parseInt(especialidad),url);
             String mensaje ="<div class='alert alert-success' role='alert'>Guardado</div>";
             response.sendRedirect("ingresarcurriculum.jsp");
         } catch (Exception e) {
