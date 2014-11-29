@@ -26,7 +26,7 @@ public class CEFAS_CandidatoDAO {
 
     private final String SQL_INSERT = "INSERT INTO CEFAS_CANDIDATO(CDTDUI,CDTNOMBRE,ESPCODIGO,CDTCURRICULO) VALUES (?, ?, ?, ?)";
     private final String SQL_SELECT_ID = "SELECT * FROM CEFAS_CANDIDATO WHERE CDTDUI = ?";
-    private final String SQL_SELECT = "SELECT CDTDUI,CDTNOMBRE FROM CEFAS_CANDIDATO ORDER BY CDTNOMBRE";
+    private final String SQL_SELECT = "SELECT CDTNOMBRE,ESPNOMBRE FROM CEFAS_CANDIDATO INNER JOIN CEFAS_ESPECIALIDAD ON CEFAS_CANDIDATO.ESPCODIGO = CEFAS_ESPECIALIDAD.ESPCODIGO";
     private Connection conexiondb;
     private Statement st;
     private PreparedStatement ps;
@@ -75,7 +75,7 @@ public class CEFAS_CandidatoDAO {
         }
         return candidato;
     }
-    public List<CEFAS_Candidato> obtenerCandidato()
+    public List<CEFAS_Candidato> obtenerPorEspecialidad()
     {
         List<CEFAS_Candidato> listaCandidato = new ArrayList<CEFAS_Candidato>();
         CEFAS_Candidato cdt;
@@ -86,8 +86,8 @@ public class CEFAS_CandidatoDAO {
             while(rs.next())
             {
                 cdt = new CEFAS_Candidato();
-                cdt.setCdtDUI(rs.getString("cdtDUI"));
                 cdt.setCdtNombre(rs.getString("cdtNombre"));
+               
                 listaCandidato.add(cdt);
             }
             ConexionDB.cerrarConexion();

@@ -29,7 +29,7 @@
     
     
     CtrlCEFAS_Candidato ctrlCandidato = new CtrlCEFAS_Candidato();
-    List<CEFAS_Candidato> listaCandidato = ctrlCandidato.obtenerCandidato();
+    List<CEFAS_Candidato> listaCandidato = ctrlCandidato.obtenerPorEspecialidad();
     
     
 %>
