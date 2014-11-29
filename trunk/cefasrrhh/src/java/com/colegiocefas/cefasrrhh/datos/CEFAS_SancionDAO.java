@@ -24,7 +24,7 @@ import java.util.logging.Logger;
  * @author Portillo
  */
 public class CEFAS_SancionDAO {
-    private final String SQL_INSERT = "INSERT INTO CEFAS_SANCION (EMPCODIGO,SCNCODIGO,SCNFECHA,SCNSANCION,SCNMOTIVO) VALUES (?, null, ?, ?, ?)";
+    private final String SQL_INSERT = "INSERT INTO CEFAS_SANCION (EMPCODIGO,SCNCODIGO,SCNFECHA,SCNSANCION,SCNMOTIVO) VALUES (?, ?, ?, ?)";
     private final String SQL_SELECT = "SELECT * FROM CEFAS_SANCION WHERE EMPCODIGO LIKE ?";
     private final String SQL_DELETE = "DELETE FROM CEFAS_SANCION WHERE SCNCODIGO = ?";
 
@@ -38,10 +38,9 @@ public class CEFAS_SancionDAO {
             conexiondb = ConexionDB.getConexion();
             ps=conexiondb.prepareStatement(SQL_INSERT);
             ps.setInt(1,sancion.getEmpCodigo());
-            ps.setInt(2,sancion.getScnCodigo());
-            ps.setDate(3, new Date(sancion.getScnFecha().getTime()));
-            ps.setString(4,sancion.getScnSancion());
-            ps.setString(5,sancion.getScnMotivo());
+            ps.setDate(2, new Date(sancion.getScnFecha().getTime()));
+            ps.setString(3,sancion.getScnSancion());
+            ps.setString(4,sancion.getScnMotivo());
             int n=ps.executeUpdate();
 
             if(n>0){
