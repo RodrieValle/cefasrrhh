@@ -23,7 +23,7 @@
         response.sendRedirect("avisos.jsp");
     }
     
-    if (request.getParameter("fecha") != null) {
+    if (request.getParameter("empcodigo") != null) {
         int empCodigo = Integer.parseInt(request.getParameter("empcodigo"));
         Date fecha = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("fecha").toString());
         String scn = request.getParameter("sancion");
