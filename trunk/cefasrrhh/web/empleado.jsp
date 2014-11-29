@@ -127,7 +127,7 @@
                                 </div>
                                 <div class="col-xs-4">
                                     Nombre: <%= empleado.getEmpNombre() %><br>
-                                    Fecha de nacimiento: <%= empleado.getEmpFechaNacimiento() %><br>
+                                    Fecha de nacimiento: <%= new SimpleDateFormat("dd/MM/yyyy").format( empleado.getEmpFechaNacimiento()) %><br>
                                     Dirección: <%= empleado.getEmpDireccion() %><br>
                                     DUI: <%= empleado.getEmpDUI() %><br>
                                     NIT: <%= empleado.getEmpNIT() %><br>
@@ -147,7 +147,7 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-xs-6">
-                                    Año de contratación: <%= empleado.getEmpAnioContratacion() %><br>
+                                    Año de contratación: <%= new SimpleDateFormat("dd/MM/yyyy").format( empleado.getEmpAnioContratacion()) %><br>
                                     Plaza actual: <%= empleado.getEmpPlazaActual() %><br>
                                     Plaza anterior: <%= empleado.getEmpPlazaAnterior() %><br>
                                 </div>
