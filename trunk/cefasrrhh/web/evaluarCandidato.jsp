@@ -41,8 +41,7 @@
     }
     
     CtrlCEFAS_Candidato ctrlCandidato = new CtrlCEFAS_Candidato();
-    List<CEFAS_Candidato> listaDui;
-    listaDui = ctrlCandidato.obtenerDui();
+    CEFAS_Candidato empleado = ctrlCandidato.getobtenerDui();
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -67,11 +66,7 @@
                             <div class="row">
                             <div class="col-xs-5 col-xs-offset-1">
                      <p></p>
-                        Dui:<select name="dui"  class="form-control input-sm">
-                           <% for (CEFAS_Candidato cdt : listaDui) {%>
-                           <option value="<%= cdt.getCdtNombre()%>"><%= cdt.getCdtDUI()%></option>
-                            <% }%>
-                       </select> 
+                         DUI: <input  type="text" name="nombre" value="<%= empleado.getCdtDUI() %>" class="form-control input-sm"  required readonly/>
                         <input type="checkbox" name="hecho"> Hecho
                         </div>
                         </div>
