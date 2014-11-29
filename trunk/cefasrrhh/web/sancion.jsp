@@ -58,7 +58,7 @@
                     <div class="col-xs-6">
                        
                        
-                       Codigo de Sancion: <input type="text" name="scncodigo" value="" class="form-control input-sm" required/><br>
+                       Nombre:<input  type="text" name="nombre" value="<%= empleado.getEmpNombre() %>" class="form-control input-sm"  required readonly/>
                        Fecha:  <div class="bfh-datepicker" data-format="d/m/y"  data-name="fecha" data-language="es" data-input="input-sm form-control" data-icon=""
                                 data-close="true" data-align="right">
                         </div>
