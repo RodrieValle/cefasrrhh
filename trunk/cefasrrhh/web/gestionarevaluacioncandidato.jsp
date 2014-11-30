@@ -50,7 +50,7 @@
 			<tr>
                                 
                             <td> <a href="evaluarCandidato.jsp" class="btn btn-primary btn-md" role="button">Ingresar Evaluacion</a></td>
-                            <td> <a href="" class="btn btn-primary btn-md" role="button">Ver Evaluacion</a></td>
+                            <td> <a href="verevaluacion.jsp" class="btn btn-primary btn-md" role="button">Ver Evaluacion</a></td>
                             <td> <a href="" class="btn btn-primary btn-md" role="button">Eliminar Evaluacion</a></td>
                                 
                         </tr>
@@ -58,11 +58,9 @@
                 </table>
                             </div>
 		</div>
-			
+			 </form>
 		</div>
 		</div>
-        </form>
-        </div>
-        </div>
+      
     </body>
 </html>
