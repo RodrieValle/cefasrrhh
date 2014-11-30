@@ -81,10 +81,10 @@ ConexionDB.cerrarConexion();
                 extra.setEmpCodigo(rs.getInt("empCodigo"));
                 extra.setTexCodigo2(rs.getInt("empSustituto"));
                  extra.setTexFecha(rs.getDate("texFecha"));
-                extra.setTexHoraInicio(rs.getDate("textHoraInicio"));
+                extra.setTexHoraInicio(rs.getDate("texHoraInicio"));
                 extra.setTexHoraFin(rs.getDate("texHoraFin"));
                 extra.setTexDeltaTiempo(rs.getDate("texDeltaTiempo"));
-                 extra.setTexValorDinero(rs.getFloat("textValorDinero"));
+                 extra.setTexValorDinero(rs.getFloat("texValorDinero"));
                 listExtras.add(extra);
             }
             ConexionDB.cerrarConexion();

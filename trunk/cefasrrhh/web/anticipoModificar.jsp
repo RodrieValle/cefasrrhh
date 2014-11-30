@@ -27,12 +27,12 @@ String mensaje="";
 
 
     int codigoAnticipo = Integer.parseInt(request.getParameter("codigo"));
-    //CtrlCEFAS_Empleado ctrlEmpleado = new CtrlCEFAS_Empleado();
-    //CEFAS_Empleado empleado = ctrlEmpleado.getEmpleadoPorUsuario(codigoEmp);
+   
     
     CtrlCEFAS_Anticipo ctrlAnticipo = new CtrlCEFAS_Anticipo();
     CEFAS_Anticipo anticipo=ctrlAnticipo.getAnticipo(codigoAnticipo);
-       
+       CtrlCEFAS_Empleado ctrlEmpleado = new CtrlCEFAS_Empleado();
+    CEFAS_Empleado empleado = ctrlEmpleado.getEmpleadoPorUsuario(anticipo.getEmpCodigo()); 
     response.setContentType("text/html;charset=UTF-8");
     
     
@@ -66,7 +66,7 @@ String mensaje="";
                 <div class="row">
                    
                       <div class="col-xs-4">
-                                    <img src="" class="center-block" alt="fotoempleado" width="150" height="150"/>
+                                    <img src="<%= empleado.getEmpFoto() %>" class="center-block" alt="fotoempleado" width="150" height="150"/>
                                 </div>
                     
                            

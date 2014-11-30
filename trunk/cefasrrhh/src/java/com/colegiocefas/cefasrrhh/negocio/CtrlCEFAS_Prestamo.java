@@ -70,4 +70,7 @@ public class CtrlCEFAS_Prestamo {
         return daoPrestamo.getPrestamo(codigo);
     }
      
+   public void actualizarSaldo(){
+       daoPrestamo.actualizarSaldo();
+    }
 }

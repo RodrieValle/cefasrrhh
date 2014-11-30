@@ -7,8 +7,11 @@
 package com.colegiocefas.cefasrrhh.negocio;
 
 import com.colegiocefas.cefasrrhh.datos.CEFAS_reporteLLegadaDAO;
+import com.colegiocefas.cefasrrhh.dominio.CEFAS_Planilla;
 import com.colegiocefas.cefasrrhh.dominio.CEFAS_reporteLLegada;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -43,6 +46,33 @@ public class CtrlCEFAS_reporteLLegada {
     return false;
             }
      
+    }
+    
+    
+    
+    //SUMA DE MINUTOS TARDE, VALOR EN DINERO
+        public float sumaTardias(int codigo){
+        float suma=0;
+        List<CEFAS_reporteLLegada> listLlegadas= new ArrayList();
+        listLlegadas=getLlegadasEmpleadoFecha(codigo);
+        
+         for(CEFAS_reporteLLegada llegada: listLlegadas)
+        {
+            suma=suma+llegada.getRepValorDinero();
+        }
+        return suma;
+    }
+    
+    
+    
+    //  LLAMADA A METODO DE RETORNO DE TARDIAS A UNA FECHA DADA
+    public List<CEFAS_reporteLLegada> getLlegadasEmpleadoFecha(int codigo)
+    {
+        CtrlCEFAS_Planilla ctrlPlanilla= new CtrlCEFAS_Planilla();
+        CEFAS_Planilla planilla=ctrlPlanilla.getUltimaPlanilla();
+        Date fechaUltima=planilla.getPlnFecha();
+     
+        return reportellegadadao.getllegadasEmpleadoFecha(codigo, fechaUltima);
     }
     
     

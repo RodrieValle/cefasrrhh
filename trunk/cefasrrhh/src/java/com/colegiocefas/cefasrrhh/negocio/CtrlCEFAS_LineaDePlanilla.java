@@ -62,7 +62,8 @@ public class CtrlCEFAS_LineaDePlanilla {
             float horas=calculoHorasExtras(codigo);
             linea.setLdpHorasExtra(horas);
             
-            float ausencias=0;
+            //float ausencias=0;
+            float ausencias=calculoLlegadas(codigo);
             linea.setLdpAusenciasTardias(ausencias);
             
             float devengado=salario+horas-ausencias;
@@ -192,6 +193,13 @@ return renta;
 public float calculoHorasExtras(int codEmpleado){
     CtrlCEFAS_TiempoExtra ctrlExtra = new CtrlCEFAS_TiempoExtra();
     float suma=ctrlExtra.sumaHoras(codEmpleado);
+    return suma;
+}
+
+//<<<<<<<<<<<<<<<<<<<CALCULO DE LLEGADAS TARDE
+public float calculoLlegadas(int codEmpleado){
+    CtrlCEFAS_reporteLLegada ctrlLLegadas = new CtrlCEFAS_reporteLLegada();
+    float suma=ctrlLLegadas .sumaTardias(codEmpleado);
     return suma;
 }
 
@@ -331,7 +339,7 @@ public float calculoIndemnizacion(int codigo){
            float horas=calculoHorasExtras(codigo);
             linea.setLdpHorasExtra(horas);
             
-            float ausencias=0;
+               float ausencias=calculoLlegadas(codigo);
             linea.setLdpAusenciasTardias(ausencias);
             
             float devengado=salario+horas-ausencias;
@@ -418,7 +426,10 @@ public int almacenarLineas(CEFAS_LineaDePlanilla linea, int codigoPln){
     int resultado=0;
   linea.setLdpFecha(new Date());
     resultado=daoLinea.almacenarLineasPlanilla(linea, codigoPln);
-    
+    CtrlCEFAS_Prestamo ctrlPrestamo=new CtrlCEFAS_Prestamo();
+    ctrlPrestamo.actualizarSaldo();
+     CtrlCEFAS_OrdenDeDescuento ctrlOrdenDeDescuento=new CtrlCEFAS_OrdenDeDescuento();
+    ctrlOrdenDeDescuento.actualizarSaldo();
     return resultado;
 }
 
