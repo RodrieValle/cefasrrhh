@@ -26,16 +26,11 @@
     { 
  
      int codigoSan = Integer.parseInt(request.getParameter("codigoSan"));
-     int resultado=0;
+    
      
        CtrlCEFAS_Sancion ctrlAnticipo = new CtrlCEFAS_Sancion();
-       resultado=ctrlAnticipo.eliminarSancion(codigoSan);
-       if(resultado==1){
-             mensaje ="La eliminación se realizo con exito";
-       }
-       else{
-           mensaje ="Error en la eliminación del registro vuelva a intentar";
-       }
+       ctrlAnticipo.eliminarSancion(codigoSan);
+      
     }
     int codigoEmp = Integer.parseInt(request.getParameter("codigo"));
     CtrlCEFAS_Empleado ctrlEmpleado = new CtrlCEFAS_Empleado();
