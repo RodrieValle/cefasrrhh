@@ -43,13 +43,19 @@
    <div class="panel panel-primary">
 		<div class="panel-heading">Gestion de la Evaluacion</div>
 		<div class="panel-body">
-		<div class="row">
-			<div class="col-xs-4 col-xs-offset-2">
-                                <div class="input-group">
-                                    <a href="evaluarCandidato.jsp" class="btn btn-primary btn-md" role="button">Ingresar Evaluacion</a>
-                                    <a href="" class="btn btn-primary btn-md" role="button">Ver Evaluacion</a>
-                                    <a href="" class="btn btn-primary btn-md" role="button">Eliminar Evaluacion</a>
-                                </div>
+		<table class="table table-striped table-hover">
+		<tbody>
+                     
+              
+			<tr>
+                                
+                            <td> <a href="evaluarCandidato.jsp" class="btn btn-primary btn-md" role="button">Ingresar Evaluacion</a></td>
+                            <td<a href="" class="btn btn-primary btn-md" role="button">Ver Evaluacion</a></td>
+                            <td><a href="" class="btn btn-primary btn-md" role="button">Eliminar Evaluacion</a></td>
+                                
+                        </tr>
+                </tbody>
+                </table>
                             </div>
 		</div>
 			
