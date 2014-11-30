@@ -20,16 +20,16 @@ public class CEFAS_EvaluacionCandidato {
     private Date   evcFechaEntrevista;
     private String evcComentarioEntrevista;
     private Date   evcFechaExamenAptitud;
-    private String evcNotaExamenAptitud;
+    private Double evcNotaExamenAptitud;
     private String evcComentarioExamenAptitud;
     private Date   evcFechaExamenPsico;
-    private String evcNotaExamenPsico;
+    private Double evcNotaExamenPsico;
     private String evcCometarioExamenPsico;
 
     public CEFAS_EvaluacionCandidato() {
     }
 
-    public CEFAS_EvaluacionCandidato(String cdtDUI, String evcCodigo, String evcObservacionesReferencias, Date evcFechaEntrevista, String evcComentarioEntrevista, Date evcFechaExamenAptitud, String evcNotaExamenAptitud, String evcComentarioExamenAptitud, Date evcFechaExamenPsico, String evcNotaExamenPsico, String evcCometarioExamenPsico) {
+    public CEFAS_EvaluacionCandidato(String cdtDUI, String evcCodigo, String evcObservacionesReferencias, Date evcFechaEntrevista, String evcComentarioEntrevista, Date evcFechaExamenAptitud, Double evcNotaExamenAptitud, String evcComentarioExamenAptitud, Date evcFechaExamenPsico, Double evcNotaExamenPsico, String evcCometarioExamenPsico) {
         this.cdtDUI = cdtDUI;
         this.evcCodigo = evcCodigo;
         this.evcObservacionesReferencias = evcObservacionesReferencias;
@@ -91,11 +91,11 @@ public class CEFAS_EvaluacionCandidato {
         this.evcFechaExamenAptitud = evcFechaExamenAptitud;
     }
 
-    public String getEvcNotaExamenAptitud() {
+    public Double getEvcNotaExamenAptitud() {
         return evcNotaExamenAptitud;
     }
 
-    public void setEvcNotaExamenAptitud(String evcNotaExamenAptitud) {
+    public void setEvcNotaExamenAptitud(Double evcNotaExamenAptitud) {
         this.evcNotaExamenAptitud = evcNotaExamenAptitud;
     }
 
@@ -115,11 +115,11 @@ public class CEFAS_EvaluacionCandidato {
         this.evcFechaExamenPsico = evcFechaExamenPsico;
     }
 
-    public String getEvcNotaExamenPsico() {
+    public Double getEvcNotaExamenPsico() {
         return evcNotaExamenPsico;
     }
 
-    public void setEvcNotaExamenPsico(String evcNotaExamenPsico) {
+    public void setEvcNotaExamenPsico(Double evcNotaExamenPsico) {
         this.evcNotaExamenPsico = evcNotaExamenPsico;
     }
 

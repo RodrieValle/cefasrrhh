@@ -26,18 +26,18 @@
     }
     if (request.getParameter("duicdt") != null) {
         String dui = request.getParameter("duicdt");
-        String notaap = request.getParameter("notaap");
-        String comenll = request.getParameter("comenll");
-        String comenen = request.getParameter("comenen");
-        String comenap = request.getParameter("comenap");
-        String notapsi = request.getParameter("notapsi");
-        String comenpsi = request.getParameter("comenpsi");
-        Date fechaen = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("fechaen").toString());
-        Date fechaex = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("fechaex").toString());
-        Date fechapsi = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("fechapsi").toString());
+        String notaap = request.getParameter("naptitud");
+        String comenll = request.getParameter("referencia");
+        String comenen = request.getParameter("centrevista");
+        String comenap = request.getParameter("captitud");
+        String notapsi = request.getParameter("npsicologico");
+        String comenpsi = request.getParameter("cpsicologico");
+        Date fechaen = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("fentrevista").toString());
+        Date fechaex = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("faptitud").toString());
+        Date fechapsi = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("fpsicologico").toString());
 
         CtrlCEFAS_EvaluacionCandidato ctrlevccandidato = new CtrlCEFAS_EvaluacionCandidato();
-        ctrlevccandidato.guardarEvaluacion(dui, comenll, fechaen, comenen, fechaex, notaap, comenap, fechapsi, notapsi, comenpsi);
+        ctrlevccandidato.guardarEvaluacion(dui, comenll, fechaen, comenen, fechaex, Double.parseDouble(notaap), comenap, fechapsi,Double.parseDouble(notapsi), comenpsi);
     }
     
     
@@ -76,7 +76,7 @@
                         <div class="panel-body">
                             <div class="row">
                             <div class="col-xs-5 col-xs-offset-1">
-                                Observaciones de llamadas a referencia: <textarea name="comenll"  cols="100" rows="5" class="form-control"> </textarea>
+                                Observaciones de llamadas a referencia: <textarea name="referencia"  cols="100" rows="5" class="form-control"> </textarea>
                                 <p></p>
                             </div>
                         </div>
@@ -88,7 +88,7 @@
                             <div class="row">
                                 <div class="col-xs-3 col-xs-offset-1">
                                     Fecha de entrevista:
-                                    <div class="bfh-datepicker" data-format="d/m/y" data-name="fechaen" data-icon="" data-input="form-control input-sm"
+                                    <div class="bfh-datepicker" data-format="d/m/y" data-name="fentrevista" data-icon="" data-input="form-control input-sm"
                                         data-close="true" data-align="right" data-language="en_US" data-available="es_MX">
                                    </div>
                                     <!--<input type="text" name="fechaen" value="" class="form-control input-sm" placeholder= "Formato: dd/MM/yyyy" required /> -->
@@ -100,7 +100,7 @@
                                 <div class="col-xs-8 col-xs-offset-2">
                                     <br>
                                     Comentarios:
-                                    <textarea name="comenen" cols="100" rows="5" class="form-control input-sm"> </textarea>
+                                    <textarea name="centrevista" cols="100" rows="5" class="form-control input-sm"> </textarea>
                                 </div>
                             </div>
                          </div>
@@ -111,13 +111,13 @@
                              <div class="row">
                              <div class="col-xs-3 col-xs-offset-1">
                                 Fecha de examen :
-                                <div class="bfh-datepicker" data-format="d/m/y" data-name="fechaex" data-icon="" data-input="form-control input-sm"
+                                <div class="bfh-datepicker" data-format="d/m/y" data-name="faptitud" data-icon="" data-input="form-control input-sm"
                                         data-close="true" data-align="right" data-language="en_US" data-available="es_MX">
                                    </div>
                                 <!--<input type="text" name="fechaex" value="" class="form-control input-sm" placeholder= "Formato: dd/MM/yyyy" required />-->
                              </div>
                                  <div class="col-xs-3 col-xs-offset-1">
-                                     Nota: <input type="number" name="notaap" min="0.0" max="10.0" step="0.1" class="form-control input-sm"> 
+                                     Nota: <input type="number" name="naptitud" min="0.0" max="10.0" step="0.1" class="form-control input-sm"> 
                                  </div>
                                  <div class="col-xs-2 col-xs-offset-1">
                                      <input type="checkbox" name="hecho"> Hecho
@@ -125,7 +125,7 @@
                                  <div class="col-xs-1"></div>
                                  <div class="col-xs-8 col-xs-offset-2">
                                      <br>
-                                     Comentarios: <textarea name="comenap" cols="100" rows="5" class="form-control"> </textarea>
+                                     Comentarios: <textarea name="captitud" cols="100" rows="5" class="form-control"> </textarea>
                                  </div>
                              </div>
                          </div>
@@ -136,13 +136,13 @@
                              <div class="row">
                              <div class="col-xs-3 col-xs-offset-1">
                                 Fecha de examen :
-                                <div class="bfh-datepicker" data-format="d/m/y" data-name="fechapsi" data-icon="" data-input="form-control input-sm"
+                                <div class="bfh-datepicker" data-format="d/m/y" data-name="fpsicologico" data-icon="" data-input="form-control input-sm"
                                         data-close="true" data-align="right" data-language="en_US" data-available="es_MX">
                                    </div>
                                 <!--<input type="text" name="fechapsi" value="" class="form-control input-sm" placeholder= "Formato: dd/MM/yyyy" required />-->
                              </div>
                                  <div class="col-xs-3 col-xs-offset-1">
-                                     Nota: <input type="number" name="notapsi" min="0.0" max="10.0" step="0.1" class="form-control input-sm"> 
+                                     Nota: <input type="number" name="npsicologico" min="0.0" max="10.0" step="0.1" class="form-control input-sm"> 
                                  </div>
                                  <div class="col-xs-2 col-xs-offset-1">
                                      <input type="checkbox" name="hecho"> Hecho
@@ -150,7 +150,7 @@
                                  <div class="col-xs-1"></div>
                                  <div class="col-xs-8 col-xs-offset-2">
                                      <br>
-                                     Comentarios: <textarea name="comenpsi" cols="100" rows="5" class="form-control"> </textarea>
+                                     Comentarios: <textarea name="cpsicologico" cols="100" rows="5" class="form-control"> </textarea>
                                  </div>
                              </div>
                          </div>
