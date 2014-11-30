@@ -14,7 +14,7 @@ public class CtrlCEFAS_EvaluacionCandidato {
 
     private CEFAS_EvaluacionCandidatoDAO daoEvaluacionCandidato = new CEFAS_EvaluacionCandidatoDAO();
 
-    public boolean guardarEvaluacion(String DUI, String evcObservacionesReferencias, Date evcFechaEntrevista, String evcComentarioEntrevista, Date evcFechaExamenAptitud, String evcNotaExamenAptitud, String evcComentarioExamenAptitud, Date evcFechaExamenPsico, String evcNotaExamenPsico, String evcComentarioExamenPsico) {
+    public void guardarEvaluacion(String DUI, String evcObservacionesReferencias, Date evcFechaEntrevista, String evcComentarioEntrevista, Date evcFechaExamenAptitud, Double evcNotaExamenAptitud, String evcComentarioExamenAptitud, Date evcFechaExamenPsico, Double evcNotaExamenPsico, String evcComentarioExamenPsico) {
 
         CEFAS_EvaluacionCandidato evccan = new CEFAS_EvaluacionCandidato();
         evccan.setCdtDUI(DUI);
@@ -27,7 +27,7 @@ public class CtrlCEFAS_EvaluacionCandidato {
         evccan.setEvcFechaExamenPsico(evcFechaExamenPsico);
         evccan.setEvcNotaExamenPsico(evcNotaExamenPsico);
         evccan.setEvcCometarioExamenPsico(evcComentarioExamenPsico);
-        return daoEvaluacionCandidato.almacenarEvaluacion(evccan);
+        daoEvaluacionCandidato.almacenarEvaluacion(evccan);
     }
     
 }

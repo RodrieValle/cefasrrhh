@@ -35,10 +35,10 @@ public class CEFAS_EvaluacionCandidatoDAO {
             ps.setDate(3, new Date(evccan.getEvcFechaEntrevista().getTime()));
             ps.setString(4, evccan.getEvcComentarioEntrevista());
             ps.setDate(5, new Date(evccan.getEvcFechaExamenAptitud().getTime()));
-            ps.setString(6, evccan.getEvcNotaExamenAptitud());
+            ps.setDouble(6, evccan.getEvcNotaExamenAptitud());
             ps.setString(7, evccan.getEvcComentarioExamenAptitud());
             ps.setDate(8, new Date(evccan.getEvcFechaExamenPsico().getTime()));
-            ps.setString(9, evccan.getEvcNotaExamenPsico());
+            ps.setDouble(9, evccan.getEvcNotaExamenPsico());
             ps.setString(10, evccan.getEvcCometarioExamenPsico());
 
             ps.executeUpdate();
