@@ -95,7 +95,7 @@
 				<td><%= cdt.getCdtNombre() %> </td>
 				<td></td>
 				<td><a href="" class="btn btn-primary btn-md" role="button">Ver Curriculum</a></td>
-				<td><a href="gestionarevaluacioncandidato.jsp" class="btn btn-primary btn-md" role="button">Evaluar</a></td>
+				<td><a href="gestionarevaluacioncandidato.jsp" class="btn btn-primary btn-md" role="button"> Evaluar </a></td>
 
 			</tr>
                         <%
