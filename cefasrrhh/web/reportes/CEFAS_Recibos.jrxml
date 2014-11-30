@@ -46,7 +46,7 @@ FROM
 			</rectangle>
 			<image>
 				<reportElement uuid="47f2e648-d937-42c3-aa0a-0e323789f394" x="457" y="7" width="57" height="47"/>
-				<imageExpression><![CDATA["C:\\Users\\Rodrigo\\Documents\\NetBeansProjects\\cefasrrhh\\web\\img\\cefas-logo.jpg"]]></imageExpression>
+				<imageExpression><![CDATA["http://localhost:8080/cefasrrhh/img/cefas-logo.jpg"]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement uuid="b01233ee-c4af-4227-b360-19ffe36315d1" x="320" y="8" width="100" height="20"/>
