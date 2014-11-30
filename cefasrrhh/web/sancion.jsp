@@ -59,9 +59,9 @@
                        
                        
                        Nombre:<input  type="text" name="nombre"  value="<%= empleado.getEmpNombre() %>" class="form-control input-sm"  required readonly/>
-                       Fecha:  <div class="bfh-datepicker" data-format="d/m/y"  data-name="fecha" data-language="es" data-input="input-sm form-control" data-icon=""
-                                data-close="true" data-align="right">
-                        </div>
+                       Fecha:  <div class="bfh-datepicker" data-format="d/m/y" data-name="fecha" data-icon="" data-input="form-control input-sm"
+                                        data-close="true" data-align="right" data-language="en_US" data-available="es_MX">
+                                   </div>
                        Codigo de Empleado:<input  type="text" name="empcodigo" value="<%= empleado.getEmpCodigo() %>" class="form-control input-sm"  required readonly/>
         
                     </div>
