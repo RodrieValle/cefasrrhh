@@ -32,5 +32,14 @@ public class CtrlCEFAS_ConfiguracionRetenciones {
      public void actualizarConfiguraciones(int codigo, float porcentaje, float maximo){
          daoretencion.actualizarBasicas(codigo, porcentaje, maximo);
      }
+     
+      public void actualizarConfiAgui(int codigo, float minimo){
+         daoretencion.actualizarAguinaldo(codigo, minimo);
+     }
+      
+      public void actualizarConfiIndem(int codigo, float maximo){
+         daoretencion.actualizarIndemnizacion(codigo, maximo);
+     }
     
+     
 }

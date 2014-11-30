@@ -30,7 +30,9 @@ public class CEFAS_ConfiguracionRetencionesDAO {
     private final String SQL_RENTA = "UPDATE CEFAS_CONFIGURACIONRETENCIONES SET CFGPORCENTAJE = ?, CFGMINIMO = ?,"
             + " CFGMAXIMO = ?, CFGSOBREEXCESO = ?, CFGCUOTAFIJA = ? WHERE CFGCODIGO = ?";
     private final String SQL_BASICOS = "UPDATE CEFAS_CONFIGURACIONRETENCIONES SET CFGPORCENTAJE = ?, CFGMAXIMO = ? WHERE CFGCODIGO = ?";
-     private final String SQL_DELETE = "";
+    private final String SQL_AGUI = "UPDATE CEFAS_CONFIGURACIONRETENCIONES SET CFGMINIMO = ? WHERE CFGCODIGO = ?";
+    private final String SQL_INDEM = "UPDATE CEFAS_CONFIGURACIONRETENCIONES SET CFGMAXIMO = ? WHERE CFGCODIGO = ?";
+    private final String SQL_DELETE = "";
     private Connection conexiondb;
     private Statement st;
     private PreparedStatement ps;
@@ -96,5 +98,30 @@ public class CEFAS_ConfiguracionRetencionesDAO {
         }
     }
     
+     public void actualizarAguinaldo(int codigo,  float minimo) {
+        try {
+            conexiondb = ConexionDB.getConexion();
+            ps = conexiondb.prepareStatement(SQL_AGUI);
+            ps.setFloat(1, minimo);
+            ps.setInt(2, codigo);
+            ps.executeUpdate();
+            ConexionDB.cerrarConexion();
+        } catch (SQLException ex) {
+            Logger.getLogger(CEFAS_ConfiguracionRetencionesDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+     
+     public void actualizarIndemnizacion(int codigo,  float maximo) {
+        try {
+            conexiondb = ConexionDB.getConexion();
+            ps = conexiondb.prepareStatement(SQL_INDEM);
+            ps.setFloat(1, maximo);
+            ps.setInt(2, codigo);
+            ps.executeUpdate();
+            ConexionDB.cerrarConexion();
+        } catch (SQLException ex) {
+            Logger.getLogger(CEFAS_ConfiguracionRetencionesDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
 }
