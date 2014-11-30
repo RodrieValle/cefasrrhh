@@ -56,7 +56,8 @@
 <div class="container">
 	<h1>Listado de Candidatos</h1>
 	<form action="gestionarcandidato.jsp" method="post">
-                <div class="panel panel-primary">
+             <div class="container">
+   <div class="panel panel-primary">
 		<div class="panel-heading">Zona de Busqueda</div>
 		<div class="panel-body">
 		<div class="row">
