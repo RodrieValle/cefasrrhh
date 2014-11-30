@@ -16,6 +16,7 @@ public class CEFAS_Candidato {
     private String evcCodigo;
     private String cdtNombre;   
     private int espCodigo;
+    private CEFAS_Especialidad especialidad;
     private String cdtCurriculum;
 
     public CEFAS_Candidato() {
@@ -69,6 +70,14 @@ public class CEFAS_Candidato {
         this.cdtCurriculum = cdtCurriculum;
     }
 
+    public CEFAS_Especialidad getEspecialidad() {
+        return especialidad;
+    }
 
+    public void setEspecialidad(CEFAS_Especialidad especialidad) {
+        this.especialidad = especialidad;
+    }
+
+    
     
 }

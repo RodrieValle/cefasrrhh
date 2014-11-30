@@ -94,7 +94,7 @@
                                     %>
 			<tr>
 				<td><%= cdt.getCdtNombre() %> </td>
-				<td></td>
+				<td><%= cdt.getEspecialidad().getEspNombre() %></td>
 				<td><a href="" class="btn btn-primary btn-md" role="button">Ver Curriculum</a></td>
                                 <td><a href="evaluarCandidato.jsp?dui=<%= cdt.getCdtDUI() %>" class="btn btn-primary btn-md" role="button"> Ingresar </a></td>
                                 <td><a href="verevaluacion.jsp?dui=<%= cdt.getCdtDUI() %>" class="btn btn-primary btn-md" role="button"> Ver </a></td>
