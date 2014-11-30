@@ -7,6 +7,7 @@
 package com.colegiocefas.cefasrrhh.datos;
 
 import com.colegiocefas.cefasrrhh.dominio.CEFAS_Candidato;
+import com.colegiocefas.cefasrrhh.dominio.CEFAS_Especialidad;
 import com.colegiocefas.cefasrrhh.utilidades.ConexionDB;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -87,8 +88,10 @@ public class CEFAS_CandidatoDAO {
             while(rs.next())
             {
                 cdt = new CEFAS_Candidato();
+                CEFAS_Especialidad esp = new CEFAS_Especialidad();
+                esp.setEspNombre(rs.getString("espNombre"));
                 cdt.setCdtNombre(rs.getString("cdtNombre"));
-               
+                cdt.setEspecialidad(esp);
                 listaCandidato.add(cdt);
             }
             
