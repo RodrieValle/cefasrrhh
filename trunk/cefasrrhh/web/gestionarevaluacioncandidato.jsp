@@ -46,7 +46,7 @@
 		<div class="row">
 			<div class="col-xs-4 col-xs-offset-2">
                                 <div class="input-group">
-                                    <a href="" class="btn btn-primary btn-md" role="button">Ingresar Evaluacion</a>
+                                    <a href="evaluarCandidato.jsp" class="btn btn-primary btn-md" role="button">Ingresar Evaluacion</a>
                                     <a href="" class="btn btn-primary btn-md" role="button">Ver Evaluacion</a>
                                     <a href="" class="btn btn-primary btn-md" role="button">Eliminar Evaluacion</a>
                                 </div>
