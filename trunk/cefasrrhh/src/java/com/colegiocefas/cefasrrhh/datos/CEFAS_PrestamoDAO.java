@@ -36,8 +36,8 @@ public class CEFAS_PrestamoDAO {
     private final String SQL_SELECTALL = "SELECT * FROM CEFAS_PRESTAMO";
     private final String SQL_SELECT_ACTIVOS = "SELECT * FROM CEFAS_PRESTAMO WHERE PRMSALDO > 0";
     private final String SQL_UPDATE = "UPDATE CEFAS_PRESTAMO SET EMPCODIGO = ?, PRMFECHA = ?,"
-            + " PRMMONTO = ?, PRMPLAZO = ?, PRMSALDO = ?, PRMCUOTA = ?,WHERE PRMCODIGO = ?";
-    private final String SQL_DELETE = "";
+            + " PRMMONTO = ?, PRMPLAZO = ?, PRMSALDO = ?, PRMCUOTA = ? WHERE PRMCODIGO = ?";
+    private final String SQL_DELETE = "DELETE FROM CEFAS_PRESTAMO WHERE PRMCODIGO = ?";
     private Connection conexiondb;
     private Statement st;
     private PreparedStatement ps;
@@ -130,8 +130,8 @@ ConexionDB.cerrarConexion();
      
      
      
-     public void actualizarPrestamo(CEFAS_Prestamo prestamo) {
-     //almacena un anticipo leido desde el navegador
+     public int actualizarPrestamo(CEFAS_Prestamo prestamo) {
+     int n=0;
         try {
             conexiondb = ConexionDB.getConexion();
             ps=conexiondb.prepareStatement(SQL_UPDATE);
@@ -141,7 +141,8 @@ ConexionDB.cerrarConexion();
             ps.setDouble(4, prestamo.getPrmPlazo());
             ps.setDouble(5, prestamo.getPrmSaldo());
             ps.setDouble(6, prestamo.getPrmCuota());
-            int n=ps.executeUpdate();
+            ps.setInt(7, prestamo.getPrmCodigo());
+            n=ps.executeUpdate();
             
             if(n>0){
                Logger.getLogger("Se guardo correctamente");
@@ -150,6 +151,7 @@ ConexionDB.cerrarConexion();
         } catch (SQLException ex) {
             Logger.getLogger(CEFAS_PrestamoDAO.class.getName()).log(Level.SEVERE, null, ex);   
         }
+        return n;
      }
      
      
@@ -213,4 +215,28 @@ ConexionDB.cerrarConexion();
                 actualizarPrestamo(p);
             }
         }
+        
+
+     
+     //eliminar Prestamo
+       public int eliminarPrestamo(int codigo){
+          int resultado=0;
+            try {
+            conexiondb = ConexionDB.getConexion();
+            //Borrado de títulos
+            ps = conexiondb.prepareStatement(SQL_DELETE);
+            ps.setInt(1, codigo);
+            resultado=ps.executeUpdate();
+           
+            ConexionDB.cerrarConexion();
+        } catch (SQLException ex) {
+            Logger.getLogger(CEFAS_PrestamoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            return resultado; 
+    }
+        
+     
+    
+        
+        
 }

@@ -32,7 +32,7 @@ String mensaje="";
     //CEFAS_Empleado empleado = ctrlEmpleado.getEmpleadoPorUsuario(codigoEmp);
     
     CtrlCEFAS_OrdenDeDescuento ctrlOrden = new CtrlCEFAS_OrdenDeDescuento();
-    CEFAS_OrdenDeDescuento orden=ctrlOrden.getOrdenDescuentoEmpleado(codigoOrden);
+    CEFAS_OrdenDeDescuento orden=ctrlOrden.getOrden(codigoOrden);
      
     CtrlCEFAS_Empleado ctrlEmpleado = new CtrlCEFAS_Empleado();
     CEFAS_Empleado empleado = ctrlEmpleado.getEmpleadoPorUsuario(orden.getEmpCodigo());
@@ -74,12 +74,12 @@ String mensaje="";
                     
                            
                      <div class="col-xs-4">  
-                          Codigo Orden de Descuento:<input  type="text" name="atpcodigo" value="<%=orden.getOddCodigo() %>" class="form-control input-sm"  required />        
+                          Codigo Orden de Descuento:<input  type="text" name="codigoOrden" value="<%=orden.getOddCodigo() %>" class="form-control input-sm"  required readonly/>        
                         
                          
                                   
-                         Fecha: <div class="bfh-datepicker" data-format="d/m/y" data-name="fecha" data-language="es" data-input="input-sm form-control" data-icon=""
-                                data-close="true" data-align="right" data-date="<%=orden.getOddFecha() %>">
+                          Fecha: <div class="bfh-datepicker" data-format="d/m/y" data-name="fecha" data-language="es" data-input="input-sm form-control" data-icon=""
+                                data-close="true" data-align="right" data-date="<%= new SimpleDateFormat("dd/MM/yyyy").format(orden.getOddFecha()) %>">
                                 </div>
                          
                         Cuota Mensual: <br>
@@ -87,6 +87,11 @@ String mensaje="";
                                         <span class="input-group-addon input-sm">$</span>
                                         <input type="number" name="cuotaMensual" value="<%=orden.getOddCuota() %>" class="form-control input-sm" required min="0.00"><br>
                                     </div><br>
+                        Saldo: <br>
+                                    <div class="input-group">
+                                        <span class="input-group-addon input-sm">$</span>
+                                        <input type="number" name="saldo" value="<%=orden.getOddSaldo() %>" class="form-control input-sm" required min="0.00"><br>
+                                    </div><br>            
                            </div>
                     <div class="col-xs-4">  
                         Codigo Empleado:<input  type="text" name="empcodigo" value="<%=orden.getEmpCodigo() %>" class="form-control input-sm"  required readonly/>

@@ -45,4 +45,29 @@ public class CtrlCEFAS_Prestamo {
     {
         return daoPrestamo.obtenerPrestamoEmpleado(codigo);
     }
+     
+     
+              public int actualizarPrestamo(int codigo, int empleado, Date fecha, float cuota, float cantidad,
+                                            int plazo, float saldo)
+    {
+        CEFAS_Prestamo prestamo= new CEFAS_Prestamo();
+        prestamo.setPrmCodigo(codigo);
+        prestamo.setEmpCodigo(empleado);
+        prestamo.setPrmCuota(cuota);
+        prestamo.setPrmFecha(fecha);
+        prestamo.setPrmMonto(cantidad);
+        prestamo.setPrmPlazo(plazo);
+        prestamo.setPrmSaldo(saldo);
+        return daoPrestamo.actualizarPrestamo(prestamo);
+    }
+    
+   public int eliminarPrestamo(int codigo)
+    {
+        return daoPrestamo.eliminarPrestamo(codigo);
+    }
+    
+         public CEFAS_Prestamo getPrestamo(int codigo){
+        return daoPrestamo.getPrestamo(codigo);
+    }
+     
 }

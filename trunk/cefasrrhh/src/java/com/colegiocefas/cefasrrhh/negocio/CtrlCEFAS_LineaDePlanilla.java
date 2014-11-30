@@ -58,7 +58,8 @@ public class CtrlCEFAS_LineaDePlanilla {
             float salario=empleado.getEmpSalario();
             linea.setLdpSueldoBase(salario);
             
-           float horas=0;
+           //float horas=0;
+            float horas=calculoHorasExtras(codigo);
             linea.setLdpHorasExtra(horas);
             
             float ausencias=0;
@@ -187,11 +188,11 @@ return renta;
 }
 
 
-
-public float horas(float valor, float horas){
-    float salHoras=(valor/30)/8;
-    float cantidad=horas*salHoras;
-    return cantidad;
+//<<<<<<<<<<<<<<<<<<<CALCULO DE HORAS EXTRAS
+public float calculoHorasExtras(int codEmpleado){
+    CtrlCEFAS_TiempoExtra ctrlExtra = new CtrlCEFAS_TiempoExtra();
+    float suma=ctrlExtra.sumaHoras(codEmpleado);
+    return suma;
 }
 
 
@@ -327,7 +328,7 @@ public float calculoIndemnizacion(int codigo){
             float salario=empleado.getEmpSalario();
             linea.setLdpSueldoBase(salario);
             
-           float horas=0;
+           float horas=calculoHorasExtras(codigo);
             linea.setLdpHorasExtra(horas);
             
             float ausencias=0;
