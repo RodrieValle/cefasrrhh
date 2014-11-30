@@ -70,5 +70,7 @@ public int actualizarOrden(int codigo, int empleado, Date fecha, float cuota, fl
          public CEFAS_OrdenDeDescuento getOrden(int codigo){
         return daoOrden.getOrdenDescuento(codigo);
     }
-     
+       public void actualizarSaldo(){
+       daoOrden.actualizarSaldo();
+    }
 }

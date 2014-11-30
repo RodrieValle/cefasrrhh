@@ -29,11 +29,12 @@
     
 
      int codigoVia = Integer.parseInt(request.getParameter("codigo"));
-    //CtrlCEFAS_Empleado ctrlEmpleado = new CtrlCEFAS_Empleado();
-    //CEFAS_Empleado empleado = ctrlEmpleado.getEmpleadoPorUsuario(codigoEmp);
+ 
     
     CtrlCEFAS_Viatico ctrlViatico = new CtrlCEFAS_Viatico();
     CEFAS_Viatico viatico=ctrlViatico.getViatico(codigoVia);
+    CtrlCEFAS_Empleado ctrlEmpleado = new CtrlCEFAS_Empleado();
+    CEFAS_Empleado empleado = ctrlEmpleado.getEmpleadoPorUsuario(viatico.getEmpCodigo());
     response.setContentType("text/html;charset=UTF-8");
 %>
 <!DOCTYPE html>
@@ -62,7 +63,7 @@
                 <div class="row">
                    
                       <div class="col-xs-4">
-                                    <img src="" class="center-block" alt="fotoempleado" width="150" height="150"/>
+                                    <img src="<%=empleado.getEmpFoto()%>" class="center-block" alt="fotoempleado" width="150" height="150"/>
                                 </div>
                     
                            

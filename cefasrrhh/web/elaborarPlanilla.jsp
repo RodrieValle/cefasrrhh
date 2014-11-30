@@ -70,6 +70,7 @@
         <jsp:include page='inc/head_common.jsp' />
     </head>
     <body>
+        <%= mensaje%>
         <div id="container">
 <jsp:include page='inc/menu_administradora.jsp' />
 
@@ -141,7 +142,7 @@
                       </div>
  <br><br>
  <a href="elaborarPlanilla.jsp?codigoPlanilla=1" class="btn btn-primary btn-md" role="button">Guardar Planilla</a>
-<%= mensaje%>
+
         </div>
     </body>
 </html>

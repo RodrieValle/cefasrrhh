@@ -122,8 +122,12 @@
                 <%-- inicio lista de empleados --%>
                 
                 <div class="container">
+                    <br>
+                    
                 <a href="prestamoEmpleado.jsp" class="btn btn-primary btn-md" role="button">Ver Prestamos Otorgados</a>
-                 </div>
+                <br>
+                <br>
+                </div>
                 
                 <div class="panel panel-primary">
                           <div class="panel-heading">Empleados: <%= listaEmpleados.size() %></div>
