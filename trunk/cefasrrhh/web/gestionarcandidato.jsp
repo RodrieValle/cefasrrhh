@@ -91,7 +91,7 @@
 				<td><%= cdt.getCdtNombre() %> </td>
 				<td></td>
 				<td><a href="" class="btn btn-primary btn-md" role="button">Ver Curriculum</a></td>
-				<td><a href="evaluarCandidato.jsp" class="btn btn-primary btn-md" role="button">Ver Evaluacion</a></td>
+				<td><a href="evaluarCandidato.jsp?codigo=<%= cdt.getCdtDUI() %>" class="btn btn-primary btn-md" role="button">Ver Evaluacion</a></td>
 
 			</tr>
                         <%
