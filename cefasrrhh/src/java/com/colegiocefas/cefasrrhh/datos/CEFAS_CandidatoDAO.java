@@ -98,14 +98,14 @@ public class CEFAS_CandidatoDAO {
         
         return listaCandidato;
     }
-    public List<CEFAS_Candidato> obtenerDui()
+    public CEFAS_Candidato obtenerDui(String dui)
     {
-        List<CEFAS_Candidato> listaDui = new ArrayList<CEFAS_Candidato>();
-        CEFAS_Candidato cdt;
+        CEFAS_Candidato cdt = null; 
         try {
             conexiondb = ConexionDB.getConexion();
-            st = conexiondb.createStatement();
-            rs = st.executeQuery(SQL_SELECT_ALL);
+            ps = conexiondb.prepareStatement(SQL_SELECT);
+            ps.setString(1, dui);
+            rs = ps.executeQuery();
             while(rs.next())
             {
                 cdt = new CEFAS_Candidato();
@@ -113,14 +113,14 @@ public class CEFAS_CandidatoDAO {
                 cdt.setCdtNombre(rs.getString("cdtNombre"));
                 cdt.setEspCodigo(rs.getInt("espCodigo"));
                 cdt.setCdtCurriculum(rs.getString("cdtCurriculum"));
-                listaDui.add(cdt);
+                
             }
             ConexionDB.cerrarConexion();
         } catch (SQLException ex) {
             Logger.getLogger(CEFAS_CandidatoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        return listaDui;
+        return cdt;
     }
 
 }
