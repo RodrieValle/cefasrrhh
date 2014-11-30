@@ -53,7 +53,7 @@
                             <div class="row">
                             <div class="col-xs-5 col-xs-offset-1">
                      <p></p>
-                         DUI: <input  type="text" name="dui" value="<%= cdt.getCdtDUI() %>" class="form-control input-sm"  required readonly/>
+                         DUI: <input  type="text" name="duicdt" value="<%= cdt.getCdtDUI() %>" class="form-control input-sm"  required readonly/>
                         <input type="checkbox" name="hecho"> Hecho
                         </div>
                         </div>
