@@ -38,12 +38,13 @@
           CtrlCEFAS_LineaDePlanilla ctrlLinea = new CtrlCEFAS_LineaDePlanilla() ;      
     ctrlEmpleado.obtenerEmpleados(1, Integer.toString(codigoemp));
         float indemnizacion=ctrlLinea.calculoIndemnizacion(codigoemp);
-        String nomb=ctrlEmpleado.getEmpleadoPorID(codigoemp).getEmpNombre();
-        
+        CEFAS_Empleado empleado =ctrlEmpleado.getEmpleadoPorID(codigoemp);
+        String nomb=empleado.getEmpNombre();
+        float salario=empleado.getEmpSalario();
       mensaje = "<br><br><div class='alert alert-success' role='alert'><button type='button' class='close'"
                 + " data-dismiss='alert'><span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span></button>"
-                + "La indemnizacion del empleado con codigo " +codigoemp+ " con nombre " + nomb+ " es de $" +indemnizacion+ " quien ha laborado en la empresa"
-                +" durante " +ctrlEmpleado.tiempoTrabajado(codigoemp).get(2) + " años.</div>";
+                + "La indemnización del empleado con codigo " +codigoemp+ " con nombre " + nomb+ " es de $" +indemnizacion+ " quien ha laborado en la empresa"
+                +" durante " +ctrlEmpleado.tiempoTrabajado(codigoemp).get(2) + " años " +ctrlEmpleado.tiempoTrabajado(codigoemp).get(1)+ " meses y " + ctrlEmpleado.tiempoTrabajado(codigoemp).get(0)+ " dias con un salario de $" +salario+ "</div>";
     }
    
     

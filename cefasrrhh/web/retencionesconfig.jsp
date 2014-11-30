@@ -91,6 +91,10 @@
         ctrlConfiguracion.actualizarConfiguraciones(11, Float.parseFloat(request.getParameter("issspatronal")),
                                                        Float.parseFloat(request.getParameter("techoisss")));
     
+        //aguinaldo
+        ctrlConfiguracion.actualizarConfiAgui(12, Float.parseFloat(request.getParameter("aguinaldo")));
+        //indemnizacion
+        ctrlConfiguracion.actualizarConfiIndem(13, Float.parseFloat(request.getParameter("indemnizacion")));
     
      CtrlCEFAS_Bitacora ctrlBitacora= new CtrlCEFAS_Bitacora();
         ctrlBitacora.guardarBitacora((Integer) sesionOk.getAttribute("codigo"), "Se cambio la configuracion de las retenciones");
@@ -123,6 +127,11 @@
                     AFP patronal Crecer:<input type="number" class="form-control input-sm" name="afppatronalcrecer" pattern="[0-9]+([\.|,][0-9]+)?" step="any"  min="0.00" max="100.00" required value="<%= retenciones.get(6).getCfgPorcentaje() %>" />
                     AFP patronal Confía:<input type="number" class="form-control input-sm" name="afppatronalconfia" pattern="[0-9]+([\.|,][0-9]+)?" step="any" min="0.00" max="100.00" required value="<%= retenciones.get(8).getCfgPorcentaje() %>" />
                     Techo AFP:<input type="number" class="form-control input-sm" name="techoafp" pattern="[0-9]+([\.|,][0-9]+)?" step="any"  value="<%= retenciones.get(8).getCfgMaximo() %>" />
+               
+                    <h3>Aguinaldo</h3>
+                   Maximo Renta exento de renta:<input type="number" class="form-control input-sm" name="aguinaldo" pattern="[0-9]+([\.|,][0-9]+)?" step="any"  value="<%= retenciones.get(11).getCfgMinimo() %>" />
+                    <h3>Indemnización</h3>
+                    Maximo de Indemnizacion:<input type="number" class="form-control input-sm" name="indemnizacion" pattern="[0-9]+([\.|,][0-9]+)?" step="any"  value="<%= retenciones.get(12).getCfgMaximo() %>" />
                 </div>
                 <div class="col-xs-6 col-xs-offset-1">
                     <h3>Valores de impuesto sobre la renta</h3>

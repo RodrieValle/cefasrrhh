@@ -257,7 +257,10 @@ int mes=tiempoTrabajando.get(1);
 int dia=tiempoTrabajando.get(0);
 
     //fin tiempo trabajado
-    
+    if(año<1){
+        aguinaldo=((mes*30+dia)*(valor/30 *15))/360;
+        return aguinaldo;
+    }else
     if(año>=1&&año<3){
         //si entre 1 año y 3  15
         aguinaldo=valor/30 *15;
@@ -291,15 +294,20 @@ public float calculoVacacion(float valor){
 //<<<<<<<<<<<<<<<<<<<<CALCULO INDEMNIZACION
 public float calculoIndemnizacion(int codigo){
     float indemnizacion=0;
-    
+     CtrlCEFAS_ConfiguracionRetenciones ctrlConfiguracion=new CtrlCEFAS_ConfiguracionRetenciones();
+    List<CEFAS_ConfiguracionRetenciones> listConfiguraciones= new ArrayList();
+    listConfiguraciones=ctrlConfiguracion.obtenerRetenciones();
     
     CtrlCEFAS_Empleado ctrlEmpleados=new CtrlCEFAS_Empleado();
     CEFAS_Empleado empleado=ctrlEmpleados.getEmpleadoPorID(codigo);
    // List<Integer> año=ctrlEmpleados.tiempoTrabajado(codigo);
-    
-    
-    indemnizacion=empleado.getEmpSalario()*ctrlEmpleados.tiempoTrabajado(codigo).get(2);
-    
+    int dias=ctrlEmpleados.tiempoTrabajado(codigo).get(2)*360+ctrlEmpleados.tiempoTrabajado(codigo).get(1)*30
+            +ctrlEmpleados.tiempoTrabajado(codigo).get(0);
+
+    if (empleado.getEmpSalario()<listConfiguraciones.get(12).getCfgMaximo()){
+    indemnizacion=(empleado.getEmpSalario()*dias)/360;
+    }else
+    indemnizacion=(listConfiguraciones.get(12).getCfgMaximo()*dias)/360;
     
     return indemnizacion;
 }
