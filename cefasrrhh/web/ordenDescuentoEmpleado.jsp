@@ -80,7 +80,7 @@
                                             <td> <%= orden.getOddPlazo() %></td>
                                             <td>$<%= String.format("%.2f", orden.getOddSaldo()) %></td>
                                             <td>$ <%= String.format("%.2f", orden.getOddCuota()) %></td>
-                                            <td><a href="" class="btn btn-primary btn-md" role="button">Modificar Orden</a></td>
+                                            <td><a href="ordenDescuentoModificar.jsp?codigo=<%=orden.getOddCodigo()%>" class="btn btn-primary btn-md" role="button">Modificar Orden</a></td>
                                             <td><a href="" class="btn btn-primary btn-md" role="button">Eliminar Eliminar</a></td>
                                         </tr>
                                       <%
