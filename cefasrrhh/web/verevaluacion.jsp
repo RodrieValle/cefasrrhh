@@ -4,6 +4,11 @@
     Author     : Sergio
 --%>
 
+<%@page import="java.util.List"%>
+<%@page import="com.colegiocefas.cefasrrhh.dominio.CEFAS_Candidato"%>
+<%@page import="com.colegiocefas.cefasrrhh.negocio.CtrlCEFAS_Candidato"%>
+<%@page import="com.colegiocefas.cefasrrhh.dominio.CEFAS_EvaluacionCandidato"%>
+<%@page import="com.colegiocefas.cefasrrhh.negocio.CtrlCEFAS_EvaluacionCandidato"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <% 
     HttpSession sesionOk = request.getSession();
@@ -15,6 +20,12 @@
     if (!tipo.equals("director")) {
         response.sendRedirect("avisos.jsp");
     } 
+    String duiCdt = request.getParameter("dui");
+    CtrlCEFAS_Candidato ctrlCandidato = new CtrlCEFAS_Candidato();
+    CEFAS_Candidato candidato = ctrlCandidato.getCandidatoPorDui(duiCdt);
+
+    CtrlCEFAS_EvaluacionCandidato ctrlEvaluacionCandidato = new CtrlCEFAS_EvaluacionCandidato();
+    List<CEFAS_EvaluacionCandidato> listEvaluacion = ctrlEvaluacionCandidato.getEvaluacion(duiCdt);
 %>
 <!DOCTYPE html>
 <html>
@@ -34,12 +45,14 @@
                              <table class="table table-striped table-hover">
                                     <tbody>
                                         <tr>
+                                            <td>Cdigo</td>
                                             <td>DUI</td>
                                             <td>Comentarios</td>            
                                         </tr> 
                 
                                         <tr>
-                                            <td></td>
+                                            <td><%= candidato.getEvcCodigo()%></td>
+                                            <td><%= candidato.getCdtDUI()%></td>
                                             <td></td>
                                         </tr>
          

@@ -122,5 +122,27 @@ public class CEFAS_CandidatoDAO {
         
         return cdt;
     }
+    public CEFAS_Candidato getCandidatoPorDui(String codigo)
+    {
+        CEFAS_Candidato candidato = null; 
+        try {
+            conexiondb = ConexionDB.getConexion();
+            ps = conexiondb.prepareStatement(SQL_SELECT);
+            ps.setString(1, codigo);
+            rs = ps.executeQuery();
+            while(rs.next())
+            {
+                candidato = new CEFAS_Candidato();
+                candidato.setCdtDUI(rs.getString("cdtDUI"));
+                candidato.setCdtNombre(rs.getString("cdtNombre"));
+                candidato.setEspCodigo(rs.getInt("espCodigo"));
+                candidato.setCdtCurriculum(rs.getString("cdtCurriculum"));
+            }
+            ConexionDB.cerrarConexion();
+        } catch (SQLException ex) {
+            Logger.getLogger(CEFAS_UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return candidato;
+    }
 
 }

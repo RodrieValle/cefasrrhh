@@ -9,6 +9,7 @@ package com.colegiocefas.cefasrrhh.negocio;
 import com.colegiocefas.cefasrrhh.datos.CEFAS_EvaluacionCandidatoDAO;
 import com.colegiocefas.cefasrrhh.dominio.CEFAS_EvaluacionCandidato;
 import java.util.Date;
+import java.util.List;
 
 public class CtrlCEFAS_EvaluacionCandidato {
 
@@ -28,6 +29,10 @@ public class CtrlCEFAS_EvaluacionCandidato {
         evccan.setEvcNotaExamenPsico(evcNotaExamenPsico);
         evccan.setEvcCometarioExamenPsico(evcComentarioExamenPsico);
         daoEvaluacionCandidato.almacenarEvaluacion(evccan);
+    }
+    public List<CEFAS_EvaluacionCandidato> getEvaluacion(String codigo)
+    {
+        return daoEvaluacionCandidato.obtenerEvaluacion(codigo);
     }
     
 }

@@ -14,13 +14,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class CEFAS_EvaluacionCandidatoDAO {
 
     private final String SQL_INSERT = "INSERT INTO CEFAS_EVALUACIONCANDIDATO (CDTDUI,EVCOBSERVACIONREFERENCIAS,EVCFECHAENTREVISTA,EVCCOMENTARIOENTREVISTA,EVCFECHAEXAMENAPTITUD,EVCNOTAEXAMENAPTITUD,EVCCOMENTARIOEXAMENAPTITUD,EVCFECHAEXAMENPSICO,EVCNOTAEXAMENPSICO,EVCCOMENTARIOEXAMENPSICO) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
+    private final String SQL_SELECT = "SELECT * FROM CEFAS_EVALUACIONCANDIDATO WHERE CDTDUI LIKE ?";
     private Connection conexiondb;
     private Statement st;
     private PreparedStatement ps;
@@ -50,6 +52,40 @@ public class CEFAS_EvaluacionCandidatoDAO {
             Logger.getLogger(CEFAS_EvaluacionCandidatoDAO.class.getName()).log(Level.SEVERE, null, ex);
             
         }
+    }
+    public List<CEFAS_EvaluacionCandidato> obtenerEvaluacion(String codigo)
+    {
+     
+        List<CEFAS_EvaluacionCandidato> listEvaluacion = new ArrayList<CEFAS_EvaluacionCandidato>();
+        CEFAS_EvaluacionCandidato eval= null;
+        try {
+            conexiondb = ConexionDB.getConexion();
+            ps = conexiondb.prepareStatement(SQL_SELECT);
+            ps.setString(1, codigo);
+           
+            rs = ps.executeQuery();
+            while(rs.next())
+            {
+                eval= new CEFAS_EvaluacionCandidato();
+                eval.setEvcCodigo(rs.getInt("evcCodigo"));
+                eval.setCdtDUI(rs.getString("cdtDUI"));
+                eval.setEvcObservacionesReferencias(rs.getString("evcObservacionesReferencia"));
+                eval.setEvcFechaEntrevista(rs.getDate("evcFechaEntrevista"));
+                eval.setEvcComentarioEntrevista(rs.getString("evcComentarioEntrevista"));
+                eval.setEvcFechaExamenAptitud(rs.getDate("evcFechaExamenAptitud"));
+                eval.setEvcNotaExamenAptitud(rs.getDouble("evcNotaExamenAptitud"));
+                eval.setEvcComentarioExamenAptitud(rs.getString("evcComentarioExamenAptitud"));
+                eval.setEvcFechaExamenPsico(rs.getDate("evcFechaExamenPsico"));
+                eval.setEvcNotaExamenPsico(rs.getDouble("evcNotaExamenPsico"));
+                eval.setEvcCometarioExamenPsico(rs.getString("evcCometarioExamenPsico"));
+                listEvaluacion.add(eval);
+               
+            }
+            ConexionDB.cerrarConexion();
+        } catch (SQLException ex) {
+            Logger.getLogger(CEFAS_EvaluacionCandidatoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return listEvaluacion;
     }
 
 }

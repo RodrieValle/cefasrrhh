@@ -42,6 +42,10 @@ public class CtrlCEFAS_Candidato {
     {
         return daoCandidato.obtenerDui(dui);
     }
+    public CEFAS_Candidato getCandidatoPorDui(String codigo)
+    {
+        return daoCandidato.getCandidatoPorDui(codigo);
+    }
      
 
 }

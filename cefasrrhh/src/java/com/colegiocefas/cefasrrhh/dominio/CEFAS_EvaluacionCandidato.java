@@ -15,7 +15,7 @@ import java.util.Date;
 public class CEFAS_EvaluacionCandidato {
     
     private String cdtDUI;
-    private String evcCodigo;
+    private int evcCodigo;
     private String evcObservacionesReferencias;
     private Date   evcFechaEntrevista;
     private String evcComentarioEntrevista;
@@ -29,7 +29,7 @@ public class CEFAS_EvaluacionCandidato {
     public CEFAS_EvaluacionCandidato() {
     }
 
-    public CEFAS_EvaluacionCandidato(String cdtDUI, String evcCodigo, String evcObservacionesReferencias, Date evcFechaEntrevista, String evcComentarioEntrevista, Date evcFechaExamenAptitud, Double evcNotaExamenAptitud, String evcComentarioExamenAptitud, Date evcFechaExamenPsico, Double evcNotaExamenPsico, String evcCometarioExamenPsico) {
+    public CEFAS_EvaluacionCandidato(String cdtDUI, int evcCodigo, String evcObservacionesReferencias, Date evcFechaEntrevista, String evcComentarioEntrevista, Date evcFechaExamenAptitud, Double evcNotaExamenAptitud, String evcComentarioExamenAptitud, Date evcFechaExamenPsico, Double evcNotaExamenPsico, String evcCometarioExamenPsico) {
         this.cdtDUI = cdtDUI;
         this.evcCodigo = evcCodigo;
         this.evcObservacionesReferencias = evcObservacionesReferencias;
@@ -51,11 +51,11 @@ public class CEFAS_EvaluacionCandidato {
         this.cdtDUI = cdtDUI;
     }
 
-    public String getEvcCodigo() {
+    public int getEvcCodigo() {
         return evcCodigo;
     }
 
-    public void setEvcCodigo(String evcCodigo) {
+    public void setEvcCodigo(int evcCodigo) {
         this.evcCodigo = evcCodigo;
     }
 
