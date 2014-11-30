@@ -4,6 +4,7 @@
     Author     : Sergio
 --%>
 
+<%@page import="com.colegiocefas.cefasrrhh.dominio.CEFAS_Sancion"%>
 <%@page import="com.colegiocefas.cefasrrhh.negocio.CtrlCEFAS_Bitacora"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Date"%>
@@ -24,13 +25,21 @@
     }
     
     if (request.getParameter("fecha") != null) {
+        
         int empCodigo = Integer.parseInt(request.getParameter("empcodigo"));
         Date fecha = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("fecha").toString());
-        String scn = request.getParameter("sancion");
-        String motivo = request.getParameter("motivo");
+        String san = request.getParameter("sancion");
+        String mot = request.getParameter("motivo");
         
-        CtrlCEFAS_Sancion ctrlsancion = new CtrlCEFAS_Sancion();
-        ctrlsancion.guardarSancion(empCodigo,fecha, scn, motivo);
+        CEFAS_Sancion scn = new CEFAS_Sancion();
+        scn.setEmpCodigo(empCodigo);
+        scn.setScnFecha(fecha);
+        scn.setScnSancion(san);
+        scn.setScnMotivo(mot);
+        
+        
+        CtrlCEFAS_Sancion ctrlSancion = new CtrlCEFAS_Sancion();
+        ctrlSancion.guardarSancion(scn);
         
          CtrlCEFAS_Bitacora ctrlBitacora= new CtrlCEFAS_Bitacora();
          ctrlBitacora.guardarBitacora((Integer) sesionOk.getAttribute("codigo"), "Se almaceno una nueva sancion al empleado con codigo "+empCodigo);

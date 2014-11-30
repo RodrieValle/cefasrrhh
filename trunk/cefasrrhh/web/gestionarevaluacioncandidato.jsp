@@ -37,7 +37,7 @@
                 <jsp:include page='inc/menu_subdirector.jsp' />
          <% } %>
          <div class="container">
-	<h1>Listado de Candidatos</h1>
+	<h1>Opciones: </h1>
 	<form action="gestionarevaluacioncandidato.jsp" method="post">
             
    <div class="panel panel-primary">
