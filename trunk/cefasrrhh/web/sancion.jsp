@@ -62,7 +62,7 @@
                        Fecha:  <div class="bfh-datepicker" data-format="d/m/y"  data-name="fecha" data-language="es" data-input="input-sm form-control" data-icon=""
                                 data-close="true" data-align="right">
                         </div>
-                       Empleado:<input  type="text" name="empcodigo" value="<%= empleado.getEmpCodigo() %>" class="form-control input-sm"  required readonly/>
+                       Codigo de Empleado:<input  type="text" name="empcodigo" value="<%= empleado.getEmpCodigo() %>" class="form-control input-sm"  required readonly/>
         
                     </div>
                        <div class="col-xs-6">

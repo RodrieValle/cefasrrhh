@@ -40,8 +40,9 @@
         ctrlevccandidato.guardarEvaluacion(dui, comenll, fechaen, comenen, fechaex, notaap, comenap, fechapsi, notapsi, comenpsi);
     }
     
+    String cdtDui = request.getParameter("dui");
     CtrlCEFAS_Candidato ctrlCandidato = new CtrlCEFAS_Candidato();
-    CEFAS_Candidato empleado = ctrlCandidato.getobtenerDui();
+    CEFAS_Candidato cdt = ctrlCandidato.obtenerDui(cdtDui);
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -66,7 +67,7 @@
                             <div class="row">
                             <div class="col-xs-5 col-xs-offset-1">
                      <p></p>
-                         DUI: <input  type="text" name="nombre" value="<%= empleado.getCdtDUI() %>" class="form-control input-sm"  required readonly/>
+                         DUI: <input  type="text" name="nombre" value="<%= cdt.getCdtDUI() %>" class="form-control input-sm"  required readonly/>
                         <input type="checkbox" name="hecho"> Hecho
                         </div>
                         </div>
