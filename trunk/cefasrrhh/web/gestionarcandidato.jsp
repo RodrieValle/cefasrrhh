@@ -27,7 +27,7 @@
         response.sendRedirect("avisos.jsp");
     }
     if (request.getParameter("dui") != null) {
-        String dui = request.getParameter("dui");
+        String dui = request.getParameter("duicdt");
         String notaap = request.getParameter("notaap");
         String comenll = request.getParameter("comenll");
         String comenen = request.getParameter("comenen");
