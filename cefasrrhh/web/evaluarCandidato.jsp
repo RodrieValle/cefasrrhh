@@ -24,21 +24,7 @@
     if (!tipo.equals("director")) {
         response.sendRedirect("avisos.jsp");
     }
-    if (request.getParameter("dui") != null) {
-        String dui = request.getParameter("dui");
-        String notaap = request.getParameter("notaap");
-        String comenll = request.getParameter("comenll");
-        String comenen = request.getParameter("comenen");
-        String comenap = request.getParameter("comenap");
-        String notapsi = request.getParameter("notapsi");
-        String comenpsi = request.getParameter("comenpsi");
-        Date fechaen = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("fechaen").toString());
-        Date fechaex = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("fechaex").toString());
-        Date fechapsi = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("fechapsi").toString());
-
-        CtrlCEFAS_EvaluacionCandidato ctrlevccandidato = new CtrlCEFAS_EvaluacionCandidato();
-        ctrlevccandidato.guardarEvaluacion(dui, comenll, fechaen, comenen, fechaex, notaap, comenap, fechapsi, notapsi, comenpsi);
-    }
+    
     
     String cdtDui = request.getParameter("dui");
     CtrlCEFAS_Candidato ctrlCandidato = new CtrlCEFAS_Candidato();

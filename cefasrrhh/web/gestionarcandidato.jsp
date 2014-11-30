@@ -3,6 +3,9 @@
     Created on : 19/11/2014, 09:02:13 PM
     Author     : Sergio
 --%>
+<%@page import="com.colegiocefas.cefasrrhh.negocio.CtrlCEFAS_EvaluacionCandidato"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
 <%@page import="com.colegiocefas.cefasrrhh.negocio.CtrlCEFAS_Candidato"%>
 <%@page import="com.colegiocefas.cefasrrhh.dominio.CEFAS_Candidato"%>
 <%@page import="java.util.List"%>
@@ -22,6 +25,21 @@
     }
     if (!tipo.equals("director")) {
         response.sendRedirect("avisos.jsp");
+    }
+    if (request.getParameter("dui") != null) {
+        String dui = request.getParameter("dui");
+        String notaap = request.getParameter("notaap");
+        String comenll = request.getParameter("comenll");
+        String comenen = request.getParameter("comenen");
+        String comenap = request.getParameter("comenap");
+        String notapsi = request.getParameter("notapsi");
+        String comenpsi = request.getParameter("comenpsi");
+        Date fechaen = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("fechaen").toString());
+        Date fechaex = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("fechaex").toString());
+        Date fechapsi = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("fechapsi").toString());
+
+        CtrlCEFAS_EvaluacionCandidato ctrlevccandidato = new CtrlCEFAS_EvaluacionCandidato();
+        ctrlevccandidato.guardarEvaluacion(dui, comenll, fechaen, comenen, fechaex, notaap, comenap, fechapsi, notapsi, comenpsi);
     }
     
     
