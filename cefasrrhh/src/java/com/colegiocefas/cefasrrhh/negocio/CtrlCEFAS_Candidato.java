@@ -38,14 +38,8 @@ public class CtrlCEFAS_Candidato {
     {
         return daoCandidato.obtenerPorEspecialidad();
     }
-    public CEFAS_Candidato obtenerDui( String dui)
-    {
-        return daoCandidato.obtenerDui(dui);
-    }
-    public CEFAS_Candidato getCandidatoPorDui(String codigo)
-    {
-        return daoCandidato.getCandidatoPorDui(codigo);
-    }
+    
+    
      
 
 }

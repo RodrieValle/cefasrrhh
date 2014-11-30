@@ -26,8 +26,8 @@ public class CEFAS_CandidatoDAO {
 
     private final String SQL_INSERT = "INSERT INTO CEFAS_CANDIDATO(CDTDUI,CDTNOMBRE,ESPCODIGO,CDTCURRICULO) VALUES (?, ?, ?, ?)";
     private final String SQL_SELECT_ID = "SELECT * FROM CEFAS_CANDIDATO WHERE CDTDUI = ?";
-    private final String SQL_SELECT = "SELECT CDTNOMBRE,ESPNOMBRE FROM CEFAS_CANDIDATO INNER JOIN CEFAS_ESPECIALIDAD ON CEFAS_CANDIDATO.ESPCODIGO = CEFAS_ESPECIALIDAD.ESPCODIGO";
-    private final String SQL_SELECT_ALL = "SELECT CDTDUI,CDTNOMBRE,ESPCODIGO,CDTCURRICULO FROM CEFAS_CANDIDATO ORDER BY CDTDUI";
+    private final String SQL_SELECT = "SELECT CEFAS_CANDIDATO.CDTNOMBRE,CEFAS_ESPECIALIDAD.ESPNOMBRE FROM CEFAS_CANDIDATO INNER JOIN CEFAS_ESPECIALIDAD ON CEFAS_CANDIDATO.ESPCODIGO = CEFAS_ESPECIALIDAD.ESPCODIGO";
+   
     private Connection conexiondb;
     private Statement st;
     private PreparedStatement ps;
@@ -88,9 +88,10 @@ public class CEFAS_CandidatoDAO {
             {
                 cdt = new CEFAS_Candidato();
                 cdt.setCdtNombre(rs.getString("cdtNombre"));
-                
+               
                 listaCandidato.add(cdt);
             }
+            
             ConexionDB.cerrarConexion();
         } catch (SQLException ex) {
             Logger.getLogger(CEFAS_CandidatoDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -98,51 +99,8 @@ public class CEFAS_CandidatoDAO {
         
         return listaCandidato;
     }
-    public CEFAS_Candidato obtenerDui(String dui)
-    {
-        CEFAS_Candidato cdt = null; 
-        try {
-            conexiondb = ConexionDB.getConexion();
-            ps = conexiondb.prepareStatement(SQL_SELECT);
-            ps.setString(1, dui);
-            rs = ps.executeQuery();
-            while(rs.next())
-            {
-                cdt = new CEFAS_Candidato();
-                cdt.setCdtDUI(rs.getString("cdtDUI"));
-                cdt.setCdtNombre(rs.getString("cdtNombre"));
-                cdt.setEspCodigo(rs.getInt("espCodigo"));
-                cdt.setCdtCurriculum(rs.getString("cdtCurriculum"));
-                
-            }
-            ConexionDB.cerrarConexion();
-        } catch (SQLException ex) {
-            Logger.getLogger(CEFAS_CandidatoDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        return cdt;
-    }
-    public CEFAS_Candidato getCandidatoPorDui(String codigo)
-    {
-        CEFAS_Candidato candidato = null; 
-        try {
-            conexiondb = ConexionDB.getConexion();
-            ps = conexiondb.prepareStatement(SQL_SELECT);
-            ps.setString(1, codigo);
-            rs = ps.executeQuery();
-            while(rs.next())
-            {
-                candidato = new CEFAS_Candidato();
-                candidato.setCdtDUI(rs.getString("cdtDUI"));
-                candidato.setCdtNombre(rs.getString("cdtNombre"));
-                candidato.setEspCodigo(rs.getInt("espCodigo"));
-                candidato.setCdtCurriculum(rs.getString("cdtCurriculum"));
-            }
-            ConexionDB.cerrarConexion();
-        } catch (SQLException ex) {
-            Logger.getLogger(CEFAS_UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return candidato;
-    }
+    
+    
+    
 
 }
