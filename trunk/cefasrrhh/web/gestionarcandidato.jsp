@@ -87,6 +87,7 @@
 				<td>Especialidad:</td>
 				<td>Curriculum:</td>
 				<td>Evaluacion:</td>
+                                <td>Evaluacion:</td>
 			</tr>
                        <% for(CEFAS_Candidato cdt: listaCandidato)
                                     {
@@ -95,9 +96,11 @@
 				<td><%= cdt.getCdtNombre() %> </td>
 				<td></td>
 				<td><a href="" class="btn btn-primary btn-md" role="button">Ver Curriculum</a></td>
-				<td><a href="gestionarevaluacioncandidato.jsp" class="btn btn-primary btn-md" role="button"> Evaluar </a></td>
+                                <td><a href="evaluarCandidato.jsp?dui=<%= cdt.getCdtDUI() %>" class="btn btn-primary btn-md" role="button"> Ingresar </a></td>
+                                <td><a href="verevaluacion.jsp?dui=<%= cdt.getCdtDUI() %>" class="btn btn-primary btn-md" role="button"> Ver </a></td>
 
 			</tr>
+                        
                         <%
                                     } %>
 		</tbody>
