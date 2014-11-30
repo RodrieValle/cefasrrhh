@@ -7,8 +7,11 @@
 package com.colegiocefas.cefasrrhh.negocio;
 
 import com.colegiocefas.cefasrrhh.datos.CEFAS_TiempoExtraDAO;
+import com.colegiocefas.cefasrrhh.dominio.CEFAS_Planilla;
 import com.colegiocefas.cefasrrhh.dominio.CEFAS_TiempoExtra;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -42,6 +45,34 @@ public class CtrlCEFAS_TiempoExtra {
             }
      
     }
+    
+    
+    
+    
+    public float sumaHoras(int codigo){
+        float suma=0;
+        List<CEFAS_TiempoExtra> listExtras= new ArrayList();
+        listExtras=getHorasEmpleadoFecha(codigo);
+        
+         for(CEFAS_TiempoExtra extra: listExtras)
+        {
+            suma=suma+extra.getTexValorDinero();
+        }
+        return suma;
+    }
+    
+    
+    
+    //  LLAMADA A METODO DE RETORNO DE HORAS A UNA FECHA DADA
+    public List<CEFAS_TiempoExtra> getHorasEmpleadoFecha(int codigo)
+    {
+        CtrlCEFAS_Planilla ctrlPlanilla= new CtrlCEFAS_Planilla();
+        CEFAS_Planilla planilla=ctrlPlanilla.getUltimaPlanilla();
+        Date fechaUltima=planilla.getPlnFecha();
+     
+        return extradao.getHorasExtrasEmpleadoFecha(codigo, fechaUltima);
+    }
+    
     
     
 }

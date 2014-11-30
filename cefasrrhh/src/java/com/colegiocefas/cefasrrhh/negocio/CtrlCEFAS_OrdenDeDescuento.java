@@ -46,4 +46,29 @@ public class CtrlCEFAS_OrdenDeDescuento {
     {
         return daoOrden.obtenerDescuentoEmpleado(codigo);
     }
+            
+            
+public int actualizarOrden(int codigo, int empleado, Date fecha, float cuota, float cantidad,
+                                            int plazo, float saldo)
+    {
+        CEFAS_OrdenDeDescuento orden= new CEFAS_OrdenDeDescuento();
+        orden.setOddCodigo(codigo);
+        orden.setEmpCodigo(empleado);
+        orden.setOddCuota(cuota);
+        orden.setOddFecha(fecha);
+        orden.setOddMonto(cantidad);
+        orden.setOddPlazo(plazo);
+        orden.setOddSaldo(saldo);
+        return daoOrden.actualizarOrdenDeDescuento(orden);
+    }
+    
+   public int eliminarOrden(int codigo)
+    {
+        return daoOrden.eliminarOrdenDeDescuento(codigo);
+    }
+    
+         public CEFAS_OrdenDeDescuento getOrden(int codigo){
+        return daoOrden.getOrdenDescuento(codigo);
+    }
+     
 }

@@ -39,8 +39,8 @@ public class CEFAS_OrdenDeDescuentoDAO {
     private final String SQL_SELECTALL = "SELECT * FROM CEFAS_ORDENDEDESCUENTO";
     private final String SQL_SELECT_ACTIVOS = "SELECT * FROM CEFAS_ORDENDEDESCUENTO WHERE ODDSALDO > 0";
     private final String SQL_UPDATE = "UPDATE CEFAS_ORDENDEDESCUENTO SET EMPCODIGO = ?, ODDFECHA = ?,"
-            + " ODDMONTO = ?, ODDPLAZO = ?, ODDSALDO = ?, ODDCUOTA = ?,WHERE ODDCODIGO = ?";
-    private final String SQL_DELETE = "";
+            + " ODDMONTO = ?, ODDPLAZO = ?, ODDSALDO = ?, ODDCUOTA = ? WHERE ODDCODIGO = ?";
+    private final String SQL_DELETE = "DELETE FROM CEFAS_ORDENDEDESCUENTO WHERE ODDCODIGO = ?";
     private Connection conexiondb;
     private Statement st;
     private PreparedStatement ps;
@@ -142,8 +142,8 @@ ConexionDB.cerrarConexion();
      
      
      
-     public void actualizarOrdenDeDescuento(CEFAS_OrdenDeDescuento orden) {
-     //almacena un anticipo leido desde el navegador
+     public int actualizarOrdenDeDescuento(CEFAS_OrdenDeDescuento orden) {
+     int n=0;
     
         try {
             conexiondb = ConexionDB.getConexion();
@@ -154,8 +154,8 @@ ConexionDB.cerrarConexion();
             ps.setDouble(4, orden.getOddPlazo());
             ps.setDouble(5, orden.getOddSaldo());
             ps.setDouble(6, orden.getOddCuota());
-           
-            int n=ps.executeUpdate();
+           ps.setInt(7, orden.getOddCodigo());
+             n=ps.executeUpdate();
 
             if(n>0){
                Logger.getLogger("Se guardo correctamente");
@@ -163,10 +163,10 @@ ConexionDB.cerrarConexion();
 ConexionDB.cerrarConexion();
         } catch (SQLException ex) {
             Logger.getLogger(CEFAS_OrdenDeDescuentoDAO.class.getName()).log(Level.SEVERE, null, ex);
-             
+            
         }
      
-     
+     return n; 
      }
      
     
@@ -231,4 +231,21 @@ ConexionDB.cerrarConexion();
             }
         }
     
+       //eliminar VIATICO
+       public int eliminarOrdenDeDescuento(int codigo){
+          int resultado=0;
+            try {
+            conexiondb = ConexionDB.getConexion();
+            
+            ps = conexiondb.prepareStatement(SQL_DELETE);
+            ps.setInt(1, codigo);
+            resultado=ps.executeUpdate();
+           
+            ConexionDB.cerrarConexion();
+        } catch (SQLException ex) {
+            Logger.getLogger(CEFAS_OrdenDeDescuentoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            return resultado; 
+    }
+       
 }

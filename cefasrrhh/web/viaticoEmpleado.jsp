@@ -55,10 +55,10 @@
     
     //peticion de eliminacion
       //peticion de eliminacion
-    if(request.getParameter("codigoAnt") != null)
+    if(request.getParameter("codigoVia") != null)
     { 
     int resultado=0;
-     int codigoVia = Integer.parseInt(request.getParameter("codigoAnt"));
+     int codigoVia = Integer.parseInt(request.getParameter("codigoVia"));
      
        CtrlCEFAS_Viatico ctrlviatico = new CtrlCEFAS_Viatico();
        resultado=ctrlviatico.eliminarViatico(codigoVia);
@@ -134,7 +134,7 @@ int codigoEmp = Integer.parseInt(request.getParameter("codigo"));
                                             <td>$ <%= String.format("%.2f", viatico.getViaCantidad())%></td>
                                             <td><%= viatico.getViaDescripcion()%></td>
                                             <td><a href="viaticoModificar.jsp?codigo=<%=viatico.getViaCodigo() %>" class="btn btn-primary btn-md" role="button">Modificar Viatico</a></td>
-                                            <td><a href="viaticoEmpleado.jsp?codigoAnt=<%=viatico.getViaCodigo()%>&codigo=<%=empleado.getEmpCodigo()%>" class="btn btn-primary btn-md" role="button">Eliminar Viatico</a></td>
+                                            <td><a href="viaticoEmpleado.jsp?codigoVia=<%=viatico.getViaCodigo()%>&codigo=<%=empleado.getEmpCodigo()%>" class="btn btn-primary btn-md" role="button">Eliminar Viatico</a></td>
                                         </tr>
                                       <%
                                     } %>  

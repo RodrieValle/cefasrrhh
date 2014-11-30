@@ -15,6 +15,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -24,7 +26,8 @@ import java.util.logging.Logger;
  */
 public class CEFAS_TiempoExtraDAO {
       private final String SQL_INSERT = "INSERT INTO CEFAS_TIEMPOEXTRA (EMPCODIGO,EMPSUSTITUTO,TEXFECHA,TEXHORAINICIO,TEXHORAFIN,TEXDELTATIEMPO,TEXVALORDINERO) VALUES (?,?,?,?,?,?,?)";
-    private Connection conexiondb;
+    private final String SQL_SELECT_DATE = "SELECT * FROM CEFAS_TIEMPOEXTRA WHERE EMPCODIGO= ? and TEXFECHA>= ?";
+      private Connection conexiondb;
     private Statement st;
     private PreparedStatement ps;
     private ResultSet rs;
@@ -54,4 +57,44 @@ ConexionDB.cerrarConexion();
     }
     
 }
+    
+    
+    //>>>>>>>>>>>>>>>>>>>>>CALCULO DE LAS HORAS EXTRAS DESDE EL ULTIMO CORTE DE PLANILLA<<<<<<<<<<<<<<<<<<<<<
+     
+    public List<CEFAS_TiempoExtra> getHorasExtrasEmpleadoFecha(int codigo, java.util.Date fecha)
+    {
+         //retorna todos los anticipos de un empleado
+     
+        List<CEFAS_TiempoExtra> listExtras = new ArrayList<CEFAS_TiempoExtra>();
+        CEFAS_TiempoExtra extra;
+        try {
+            conexiondb = ConexionDB.getConexion();
+            ps = conexiondb.prepareStatement(SQL_SELECT_DATE);
+            ps.setInt(1, codigo);
+            ps.setDate(2, new Date(fecha.getTime()));
+            rs = ps.executeQuery();
+            while(rs.next())
+            {
+     
+                extra = new CEFAS_TiempoExtra();
+               extra.setTexCodigo(rs.getInt("texCodigo"));
+                extra.setEmpCodigo(rs.getInt("empCodigo"));
+                extra.setTexCodigo2(rs.getInt("empSustituto"));
+                 extra.setTexFecha(rs.getDate("texFecha"));
+                extra.setTexHoraInicio(rs.getDate("textHoraInicio"));
+                extra.setTexHoraFin(rs.getDate("texHoraFin"));
+                extra.setTexDeltaTiempo(rs.getDate("texDeltaTiempo"));
+                 extra.setTexValorDinero(rs.getFloat("textValorDinero"));
+                listExtras.add(extra);
+            }
+            ConexionDB.cerrarConexion();
+        } catch (SQLException ex) {
+            Logger.getLogger(CEFAS_TiempoExtraDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return listExtras;
+    }
+      
+    
+    
+    
 }
