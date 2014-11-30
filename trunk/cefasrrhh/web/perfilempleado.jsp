@@ -153,7 +153,7 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-xs-6">
-                                    Año de contratación: <%= empleado.getEmpAnioContratacion() %><br>
+                                    Año de contratación: <%= new SimpleDateFormat("dd/MM/yyyy").format(empleado.getEmpAnioContratacion()) %><br>
                                     Plaza actual: <%= empleado.getEmpPlazaActual() %><br>
                                     Plaza anterior: <%= empleado.getEmpPlazaAnterior() %><br>
                                 </div>
