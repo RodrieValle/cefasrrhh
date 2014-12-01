@@ -26,13 +26,13 @@
     
     if (request.getParameter("fecha") != null) {
         
-        int empCodigo = Integer.parseInt(request.getParameter("empcodigo"));
+        int codigo = Integer.parseInt(request.getParameter("empcodigo"));
         Date fecha = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("fecha").toString());
         String san = request.getParameter("sancion");
         String mot = request.getParameter("motivo");
         
         CEFAS_Sancion scn = new CEFAS_Sancion();
-        scn.setEmpCodigo(empCodigo);
+        scn.setEmpCodigo(codigo);
         scn.setScnFecha(fecha);
         scn.setScnSancion(san);
         scn.setScnMotivo(mot);
@@ -42,7 +42,7 @@
         ctrlSancion.guardarSancion(scn);
         
          CtrlCEFAS_Bitacora ctrlBitacora= new CtrlCEFAS_Bitacora();
-         ctrlBitacora.guardarBitacora((Integer) sesionOk.getAttribute("codigo"), "Se almaceno una nueva sancion al empleado con codigo "+empCodigo);
+         ctrlBitacora.guardarBitacora((Integer) sesionOk.getAttribute("codigo"), "Se almaceno una nueva sancion al empleado con codigo "+codigo);
     }
     
     CtrlCEFAS_Empleado ctrlEmpleado = new CtrlCEFAS_Empleado();
