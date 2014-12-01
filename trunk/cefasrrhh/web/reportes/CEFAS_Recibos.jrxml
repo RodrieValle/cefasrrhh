@@ -51,21 +51,6 @@ FROM
 				<imageExpression><![CDATA["http://localhost:8080/cefasrrhh/img/cefas-logo.jpg"]]></imageExpression>
 			</image>
 			<staticText>
-				<reportElement uuid="b01233ee-c4af-4227-b360-19ffe36315d1" x="320" y="8" width="100" height="20"/>
-				<textElement>
-					<font fontName="Calisto MT"/>
-				</textElement>
-				<text><![CDATA[Por____________]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="8001bdee-880a-4cdd-8198-ec8d564926da" x="10" y="41" width="439" height="13"/>
-				<textElement>
-					<font fontName="Calisto MT"/>
-					<paragraph lineSpacing="Fixed"/>
-				</textElement>
-				<text><![CDATA[Recibí del Colegio Cefas la cantidad de ________________________________________]]></text>
-			</staticText>
-			<staticText>
 				<reportElement uuid="8d70154e-6269-47e8-be89-1d55a5c09149" x="10" y="79" width="100" height="13"/>
 				<textElement>
 					<font fontName="Calisto MT"/>
@@ -263,6 +248,18 @@ FROM
 					<font fontName="Calisto MT"/>
 				</textElement>
 				<textFieldExpression><![CDATA["en concepto de salario correspondiente al mes de "+$P{periodo}+", según el detalle siguiente:"]]></textFieldExpression>
+			</textField>
+			<textField pattern="$ #,##0.00">
+				<reportElement uuid="0f72e89a-83ab-41b9-8a0d-24e4515525c8" x="321" y="11" width="100" height="17"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Por: "+$F{CEFAS_LINEADEPLANILLA_LDPLIQUIDOAPAGAR}]]></textFieldExpression>
+			</textField>
+			<textField pattern="$ #,##0.00">
+				<reportElement uuid="c100a781-f39f-4537-8ab2-936170ef595f" x="10" y="41" width="372" height="13"/>
+				<textElement textAlignment="Left">
+					<font fontName="Calisto MT"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Recibí del Colegio Cefas la cantidad de "+$F{CEFAS_LINEADEPLANILLA_LDPLIQUIDOAPAGAR}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

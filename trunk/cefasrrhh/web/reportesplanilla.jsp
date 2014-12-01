@@ -92,7 +92,7 @@
     </head>
     <body>
         <div id="container">
-            <jsp:include page='inc/menu_directora.jsp' />
+            <jsp:include page='inc/menu_administradora.jsp' />
             <div class="container">
                 <h1>Reportes de planilla</h1>
                 Seleccione el reporte deseado
