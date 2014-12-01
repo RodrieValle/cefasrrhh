@@ -43,8 +43,8 @@
         float salario=empleado.getEmpSalario();
       mensaje = "<br><br><div class='alert alert-success' role='alert'><button type='button' class='close'"
                 + " data-dismiss='alert'><span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span></button>"
-                + "La indemnización del empleado con codigo " +codigoemp+ " con nombre " + nomb+ " es de $" +indemnizacion+ " quien ha laborado en la empresa"
-                +" durante " +ctrlEmpleado.tiempoTrabajado(codigoemp).get(2) + " años " +ctrlEmpleado.tiempoTrabajado(codigoemp).get(1)+ " meses y " + ctrlEmpleado.tiempoTrabajado(codigoemp).get(0)+ " dias con un salario de $" +salario+ "</div>";
+                + "La indemnización del empleado con código " +codigoemp+ " con nombre " + nomb+ " es de $" +String.format("%.2f",indemnizacion)+ " quien ha laborado en la empresa"
+                +" durante " +ctrlEmpleado.tiempoTrabajado(codigoemp).get(2) + " años " +ctrlEmpleado.tiempoTrabajado(codigoemp).get(1)+ " meses y " + ctrlEmpleado.tiempoTrabajado(codigoemp).get(0)+ " días con un salario de $" + String.format("%.2f",salario)+ "</div>";
     }
    
     
@@ -56,7 +56,7 @@
 
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Calculo de Indemnizacion</title>
+        <title>Cálculo de Indemnización</title>
         <jsp:include page='inc/head_common.jsp' /> 
         <link rel="stylesheet" type="text/css" href="css/bootstrap-formhelpers.css">
         <script type="text/javascript" src="js/bootstrap-formhelpers.js"></script>
@@ -68,7 +68,7 @@
             <jsp:include page='inc/menu_administradora.jsp' />
          
             <div class="container">
-                <h1>Calculo de indemnizacion del Empleado</h1>
+                <h1>Cálculo de indemnización del Empleado</h1>
                 
                 <div class="row">
                     <div class="col-xs-4 col-xs-offset-4">
