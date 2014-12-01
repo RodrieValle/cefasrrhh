@@ -106,8 +106,9 @@ public class CEFAS_PrestamoDAO {
     }
     
    
-     public void almacenarPrestamos(CEFAS_Prestamo prestamo) {
+     public int almacenarPrestamos(CEFAS_Prestamo prestamo) {
      //almacena un prestamo leido desde el navegador
+         int n=0;
         try {
             conexiondb = ConexionDB.getConexion();
             ps=conexiondb.prepareStatement(SQL_INSERT);
@@ -117,7 +118,7 @@ public class CEFAS_PrestamoDAO {
             ps.setDouble(4, prestamo.getPrmPlazo());
             ps.setDouble(5, prestamo.getPrmSaldo());
             ps.setDouble(6, prestamo.getPrmCuota());
-            int n=ps.executeUpdate();            
+           n=ps.executeUpdate();            
 
             if(n>0){
                Logger.getLogger("Se guardo correctamente");
@@ -126,6 +127,7 @@ ConexionDB.cerrarConexion();
         } catch (SQLException ex) {
             Logger.getLogger(CEFAS_Prestamo.class.getName()).log(Level.SEVERE, null, ex);         
         }
+        return n;
      }
      
      

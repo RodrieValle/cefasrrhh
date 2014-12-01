@@ -16,7 +16,7 @@
 
 <%
     //Verificación de sesión abierta
-   
+   String mensaje="";
  HttpSession sesionOk = request.getSession();
     String tipo = (String) sesionOk.getAttribute("tipo");
     if (tipo == null) {
@@ -45,11 +45,23 @@
         viatico.setViaDescripcion(descripcion);
            
         CtrlCEFAS_Viatico ctrlViatico = new CtrlCEFAS_Viatico();
-      ctrlViatico.guardarViatico(viatico);
+    int resultado=  ctrlViatico.guardarViatico(viatico);
       
-        CtrlCEFAS_Bitacora ctrlBitacora= new CtrlCEFAS_Bitacora();
+        
+if(resultado==1){
+             mensaje = "<br><br><div class='alert alert-success' role='alert'><button type='button' class='close'"
+                + " data-dismiss='alert'><span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span></button>"
+                + "El nuevo viatico fue guardado correctamente</div>";
+               CtrlCEFAS_Bitacora ctrlBitacora= new CtrlCEFAS_Bitacora();
         ctrlBitacora.guardarBitacora((Integer) sesionOk.getAttribute("codigo"), "Se almaceno un nuevo viatico al empleado con codigo "+codigo);
-}
+        }else{
+         mensaje = "<br><br><div class='alert alert-success' role='alert'><button type='button' class='close'"
+                + " data-dismiss='alert'><span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span></button>"
+                + "No se pudo guardar el nuevo viatico.</div>";
+        } 
+    
+    
+    }
     CtrlCEFAS_Empleado ctrlEmpleado = new CtrlCEFAS_Empleado();
     List<CEFAS_Empleado> listaEmpleados;
     if(request.getParameter("dato")!= null)
@@ -73,7 +85,7 @@
           <jsp:include page='inc/head_common.jsp' /> 
     </head>
     <body>
-      
+      <%= mensaje%>
          <div id="container">
             <jsp:include page='inc/menu_administradora.jsp' />
             <div class="container">

@@ -48,7 +48,7 @@
 
             <div class="container">
                 <h1 class="form-signin-heading">Ingresar Sanción</h1>
-                <form class="form-signin" action="sancion.jsp" method="post">   
+                <form class="form-signin" action="gestionarsancion.jsp" method="post">   
 
                     <div class="row">
                         <div class="col-xs-6 col-xs-offset-3">      

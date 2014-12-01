@@ -63,9 +63,9 @@ public class CtrlCEFAS_Viatico {
     }
     
       
-    public void guardarViatico(CEFAS_Viatico viatico)
+    public int guardarViatico(CEFAS_Viatico viatico)
     {
-        daoViatico.almacenarViatico(viatico);
+       return daoViatico.almacenarViatico(viatico);
     }
     
    
