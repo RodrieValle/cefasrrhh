@@ -36,7 +36,7 @@
                          <li><a href="retencionesconfig.jsp">Configuración de las Retenciones</a></li>
                         <li><a href="planillaDelMes.jsp">Elaborar Planilla</a></li>
                         <li><a href="#">Generar Recibos</a></li>
-                        <li><a href="planillasHistorial.jsp">Reporte de Planilla</a></li>
+                        <li><a href="reportesplanilla.jsp">Reportes de Planilla</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
