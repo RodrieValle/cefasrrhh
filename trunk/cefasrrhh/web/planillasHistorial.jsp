@@ -77,7 +77,7 @@
                                             <td><%= planilla.getPlnCodigo() %></td>
                                             <td> <%= planilla.getPlnTipo() %></td>
                                             <td><%= new SimpleDateFormat("dd/MM/yyyy").format(planilla.getPlnFecha())%></td>         
-                                            <td><a href="planilla.jsp?idPlanilla=<%=planilla.getPlnCodigo() %>" class="btn btn-primary btn-md" role="button">Generar Reporte</a></td>
+                                            <td><a href="planilla.jsp?idPlanilla=<%=planilla.getPlnCodigo() %>" target="_blank" class="btn btn-primary btn-md" role="button">Generar Reporte</a></td>
                                             
                                         </tr>
                                       <%

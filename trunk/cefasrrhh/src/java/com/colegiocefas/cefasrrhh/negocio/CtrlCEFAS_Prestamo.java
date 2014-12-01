@@ -20,7 +20,7 @@ public class CtrlCEFAS_Prestamo {
     private CEFAS_PrestamoDAO daoPrestamo = new CEFAS_PrestamoDAO();
     
     
-        public void guardarPrestamo(int empCodigo, Date prmFecha, float prmMonto, int prmPlazos, float prmCuota)
+        public int guardarPrestamo(int empCodigo, Date prmFecha, float prmMonto, int prmPlazos, float prmCuota)
     {
         CEFAS_Prestamo prestamo= new CEFAS_Prestamo();
          
@@ -32,7 +32,7 @@ public class CtrlCEFAS_Prestamo {
                 prestamo.setPrmSaldo(prmMonto);
                 prestamo.setPrmCuota(prmCuota);
                 
-                daoPrestamo.almacenarPrestamos(prestamo);
+              return  daoPrestamo.almacenarPrestamos(prestamo);
     }
     
         

@@ -17,7 +17,7 @@
 
 <%
      // Verificación de sesión abierta
- 
+ String mensaje="";
  HttpSession sesionOk = request.getSession();
     String tipo = (String) sesionOk.getAttribute("tipo");
     if (tipo == null) {
@@ -42,10 +42,23 @@
         
   
         CtrlCEFAS_OrdenDeDescuento ctrlOrdenDeDescuento = new CtrlCEFAS_OrdenDeDescuento();
-        ctrlOrdenDeDescuento.guardarOrdenDeDescuento(codigo, fecha, monto, plazo, cuota);
+        int resultado=ctrlOrdenDeDescuento.guardarOrdenDeDescuento(codigo, fecha, monto, plazo, cuota);
         
-         CtrlCEFAS_Bitacora ctrlBitacora= new CtrlCEFAS_Bitacora();
+        
+        if(resultado==1){
+             mensaje = "<br><br><div class='alert alert-success' role='alert'><button type='button' class='close'"
+                + " data-dismiss='alert'><span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span></button>"
+                + "La nueva orden fue guardada correctamente</div>";
+               CtrlCEFAS_Bitacora ctrlBitacora= new CtrlCEFAS_Bitacora();
         ctrlBitacora.guardarBitacora((Integer) sesionOk.getAttribute("codigo"), "Se almaceno una nueva orden de descuento al empleado con codigo "+codigo);
+        }else{
+         mensaje = "<br><br><div class='alert alert-success' role='alert'><button type='button' class='close'"
+                + " data-dismiss='alert'><span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span></button>"
+                + "No se pudo guardar la nueva orden.</div>";
+        } 
+    
+        
+   
         
     }
     CtrlCEFAS_Empleado ctrlEmpleado = new CtrlCEFAS_Empleado();
@@ -70,7 +83,7 @@
          <jsp:include page='inc/head_common.jsp' /> 
     </head>
     <body>
-       
+       <%= mensaje%>
         <div id="container">
             <jsp:include page='inc/menu_administradora.jsp' />
             <div class="container">

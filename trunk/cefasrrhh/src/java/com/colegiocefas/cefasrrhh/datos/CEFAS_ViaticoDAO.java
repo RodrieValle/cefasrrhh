@@ -104,9 +104,9 @@ public class CEFAS_ViaticoDAO {
     }
     
     
-     public void almacenarViatico(CEFAS_Viatico viatico) {
+     public int almacenarViatico(CEFAS_Viatico viatico) {
      //almacena un anticipo leido desde el navegador
-    
+    int n=0;
         try {
             conexiondb = ConexionDB.getConexion();
             ps=conexiondb.prepareStatement(SQL_INSERT);
@@ -114,7 +114,7 @@ public class CEFAS_ViaticoDAO {
             ps.setDate(2, new Date(viatico.getViaFecha().getTime()));
             ps.setDouble(3, viatico.getViaCantidad());
             ps.setString(4, viatico.getViaDescripcion());
-            int n=ps.executeUpdate();
+            n=ps.executeUpdate();
 
             if(n>0){
                Logger.getLogger("Se guardo correctamente");
@@ -125,7 +125,7 @@ ConexionDB.cerrarConexion();
              
         }
      
-     
+     return n;
      }
      
      

@@ -114,9 +114,9 @@ public class CEFAS_OrdenDeDescuentoDAO {
     }
     
    
-     public void almacenarOrdenDeDescuento(CEFAS_OrdenDeDescuento orden) {
+     public int almacenarOrdenDeDescuento(CEFAS_OrdenDeDescuento orden) {
      //almacena un anticipo leido desde el navegador
-    
+    int n=0;
         try {
             conexiondb = ConexionDB.getConexion();
             ps=conexiondb.prepareStatement(SQL_INSERT);
@@ -126,7 +126,7 @@ public class CEFAS_OrdenDeDescuentoDAO {
             ps.setDouble(4, orden.getOddPlazo());
             ps.setDouble(5, orden.getOddSaldo());
             ps.setDouble(6, orden.getOddCuota());
-            int n=ps.executeUpdate();            
+             n=ps.executeUpdate();            
 
             if(n>0){
                Logger.getLogger("Se guardo correctamente");
@@ -137,7 +137,7 @@ ConexionDB.cerrarConexion();
              
         }
      
-     
+     return n;
      }
      
      

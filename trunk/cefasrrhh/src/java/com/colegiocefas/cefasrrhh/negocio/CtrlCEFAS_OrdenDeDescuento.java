@@ -20,7 +20,7 @@ public class CtrlCEFAS_OrdenDeDescuento {
     private CEFAS_OrdenDeDescuentoDAO daoOrden = new CEFAS_OrdenDeDescuentoDAO();
     
     
-        public void guardarOrdenDeDescuento(int empCodigo, Date oddFecha, float oddMonto, int oddPlazos, float oddCuota)
+        public int guardarOrdenDeDescuento(int empCodigo, Date oddFecha, float oddMonto, int oddPlazos, float oddCuota)
     {
         CEFAS_OrdenDeDescuento orden= new CEFAS_OrdenDeDescuento();
          
@@ -32,7 +32,7 @@ public class CtrlCEFAS_OrdenDeDescuento {
                 orden.setOddSaldo(oddMonto);
                 orden.setOddCuota(oddCuota);
                 
-                daoOrden.almacenarOrdenDeDescuento(orden);
+               return daoOrden.almacenarOrdenDeDescuento(orden);
     }
     
         
