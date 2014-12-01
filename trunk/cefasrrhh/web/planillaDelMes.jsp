@@ -28,9 +28,27 @@
          <div id="container">
 <jsp:include page='inc/menu_administradora.jsp' />
  <div class="container">
-        <h1>Seleccione el Tipo de Planilla</h1>
-        </div>
-<a  href="elaborarPlanilla.jsp" class="btn btn-primary btn-md" role="button">Planilla de Mes Normal</a>
-        <a  href="elaborarPlanillaAguinaldo.jsp" class="btn btn-primary btn-md" role="button">Planilla de Diciembre</a>
- 
+        <h1>Planilla del Mes</h1>
+        
+                        <div class="panel panel-primary">
+                        <div class="panel-heading">Seleccione el Tipo de Planilla a Calcular</div>
+                        <div class="panel-body">
+        <br><br>
+ <div class="row">
+     <div class="col-xs-3"></div>
+     <div class="col-xs-4">
+         
+         <a  href="elaborarPlanilla.jsp" class="btn btn-primary btn-md" role="button">Planilla de Mes Normal</a>
+</div>
+     
+  <div class="col-xs-4">
+<a  href="elaborarPlanillaAguinaldo.jsp" class="btn btn-primary btn-md" role="button">Planilla de Diciembre</a>
+ </div>
+ </div>
+    <br><br>   
+ </div>
+</div>
+ </div>
+  </div>
+ </body>
 </html>

@@ -123,12 +123,14 @@
                 <%-- inicio lista de empleados --%>
                 
                 <div class="container">
-                    <br>
-                    
-                <a href="ordenDescuentoEmpleado.jsp" class="btn btn-primary btn-md" role="button">Ver Ordenes de Descuento</a>
-                <br>
-                 <br> 
-                </div>
+                                     <br>
+  <div class="row">
+     <div class="col-xs-offset-5">
+         
+        <a href="ordenDescuentoEmpleado.jsp" class="btn btn-primary btn-md" role="button">Ver Ordenes de Descuento</a>
+</div>
+  </div>
+                     <br>       </div>
                 
                 <div class="panel panel-primary">
                           <div class="panel-heading">Empleados: <%= listaEmpleados.size() %></div>

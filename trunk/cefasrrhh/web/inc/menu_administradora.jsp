@@ -17,7 +17,7 @@
         </div>
         <div class="navbar-collapse collapse" id="navbar-main">
             <ul class="nav navbar-nav">
-                <li><a href="#">CEFAS - RRHH</a></li>
+                <li><a href="avisos.jsp">CEFAS - RRHH</a></li>
                 
             </ul>
 
@@ -26,34 +26,33 @@
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="download"><span class="glyphicon glyphicon-book"></span> Planilla <span class="caret"></span></a>
                     <ul class="dropdown-menu" aria-labelledby="download">
-                        <li><a href="horasExtras.jsp">Ingresar horas extras</a></li>
-                        <li><a href="reportellegadas.jsp">Reportar llegadas</a></li>
-                        <li><a href="#">Asignar valor de horas extras</a></li>
-                        <li><a href="anticipo.jsp">Ingresar anticipos</a></li>
-                        <li><a href="prestamo.jsp">Administrar préstamos</a></li>
-                        <li><a href="ordenDescuento.jsp">Ingresar órdenes de descuentos</a></li>
-                        <li><a href="viatico.jsp">Ingresar viáticos</a></li>
-                        <li><a href="indemnizacion.jsp">Calcular indemnización</a></li>
+                        <li><a href="horasExtras.jsp">Ingresar Horas Extras</a></li>
+                        <li><a href="reportellegadas.jsp">Reportar Llegadas</a></li>
+                        <li><a href="anticipo.jsp">Administrar Anticipos</a></li>
+                        <li><a href="prestamo.jsp">Administrar Préstamos</a></li>
+                        <li><a href="ordenDescuento.jsp">Administrar Ordenes de Descuentos</a></li>
+                        <li><a href="viatico.jsp">Administrar Viáticos</a></li>
+                        <li><a href="indemnizacion.jsp">Calcular Indemnización</a></li>
                          <li><a href="retencionesconfig.jsp">Configuración de las Retenciones</a></li>
-                        <li><a href="planillaDelMes.jsp">Elaborar planilla</a></li>
-                        <li><a href="#">Generar recibos</a></li>
+                        <li><a href="planillaDelMes.jsp">Elaborar Planilla</a></li>
+                        <li><a href="#">Generar Recibos</a></li>
                         <li><a href="#">Reportes</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="download"><span class="glyphicon glyphicon-ok"></span> Evaluaciones <span class="caret"></span></a>
                     <ul class="dropdown-menu" aria-labelledby="download">
-                        <li><a href="evaluacionFunciones.jsp">Evaluar funciones</a></li>
-                        <li><a href="evaluacionCompetencias.jsp">Evaluar competencias</a></li>
+                        <li><a href="evaluacionFunciones.jsp">Evaluar Funciones</a></li>
+                        <li><a href="evaluacionCompetencias.jsp">Evaluar Competencias</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="download"><span class="glyphicon glyphicon-user"></span> Perfil <span class="caret"></span></a>
                     <ul class="dropdown-menu" aria-labelledby="download">
-                        <li><a href="perfilempleado.jsp">Ver perfil</a></li>
-                        <li><a href="modificarperfil.jsp">Modificar perfil</a></li>
+                        <li><a href="perfilempleado.jsp">Ver Perfil</a></li>
+                        <li><a href="modificarperfil.jsp">Modificar Perfil</a></li>
                         <li><a href="seguridad.jsp">Seguridad</a></li>
-                        <li><a href="logout.jsp">Cerrar sesión</a></li>
+                        <li><a href="logout.jsp">Cerrar Sesión</a></li>
                     </ul>
                 </li>
             </ul>

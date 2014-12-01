@@ -147,8 +147,13 @@
 
                         </div>
                       </div>
- <br><br>
+  <br>
+  <div class="row">
+     <div class="col-xs-offset-5">
  <a href="elaborarPlanillaAguinaldo.jsp?codigoPlanilla=1" class="btn btn-primary btn-md" role="button">Guardar Planilla</a>
+</div>
+  </div>
+
         </div>
     </body>
 </html>
