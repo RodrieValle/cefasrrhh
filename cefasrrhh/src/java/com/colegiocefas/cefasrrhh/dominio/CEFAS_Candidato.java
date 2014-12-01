@@ -77,7 +77,6 @@ public class CEFAS_Candidato {
     public void setEspecialidad(CEFAS_Especialidad especialidad) {
         this.especialidad = especialidad;
     }
-
     
     
 }

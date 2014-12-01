@@ -24,24 +24,15 @@
     if (!tipo.equals("director")) {
         response.sendRedirect("avisos.jsp");
     }
-    if (request.getParameter("duicdt") != null) {
-        String dui = request.getParameter("duicdt");
-        String notaap = request.getParameter("naptitud");
-        String comenll = request.getParameter("referencia");
-        String comenen = request.getParameter("centrevista");
-        String comenap = request.getParameter("captitud");
-        String notapsi = request.getParameter("npsicologico");
-        String comenpsi = request.getParameter("cpsicologico");
-        Date fechaen = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("fentrevista").toString());
-        Date fechaex = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("faptitud").toString());
-        Date fechapsi = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("fpsicologico").toString());
+   
+    String duiCan = request.getParameter("Dui");
+    CtrlCEFAS_Candidato ctrlCandidato = new CtrlCEFAS_Candidato();
+    CEFAS_Candidato cdt = ctrlCandidato.consultarPorCodigo(duiCan);
+    
+ 
+ 
+   
 
-        CtrlCEFAS_EvaluacionCandidato ctrlevccandidato = new CtrlCEFAS_EvaluacionCandidato();
-        ctrlevccandidato.guardarEvaluacion(dui, comenll, fechaen, comenen, fechaex, Double.parseDouble(notaap), comenap, fechapsi,Double.parseDouble(notapsi), comenpsi);
-    }
-    
-    
-    
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -66,7 +57,11 @@
                             <div class="row">
                             <div class="col-xs-5 col-xs-offset-1">
                      <p></p>
-                        DUI: <input type="text" name="duicdt" class="form-control input-sm" value="" required>
+                      
+  
+                     DUI:<input  type="text" name="Dui" value="<%= cdt.getCdtDUI()%> "  class="form-control input-sm"  required readonly/>
+                                              
+
                         <input type="checkbox" name="hecho"> Hecho
                         </div>
                         </div>

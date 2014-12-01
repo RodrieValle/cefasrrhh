@@ -26,8 +26,8 @@ import java.util.logging.Logger;
 public class CEFAS_CandidatoDAO {
 
     private final String SQL_INSERT = "INSERT INTO CEFAS_CANDIDATO(CDTDUI,CDTNOMBRE,ESPCODIGO,CDTCURRICULO) VALUES (?, ?, ?, ?)";
-    private final String SQL_SELECT_ID = "SELECT * FROM CEFAS_CANDIDATO WHERE CDTDUI = ?";
-    private final String SQL_SELECT = "SELECT CEFAS_CANDIDATO.CDTNOMBRE,CEFAS_ESPECIALIDAD.ESPNOMBRE FROM CEFAS_CANDIDATO INNER JOIN CEFAS_ESPECIALIDAD ON CEFAS_CANDIDATO.ESPCODIGO = CEFAS_ESPECIALIDAD.ESPCODIGO";
+    private final String SQL_SELECT_ID = "SELECT * FROM CEFAS_CANDIDATO WHERE CDTDUI =?";
+    private final String SQL_SELECT = "SELECT CEFAS_CANDIDATO.CDTDUI,CEFAS_CANDIDATO.CDTNOMBRE,CEFAS_ESPECIALIDAD.ESPNOMBRE FROM CEFAS_CANDIDATO INNER JOIN CEFAS_ESPECIALIDAD ON CEFAS_CANDIDATO.ESPCODIGO = CEFAS_ESPECIALIDAD.ESPCODIGO";
    
     private Connection conexiondb;
     private Statement st;
@@ -57,17 +57,20 @@ public class CEFAS_CandidatoDAO {
     
 
 
-    public CEFAS_Candidato cosultarPorCodigo(int codigo) {
-        CEFAS_Candidato candidato = null;
+    public CEFAS_Candidato cosultarPorCodigo(String codigo) {
+        CEFAS_Candidato cdt = null;
         try {
             conexiondb = ConexionDB.getConexion();
             ps = conexiondb.prepareStatement(SQL_SELECT_ID);
-            ps.setInt(1, codigo);
+            ps.setString(1, codigo);
             rs = ps.executeQuery();
             while(rs.next())
             {
-                candidato = new CEFAS_Candidato();
-                candidato.setCdtNombre(rs.getString("cdtNombre"));
+                cdt = new CEFAS_Candidato();
+                cdt.setCdtDUI(rs.getString("cdtDUI"));
+                cdt.setCdtNombre(rs.getString("cdtNombre"));
+          
+                
                         
             }
             ConexionDB.cerrarConexion();
@@ -75,7 +78,7 @@ public class CEFAS_CandidatoDAO {
             Logger.getLogger(CEFAS_CandidatoDAO.class.getName()).log(Level.SEVERE, null, ex);
 
         }
-        return candidato;
+        return cdt;
     }
     public List<CEFAS_Candidato> obtenerPorEspecialidad()
     {
@@ -89,9 +92,13 @@ public class CEFAS_CandidatoDAO {
             {
                 cdt = new CEFAS_Candidato();
                 CEFAS_Especialidad esp = new CEFAS_Especialidad();
+             
+                
                 esp.setEspNombre(rs.getString("espNombre"));
+                cdt.setCdtDUI(rs.getString("cdtDUI"));
                 cdt.setCdtNombre(rs.getString("cdtNombre"));
                 cdt.setEspecialidad(esp);
+                
                 listaCandidato.add(cdt);
             }
             
@@ -101,6 +108,10 @@ public class CEFAS_CandidatoDAO {
         }
         
         return listaCandidato;
+    }
+    //public List<CEFAS_Candidato> obtenerCandidatos(int criterio, String dato)
+    {
+        
     }
     
     

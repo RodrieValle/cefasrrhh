@@ -30,13 +30,17 @@ public class CtrlCEFAS_Candidato {
     }
 
     
-    public CEFAS_Candidato consultarPorCodigo(int codigo)
+    public CEFAS_Candidato consultarPorCodigo(String codigo)
     {
         return daoCandidato.cosultarPorCodigo(codigo);
     }
     public List<CEFAS_Candidato> obtenerPorEspecialidad()
     {
         return daoCandidato.obtenerPorEspecialidad();
+    }
+   // public List<CEFAS_Candidato> obtenerCandidatos(int criterio, String dato)
+    {
+       // return daoCandidato.obtenerCandidatos(criterio, dato);
     }
     
     

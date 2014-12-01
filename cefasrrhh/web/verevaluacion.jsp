@@ -4,6 +4,8 @@
     Author     : Sergio
 --%>
 
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
 <%@page import="java.util.List"%>
 <%@page import="com.colegiocefas.cefasrrhh.dominio.CEFAS_Candidato"%>
 <%@page import="com.colegiocefas.cefasrrhh.negocio.CtrlCEFAS_Candidato"%>
@@ -20,113 +22,124 @@
     if (!tipo.equals("director")) {
         response.sendRedirect("avisos.jsp");
     } 
-    String duiCdt = request.getParameter("dui");
-    CtrlCEFAS_Candidato ctrlCandidato = new CtrlCEFAS_Candidato();
-    CEFAS_Candidato candidato = ctrlCandidato.getCandidatoPorDui(duiCdt);
-
+    
+    
+    
+    String duiCdt = request.getParameter("Dui");
     CtrlCEFAS_EvaluacionCandidato ctrlEvaluacionCandidato = new CtrlCEFAS_EvaluacionCandidato();
-    List<CEFAS_EvaluacionCandidato> listEvaluacion = ctrlEvaluacionCandidato.getEvaluacion(duiCdt);
+    CEFAS_EvaluacionCandidato evcCandidato = ctrlEvaluacionCandidato.getEvaluacion(duiCdt);
+
+    
 %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Evaluacion del Candidato - CEFAS RRHH</title>
-        <jsp:include page='inc/head_common.jsp' />
+        <title>Evaluar Candidato-CEFAS RRHH</title>
+        <jsp:include page='inc/head_common.jsp' /> 
+        <link rel="stylesheet" type="text/css" href="css/bootstrap-formhelpers.css">
+        <script type="text/javascript" src="js/bootstrap-formhelpers.js"></script>
     </head>
     <body>
         <div id="container">
+           
             <jsp:include page='inc/menu_directora.jsp' />
+         
             <div class="container">
-                <h1>Evaluacion del candidato</h1>
-                <div class="panel panel-primary">
-                    <div class="panel-heading"> Referencias </div>        
-                   <div class="panel-body">
-                             <table class="table table-striped table-hover">
-                                    <tbody>
-                                        <tr>
-                                            <td>Cdigo</td>
-                                            <td>DUI</td>
-                                            <td>Comentarios</td>            
-                                        </tr> 
-                
-                                        <tr>
-                                            <td><%= candidato.getEvcCodigo()%></td>
-                                            <td><%= candidato.getCdtDUI()%></td>
-                                            <td></td>
-                                        </tr>
-         
-                                    </tbody>
-                                </table>
-
+                <h1>Evaluacion de Candidato</h1>
+                <form class="form-signin"  action="" method="post">
+                    <div class="panel panel-primary">
+                        <div class="panel-body">
+                            <div class="row">
+                            <div class="col-xs-5 col-xs-offset-1">
+                     <p></p>
+                        DUI: <%= evcCandidato.getCdtDUI()%>
+                        <input type="checkbox" name="hecho"> Hecho
                         </div>
-                      </div>
-                <div class="panel panel-primary">
-                    <div class="panel-heading"> Entrevista</div>        
-                   <div class="panel-body">
-                             <table class="table table-striped table-hover">
-                                    <tbody>
-                                        <tr>
-                                            <td>Fecha</td>
-                                            <td>Comentarios</td>            
-                                        </tr> 
-                
-                                        <tr>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
-         
-                                    </tbody>
-                                </table>
-
                         </div>
-                      </div>
-                <div class="panel panel-primary">
-                    <div class="panel-heading"> Examen de Aptitud </div>        
-                   <div class="panel-body">
-                             <table class="table table-striped table-hover">
-                                    <tbody>
-                                        <tr>
-                                            <td>Fecha</td>
-                                            <td>Nota</td>
-                                            <td>Comentarios</td>            
-                                        </tr> 
-                
-                                        <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
-         
-                                    </tbody>
-                                </table>
-
                         </div>
-                      </div>
-                <div class="panel panel-primary">
-                    <div class="panel-heading"> Examen Psicologico </div>        
-                   <div class="panel-body">
-                             <table class="table table-striped table-hover">
-                                    <tbody>
-                                        <tr>
-                                            <td>Fecha</td>
-                                            <td>Nota</td>
-                                            <td>Comentarios</td>            
-                                        </tr> 
-                
-                                        <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
-         
-                                    </tbody>
-                                </table>
-
+                        <p></p>
+                        
+                        <div class="panel-body">
+                            <div class="row">
+                            <div class="col-xs-5 col-xs-offset-1">
+                                Observaciones de llamadas a referencia: <%= evcCandidato.getEvcObservacionesReferencias()%>
+                                <p></p>
+                            </div>
                         </div>
-                      </div>
-            </div>
-        </div>
+                        </div>
+                     </div>
+                     <div class="panel panel-primary">
+                         <div class="panel-heading">Entrevista</div>
+                         <div class="panel-body">
+                            <div class="row">
+                                <div class="col-xs-3 col-xs-offset-1">
+                                    Fecha de entrevista:<%= evcCandidato.getEvcFechaEntrevista()%>
+                                    
+                                </div>
+                                <div class="col-xs-2 col-xs-offset-5">
+                                    <input type="checkbox" name="hecho"> Hecho
+                                </div>
+                                <div class="col-xs-1"></div>
+                                <div class="col-xs-8 col-xs-offset-2">
+                                    <br>
+                                    Comentarios:<%= evcCandidato.getEvcComentarioEntrevista()%>
+                                    
+                                </div>
+                            </div>
+                         </div>
+                     </div>
+                     <div class="panel panel-primary">
+                      <div class="panel-heading">Examen de aptitud</div>
+                         <div class="panel-body">
+                             <div class="row">
+                             <div class="col-xs-3 col-xs-offset-1">
+                                Fecha de examen :<%= evcCandidato.getEvcFechaExamenAptitud()%>
+                                
+                             </div>
+                                 <div class="col-xs-3 col-xs-offset-1">
+                                     Nota: <%= evcCandidato.getEvcNotaExamenAptitud()%>
+                                 </div>
+                                 <div class="col-xs-2 col-xs-offset-1">
+                                     <input type="checkbox" name="hecho"> Hecho
+                                 </div>
+                                 <div class="col-xs-1"></div>
+                                 <div class="col-xs-8 col-xs-offset-2">
+                                     <br>
+                                     Comentarios: <%= evcCandidato.getEvcComentarioExamenAptitud()%>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                     <div class="panel panel-primary">
+                      <div class="panel-heading">Examen psicológico</div>
+                         <div class="panel-body">
+                             <div class="row">
+                             <div class="col-xs-3 col-xs-offset-1">
+                                Fecha de examen : <%= evcCandidato.getEvcFechaExamenPsico()%>
+                                
+                             </div>
+                                 <div class="col-xs-3 col-xs-offset-1">
+                                     Nota: <%= evcCandidato.getEvcNotaExamenPsico()%>
+                                 </div>
+                                 <div class="col-xs-2 col-xs-offset-1">
+                                     <input type="checkbox" name="hecho"> Hecho
+                                 </div>
+                                 <div class="col-xs-1"></div>
+                                 <div class="col-xs-8 col-xs-offset-2">
+                                     <br>
+                                     Comentarios: <%= evcCandidato.getEvcCometarioExamenPsico()%>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                     
+
+
+                     </form>
+                     </div>
+                     </div>
+
         
     </body>
 </html>

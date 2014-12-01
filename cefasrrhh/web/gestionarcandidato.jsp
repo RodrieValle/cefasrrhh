@@ -26,13 +26,39 @@
     if (!tipo.equals("director")) {
         response.sendRedirect("avisos.jsp");
     }
+     if (request.getParameter("Dui") != null) {
+        String dui = request.getParameter("Dui");
+        String notaap = request.getParameter("naptitud");
+        String comenll = request.getParameter("referencia");
+        String comenen = request.getParameter("centrevista");
+        String comenap = request.getParameter("captitud");
+        String notapsi = request.getParameter("npsicologico");
+        String comenpsi = request.getParameter("cpsicologico");
+        Date fechaen = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("fentrevista").toString());
+        Date fechaex = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("faptitud").toString());
+        Date fechapsi = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("fpsicologico").toString());
+
+        CtrlCEFAS_EvaluacionCandidato ctrlevccandidato = new CtrlCEFAS_EvaluacionCandidato();
+        ctrlevccandidato.guardarEvaluacion(dui, comenll, fechaen, comenen, fechaex, Double.parseDouble(notaap), comenap, fechapsi,Double.parseDouble(notapsi), comenpsi);
+    }
     
+    CtrlCEFAS_Candidato ctrlCandidatos = new CtrlCEFAS_Candidato();
+    List<CEFAS_Candidato> listaCandidatos;
+    if(request.getParameter("dato")!= null)
+    {
+        int criterio = Integer.parseInt(request.getParameter("criterio"));
+        String dato = request.getParameter("dato");
+        //listaCandidatos = ctrlCandidatos.obtenerCandidatos(criterio, dato);
+    }
+    else
+    {
+       
     
+    }
     
-    CtrlCEFAS_Candidato ctrlCandidato = new CtrlCEFAS_Candidato();
+     CtrlCEFAS_Candidato ctrlCandidato = new CtrlCEFAS_Candidato();
     List<CEFAS_Candidato> listaCandidato = ctrlCandidato.obtenerPorEspecialidad();
-    
-    
+
 %>
 <!DOCTYPE html>
 <html>
@@ -56,14 +82,21 @@
 <div class="container">
 	<h1>Listado de Candidatos</h1>
 	<form action="gestionarcandidato.jsp" method="post">
-             <div class="container">
+
    <div class="panel panel-primary">
 		<div class="panel-heading">Zona de Búsqueda</div>
 		<div class="panel-body">
 		<div class="row">
+                            <div class="col-xs-4 col-xs-offset-1">
+                                <select name="criterio" id="criterio" class="form-control input-sm">
+                                    <option value="1">Especialidad</option>
+                                    <option value="2">Nombre de candidato</option>
+                                    <option value="3">Dui </option>
+                                </select>
+                            </div>
 			<div class="col-xs-4 col-xs-offset-2">
                                 <div class="input-group">
-                                    <input type="text" name="dato" class="form-control input-sm" placeholder="Busqueda por especialidad">
+                                    <input type="text" name="dato" class="form-control input-sm" placeholder="Busqueda por criterio">
                                     <span class="input-group-btn">
                                         <button class="btn btn-sm btn-success" type="submit">
                                             <span class="glyphicon glyphicon-search"></span> 
@@ -75,6 +108,7 @@
 			
 		</div>
 		</div>
+   
 		<div class="panel panel-primary">
 		<div class="panel-heading">Candidatos</div>
 		<div class="panel-body">
@@ -96,8 +130,8 @@
 				<td><%= cdt.getCdtNombre() %> </td>
 				<td><%= cdt.getEspecialidad().getEspNombre() %></td>
 				<td><a href="" class="btn btn-primary btn-md" role="button">Ver Curriculum</a></td>
-                                <td><a href="evaluarCandidato.jsp?dui=<%= cdt.getCdtDUI() %>" class="btn btn-primary btn-md" role="button"> Ingresar </a></td>
-                                <td><a href="verevaluacion.jsp?dui=<%= cdt.getCdtDUI() %>" class="btn btn-primary btn-md" role="button"> Ver </a></td>
+                                <td><a href="evaluarCandidato.jsp?Dui=<%= cdt.getCdtDUI() %>" class="btn btn-primary btn-md" role="button"> Ingresar </a></td>
+                                <td><a href="verevaluacion.jsp?Dui=<%= cdt.getCdtDUI() %>" class="btn btn-primary btn-md" role="button"> Ver </a></td>
 
 			</tr>
                         
