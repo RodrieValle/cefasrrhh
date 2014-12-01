@@ -122,11 +122,14 @@
                 <%-- inicio lista de empleados --%>
                 
                 <div class="container">
-                    <br>
-                    
-                <a href="prestamoEmpleado.jsp" class="btn btn-primary btn-md" role="button">Ver Prestamos Otorgados</a>
-                <br>
-                <br>
+                  
+  <div class="row">
+     <div class="col-xs-offset-5">
+         
+          <a href="prestamoEmpleado.jsp" class="btn btn-primary btn-md" role="button">Ver Prestamos Otorgados</a>
+</div>
+  </div>
+ <br>
                 </div>
                 
                 <div class="panel panel-primary">
