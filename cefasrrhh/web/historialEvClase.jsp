@@ -21,7 +21,7 @@
     if(request.getHeader("Referer")!=null)
     {
         String partes[] = request.getHeader("Referer").split("/");
-        String pagina = partes[partes.length-1];
+        String pagina = partes[partes.length-1].substring(0, 12);
         
         if(pagina.equals("empleado.jsp"))
         {

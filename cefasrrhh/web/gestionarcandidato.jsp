@@ -38,7 +38,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Gestion de Candidato - CEFAS RRHH</title>
+        <title>Gestión de Candidato - CEFAS RRHH</title>
         <jsp:include page='inc/head_common.jsp' /> 
     </head>
     <body>
@@ -58,7 +58,7 @@
 	<form action="gestionarcandidato.jsp" method="post">
              <div class="container">
    <div class="panel panel-primary">
-		<div class="panel-heading">Zona de Busqueda</div>
+		<div class="panel-heading">Zona de Búsqueda</div>
 		<div class="panel-body">
 		<div class="row">
 			<div class="col-xs-4 col-xs-offset-2">

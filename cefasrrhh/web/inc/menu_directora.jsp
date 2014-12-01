@@ -35,6 +35,7 @@
                     <ul class="dropdown-menu" aria-labelledby="download">
                         <li><a href="gestionperfiles.jsp">Gestionar perfiles de empleado</a></li>
                         <li><a href="gestionarsancion.jsp">Aplicar sanción</a></li>
+                        <li><a href="registro.jsp">Registro de usuarios</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">

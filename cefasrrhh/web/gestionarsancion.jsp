@@ -69,7 +69,7 @@
         <div id="container">
             <jsp:include page='inc/menu_directora.jsp' />
             <div class="container">
-               <h1>Ingreso Sancion a Empleados</h1>
+               <h1>Ingreso Sanción a Empleados</h1>
                <div class="panel panel-primary">
                     <div class="panel-heading">Zona de búsqueda</div>
                     <div class="panel-body">
@@ -124,8 +124,8 @@
                                         <tr>
                                             <td><img src="<%= empleado.getEmpFoto() %>" class="center-block" alt="fotoempleado" width="150" height="100"/></td>
                                             <td><%= empleado.getEmpNombre() %></td>
-                                            <td><a href="sancion.jsp?codigo=<%= empleado.getEmpCodigo() %>" class="btn btn-primary btn-md" role="button">Ingresar Sancion</a></td>
-                                            <td><a href="sancionempleado.jsp?codigo=<%= empleado.getEmpCodigo() %>" class="btn btn-primary btn-md" role="button">Ver Sancion</a></td>
+                                            <td><a href="sancion.jsp?codigo=<%= empleado.getEmpCodigo() %>" class="btn btn-primary btn-md" role="button">Ingresar Sanción</a></td>
+                                            <td><a href="sancionempleado.jsp?codigo=<%= empleado.getEmpCodigo() %>" class="btn btn-primary btn-md" role="button">Ver Sanción</a></td>
                                         </tr>
                                       <%
                                     } %>  
