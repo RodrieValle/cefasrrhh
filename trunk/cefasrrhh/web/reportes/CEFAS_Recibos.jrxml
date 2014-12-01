@@ -3,7 +3,9 @@
 	<property name="ireport.zoom" value="1.3310000000000004"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-	<queryString language="SQL">
+	<parameter name="idPlanilla" class="java.lang.Integer"/>
+	<parameter name="periodo" class="java.lang.String"/>
+	<queryString>
 		<![CDATA[SELECT
      CEFAS_LINEADEPLANILLA.`LDPSUELDOBASE` AS CEFAS_LINEADEPLANILLA_LDPSUELDOBASE,
      CEFAS_EMPLEADO.`EMPNOMBRE` AS CEFAS_EMPLEADO_EMPNOMBRE,
@@ -20,7 +22,7 @@
      CEFAS_LINEADEPLANILLA.`LDPLIQUIDOAPAGAR` AS CEFAS_LINEADEPLANILLA_LDPLIQUIDOAPAGAR,
      CEFAS_LINEADEPLANILLA.`LDPAUSENCIASTARDIAS` AS CEFAS_LINEADEPLANILLA_LDPAUSENCIASTARDIAS
 FROM
-     `CEFAS_EMPLEADO` CEFAS_EMPLEADO INNER JOIN `CEFAS_LINEADEPLANILLA` CEFAS_LINEADEPLANILLA ON CEFAS_EMPLEADO.`EMPCODIGO` = CEFAS_LINEADEPLANILLA.`EMPCODIGO`]]>
+     `CEFAS_EMPLEADO` CEFAS_EMPLEADO INNER JOIN `CEFAS_LINEADEPLANILLA` CEFAS_LINEADEPLANILLA ON CEFAS_EMPLEADO.`EMPCODIGO` = CEFAS_LINEADEPLANILLA.`EMPCODIGO` WHERE CEFAS_LINEADEPLANILLA.PLNCODIGO = $P{idPlanilla}]]>
 	</queryString>
 	<field name="CEFAS_LINEADEPLANILLA_LDPSUELDOBASE" class="java.math.BigDecimal"/>
 	<field name="CEFAS_EMPLEADO_EMPNOMBRE" class="java.lang.String"/>
@@ -64,14 +66,7 @@ FROM
 				<text><![CDATA[Recibí del Colegio Cefas la cantidad de ________________________________________]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="ef90255a-ce9b-4e3f-92dc-a6774d1f1fe8" x="10" y="54" width="439" height="13"/>
-				<textElement>
-					<font fontName="Calisto MT"/>
-				</textElement>
-				<text><![CDATA[en concepto de salario correspondiente al mes de Enero 2014, según el detalle siguiente:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="8d70154e-6269-47e8-be89-1d55a5c09149" x="10" y="92" width="100" height="13"/>
+				<reportElement uuid="8d70154e-6269-47e8-be89-1d55a5c09149" x="10" y="79" width="100" height="13"/>
 				<textElement>
 					<font fontName="Calisto MT"/>
 					<paragraph lineSpacing="Fixed"/>
@@ -166,8 +161,8 @@ FROM
 				</textElement>
 				<text><![CDATA[Horas extra]]></text>
 			</staticText>
-			<textField>
-				<reportElement uuid="ff8afe74-8c49-4037-9192-75b53ac270c7" x="110" y="92" width="100" height="13"/>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="ff8afe74-8c49-4037-9192-75b53ac270c7" x="110" y="79" width="100" height="26"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{CEFAS_EMPLEADO_EMPNOMBRE}]]></textFieldExpression>
 			</textField>
@@ -184,7 +179,7 @@ FROM
 			<textField pattern="$ #,##0.00">
 				<reportElement uuid="e935151d-5f96-4258-829c-e6d51a2b1865" x="110" y="131" width="100" height="13"/>
 				<textElement textAlignment="Right"/>
-				<textFieldExpression><![CDATA[$F{CEFAS_LINEADEPLANILLA_LDPAFPCONFIA}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[($F{CEFAS_LINEADEPLANILLA_LDPAFPCONFIA} != 0.00 ? $F{CEFAS_LINEADEPLANILLA_LDPAFPCONFIA} : $F{CEFAS_LINEADEPLANILLA_LDPAFPCRECER} )]]></textFieldExpression>
 			</textField>
 			<textField pattern="$ #,##0.00">
 				<reportElement uuid="fb93a79c-5922-4acd-89f8-308d67e76e5e" x="110" y="144" width="100" height="13"/>
@@ -262,6 +257,13 @@ FROM
 				</textElement>
 				<text><![CDATA[Firma: ________________________]]></text>
 			</staticText>
+			<textField>
+				<reportElement uuid="c0dce481-1b2f-486f-87a7-285597272388" x="10" y="54" width="439" height="14"/>
+				<textElement>
+					<font fontName="Calisto MT"/>
+				</textElement>
+				<textFieldExpression><![CDATA["en concepto de salario correspondiente al mes de "+$P{periodo}+", según el detalle siguiente:"]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 </jasperReport>

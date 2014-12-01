@@ -33,4 +33,8 @@ public class CtrlCEFAS_Planilla {
     {
         return daoPlanilla.getPlanillas();
     }
+                 
+    public CEFAS_Planilla getPlanillaPorID(int plncodigo){
+        return daoPlanilla.getPlanillaPorID(plncodigo);
+    }
 }
