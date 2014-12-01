@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CEFAS_Anticipo" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e376acfa-1793-446d-a44b-9724951c786d">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="idPlanilla" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[SELECT
+     CEFAS_LINEADEPLANILLA.`LDPCODIGO` AS CEFAS_LINEADEPLANILLA_LDPCODIGO,
+     CEFAS_LINEADEPLANILLA.`EMPCODIGO` AS CEFAS_LINEADEPLANILLA_EMPCODIGO,
+     CEFAS_LINEADEPLANILLA.`LDPANTICIPO` AS CEFAS_LINEADEPLANILLA_LDPANTICIPO,
+     CEFAS_EMPLEADO.`EMPCODIGO` AS CEFAS_EMPLEADO_EMPCODIGO,
+     CEFAS_EMPLEADO.`EMPNOMBRE` AS CEFAS_EMPLEADO_EMPNOMBRE,
+     CEFAS_EMPLEADO.`EMPSALARIO` AS CEFAS_EMPLEADO_EMPSALARIO
+FROM
+     `CEFAS_EMPLEADO` CEFAS_EMPLEADO INNER JOIN `CEFAS_LINEADEPLANILLA` CEFAS_LINEADEPLANILLA ON CEFAS_EMPLEADO.`EMPCODIGO` = CEFAS_LINEADEPLANILLA.`EMPCODIGO` WHERE CEFAS_LINEADEPLANILLA.LDPANTICIPO != 0.00 AND CEFAS_LINEADEPLANILLA.PLNCODIGO = $P{idPlanilla}]]>
+	</queryString>
+	<field name="CEFAS_LINEADEPLANILLA_LDPCODIGO" class="java.lang.Integer"/>
+	<field name="CEFAS_LINEADEPLANILLA_EMPCODIGO" class="java.lang.Integer"/>
+	<field name="CEFAS_LINEADEPLANILLA_LDPANTICIPO" class="java.math.BigDecimal"/>
+	<field name="CEFAS_EMPLEADO_EMPCODIGO" class="java.lang.Integer"/>
+	<field name="CEFAS_EMPLEADO_EMPNOMBRE" class="java.lang.String"/>
+	<field name="CEFAS_EMPLEADO_EMPSALARIO" class="java.math.BigDecimal"/>
+	<variable name="porcent" class="java.math.BigDecimal">
+		<variableExpression><![CDATA[$F{CEFAS_LINEADEPLANILLA_LDPANTICIPO}.floatValue() / $F{CEFAS_EMPLEADO_EMPSALARIO}.floatValue()]]></variableExpression>
+	</variable>
+	<variable name="total" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{CEFAS_LINEADEPLANILLA_LDPANTICIPO}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="45" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="8f48ac43-c35b-4187-8578-cee734a0d53e" x="238" y="0" width="100" height="20"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[COLEGIO CEFAS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ec983175-25cb-444a-8915-3b6362dc6e41" x="157" y="20" width="264" height="20"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[REPORTE DE ANTICIPOS MENSUALES]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="24" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="aa19c378-d95c-43d6-b134-5d6134567302" x="0" y="0" width="257" height="20"/>
+				<textElement/>
+				<text><![CDATA[NOMBRE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="54ea0a77-b514-47a3-a85e-ac27bc533792" x="257" y="0" width="105" height="20"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[ANTICIPO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a2eec715-6552-4e7d-b537-663e2740d8f5" x="362" y="0" width="105" height="20"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[SALARIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ee98f2aa-c198-403e-b744-491ddc8c9cb7" x="467" y="0" width="105" height="20"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[% DE SALARIO]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="23" splitType="Stretch">
+			<textField>
+				<reportElement uuid="69a56d53-aebb-4f9e-ab6f-a534b969c17e" x="0" y="0" width="257" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{CEFAS_EMPLEADO_EMPNOMBRE}]]></textFieldExpression>
+			</textField>
+			<textField pattern="$ #,##0.00">
+				<reportElement uuid="0ef3ce1a-54da-4ca3-86a5-24036a64047f" x="257" y="0" width="105" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{CEFAS_LINEADEPLANILLA_LDPANTICIPO}]]></textFieldExpression>
+			</textField>
+			<textField pattern="$ #,##0.00">
+				<reportElement uuid="83309b85-2336-4357-9d93-81b8469a4628" x="362" y="0" width="105" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{CEFAS_EMPLEADO_EMPSALARIO}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00 %">
+				<reportElement uuid="84af3f79-e8e0-48b6-99d7-138cc7756ddc" x="467" y="0" width="105" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$V{porcent}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="2af6fdab-0541-4bd9-98c7-283e57e2a3d4" x="157" y="0" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[TOTAL]]></text>
+			</staticText>
+			<textField pattern="$ #,##0.00">
+				<reportElement uuid="cf132ded-a932-4097-9064-868b4aac2f00" x="262" y="0" width="100" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$V{total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>
