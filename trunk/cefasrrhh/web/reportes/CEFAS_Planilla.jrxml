@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CEFAS_Planilla" language="groovy" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="552de5df-3c57-4748-9bf9-0bc3d305d947">
 	<property name="ireport.zoom" value="1.5"/>
-	<property name="ireport.x" value="0"/>
+	<property name="ireport.x" value="312"/>
 	<property name="ireport.y" value="0"/>
-	<queryString language="SQL">
+	<parameter name="idPlanilla" class="java.lang.Integer"/>
+	<queryString>
 		<![CDATA[SELECT
      CEFAS_LINEADEPLANILLA.`EMPCODIGO` AS CEFAS_LINEADEPLANILLA_EMPCODIGO,
      CEFAS_EMPLEADO.`EMPNOMBRE` AS CEFAS_EMPLEADO_EMPNOMBRE,
@@ -22,7 +23,7 @@
      CEFAS_LINEADEPLANILLA.`LDPMONTOVIATICO` AS CEFAS_LINEADEPLANILLA_LDPMONTOVIATICO,
      CEFAS_LINEADEPLANILLA.`LDPLIQUIDOAPAGAR` AS CEFAS_LINEADEPLANILLA_LDPLIQUIDOAPAGAR
 FROM
-     `CEFAS_EMPLEADO` CEFAS_EMPLEADO INNER JOIN `CEFAS_LINEADEPLANILLA` CEFAS_LINEADEPLANILLA ON CEFAS_EMPLEADO.`EMPCODIGO` = CEFAS_LINEADEPLANILLA.`EMPCODIGO`]]>
+     `CEFAS_EMPLEADO` CEFAS_EMPLEADO INNER JOIN `CEFAS_LINEADEPLANILLA` CEFAS_LINEADEPLANILLA ON CEFAS_EMPLEADO.`EMPCODIGO` = CEFAS_LINEADEPLANILLA.`EMPCODIGO` WHERE CEFAS_LINEADEPLANILLA.PLNCODIGO = $P{idPlanilla}]]>
 	</queryString>
 	<field name="CEFAS_LINEADEPLANILLA_EMPCODIGO" class="java.lang.Integer"/>
 	<field name="CEFAS_EMPLEADO_EMPNOMBRE" class="java.lang.String"/>
@@ -839,7 +840,7 @@ FROM
 				</textElement>
 				<text><![CDATA[TOTALES]]></text>
 			</staticText>
-			<textField pattern="$ #,##0.00">
+			<textField isStretchWithOverflow="true" pattern="$ #,##0.00">
 				<reportElement uuid="01997bca-9464-46aa-9e09-48ad360a62ab" x="138" y="0" width="36" height="15"/>
 				<box>
 					<pen lineWidth="0.25"/>
@@ -849,11 +850,11 @@ FROM
 					<rightPen lineWidth="0.25"/>
 				</box>
 				<textElement textAlignment="Right">
-					<font isBold="true"/>
+					<font size="9" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{tsueldos}]]></textFieldExpression>
 			</textField>
-			<textField pattern="$ #,##0.00">
+			<textField isStretchWithOverflow="true" pattern="$ #,##0.00">
 				<reportElement uuid="52604b5f-06d6-4f57-a263-6b4b75a34077" x="174" y="0" width="36" height="15"/>
 				<box>
 					<pen lineWidth="0.25"/>
@@ -863,11 +864,11 @@ FROM
 					<rightPen lineWidth="0.25"/>
 				</box>
 				<textElement textAlignment="Right">
-					<font isBold="true"/>
+					<font size="9" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{thorasextra}]]></textFieldExpression>
 			</textField>
-			<textField pattern="$ #,##0.00">
+			<textField isStretchWithOverflow="true" pattern="$ #,##0.00">
 				<reportElement uuid="ecef376c-4dbf-457f-bb89-9b89e4f7ae12" x="210" y="0" width="36" height="15"/>
 				<box>
 					<pen lineWidth="0.25"/>
@@ -877,11 +878,11 @@ FROM
 					<rightPen lineWidth="0.25"/>
 				</box>
 				<textElement textAlignment="Right">
-					<font isBold="true"/>
+					<font size="9" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{ttarde}]]></textFieldExpression>
 			</textField>
-			<textField pattern="$ #,##0.00">
+			<textField isStretchWithOverflow="true" pattern="$ #,##0.00">
 				<reportElement uuid="2e591d4c-a0e2-4d02-afc5-ed88309fdc4c" x="246" y="0" width="36" height="15"/>
 				<box>
 					<pen lineWidth="0.25"/>
@@ -891,11 +892,11 @@ FROM
 					<rightPen lineWidth="0.25"/>
 				</box>
 				<textElement textAlignment="Right">
-					<font isBold="true"/>
+					<font size="9" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{tdevengado}]]></textFieldExpression>
 			</textField>
-			<textField pattern="$ #,##0.00">
+			<textField isStretchWithOverflow="true" pattern="$ #,##0.00">
 				<reportElement uuid="a6371067-f554-4731-ab76-bf60291d6c4a" x="282" y="0" width="36" height="15"/>
 				<box>
 					<pen lineWidth="0.25"/>
@@ -905,11 +906,11 @@ FROM
 					<rightPen lineWidth="0.25"/>
 				</box>
 				<textElement textAlignment="Right">
-					<font isBold="true"/>
+					<font size="9" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{tconfia}]]></textFieldExpression>
 			</textField>
-			<textField pattern="$ #,##0.00">
+			<textField isStretchWithOverflow="true" pattern="$ #,##0.00">
 				<reportElement uuid="95bf09df-1a3f-4c0f-8f9a-97738c1fdb23" x="318" y="0" width="36" height="15"/>
 				<box>
 					<pen lineWidth="0.25"/>
@@ -919,11 +920,11 @@ FROM
 					<rightPen lineWidth="0.25"/>
 				</box>
 				<textElement textAlignment="Right">
-					<font isBold="true"/>
+					<font size="9" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{tcrecer}]]></textFieldExpression>
 			</textField>
-			<textField pattern="$ #,##0.00">
+			<textField isStretchWithOverflow="true" pattern="$ #,##0.00">
 				<reportElement uuid="4783d156-ceb3-4d46-8a41-5ec9f1138379" x="606" y="0" width="36" height="15"/>
 				<box>
 					<pen lineWidth="0.25"/>
@@ -933,11 +934,11 @@ FROM
 					<rightPen lineWidth="0.25"/>
 				</box>
 				<textElement textAlignment="Right">
-					<font isBold="true"/>
+					<font size="9" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{tliquido}]]></textFieldExpression>
 			</textField>
-			<textField pattern="$ #,##0.00">
+			<textField isStretchWithOverflow="true" pattern="$ #,##0.00">
 				<reportElement uuid="9814b775-2463-4191-a8d6-075d72ba7514" x="570" y="0" width="36" height="15"/>
 				<box>
 					<pen lineWidth="0.25"/>
@@ -947,11 +948,11 @@ FROM
 					<rightPen lineWidth="0.25"/>
 				</box>
 				<textElement textAlignment="Right">
-					<font isBold="true"/>
+					<font size="9" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{tviaticos}]]></textFieldExpression>
 			</textField>
-			<textField pattern="$ #,##0.00">
+			<textField isStretchWithOverflow="true" pattern="$ #,##0.00">
 				<reportElement uuid="8ea2845e-9e06-45c5-ad28-13ead573fd66" x="534" y="0" width="36" height="15"/>
 				<box>
 					<pen lineWidth="0.25"/>
@@ -961,11 +962,11 @@ FROM
 					<rightPen lineWidth="0.25"/>
 				</box>
 				<textElement textAlignment="Right">
-					<font isBold="true"/>
+					<font size="9" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{tisss}]]></textFieldExpression>
 			</textField>
-			<textField pattern="$ #,##0.00">
+			<textField isStretchWithOverflow="true" pattern="$ #,##0.00">
 				<reportElement uuid="d28e8d99-7d96-4864-aba6-7eece05be6f8" x="498" y="0" width="36" height="15"/>
 				<box>
 					<pen lineWidth="0.25"/>
@@ -975,11 +976,11 @@ FROM
 					<rightPen lineWidth="0.25"/>
 				</box>
 				<textElement textAlignment="Right">
-					<font isBold="true"/>
+					<font size="9" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{toddescuento}]]></textFieldExpression>
 			</textField>
-			<textField pattern="$ #,##0.00">
+			<textField isStretchWithOverflow="true" pattern="$ #,##0.00">
 				<reportElement uuid="18e8930e-71d8-4ee9-8024-4d85cd0eaa10" x="462" y="0" width="36" height="15"/>
 				<box>
 					<pen lineWidth="0.25"/>
@@ -989,11 +990,11 @@ FROM
 					<rightPen lineWidth="0.25"/>
 				</box>
 				<textElement textAlignment="Right">
-					<font isBold="true"/>
+					<font size="9" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{tprestamo}]]></textFieldExpression>
 			</textField>
-			<textField pattern="$ #,##0.00">
+			<textField isStretchWithOverflow="true" pattern="$ #,##0.00">
 				<reportElement uuid="f2caeb55-8492-4e6c-8742-d34b3a54eed1" x="426" y="0" width="36" height="15"/>
 				<box>
 					<pen lineWidth="0.25"/>
@@ -1003,11 +1004,11 @@ FROM
 					<rightPen lineWidth="0.25"/>
 				</box>
 				<textElement textAlignment="Right">
-					<font isBold="true"/>
+					<font size="9" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{tanticipo}]]></textFieldExpression>
 			</textField>
-			<textField pattern="$ #,##0.00">
+			<textField isStretchWithOverflow="true" pattern="$ #,##0.00">
 				<reportElement uuid="04dcff14-f84a-4199-976a-961f8d76520a" x="390" y="0" width="36" height="15"/>
 				<box>
 					<pen lineWidth="0.25"/>
@@ -1017,11 +1018,11 @@ FROM
 					<rightPen lineWidth="0.25"/>
 				</box>
 				<textElement textAlignment="Right">
-					<font isBold="true"/>
+					<font size="9" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{trenta}]]></textFieldExpression>
 			</textField>
-			<textField pattern="$ #,##0.00">
+			<textField isStretchWithOverflow="true" pattern="$ #,##0.00">
 				<reportElement uuid="8c86170c-89fa-4f36-aa22-d534a90d8d06" x="354" y="0" width="36" height="15"/>
 				<box>
 					<pen lineWidth="0.25"/>
@@ -1031,7 +1032,7 @@ FROM
 					<rightPen lineWidth="0.25"/>
 				</box>
 				<textElement textAlignment="Right">
-					<font isBold="true"/>
+					<font size="9" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{tnetosujetorenta}]]></textFieldExpression>
 			</textField>

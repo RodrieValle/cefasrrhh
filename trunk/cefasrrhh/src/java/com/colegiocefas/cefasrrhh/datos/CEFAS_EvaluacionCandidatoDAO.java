@@ -69,7 +69,7 @@ public class CEFAS_EvaluacionCandidatoDAO {
                 eval= new CEFAS_EvaluacionCandidato();
                 eval.setEvcCodigo(rs.getInt("evcCodigo"));
                 eval.setCdtDUI(rs.getString("cdtDUI"));
-                eval.setEvcObservacionesReferencias(rs.getString("evcObservacionesReferencias"));
+                eval.setEvcObservacionesReferencias(rs.getString("evcObservacionReferencias"));
                 eval.setEvcFechaEntrevista(rs.getDate("evcFechaEntrevista"));
                 eval.setEvcComentarioEntrevista(rs.getString("evcComentarioEntrevista"));
                 eval.setEvcFechaExamenAptitud(rs.getDate("evcFechaExamenAptitud"));
@@ -77,7 +77,7 @@ public class CEFAS_EvaluacionCandidatoDAO {
                 eval.setEvcComentarioExamenAptitud(rs.getString("evcComentarioExamenAptitud"));
                 eval.setEvcFechaExamenPsico(rs.getDate("evcFechaExamenPsico"));
                 eval.setEvcNotaExamenPsico(rs.getDouble("evcNotaExamenPsico"));
-                eval.setEvcCometarioExamenPsico(rs.getString("evcCometarioExamenPsico"));
+                eval.setEvcCometarioExamenPsico(rs.getString("evcComentarioExamenPsico"));
                
                
             }
