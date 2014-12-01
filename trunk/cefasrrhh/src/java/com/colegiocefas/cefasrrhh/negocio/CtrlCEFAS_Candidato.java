@@ -38,6 +38,11 @@ public class CtrlCEFAS_Candidato {
     {
         return daoCandidato.obtenerPorEspecialidad();
     }
+
+  // public List<CEFAS_Candidato> obtenerCandidatos( String dato)
+    //{
+      // return daoCandidato.obtenerCandidatos( dato);
+    //}
    public List<CEFAS_Candidato> obtenerCandidatos(int criterio)
     {
         return daoCandidato.obtenerCandidatos(criterio);
