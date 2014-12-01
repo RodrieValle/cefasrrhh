@@ -28,7 +28,8 @@ public class CEFAS_CandidatoDAO {
     private final String SQL_INSERT = "INSERT INTO CEFAS_CANDIDATO(CDTDUI,CDTNOMBRE,ESPCODIGO,CDTCURRICULO) VALUES (?, ?, ?, ?)";
     private final String SQL_SELECT_ID = "SELECT * FROM CEFAS_CANDIDATO WHERE CDTDUI =?";
     private final String SQL_SELECT = "SELECT CEFAS_CANDIDATO.CDTDUI,CEFAS_CANDIDATO.CDTNOMBRE,CEFAS_ESPECIALIDAD.ESPNOMBRE FROM CEFAS_CANDIDATO INNER JOIN CEFAS_ESPECIALIDAD ON CEFAS_CANDIDATO.ESPCODIGO = CEFAS_ESPECIALIDAD.ESPCODIGO";
-   
+    private final String SQL_SELECT_ESPECIALIDAD = "select * from CEFAS_CANDIDATO inner join CEFAS_ESPECIALIDAD on CEFAS_CANDIDATO.ESPCODIGO = CEFAS_ESPECIALIDAD.ESPCODIGO\n" +
+"where CEFAS_ESPECIALIDAD.ESPCODIGO = ?";
     private Connection conexiondb;
     private Statement st;
     private PreparedStatement ps;
@@ -109,9 +110,35 @@ public class CEFAS_CandidatoDAO {
         
         return listaCandidato;
     }
-    //public List<CEFAS_Candidato> obtenerCandidatos(int criterio, String dato)
+    public List<CEFAS_Candidato> obtenerCandidatos(int criterio)
     {
+        List<CEFAS_Candidato> listaCandidato = new ArrayList<CEFAS_Candidato>();
+        CEFAS_Candidato cdt;
+        try {
+            conexiondb = ConexionDB.getConexion();
+            ps = conexiondb.prepareStatement(SQL_SELECT_ESPECIALIDAD);
+            ps.setInt(1, criterio);
+            rs = ps.executeQuery();
+            while(rs.next())
+            {
+                cdt = new CEFAS_Candidato();
+                CEFAS_Especialidad esp = new CEFAS_Especialidad();
+             
+                
+                esp.setEspNombre(rs.getString("espNombre"));
+                cdt.setCdtDUI(rs.getString("cdtDUI"));
+                cdt.setCdtNombre(rs.getString("cdtNombre"));
+                cdt.setEspecialidad(esp);
+                
+                listaCandidato.add(cdt);
+            }
+            
+            ConexionDB.cerrarConexion();
+        } catch (SQLException ex) {
+            Logger.getLogger(CEFAS_CandidatoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
+        return listaCandidato;
     }
     
     

@@ -44,20 +44,22 @@
     
     CtrlCEFAS_Candidato ctrlCandidatos = new CtrlCEFAS_Candidato();
     List<CEFAS_Candidato> listaCandidatos;
-    if(request.getParameter("dato")!= null)
+    if(request.getParameter("criterio")!= null)
     {
         int criterio = Integer.parseInt(request.getParameter("criterio"));
-        String dato = request.getParameter("dato");
-        //listaCandidatos = ctrlCandidatos.obtenerCandidatos(criterio, dato);
+        //String dato = request.getParameter("dato");
+        listaCandidatos = ctrlCandidatos.obtenerCandidatos(criterio);
     }
     else
     {
-       
+        CtrlCEFAS_Candidato ctrlCandidato = new CtrlCEFAS_Candidato();
+        listaCandidatos = ctrlCandidato.obtenerPorEspecialidad();
+        
     
     }
+    CtrlCEFAS_Especialidad ctrlEspecialidad = new CtrlCEFAS_Especialidad();
+    List<CEFAS_Especialidad> especialidades =  ctrlEspecialidad.obtenerEspecialidad();
     
-     CtrlCEFAS_Candidato ctrlCandidato = new CtrlCEFAS_Candidato();
-    List<CEFAS_Candidato> listaCandidato = ctrlCandidato.obtenerPorEspecialidad();
 
 %>
 <!DOCTYPE html>
@@ -84,20 +86,21 @@
 	<form action="gestionarcandidato.jsp" method="post">
 
    <div class="panel panel-primary">
-		<div class="panel-heading">Zona de Búsqueda</div>
+		<div class="panel-heading">Zona de Búsqueda por especialidad</div>
 		<div class="panel-body">
 		<div class="row">
-                            <div class="col-xs-4 col-xs-offset-1">
-                                <select name="criterio" id="criterio" class="form-control input-sm">
-                                    <option value="1">Especialidad</option>
-                                    <option value="2">Nombre de candidato</option>
-                                    <option value="3">Dui </option>
-                                </select>
-                            </div>
-			<div class="col-xs-4 col-xs-offset-2">
+                            <div class="col-xs-4 col-xs-offset-4">
+                                
                                 <div class="input-group">
-                                    <input type="text" name="dato" class="form-control input-sm" placeholder="Busqueda por criterio">
-                                    <span class="input-group-btn">
+                                    <select name="criterio" id="criterio" class="form-control input-sm">
+                                    <% 
+                                        for(CEFAS_Especialidad e:especialidades)
+                                        {  %>
+                                        <option value="<%= e.getEspCodigo() %>"><%= e.getEspNombre() %></option>
+                                    <%  }
+                                    %>
+                                </select>
+                                <span class="input-group-btn">
                                         <button class="btn btn-sm btn-success" type="submit">
                                             <span class="glyphicon glyphicon-search"></span> 
                                         </button>
@@ -123,7 +126,7 @@
 				<td>Evaluacion:</td>
                                 <td>Evaluacion:</td>
 			</tr>
-                       <% for(CEFAS_Candidato cdt: listaCandidato)
+                       <% for(CEFAS_Candidato cdt: listaCandidatos)
                                     {
                                     %>
 			<tr>
