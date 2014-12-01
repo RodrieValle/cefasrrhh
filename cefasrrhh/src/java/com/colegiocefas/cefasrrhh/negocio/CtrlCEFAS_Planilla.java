@@ -7,6 +7,7 @@ package com.colegiocefas.cefasrrhh.negocio;
 import com.colegiocefas.cefasrrhh.datos.CEFAS_PlanillaDAO;
 import com.colegiocefas.cefasrrhh.dominio.CEFAS_Planilla;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -28,5 +29,8 @@ public class CtrlCEFAS_Planilla {
          daoPlanilla.almacenarPlanilla(planilla);
      }
      
-    
+                 public List<CEFAS_Planilla> getPlanillas()
+    {
+        return daoPlanilla.getPlanillas();
+    }
 }

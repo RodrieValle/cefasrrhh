@@ -23,7 +23,7 @@ import java.util.logging.Logger;
  */
 public class CEFAS_PlanillaDAO {
      private final String SQL_INSERT = "INSERT INTO CEFAS_PLANILLA (PLNTIPO, PLNFECHA) VALUES (?, ?)";
-    private final String SQL_SELECT = "";
+    private final String SQL_SELECTALL = "SELECT * FROM CEFAS_PLANILLA";
      private final String SQL_SELECT_DATE = "SELECT * from CEFAS_PLANILLA WHERE PLNCODIGO=(SELECT MAX(PLNCODIGO) from CEFAS_PLANILLA)";
     private final String SQL_SELECTBYID = "";
     private final String SQL_UPDATE = "";
@@ -76,4 +76,33 @@ ConexionDB.cerrarConexion();
         }
      return n;
      }
+     
+     
+     //Retorna todos las planillas del sistema
+     public List<CEFAS_Planilla> getPlanillas()
+    {
+        List<CEFAS_Planilla> listPlanillas = new ArrayList<CEFAS_Planilla>();
+        CEFAS_Planilla planilla= null;
+        try {
+            conexiondb = ConexionDB.getConexion();
+            ps = conexiondb.prepareStatement(SQL_SELECTALL);
+            //ps.setInt(1, codigo);
+           // ps.setString(2, fecha);
+            rs = ps.executeQuery();
+            while(rs.next())
+            {
+               planilla= new CEFAS_Planilla();
+                planilla.setPlnCodigo(rs.getInt("plnCodigo"));
+               planilla.setPlnTipo(rs.getInt("plnTipo"));
+                planilla.setPlnFecha(rs.getDate("plnFecha"));
+                listPlanillas.add(planilla); 
+            }
+            ConexionDB.cerrarConexion();
+        } catch (SQLException ex) {
+            Logger.getLogger(CEFAS_PlanillaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return listPlanillas;
+    }
+    
+     
 }
