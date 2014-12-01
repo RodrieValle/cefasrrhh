@@ -47,7 +47,7 @@
                                     </tr>
                                     <tr>
                                     <th><%= curriculo.getCdtNombre()%></th>
-                                    <th><a target="_blank" href="<%= curriculo.getCdtCurriculum()%>"></a>Ver Archivo</th>
+                                    <th><a target="_blank" href="<%= curriculo.getCdtCurriculum()%>">Ver Archivo</a></th>
                                     </tr>
                                 </thead>
                                 <tbody>
