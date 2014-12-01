@@ -14,6 +14,7 @@
 <%@page import="com.colegiocefas.cefasrrhh.negocio.CtrlCEFAS_EvaluacionCandidato"%>
 
 <%
+    String mensaje;
     //Verificación de sesión abierta
     HttpSession sesionOk = request.getSession();
     String tipo = (String) sesionOk.getAttribute("tipo");
@@ -24,6 +25,38 @@
     if (!tipo.equals("director")) {
         response.sendRedirect("avisos.jsp");
     }
+    
+    if (request.getParameter("referencia") != null) {
+        
+        String dui = request.getParameter("Dui");
+        String comenll = request.getParameter("referencia");
+        Date fechaen = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("fentrevista").toString());
+        String comenen = request.getParameter("centrevista");
+        Date fechaex = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("faptitud").toString());
+        String notaap = request.getParameter("naptitud");
+        String comenap = request.getParameter("captitud");
+        Date fechapsi = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("fpsicologico").toString());
+        String notapsi = request.getParameter("npsicologico");
+        String comenpsi = request.getParameter("cpsicologico");
+        
+        CEFAS_EvaluacionCandidato evccan = new CEFAS_EvaluacionCandidato();
+        evccan.setCdtDUI(dui);
+        evccan.setEvcObservacionesReferencias(comenll);
+        evccan.setEvcFechaEntrevista(fechaen);
+        evccan.setEvcComentarioEntrevista(comenen);
+        evccan.setEvcFechaExamenAptitud(fechaex);
+        evccan.setEvcNotaExamenAptitud(Double.parseDouble(notaap));
+        evccan.setEvcComentarioExamenAptitud(comenap);
+        evccan.setEvcFechaExamenPsico(fechapsi);
+        evccan.setEvcNotaExamenPsico(Double.parseDouble(notapsi));
+        evccan.setEvcCometarioExamenPsico(comenpsi);
+               
+
+        CtrlCEFAS_EvaluacionCandidato ctrlevccandidato = new CtrlCEFAS_EvaluacionCandidato();
+        ctrlevccandidato.guardarEvaluacion(evccan);
+        
+    }
+    
    
     String duiCan = request.getParameter("Dui");
     CtrlCEFAS_Candidato ctrlCandidato = new CtrlCEFAS_Candidato();
@@ -59,7 +92,7 @@
                      <p></p>
                       
   
-                     DUI:<input  type="text" name="Dui" value="<%= cdt.getCdtDUI()%> "  class="form-control input-sm"  required readonly/>
+                     DUI:<input  type="text" name="Dui" value="<%= cdt.getCdtDUI()%>"  class="form-control input-sm"  required/>
                                               
 
                         <input type="checkbox" name="hecho"> Hecho

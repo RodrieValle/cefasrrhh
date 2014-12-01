@@ -26,29 +26,20 @@
     if (!tipo.equals("director")) {
         response.sendRedirect("avisos.jsp");
     }
-     if (request.getParameter("Dui") != null) {
-        String dui = request.getParameter("Dui");
-        String notaap = request.getParameter("naptitud");
-        String comenll = request.getParameter("referencia");
-        String comenen = request.getParameter("centrevista");
-        String comenap = request.getParameter("captitud");
-        String notapsi = request.getParameter("npsicologico");
-        String comenpsi = request.getParameter("cpsicologico");
-        Date fechaen = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("fentrevista").toString());
-        Date fechaex = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("faptitud").toString());
-        Date fechapsi = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("fpsicologico").toString());
-
-        CtrlCEFAS_EvaluacionCandidato ctrlevccandidato = new CtrlCEFAS_EvaluacionCandidato();
-        ctrlevccandidato.guardarEvaluacion(dui, comenll, fechaen, comenen, fechaex, Double.parseDouble(notaap), comenap, fechapsi,Double.parseDouble(notapsi), comenpsi);
-    }
+     
     
     CtrlCEFAS_Candidato ctrlCandidatos = new CtrlCEFAS_Candidato();
     List<CEFAS_Candidato> listaCandidatos;
     if(request.getParameter("criterio")!= null)
     {
-        int criterio = Integer.parseInt(request.getParameter("criterio"));
+    
+
+        String dato = request.getParameter("dato");
+        //listaCandidatos = ctrlCandidatos.obtenerCandidatos(dato);
+
         //String dato = request.getParameter("dato");
         listaCandidatos = ctrlCandidatos.obtenerCandidatos(criterio);
+
     }
     else
     {
@@ -89,9 +80,16 @@
 		<div class="panel-heading">Zona de Búsqueda por especialidad</div>
 		<div class="panel-body">
 		<div class="row">
+                            <div class="col-xs-4 col-xs-offset-1">
+                                
+                                
+                            </div>
+			<div class="col-xs-4 col-xs-offset-2">
                             <div class="col-xs-4 col-xs-offset-4">
                                 
                                 <div class="input-group">
+                                    <input type="text" name="dato" class="form-control input-sm" placeholder="Busqueda por especialidad">
+                                    <span class="input-group-btn">
                                     <select name="criterio" id="criterio" class="form-control input-sm">
                                     <% 
                                         for(CEFAS_Especialidad e:especialidades)
@@ -132,9 +130,9 @@
 			<tr>
 				<td><%= cdt.getCdtNombre() %> </td>
 				<td><%= cdt.getEspecialidad().getEspNombre() %></td>
-				<td><a href="" class="btn btn-primary btn-md" role="button">Ver Curriculum</a></td>
-                                <td><a href="evaluarCandidato.jsp?Dui=<%= cdt.getCdtDUI() %>" class="btn btn-primary btn-md" role="button"> Ingresar </a></td>
-                                <td><a href="verevaluacion.jsp?Dui=<%= cdt.getCdtDUI() %>" class="btn btn-primary btn-md" role="button"> Ver </a></td>
+				<td><a  href="vercurriculum.jsp?Dui=<%= cdt.getCdtDUI() %>" class="btn btn-primary btn-md">Ver curriculum</a></td>
+                                <td><a href="evaluarCandidato.jsp?Dui=<%= cdt.getCdtDUI() %>" class="btn btn-primary btn-md" role="button"> Evaluar </a></td>
+                                <td><a href="verevaluacion.jsp?Dui=<%= cdt.getCdtDUI() %>" class="btn btn-primary btn-md" role="button"> Ver evaluacion </a></td>
 
 			</tr>
                         

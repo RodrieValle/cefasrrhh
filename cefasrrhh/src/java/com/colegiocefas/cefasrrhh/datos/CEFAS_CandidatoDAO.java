@@ -70,9 +70,7 @@ public class CEFAS_CandidatoDAO {
                 cdt = new CEFAS_Candidato();
                 cdt.setCdtDUI(rs.getString("cdtDUI"));
                 cdt.setCdtNombre(rs.getString("cdtNombre"));
-          
-                
-                        
+                cdt.setCdtCurriculum(rs.getString("cdtCurriculo"));
             }
             ConexionDB.cerrarConexion();
         } catch (SQLException ex) {
@@ -98,6 +96,7 @@ public class CEFAS_CandidatoDAO {
                 esp.setEspNombre(rs.getString("espNombre"));
                 cdt.setCdtDUI(rs.getString("cdtDUI"));
                 cdt.setCdtNombre(rs.getString("cdtNombre"));
+               
                 cdt.setEspecialidad(esp);
                 
                 listaCandidato.add(cdt);
