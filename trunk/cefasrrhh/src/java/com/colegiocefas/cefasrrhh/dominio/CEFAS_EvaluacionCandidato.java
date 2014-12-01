@@ -25,11 +25,12 @@ public class CEFAS_EvaluacionCandidato {
     private Date   evcFechaExamenPsico;
     private Double evcNotaExamenPsico;
     private String evcCometarioExamenPsico;
+    private CEFAS_Candidato dui;
 
     public CEFAS_EvaluacionCandidato() {
     }
 
-    public CEFAS_EvaluacionCandidato(String cdtDUI, int evcCodigo, String evcObservacionesReferencias, Date evcFechaEntrevista, String evcComentarioEntrevista, Date evcFechaExamenAptitud, Double evcNotaExamenAptitud, String evcComentarioExamenAptitud, Date evcFechaExamenPsico, Double evcNotaExamenPsico, String evcCometarioExamenPsico) {
+    public CEFAS_EvaluacionCandidato(String cdtDUI, int evcCodigo, String evcObservacionesReferencias, Date evcFechaEntrevista, String evcComentarioEntrevista, Date evcFechaExamenAptitud, Double evcNotaExamenAptitud, String evcComentarioExamenAptitud, Date evcFechaExamenPsico, Double evcNotaExamenPsico, String evcCometarioExamenPsico,CEFAS_Candidato dui) {
         this.cdtDUI = cdtDUI;
         this.evcCodigo = evcCodigo;
         this.evcObservacionesReferencias = evcObservacionesReferencias;
@@ -41,6 +42,7 @@ public class CEFAS_EvaluacionCandidato {
         this.evcFechaExamenPsico = evcFechaExamenPsico;
         this.evcNotaExamenPsico = evcNotaExamenPsico;
         this.evcCometarioExamenPsico = evcCometarioExamenPsico;
+        this.dui=dui;
     }
 
     public String getCdtDUI() {
@@ -131,6 +133,13 @@ public class CEFAS_EvaluacionCandidato {
         this.evcCometarioExamenPsico = evcCometarioExamenPsico;
     }
     
+    public CEFAS_Candidato getDui() {
+        return dui;
+    }
+
+    public void setDui(CEFAS_Candidato edui) {
+        this.dui = dui;
+    }
     
 
     

@@ -30,9 +30,9 @@ public class CtrlCEFAS_EvaluacionCandidato {
         evccan.setEvcCometarioExamenPsico(evcComentarioExamenPsico);
         daoEvaluacionCandidato.almacenarEvaluacion(evccan);
     }
-    public List<CEFAS_EvaluacionCandidato> getEvaluacion(String codigo)
+    public CEFAS_EvaluacionCandidato getEvaluacion(String duiCdt)
     {
-        return daoEvaluacionCandidato.obtenerEvaluacion(codigo);
+        return daoEvaluacionCandidato.obtenerEvaluacion(duiCdt);
     }
     
 }
