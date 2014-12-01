@@ -14,14 +14,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%
-    Connection conn = null;
-    try {
-        Class.forName("com.mysql.jdbc.Driver"); //se carga el driver
-        conn = ConexionDB.getConexion();// DriverManager.getConnection("jdbc:mysql://localhost:3306/cefasrrhhdb", "cefasusuariodb", "we7854*/++");
-    } catch (Exception ex) {
-        ex.printStackTrace();
-        //out.print("Excepcion");
-    }
+    int idPlanilla = Integer.parseInt(request.getParameter("idPlanilla"));
+    Map parametros = new HashMap();
+    parametros.put("idPlanilla", idPlanilla);
+    Connection conn = ConexionDB.getConexion();
+    
     //Obteniendo la fecha actual
     Calendar calendario = Calendar.getInstance();
     Date fechaActual = calendario.getTime();
@@ -29,7 +26,7 @@
     String dia = formato.format(fechaActual);
     
     File reportFile = new File(application.getRealPath("reportes/CEFAS_Planilla.jasper"));
-    byte[] bytes = JasperRunManager.runReportToPdf(reportFile.getPath(), null, conn);
+    byte[] bytes = JasperRunManager.runReportToPdf(reportFile.getPath(), parametros, conn);
     response.setContentType("application/pdf");
     response.setHeader("Content-Disposition", "filename=planilla-"+dia+".pdf"); 
     response.setContentLength(bytes.length);
