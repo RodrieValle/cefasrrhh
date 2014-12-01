@@ -33,7 +33,7 @@
     if(request.getParameter("criterio")!= null)
     {
     
-
+        int criterio = Integer.parseInt(request.getParameter("criterio"));
         String dato = request.getParameter("dato");
         //listaCandidatos = ctrlCandidatos.obtenerCandidatos(dato);
 
