@@ -28,6 +28,7 @@
                     <ul class="dropdown-menu" aria-labelledby="download">
                         <li><a href="horasExtras.jsp">Ingresar horas extras</a></li>
                         <li><a href="reportellegadas.jsp">Reportar llegadas</a></li>
+                        <li><a href="registro.jsp">Registro de usuarios</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
