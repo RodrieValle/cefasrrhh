@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CEFAS_Planilla" language="groovy" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="552de5df-3c57-4748-9bf9-0bc3d305d947">
 	<property name="ireport.zoom" value="1.5"/>
-	<property name="ireport.x" value="312"/>
+	<property name="ireport.x" value="238"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="idPlanilla" class="java.lang.Integer"/>
+	<parameter name="periodo" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT
      CEFAS_LINEADEPLANILLA.`EMPCODIGO` AS CEFAS_LINEADEPLANILLA_EMPCODIGO,
@@ -93,11 +94,11 @@ FROM
 				<textElement textAlignment="Center"/>
 				<text><![CDATA[COLEGIO CEFAS]]></text>
 			</staticText>
-			<staticText>
-				<reportElement uuid="d5f5f685-44f0-47ff-9e25-b03f25fc2f8b" x="246" y="13" width="268" height="13"/>
+			<textField>
+				<reportElement uuid="c6835ace-073a-4406-9670-a3cf1c85cb9e" x="233" y="12" width="301" height="20"/>
 				<textElement textAlignment="Center"/>
-				<text><![CDATA[PLANILLA  DE  SUELDOS MES DE ENERO 2014]]></text>
-			</staticText>
+				<textFieldExpression><![CDATA["PLANILLA DE SUELDOS MES DE "+$P{periodo}]]></textFieldExpression>
+			</textField>
 		</band>
 	</title>
 	<pageHeader>
