@@ -147,109 +147,115 @@
 
 
     <tr>
-       <td>Clases, Deacuerdo a formato de supervision de clases</td>
+       <td>Clases. De acuerdo a formato de supervisión de clases</td>
        <td><input required name="item1" type="text" size="60" maxlength="50"></td>
     </tr>
   
     <tr>
-       <td>Tareas, Distribuidas, Apropiadas, Revisadas</td>
+       <td>Tareas. Distribuidas, Apropiadas, Revisadas</td>
       <td><input required name="item2" type="text" size="60" maxlength="50"></td>
      
     </tr>
 
     <tr>
-       <td>Cuadernos, Contenido, Revisado, Corregido</td>
+       <td>Cuadernos. Contenido, Revisado, Corregido</td>
        <td><input required name="item3" type="text" size="60" maxlength="50"></td>
     </tr>
 
     <tr>
-       <td>Libros, Limpieza, útiles, forrados, revisados</td>
+       <td>Libros. Limpieza, útiles, forrados, revisados</td>
        <td><input required name="item4" type="text"  size="60" maxlength="50"></td>
     </tr>
 
     <tr>
-       <td>Examenes,Formato, ortografía, contenido, aplicativo, revisión</td>
+       <td>Exámenes. Formato, ortografía, contenido, aplicativo, revisión</td>
        <td><input required name="item5" type="text" size="60" maxlength="50"></td>
 
     </tr>
 
     <tr>
-       <td>Planificaciones, Contenido, entrega a tiempo, utilizadas</td>
+       <td>Planificaciones. Contenido, entrega a tiempo, utilizadas</td>
        <td><input required name="item6" type="text" size="60" maxlength="50"></td>
 
     </tr>
 
     <tr>
-       <td>Responsabilidades, Cuidos, Asamblea, Per. Mur., Reu. c/Padres</td>
+       <td>Responsabilidades. Cuidos, Asamblea, Per. Mur., Reu. c/Padres</td>
        <td><input required name="item7" type="text" size="60" maxlength="50"></td>
 
     </tr>
 
     <tr>
-       <td>Disciplina, Seguimiento Manual, Pastoreo, claro y consistente, orden</td>
+       <td>Disciplina. Seguimiento Manual, Pastoreo, claro y consistente, orden</td>
        <td><input required name="item8" type="text" size="60" maxlength="50"></td>
 
     </tr>
 
     
     <tr>
-       <td>Habitos y procedimientos</td>
-       <td><input required name="item10" type="text" size="60" maxlength="50"></td>
+       <td>Hábitos y procedimientos</td>
+       <td><input required name="item9" type="text" size="60" maxlength="50"></td>
 
     </tr>
 
     <tr>
        <td>Aula</td>
+       <td><input required name="item10" type="text" size="60" maxlength="50"></td>
+
+    </tr>
+
+    <tr>
+       <td>Teacher's book</td>
        <td><input required name="item11" type="text" size="60" maxlength="50"></td>
 
     </tr>
 
     <tr>
-       <td>Teachers book</td>
-       <td><input required name="item12" type="text" size="60" maxlength="50"></td>
-
-    </tr>
-
-    <tr>
        <td>Lealtad al ausente</td>
-       <td><input required name="item15" type="text" size="60" maxlength="50"></td>
+       <td><input required name="item12" type="text" size="60" maxlength="50"></td>
 
     </tr>
 
     
     <tr>
        <td>Respeto a autoridades</td>
-       <td><input required name="item15" type="text" size="60" maxlength="50"></td>
+       <td><input required name="item13" type="text" size="60" maxlength="50"></td>
 
     </tr>
 
     <tr>
        <td>Puntualidad, asistencia y permisos</td>
+       <td><input required name="item14" type="text" size="60" maxlength="50"></td>
+
+    </tr>
+    
+    <tr>
+       <td>Entrega de documentos</td>
+       <td><input required name="item15" type="text" size="60" maxlength="50"></td>
+
+    </tr>
+
+    <tr>
+       <td>Presentación personal</td>
        <td><input required name="item16" type="text" size="60" maxlength="50"></td>
 
     </tr>
 
     <tr>
-       <td>Presentacion personal</td>
+       <td>Sigue indicaciones</td>
        <td><input required name="item17" type="text" size="60" maxlength="50"></td>
 
     </tr>
 
     <tr>
-       <td>Sigue indicaciones</td>
+       <td>Disposición y actitud</td>
        <td><input required name="item18" type="text" size="60" maxlength="50"></td>
-
-    </tr>
-
-    <tr>
-       <td>Disposicion y actitud</td>
-       <td><input required name="item19" type="text" size="60" maxlength="50"></td>
 
     </tr>
       
       <tr>
        <td>Cuida propiedad del colegio</td>
-       <td><input required name="item121" type="text" size="60" maxlength="50"></td>
+       <td><input required name="item19" type="text" size="60" maxlength="50"></td>
 
     </tr>
 

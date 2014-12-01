@@ -83,7 +83,10 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-xs-5 col-xs-offset-1">
-                                    Año de contratación: <input type="number" name="anioContratacion" value="<%= empleado.getEmpAnioContratacion() %>" class="form-control input-sm" required max="9999"><br>
+                                    Año de contratación: 
+                                    <div class="bfh-datepicker" data-format="d/m/y"  data-name="anioContratacion" data-language="es" data-input="input-sm form-control" data-icon=""
+                                            data-close="true" data-align="right" data-date="<%= new SimpleDateFormat("dd/MM/yyyy").format(empleado.getEmpAnioContratacion()) %>">
+                                    </div><br>
                                     Plaza actual: <input type="text" name="plazaActual" value="<%= empleado.getEmpPlazaActual() %>" class="form-control input-sm" required maxlength="50"> <br>
                                     Plaza anterior: <input type="text" name="plazaAnterior" value="<%= empleado.getEmpPlazaAnterior() %>" class="form-control input-sm" required maxlength="50"><br>
                                 </div>
