@@ -73,10 +73,10 @@ String mensaje="";
                      <div class="col-xs-4">  
                                   
                          Codigo Empleado:<input  type="text" name="codigo" value="<%= anticipo.getEmpCodigo() %>" class="form-control input-sm"  required />
-                         
-                                  
-                        
-                         Fecha: <input id="fecha" type="text" name="fecha" value="<%= new SimpleDateFormat("dd/MM/yyyy").format(anticipo.getAtpFecha())%>" class="form-control input-sm" placeholder="Formato: dd/MM/yyyy"required />
+
+                           Fecha: <div class="bfh-datepicker" data-format="d/m/y" data-name="fecha" data-language="es" data-input="input-sm form-control" data-icon=""
+                                data-close="true" data-align="right" data-date="<%= new SimpleDateFormat("dd/MM/yyyy").format(anticipo.getAtpFecha()) %>">
+                                </div>
                          
                            </div>
                     <div class="col-xs-4">  

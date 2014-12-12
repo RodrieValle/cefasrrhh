@@ -22,17 +22,23 @@ public class CtrlCEFAS_Prestamo {
     
         public int guardarPrestamo(int empCodigo, Date prmFecha, float prmMonto, int prmPlazos, float prmCuota)
     {
-        CEFAS_Prestamo prestamo= new CEFAS_Prestamo();
-         
-                
+      CEFAS_Prestamo prestamo= new CEFAS_Prestamo();      
                prestamo.setEmpCodigo(empCodigo);
-                prestamo.setPrmFecha(prmFecha);
+               prestamo.setPrmFecha(prmFecha);
                 prestamo.setPrmMonto(prmMonto);
                 prestamo.setPrmPlazo(prmPlazos);
                 prestamo.setPrmSaldo(prmMonto);
-                prestamo.setPrmCuota(prmCuota);
-                
-              return  daoPrestamo.almacenarPrestamos(prestamo);
+                prestamo.setPrmCuota(prmCuota); 
+        CEFAS_Prestamo pre=daoPrestamo.obtenerPrestamoEmpleado(empCodigo);
+        if(pre==null){            
+              return  daoPrestamo.almacenarPrestamos(prestamo);     
+        }else
+            if(pre.getPrmSaldo()==0)
+            {
+           return  daoPrestamo.almacenarPrestamos(prestamo); 
+            }
+        else
+        return 0;
     }
     
         
@@ -58,9 +64,11 @@ public class CtrlCEFAS_Prestamo {
         prestamo.setPrmMonto(cantidad);
         prestamo.setPrmPlazo(plazo);
         prestamo.setPrmSaldo(saldo);
-        return daoPrestamo.actualizarPrestamo(prestamo);
+
+           return daoPrestamo.actualizarPrestamo(prestamo);
+      
     }
-    
+              
    public int eliminarPrestamo(int codigo)
     {
         return daoPrestamo.eliminarPrestamo(codigo);

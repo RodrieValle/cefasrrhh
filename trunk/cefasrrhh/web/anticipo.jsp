@@ -48,9 +48,9 @@ String mensaje="";
                CtrlCEFAS_Bitacora ctrlBitacora= new CtrlCEFAS_Bitacora();
         ctrlBitacora.guardarBitacora((Integer) sesionOk.getAttribute("codigo"), "Se almaceno un nuevo anticipo al empleado con codigo "+codigo);
         }else{
-         mensaje = "<br><br><div class='alert alert-success' role='alert'><button type='button' class='close'"
+         mensaje = "<br><br><div class='alert alert-danger' role='alert'><button type='button' class='close'"
                 + " data-dismiss='alert'><span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span></button>"
-                + "No se pudo guardar el nuevo anticipo.</div>";
+                + "No se pudo guardar el nuevo anticipo. Causa posible: Se ha pasado el limite de anticipos ha este empleado</div>";
         }     
 }
     

@@ -8,6 +8,7 @@ package com.colegiocefas.cefasrrhh.negocio;
 
 import com.colegiocefas.cefasrrhh.datos.CEFAS_AnticipoDAO;
 import com.colegiocefas.cefasrrhh.dominio.CEFAS_Anticipo;
+import com.colegiocefas.cefasrrhh.dominio.CEFAS_Empleado;
 import com.colegiocefas.cefasrrhh.dominio.CEFAS_Planilla;
 import java.util.ArrayList;
 import java.util.Date;
@@ -73,6 +74,15 @@ public class CtrlCEFAS_Anticipo {
         anticipo.setEmpCodigo(empCodigo);
         anticipo.setAtpFecha(atpFecha);
         anticipo.setAtpCantidad(atpCantidad);
+        
+        CtrlCEFAS_Empleado ctrlEmpleado=new CtrlCEFAS_Empleado();
+        CEFAS_Empleado empleado=ctrlEmpleado.getEmpleadoPorID(empCodigo);
+        float sumaAnticipos=sumaAnticipos(empCodigo)-getAnticipo(atpCodigo).getAtpCantidad()+atpCantidad;
+        float sueldo=empleado.getEmpSalario();
+        
+        if(sumaAnticipos>(sueldo/2)){
+        return 0;
+        }else
         return daoAnticipo.actualizarAnticipo(anticipo);
     }
     
@@ -82,6 +92,15 @@ public class CtrlCEFAS_Anticipo {
         anticipo.setEmpCodigo(codigo);
         anticipo.setAtpFecha(fecha);
         anticipo.setAtpCantidad(cantidad);
+
+        CtrlCEFAS_Empleado ctrlEmpleado=new CtrlCEFAS_Empleado();
+        CEFAS_Empleado empleado=ctrlEmpleado.getEmpleadoPorID(codigo);
+        float sumaAnticipos=sumaAnticipos(codigo)+cantidad;
+        float sueldo=empleado.getEmpSalario();
+        
+        if(sumaAnticipos>(sueldo/2)){
+        return 0;
+        }else
         return daoAnticipo.almacenarAnticipo(anticipo);
     }
     
