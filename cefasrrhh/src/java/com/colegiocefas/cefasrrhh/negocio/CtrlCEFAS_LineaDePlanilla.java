@@ -118,7 +118,7 @@ public class CtrlCEFAS_LineaDePlanilla {
              float viaticos=calculoViatico(codigo);
             linea.setLdpMontoViatico(viaticos);
             
-            float liquidoPagar=sujeto-isss-renta-anticipo-orden-prest+viaticos;
+            float liquidoPagar=sujeto-isss-renta-anticipo-orden-prest;
             linea.setLdpLiquidoAPagar(liquidoPagar);
             
             linea.setLdpAguinaldo(0);
@@ -421,7 +421,7 @@ public float calculoIndemnizacion(int codigo){
             float viaticos=calculoViatico(codigo);
             linea.setLdpMontoViatico(viaticos);
             
-            float liquidoPagar=sujeto-isss-renta-anticipo-orden-prest+viaticos;
+            float liquidoPagar=sujeto-isss-renta-anticipo-orden-prest;
             linea.setLdpLiquidoAPagar(liquidoPagar);
             listPlanilla.add(linea);
         }
