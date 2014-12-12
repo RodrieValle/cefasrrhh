@@ -3,6 +3,8 @@
     Created on : 10-31-2014, 10:57:43 AM
     Author     : Portillo
 --%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.colegiocefas.cefasrrhh.negocio.CtrlCEFAS_Aviso"%>
 <%@page import="java.io.File"%>
 <%@page import="com.colegiocefas.cefasrrhh.negocio.CtrlCEFAS_EvaluacionDeClases"%>
 <%@page import="java.text.SimpleDateFormat"%>
@@ -60,6 +62,13 @@
             mensaje = "<div class='alert alert-danger alert-dismissible' role='alert'><button type='button' class='close'"
                     + " data-dismiss='alert'><span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span></button>"
                     + "La evaluación se guardó correctamente</div>";
+        CtrlCEFAS_Aviso ctrlAviso = new CtrlCEFAS_Aviso();
+          List<CEFAS_Empleado> destino = new ArrayList();
+          CEFAS_Empleado emp = new CEFAS_Empleado();
+          emp.setEmpCodigo(request.getParameter("codigo"));
+          destino.add(emp);
+          ctrlAviso.guardar(new Date(), "Usted ha recibido una nueva supervisión de clases. Dirijase a su perfil para verlo", destino , "Sistema de Recursos Humanos - CEFAS");
+        
         } catch (JRException ex) {
             System.err.println("Error iReport: " + ex.getMessage());
         }
