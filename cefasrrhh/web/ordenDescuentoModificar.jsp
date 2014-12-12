@@ -103,7 +103,7 @@ String mensaje="";
                                         <span class="input-group-addon input-sm">$</span>
                                         <input type="number" name="monto" value="<%=orden.getOddMonto() %>" class="form-control input-sm" required min="0.00"><br>
                                     </div><br>
-                       
+                       Institucion:<input  type="text" name="institucion" value="<%=orden.getOddInstitucion() %>" class="form-control input-sm"  required/>
                     </div>
                 </div>
                </div>

@@ -83,6 +83,7 @@
                                         <span class="input-group-addon input-sm">$</span>
                                         <input type="number" name="cuotaMensual"  class="form-control input-sm" required min="0.00"><br>
                                     </div><br>
+                        Institucion:<input  type="text" name="institucion"  class="form-control input-sm"  required/>            
                            </div>
                     <div class="col-xs-4">  
                         Nombre:<input  type="text" name="nombre" value="<%= empleado.getEmpNombre() %>" class="form-control input-sm"  required readonly/>
