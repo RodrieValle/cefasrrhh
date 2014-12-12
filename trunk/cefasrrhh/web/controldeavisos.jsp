@@ -12,6 +12,7 @@
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Date"%>
 <%
+    request.setCharacterEncoding("UTF-8");
     //Verificación de sesión abierta
     HttpSession sesionOk = request.getSession();
     String tipo = (String) sesionOk.getAttribute("tipo");
@@ -80,7 +81,7 @@
                             Descripción:<textarea name="descripcion" rows="3" cols="20" class="form-control input-sm" required></textarea><br>
                             <div id="destinatarios">
                                 <label>Destinatarios:</label><br>
-                                <input id="todos" type="checkbox" name="destinatarios" value="All" onclick="checkTodos(this.id,'destinatrios');"> Seleccionar todo<br><br>
+                                <input id="todos" type="checkbox" value="All" onclick="marcar(this)"> Seleccionar todo<br><br>
                             <%
                                 for(CEFAS_Empleado empleado : empleados)
                                 {%>
@@ -104,7 +105,7 @@
                                         <tr>
                                             <th class="col-xs-2">Fecha</th>
                                             <th class="col-xs-6">Descripción</th>
-                                            <th class="col-xs-2">Editar</th>
+                                        <!--    <th class="col-xs-2">Editar</th> -->
                                             <th class="col-xs-2">Eliminar</th>
                                         </tr>
                                     </thead>
@@ -114,7 +115,7 @@
                                         <tr>
                                             <td><%= new SimpleDateFormat("dd/MM/yyyy").format(aviso.getAvsFecha()) %></td>
                                             <td><%= aviso.getAvsDescripcion() %></td>
-                                            <td><a href="editaraviso.jsp?id=<%= aviso.getAvsCodigo() %>" class="btn btn-primary btn-md" role="button"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                                           <!-- <td><a href="editaraviso.jsp?id=<!% aviso.getAvsCodigo() %>" class="btn btn-primary btn-md" role="button"><span class="glyphicon glyphicon-pencil"></span></a></td> -->
                                             <td><a href="eliminaraviso.jsp?id=<%= aviso.getAvsCodigo() %>" class="btn btn-primary btn-md" role="button"><span class="glyphicon glyphicon-remove"></span></a></td>
                                         </tr>
                                      <% } %>

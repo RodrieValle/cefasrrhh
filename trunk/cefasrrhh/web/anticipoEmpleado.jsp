@@ -15,8 +15,9 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%
- String mensaje="";
- HttpSession sesionOk = request.getSession();
+    request.setCharacterEncoding("UTF-8");
+    String mensaje="";
+    HttpSession sesionOk = request.getSession();
     String tipo = (String) sesionOk.getAttribute("tipo");
     if (tipo == null) {
         request.getRequestDispatcher("index.jsp").forward(request, response);

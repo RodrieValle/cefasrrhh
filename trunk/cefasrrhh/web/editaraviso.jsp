@@ -28,7 +28,7 @@
         String descripcion = request.getParameter("descripcion");
         CtrlCEFAS_Actividad ctrlActividad = new CtrlCEFAS_Actividad();
         ctrlActividad.actualizar(id, fecha, descripcion);
-        response.sendRedirect("controldeactividades.jsp");
+        response.sendRedirect("controldeavisos.jsp");
     }
     String id = request.getParameter("id");
     CtrlCEFAS_Aviso ctrlAviso = new CtrlCEFAS_Aviso();
@@ -65,7 +65,7 @@
                      <div class="panel panel-primary">
                             <div class="panel-heading">Actualizar aviso</div>
                             <div class="panel-body">
-                            <form action="editaractividad.jsp" method="post">
+                            <form action="editaraviso.jsp" method="post">
                                 <input style="display: none" value="<%= aviso.getAvsCodigo() %>" name="id">
                                 Fecha: <div class="bfh-datepicker" data-format="d/m/y" data-name="fecha" data-date="<%= new SimpleDateFormat("dd/MM/yyyy").format(aviso.getAvsFecha()) %>"
                          data-close="true" data-align="right" data-language="en_US" data-available="es_MX">

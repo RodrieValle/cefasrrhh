@@ -17,8 +17,8 @@
 <%@page import="com.colegiocefas.cefasrrhh.negocio.CtrlCEFAS_Empleado"%>
 
 <% 
-
- HttpSession sesionOk = request.getSession();
+    request.setCharacterEncoding("UTF-8");
+    HttpSession sesionOk = request.getSession();
     String tipo = (String) sesionOk.getAttribute("tipo");
     if (tipo == null) {
         request.getRequestDispatcher("index.jsp").forward(request, response);
@@ -53,7 +53,7 @@
 
             <div class="container">
                 
-                <h2 class="form-signin-heading">Nuevo Anticipo</h2>
+                <h1 class="form-signin-heading">Nuevo Anticipo</h1>
                  <form class="form-signin" role="form" method="post" action="anticipo.jsp">
                 <div class="panel panel-primary">
                         <div class="panel-heading">Ingrese Datos del Anticipo Nuevo</div>
@@ -81,7 +81,7 @@
                         Cantidad: <br>
                                     <div class="input-group">
                                         <span class="input-group-addon input-sm">$</span>
-                                        <input type="number" name="cantidad"  class="form-control input-sm" required min="0.00"><br>
+                                        <input type="number" step="0.01" name="cantidad"  class="form-control input-sm" required min="0.00" value="0.00"><br>
                                     </div><br>
                           
                     </div>

@@ -13,9 +13,10 @@
 <%@page import="com.colegiocefas.cefasrrhh.dominio.CEFAS_Empleado"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<% 
-String mensaje="";
- HttpSession sesionOk = request.getSession();
+<%
+    request.setCharacterEncoding("UTF-8");
+    String mensaje="";
+    HttpSession sesionOk = request.getSession();
     String tipo = (String) sesionOk.getAttribute("tipo");
     if (tipo == null) {
         request.getRequestDispatcher("index.jsp").forward(request, response);
@@ -58,10 +59,10 @@ String mensaje="";
 
             <div class="container">
                 
-                <h2 class="form-signin-heading">Modificar Anticipo</h2>
+                <h1 class="form-signin-heading">Modificar Anticipo</h1>
                  <form class="form-signin" role="form" method="post" action="anticipoEmpleado.jsp">
                 <div class="panel panel-primary">
-                        <div class="panel-heading">Modifique los datos del anticipo.</div>
+                        <div class="panel-heading">Modifique los datos del anticipo</div>
                         <div class="panel-body">
                 <div class="row">
                    
@@ -72,7 +73,7 @@ String mensaje="";
                            
                      <div class="col-xs-4">  
                                   
-                         Codigo Empleado:<input  type="text" name="codigo" value="<%= anticipo.getEmpCodigo() %>" class="form-control input-sm"  required />
+                         Codigo Empleado:<input  type="text" name="codigo" value="<%= anticipo.getEmpCodigo() %>" class="form-control input-sm"  required readonly/>
 
                            Fecha: <div class="bfh-datepicker" data-format="d/m/y" data-name="fecha" data-language="es" data-input="input-sm form-control" data-icon=""
                                 data-close="true" data-align="right" data-date="<%= new SimpleDateFormat("dd/MM/yyyy").format(anticipo.getAtpFecha()) %>">
@@ -80,11 +81,11 @@ String mensaje="";
                          
                            </div>
                     <div class="col-xs-4">  
-                        Codigo Anticipo:<input  type="text" name="atpcodigo" value="<%= anticipo.getAtpCodigo() %>" class="form-control input-sm"  required />
+                        Codigo Anticipo:<input  type="text" name="atpcodigo" value="<%= anticipo.getAtpCodigo() %>" class="form-control input-sm"  required readonly/>
                         Cantidad: <br>
                                     <div class="input-group">
                                         <span class="input-group-addon input-sm">$</span>
-                                        <input type="text" name="cantidad"  value="<%= anticipo.getAtpCantidad() %>" class="form-control input-sm" required><br>
+                                        <input type="number" step="0.01" min="0.00" name="cantidad"  value="<%= anticipo.getAtpCantidad() %>" class="form-control input-sm" required><br>
                                     </div><br>
                           
                     </div>

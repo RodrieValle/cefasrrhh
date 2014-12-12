@@ -16,8 +16,9 @@
 <%@page import="com.colegiocefas.cefasrrhh.negocio.CtrlCEFAS_Empleado"%>
 
 <%
-String mensaje="";
- HttpSession sesionOk = request.getSession();
+    request.setCharacterEncoding("UTF-8");
+    String mensaje="";
+    HttpSession sesionOk = request.getSession();
     String tipo = (String) sesionOk.getAttribute("tipo");
     if (tipo == null) {
         request.getRequestDispatcher("index.jsp").forward(request, response);
@@ -115,7 +116,7 @@ String mensaje="";
                             </div>
                             <div class="col-xs-4 col-xs-offset-2">
                                 <div class="input-group">
-                                    <input type="text" name="dato" class="form-control input-sm">
+                                    <input type="text" name="dato" class="form-control input-sm" required>
                                     <span class="input-group-btn">
                                         <button class="btn btn-sm btn-success" type="submit">
                                             <span class="glyphicon glyphicon-search"></span> 
