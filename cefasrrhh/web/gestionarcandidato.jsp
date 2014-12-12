@@ -80,16 +80,9 @@
 		<div class="panel-heading">Zona de Búsqueda por especialidad</div>
 		<div class="panel-body">
 		<div class="row">
-                            <div class="col-xs-4 col-xs-offset-1">
-                                
-                                
-                            </div>
-			<div class="col-xs-4 col-xs-offset-2">
-                            <div class="col-xs-4 col-xs-offset-4">
+                       <div class="col-xs-4 col-xs-offset-4">
                                 
                                 <div class="input-group">
-                                    <input type="text" name="dato" class="form-control input-sm" placeholder="Busqueda por especialidad">
-                                    <span class="input-group-btn">
                                     <select name="criterio" id="criterio" class="form-control input-sm">
                                     <% 
                                         for(CEFAS_Especialidad e:especialidades)
@@ -98,17 +91,19 @@
                                     <%  }
                                     %>
                                 </select>
-                                <span class="input-group-btn">
+                                    <span class="input-group-btn">
                                         <button class="btn btn-sm btn-success" type="submit">
                                             <span class="glyphicon glyphicon-search"></span> 
                                         </button>
                                     </span>
                                 </div>
-                            </div>
-		</div>
+                        </div>
 			
 		</div>
-		</div>
+                </div>
+   </div>
+                                
+                                <br>
    
 		<div class="panel panel-primary">
 		<div class="panel-heading">Candidatos</div>
@@ -118,11 +113,11 @@
                      
               
 			<tr>
-				<td>Nombre:</td>
-				<td>Especialidad:</td>
-				<td>Curriculum:</td>
-				<td>Evaluacion:</td>
-                                <td>Evaluacion:</td>
+				<th>Nombre:</th>
+				<th>Especialidad:</th>
+				<th>Curriculum:</th>
+				<th>Evaluación:</th>
+                                <th>Evaluación:</th>
 			</tr>
                        <% for(CEFAS_Candidato cdt: listaCandidatos)
                                     {
@@ -132,7 +127,7 @@
 				<td><%= cdt.getEspecialidad().getEspNombre() %></td>
 				<td><a  href="vercurriculum.jsp?Dui=<%= cdt.getCdtDUI() %>" class="btn btn-primary btn-md">Ver curriculum</a></td>
                                 <td><a href="evaluarCandidato.jsp?Dui=<%= cdt.getCdtDUI() %>" class="btn btn-primary btn-md" role="button"> Evaluar </a></td>
-                                <td><a href="verevaluacion.jsp?Dui=<%= cdt.getCdtDUI() %>" class="btn btn-primary btn-md" role="button"> Ver evaluacion </a></td>
+                                <td><a href="verevaluacion.jsp?Dui=<%= cdt.getCdtDUI() %>" class="btn btn-primary btn-md" role="button"> Ver evaluación </a></td>
 
 			</tr>
                         
@@ -146,7 +141,7 @@
 		</div>
 		</div>
 	</form>
-	</div>
+
 </div>
 </body>
 </html>
