@@ -54,7 +54,7 @@
         ctrlBitacora.guardarBitacora((Integer) sesionOk.getAttribute("codigo"), "Se actualizo la orden con codigo "+codigoOrden);
              
         }else{
-         mensaje = "<br><br><div class='alert alert-success' role='alert'><button type='button' class='close'"
+         mensaje = "<br><br><div class='alert alert-danger' role='alert'><button type='button' class='close'"
                 + " data-dismiss='alert'><span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span></button>"
                 + "Error en la actualizacion del registro vuelva a intentar</div>";
         }    
@@ -79,7 +79,7 @@
         ctrlBitacora.guardarBitacora((Integer) sesionOk.getAttribute("codigo"), "Se elimino la orden con codigo " +codigoOrden);
              
         }else{
-         mensaje = "<br><br><div class='alert alert-success' role='alert'><button type='button' class='close'"
+         mensaje = "<br><br><div class='alert alert-danger' role='alert'><button type='button' class='close'"
                 + " data-dismiss='alert'><span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span></button>"
                 + "Error en la eliminación del registro vuelva a intentar</div>";
         }
