@@ -21,7 +21,7 @@
     String tipo = (String) sesionOk.getAttribute("tipo");
     if (tipo == null) {
         request.getRequestDispatcher("index.jsp").forward(request, response);
-        return;
+        return; 
     }
     if (!tipo.equals("director")) {
         response.sendRedirect("avisos.jsp");

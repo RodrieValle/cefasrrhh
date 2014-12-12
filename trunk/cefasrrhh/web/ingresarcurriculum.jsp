@@ -80,13 +80,13 @@
                  <h1>Ingresar Curriculum</h1>
                  <form action="subirCurriculo" enctype="multipart/form-data" method="POST">
                          <div class="col-xs-4 col-xs-offset-4">
-                             DUI: <input type="text" name="dui" class="form-control input-sm" value="" required>
-                             Nombre: <input type="text" name="nombre" class="form-control input-sm">
+                             DUI: <input type="number" min="000000000" max="999999999" name="dui" class="form-control input-sm" value="" required><br>
+                             Nombre: <input type="text" name="nombre" class="form-control input-sm" maxlength="100"><br>
                              Especialidad:<select name="especialidad"  class="form-control input-sm">
                            <% for (CEFAS_Especialidad esp : listaEspecialidad) {%>
                            <option value="<%= esp.getEspCodigo()%>"><%= esp.getEspNombre()%></option>
                             <% }%>
-                       </select> 
+                       </select> <br>
                              Archivo de curriculum: <input type="file" name="url" id="url" class="form-control input-sm">
                              <p>
                                  <br><br>
