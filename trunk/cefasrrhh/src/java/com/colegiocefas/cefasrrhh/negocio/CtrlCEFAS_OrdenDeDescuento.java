@@ -20,7 +20,7 @@ public class CtrlCEFAS_OrdenDeDescuento {
     private CEFAS_OrdenDeDescuentoDAO daoOrden = new CEFAS_OrdenDeDescuentoDAO();
     
     
-        public int guardarOrdenDeDescuento(int empCodigo, Date oddFecha, float oddMonto, int oddPlazos, float oddCuota)
+        public int guardarOrdenDeDescuento(int empCodigo, Date oddFecha, float oddMonto, int oddPlazos, float oddCuota, String institucion)
     {
         CEFAS_OrdenDeDescuento orden= new CEFAS_OrdenDeDescuento();
          
@@ -31,7 +31,7 @@ public class CtrlCEFAS_OrdenDeDescuento {
                 orden.setOddPlazo(oddPlazos);
                 orden.setOddSaldo(oddMonto);
                 orden.setOddCuota(oddCuota);
-                
+                orden.setOddInstitucion(institucion);
                return daoOrden.almacenarOrdenDeDescuento(orden);
     }
     
@@ -49,7 +49,7 @@ public class CtrlCEFAS_OrdenDeDescuento {
             
             
 public int actualizarOrden(int codigo, int empleado, Date fecha, float cuota, float cantidad,
-                                            int plazo, float saldo)
+                                            int plazo, float saldo, String institucion)
     {
         CEFAS_OrdenDeDescuento orden= new CEFAS_OrdenDeDescuento();
         orden.setOddCodigo(codigo);
@@ -59,6 +59,7 @@ public int actualizarOrden(int codigo, int empleado, Date fecha, float cuota, fl
         orden.setOddMonto(cantidad);
         orden.setOddPlazo(plazo);
         orden.setOddSaldo(saldo);
+        orden.setOddInstitucion(institucion);
         return daoOrden.actualizarOrdenDeDescuento(orden);
     }
     

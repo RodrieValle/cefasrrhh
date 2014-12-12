@@ -21,6 +21,7 @@ public class CEFAS_OrdenDeDescuento {
     private int    oddPlazo;
     private float  oddSaldo;
     private float  oddCuota;
+    private String oddInstitucion;
 
     public CEFAS_OrdenDeDescuento() {
     }
@@ -89,6 +90,14 @@ public class CEFAS_OrdenDeDescuento {
 
     public void setOddCuota(float oddCuota) {
         this.oddCuota = oddCuota;
+    }
+
+    public String getOddInstitucion() {
+        return oddInstitucion;
+    }
+
+    public void setOddInstitucion(String oddInstitucion) {
+        this.oddInstitucion = oddInstitucion;
     }
     
     

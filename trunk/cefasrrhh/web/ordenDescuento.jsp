@@ -39,10 +39,10 @@
         float monto= Float.parseFloat(request.getParameter("monto"));
         int plazo = Integer.parseInt(request.getParameter("numeroCuotas"));
         float cuota = Float.parseFloat(request.getParameter("cuotaMensual"));
-        
+        String institucion=request.getParameter("institucion");
   
         CtrlCEFAS_OrdenDeDescuento ctrlOrdenDeDescuento = new CtrlCEFAS_OrdenDeDescuento();
-        int resultado=ctrlOrdenDeDescuento.guardarOrdenDeDescuento(codigo, fecha, monto, plazo, cuota);
+        int resultado=ctrlOrdenDeDescuento.guardarOrdenDeDescuento(codigo, fecha, monto, plazo, cuota, institucion);
         
         
         if(resultado==1){

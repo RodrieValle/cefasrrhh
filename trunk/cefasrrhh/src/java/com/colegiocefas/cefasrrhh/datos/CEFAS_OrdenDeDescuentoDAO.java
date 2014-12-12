@@ -32,14 +32,14 @@ public class CEFAS_OrdenDeDescuentoDAO {
     
     
     
-       private final String SQL_INSERT = "INSERT INTO CEFAS_ORDENDEDESCUENTO (EMPCODIGO, ODDFECHA, ODDMONTO, ODDPLAZO, ODDSALDO, ODDCUOTA) VALUES (?, ?, ?, ?, ?, ?)";
+       private final String SQL_INSERT = "INSERT INTO CEFAS_ORDENDEDESCUENTO (EMPCODIGO, ODDFECHA, ODDMONTO, ODDPLAZO, ODDSALDO, ODDCUOTA, ODDINSTITUCION) VALUES (?, ?, ?, ?, ?, ?, ?)";
     private final String SQL_SELECT = "SELECT * FROM CEFAS_ORDENDEDESCUENTO WHERE EMPCODIGO LIKE ?";
     private final String SQL_SELECTBYID = "SELECT * FROM CEFAS_ORDENDEDESCUENTO WHERE ODDCODIGO LIKE ?";
     private final String SQL_SELECTBYEMP = "SELECT * FROM CEFAS_ORDENDEDESCUENTO WHERE EMPCODIGO LIKE ?";
     private final String SQL_SELECTALL = "SELECT * FROM CEFAS_ORDENDEDESCUENTO";
     private final String SQL_SELECT_ACTIVOS = "SELECT * FROM CEFAS_ORDENDEDESCUENTO WHERE ODDSALDO > 0";
     private final String SQL_UPDATE = "UPDATE CEFAS_ORDENDEDESCUENTO SET EMPCODIGO = ?, ODDFECHA = ?,"
-            + " ODDMONTO = ?, ODDPLAZO = ?, ODDSALDO = ?, ODDCUOTA = ? WHERE ODDCODIGO = ?";
+            + " ODDMONTO = ?, ODDPLAZO = ?, ODDSALDO = ?, ODDCUOTA = ?, ODDINSTITUCION = ? WHERE ODDCODIGO = ?";
     private final String SQL_DELETE = "DELETE FROM CEFAS_ORDENDEDESCUENTO WHERE ODDCODIGO = ?";
     private Connection conexiondb;
     private Statement st;
@@ -69,7 +69,7 @@ public class CEFAS_OrdenDeDescuentoDAO {
                 orden.setOddPlazo(rs.getInt("oddPlazo"));
                 orden.setOddSaldo(rs.getFloat("oddSaldo"));
                 orden.setOddCuota(rs.getFloat("oddCuota"));
-                
+                orden.setOddInstitucion(rs.getString("oddInstitucion"));
                
             }
             ConexionDB.cerrarConexion();
@@ -103,6 +103,7 @@ public class CEFAS_OrdenDeDescuentoDAO {
                 orden.setOddPlazo(rs.getInt("oddPlazo"));
                 orden.setOddSaldo(rs.getFloat("oddSaldo"));
                 orden.setOddCuota(rs.getFloat("oddCuota"));
+                orden.setOddInstitucion(rs.getString("oddInstitucion"));
                 listOrdenes.add(orden);
                
             }
@@ -126,6 +127,7 @@ public class CEFAS_OrdenDeDescuentoDAO {
             ps.setDouble(4, orden.getOddPlazo());
             ps.setDouble(5, orden.getOddSaldo());
             ps.setDouble(6, orden.getOddCuota());
+            ps.setString(7, orden.getOddInstitucion());
              n=ps.executeUpdate();            
 
             if(n>0){
@@ -154,7 +156,9 @@ ConexionDB.cerrarConexion();
             ps.setDouble(4, orden.getOddPlazo());
             ps.setDouble(5, orden.getOddSaldo());
             ps.setDouble(6, orden.getOddCuota());
-           ps.setInt(7, orden.getOddCodigo());
+            ps.setString(7, orden.getOddInstitucion());
+           ps.setInt(8, orden.getOddCodigo());
+           
              n=ps.executeUpdate();
 
             if(n>0){
@@ -190,6 +194,7 @@ ConexionDB.cerrarConexion();
                 orden.setOddPlazo(rs.getInt("oddPlazo"));
                 orden.setOddSaldo(rs.getFloat("oddSaldo"));
                 orden.setOddCuota(rs.getFloat("oddCuota")); 
+                orden.setOddInstitucion(rs.getString("oddInstitucion"));
             }
             ConexionDB.cerrarConexion();
         } catch (SQLException ex) {
@@ -216,6 +221,7 @@ ConexionDB.cerrarConexion();
                 orden.setOddPlazo(rs.getInt("oddPlazo"));
                 orden.setOddSaldo(rs.getFloat("oddSaldo"));
                 orden.setOddCuota(rs.getFloat("oddCuota"));
+                orden.setOddInstitucion(rs.getString("oddInstitucion"));
                 ordenesActivos.add(orden);
             }
             ConexionDB.cerrarConexion();

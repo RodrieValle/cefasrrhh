@@ -40,11 +40,12 @@
         float cuota = Float.parseFloat(request.getParameter("cuotaMensual"));
         float saldo= Float.parseFloat(request.getParameter("saldo"));
         int plazo = Integer.parseInt(request.getParameter("numeroCuotas"));
+        String institucion=request.getParameter("institucion");
         
        //String mensaje="";
           
         CtrlCEFAS_OrdenDeDescuento ctrlOrden = new CtrlCEFAS_OrdenDeDescuento();
-        int resultado=ctrlOrden.actualizarOrden(codigoOrden, codigo, fecha, cuota, monto, plazo, saldo);
+        int resultado=ctrlOrden.actualizarOrden(codigoOrden, codigo, fecha, cuota, monto, plazo, saldo, institucion);
         if(resultado==1){
              mensaje = "<br><br><div class='alert alert-success' role='alert'><button type='button' class='close'"
                 + " data-dismiss='alert'><span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span></button>"
@@ -127,7 +128,7 @@
                                             <td>Plazos</td> 
                                             <td>Saldo</td> 
                                             <td>Cuota Mensual</td> 
-                                            
+                                            <td>Institucion</td> 
                                             <td></td>
                                             <td></td>
                                         </tr> 
@@ -144,6 +145,7 @@
                                             <td> <%= orden.getOddPlazo() %></td>
                                             <td>$<%= String.format("%.2f", orden.getOddSaldo()) %></td>
                                             <td>$ <%= String.format("%.2f", orden.getOddCuota()) %></td>
+                                            <td><%=orden.getOddInstitucion() %></td> 
                                             <td><a href="ordenDescuentoModificar.jsp?codigo=<%=orden.getOddCodigo()%>" class="btn btn-primary btn-md" role="button">Modificar Orden</a></td>
                                             <td><a href="ordenDescuentoEmpleado.jsp?codigoO=<%=orden.getOddCodigo()%>" class="btn btn-primary btn-md" role="button">Eliminar Orden</a></td>
                                         </tr>
