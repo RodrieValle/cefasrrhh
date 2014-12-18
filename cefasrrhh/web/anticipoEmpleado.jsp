@@ -4,6 +4,7 @@
     Author     : JUAREZ
 --%>
 
+
 <%@page import="java.util.Date"%>
 <%@page import="com.colegiocefas.cefasrrhh.negocio.CtrlCEFAS_Bitacora"%>
 <%@page import="com.colegiocefas.cefasrrhh.dominio.CEFAS_Empleado"%>
