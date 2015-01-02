@@ -4,7 +4,7 @@
     Author     : MARIA JUAREZ
 --%>
 
-
+//comentario
     
 <%@page import="com.colegiocefas.cefasrrhh.negocio.CtrlCEFAS_Bitacora"%>
 <%@page import="java.text.SimpleDateFormat"%>
